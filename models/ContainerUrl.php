@@ -6,7 +6,7 @@
  * @author [FunkycraM](https://marc.fun)
  */
 
-namespace humhub\modules\iframe;
+namespace humhub\modules\iframe\models;
 
 use Yii;
 use humhub\modules\content\components\ActiveQueryContent;
@@ -19,9 +19,6 @@ use yii\db\Expression;
 class ContainerUrl extends ContentActiveRecord implements Searchable
 {
     public $moduleId = 'iframe';
-
-    const NAV_CLASS_SPACE_NAV = 'SpaceMenu';
-    const NAV_CLASS_EMPTY = 'WithOutMenu';
 
     const COMMENTS_STATE_DISABLED = 'Disabled';
     const COMMENTS_STATE_ENABLED = 'Enabled';
@@ -51,7 +48,7 @@ class ContainerUrl extends ContentActiveRecord implements Searchable
     {
         return [
             'id' => 'Id',
-            'iframe_url' => 'iFrame URL',
+            'url' => 'iFrame URL',
             'container_page_id' => 'Container page id',
             'comments_state' => 'URL comments State',
             'created_at' => 'Created at',
@@ -67,8 +64,8 @@ class ContainerUrl extends ContentActiveRecord implements Searchable
     public function rules()
     {
        return [
-           [['container_page_id', 'iframe_url'], 'required'],
-           [['iframe_url', 'comments_state'], 'string'],
+           [['container_page_id', 'url'], 'required'],
+           [['url', 'comments_state'], 'string'],
            [['container_page_id'], 'integer'],
        ];
     }
@@ -78,4 +75,27 @@ class ContainerUrl extends ContentActiveRecord implements Searchable
         return $this
             ->hasOne(ContainerPage::className(), ['id' => 'container_page_id']);
     }
+
+
+    public function getContentName()
+    {
+        return $this->containerPage['title'];
+    }
+
+    public function getContentDescription()
+    {
+        return $this->containerPage['title'];
+    }
+
+    // Searchable Attributes / Informations
+    public function getSearchAttributes()
+    {
+        return $this->containerPage['title'];
+    }
+
+    public function getIcon()
+    {
+        return $this->containerPage['icon'];
+    }
+
 }

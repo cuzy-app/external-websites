@@ -6,7 +6,7 @@
  * @author [FunkycraM](https://marc.fun)
  */
 
-namespace humhub\modules\iframe;
+namespace humhub\modules\iframe\models;
 
 use Yii;
 use humhub\modules\content\components\ActiveQueryContent;
@@ -19,9 +19,6 @@ use yii\db\Expression;
 class Url extends ContentActiveRecord implements Searchable
 {
     public $moduleId = 'iframe';
-
-    const NAV_CLASS_SPACE_NAV = 'SpaceMenu';
-    const NAV_CLASS_EMPTY = 'WithOutMenu';
 
     const COMMENTS_STATE_DISABLED = 'Disabled';
     const COMMENTS_STATE_ENABLED = 'Enabled';
@@ -41,7 +38,7 @@ class Url extends ContentActiveRecord implements Searchable
      */
     public static function tableName()
     {
-        return 'iframe_url';
+        return 'url';
     }
 
     /**
@@ -51,7 +48,7 @@ class Url extends ContentActiveRecord implements Searchable
     {
         return [
             'id' => 'Id',
-            'iframe_url' => 'iFrame URL',
+            'url' => 'iFrame URL',
             'page_id' => 'Page id',
             'comments_state' => 'URL comments State',
             'created_at' => 'Created at',
@@ -67,8 +64,8 @@ class Url extends ContentActiveRecord implements Searchable
     public function rules()
     {
        return [
-           [['page_id', 'iframe_url'], 'required'],
-           [['iframe_url', 'comments_state'], 'string'],
+           [['page_id', 'url'], 'required'],
+           [['url', 'comments_state'], 'string'],
            [['page_id'], 'integer'],
        ];
     }
@@ -78,4 +75,28 @@ class Url extends ContentActiveRecord implements Searchable
         return $this
             ->hasOne(Page::className(), ['id' => 'page_id']);
     }
+
+
+
+    public function getContentName()
+    {
+        return $this->page['title'];
+    }
+
+    public function getContentDescription()
+    {
+        return $this->page['title'];
+    }
+
+    // Searchable Attributes / Informations
+    public function getSearchAttributes()
+    {
+        return $this->page['title'];
+    }
+
+    public function getIcon()
+    {
+        return $this->page['icon'];
+    }
+
 }

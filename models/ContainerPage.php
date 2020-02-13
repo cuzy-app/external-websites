@@ -6,7 +6,7 @@
  * @author [FunkycraM](https://marc.fun)
  */
 
-namespace humhub\modules\iframe;
+namespace humhub\modules\iframe\models;
 
 use Yii;
 
@@ -14,14 +14,14 @@ use Yii;
 class ContainerPage extends \yii\db\ActiveRecord
 {
 
-    const NAV_CLASS_TOPNAV = 'TopMenuWidget';
-    const NAV_CLASS_ACCOUNTNAV = 'AccountMenuWidget';
-    const NAV_CLASS_EMPTY = 'WithOutMenu';
-    const NAV_CLASS_DIRECTORY = 'DirectoryMenu';
+    const TARGET_SPACE_NAV = 'SpaceMenu';
+    const TARGET_EMPTY = 'WithOutMenu';
 
     const STATE_DISABLED = 'Disabled';
-    const STATE_ADMIN_ONLY = 'AdminOnly';
-    const STATE_ALL_USERS = 'AllUsers';
+    const STATE_ADMINS = 'Admins';
+    const STATE_MODERATORS = 'Moderators';
+    const STATE_MEMBERS = 'Members';
+    const STATE_PUBLIC = 'Public';
 
     const COMMENTS_GLOBAL_STATE_DISABLED = 'Disabled';
     const COMMENTS_GLOBAL_STATE_ENABLED = 'Enabled';
@@ -45,8 +45,7 @@ class ContainerPage extends \yii\db\ActiveRecord
             'space_id' => 'Space Id',
             'title' => 'Title',
             'icon' => 'Icon',
-            'page_url' => 'Page URL',
-            'iframe_first_url' => 'iFrame first URL',
+            'start_url' => 'iFrame start URL',
             'target' => 'Target',
             'sort_order' => 'Sort order',
             'state' => 'State',
@@ -64,8 +63,8 @@ class ContainerPage extends \yii\db\ActiveRecord
     public function rules()
     {
        return [
-           [['space_id', 'page_url', 'iframe_first_url'], 'required'],
-           [['title', 'icon', 'page_url', 'iframe_first_url', 'target', 'state', 'comments_global_state'], 'string'],
+           [['space_id', 'start_url'], 'required'],
+           [['title', 'icon', 'start_url', 'target', 'state', 'comments_global_state'], 'string'],
            [['space_id', 'sort_order'], 'integer'],
        ];
     }
@@ -77,4 +76,14 @@ class ContainerPage extends \yii\db\ActiveRecord
             ->hasMany(ContainerUrl::className(), ['container_page_id' => 'id']);
     }
 
+
+    public function beforeDelete()
+    {
+        foreach ($this->containerUrl as $containerUrl) {
+            $containerUrl->delete();
+// TBD : related content deleted ?
+        }
+
+        return parent::beforeDelete();
+    }
 }

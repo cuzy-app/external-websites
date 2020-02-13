@@ -8,7 +8,7 @@ class uninstall extends yii\db\Migration
     {
         $this->dropTable('iframe_page');
         $this->dropTable('iframe_container_page');
-        $this->dropTable('iframe_url');
+        $this->dropTable('url');
         $this->dropTable('iframe_container_url');
     }
 

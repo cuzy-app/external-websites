@@ -8,11 +8,14 @@
 
 namespace humhub\modules\iframe;
 
+use humhub\modules\space\widgets\Menu;
+
 return [
     'id' => 'iframe',
     'class' => 'humhub\modules\iframe\Module',
     'namespace' => 'humhub\modules\iframe',
     'events' => [
+    	['class' => Menu::class, 'event' => Menu::EVENT_INIT, 'callback' => ['humhub\modules\iframe\Events', 'onSpaceMenuInit']],
     ]
 ];
 ?>

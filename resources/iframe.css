@@ -1,0 +1,6 @@
+#iframe-container-page iframe {
+    width: 1px;
+    min-width: 100%;
+    height: calc(100vh - 150px);
+    border: none;
+}

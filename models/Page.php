@@ -6,7 +6,7 @@
  * @author [FunkycraM](https://marc.fun)
  */
 
-namespace humhub\modules\iframe;
+namespace humhub\modules\iframe\models;
 
 use Yii;
 
@@ -14,14 +14,14 @@ use Yii;
 class Page extends \yii\db\ActiveRecord
 {
 
-    const NAV_CLASS_TOPNAV = 'TopMenuWidget';
-    const NAV_CLASS_ACCOUNTNAV = 'AccountMenuWidget';
-    const NAV_CLASS_EMPTY = 'WithOutMenu';
-    const NAV_CLASS_DIRECTORY = 'DirectoryMenu';
+    const TARGET_TOPNAV = 'TopMenuWidget';
+    const TARGET_ACCOUNTNAV = 'AccountMenuWidget';
+    const TARGET_EMPTY = 'WithOutMenu';
+    const TARGET_DIRECTORY = 'DirectoryMenu';
 
     const STATE_DISABLED = 'Disabled';
-    const STATE_ADMIN_ONLY = 'AdminOnly';
-    const STATE_ALL_USERS = 'AllUsers';
+    const STATE_ADMINS = 'Admins';
+    const STATE_PUBLIC = 'Public';
 
     const COMMENTS_GLOBAL_STATE_DISABLED = 'Disabled';
     const COMMENTS_GLOBAL_STATE_ENABLED = 'Enabled';
@@ -44,8 +44,7 @@ class Page extends \yii\db\ActiveRecord
             'id' => 'Id',
             'title' => 'Title',
             'icon' => 'Icon',
-            'page_url' => 'Page URL',
-            'iframe_first_url' => 'iFrame first URL',
+            'start_url' => 'iFrame start URL',
             'target' => 'Target',
             'sort_order' => 'Sort order',
             'state' => 'State',
@@ -63,8 +62,8 @@ class Page extends \yii\db\ActiveRecord
     public function rules()
     {
        return [
-           [['page_url', 'iframe_first_url'], 'required'],
-           [['title', 'icon', 'page_url', 'iframe_first_url', 'target', 'state', 'comments_global_state'], 'string'],
+           [['start_url'], 'required'],
+           [['title', 'icon', 'start_url', 'target', 'state', 'comments_global_state'], 'string'],
            [['sort_order'], 'integer'],
        ];
     }

@@ -32,8 +32,7 @@ class m200212_175551_initial extends Migration
             'id' => 'pk',
             'title' => 'varchar(255) DEFAULT NULL',
             'icon' => 'varchar(100) DEFAULT NULL',
-            'page_url' => 'varchar(255) NOT NULL',
-            'iframe_first_url' => 'text NOT NULL',
+            'start_url' => 'text NOT NULL',
             'target' => 'varchar(100) DEFAULT NULL',
             'sort_order' => 'int(11) DEFAULT 0',
             'state' => 'varchar(100) DEFAULT NULL',
@@ -43,9 +42,9 @@ class m200212_175551_initial extends Migration
             'updated_at' => 'datetime NOT NULL',
             'updated_by' => 'int(11) NOT NULL',
         ), '');
-        $this->createTable('iframe_url', array(
+        $this->createTable('url', array(
             'id' => 'pk',
-            'iframe_url' => 'text NOT NULL',
+            'url' => 'text NOT NULL',
             'page_id' => 'int(11) NOT NULL',
             'comments_state' => 'varchar(100) DEFAULT NULL',
             'created_at' => 'datetime NOT NULL',
@@ -55,11 +54,10 @@ class m200212_175551_initial extends Migration
         ), '');
         $this->createTable('iframe_container_page', array(
             'id' => 'pk',
-            'space_id' => 'int(11) NOT NULL DEFAULT 0',
+            'space_id' => 'int(11) NOT NULL',
             'title' => 'varchar(255) DEFAULT NULL',
             'icon' => 'varchar(100) DEFAULT NULL',
-            'page_url' => 'varchar(255) NOT NULL',
-            'iframe_first_url' => 'text NOT NULL',
+            'start_url' => 'text NOT NULL',
             'target' => 'varchar(100) DEFAULT NULL',
             'sort_order' => 'int(11) DEFAULT 0',
             'state' => 'varchar(100) DEFAULT NULL',
@@ -71,7 +69,7 @@ class m200212_175551_initial extends Migration
         ), '');
         $this->createTable('iframe_container_url', array(
             'id' => 'pk',
-            'iframe_url' => 'text DEFAULT NULL',
+            'url' => 'text DEFAULT NULL',
             'container_page_id' => 'int(11) NOT NULL',
             'comments_state' => 'varchar(100) DEFAULT NULL',
             'created_at' => 'datetime NOT NULL',
@@ -86,7 +84,7 @@ class m200212_175551_initial extends Migration
         echo "m190609_090436_initial cannot be reverted.\n";
         $this->dropTable('iframe_page');
         $this->dropTable('iframe_container_page');
-        $this->dropTable('iframe_url');
+        $this->dropTable('url');
         $this->dropTable('iframe_container_url');
         return false;
     }
