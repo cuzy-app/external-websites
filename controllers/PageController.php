@@ -95,12 +95,11 @@ class PageController extends ContentContainerController
         // Get comments because humhub\modules\comment\widgets\Comments doesn't work with ajax
         $objectModel = $containerUrl->content->object_model;
         $objectId = $containerUrl->content->object_id;
-
         $commentsCount = \humhub\modules\comment\models\Comment::GetCommentCount($objectModel, $objectId);
         $comments = \humhub\modules\comment\models\Comment::GetCommentsLimited($objectModel, $objectId, self::MAX_COMMENTS);
-
         $isLimitedComments = ($commentsCount > self::MAX_COMMENTS);
 
+        // Render ajax
         return $this->renderAjax('url-content', [
             'containerUrl' => $containerUrl,
             'comments' => $comments,

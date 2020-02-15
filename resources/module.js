@@ -5,7 +5,10 @@ var iframeUrl;
 humhub.module('iframe', function (module, require, $) {
     module.initOnPjaxLoad = true;
 
+    // Wait for elements to be loaded
     var init = function(isPjax) { 
+        
+        // When IframeResize plugin is loaded (in resources folder)
         iFrameResize(
             {
                 log: false,
@@ -36,14 +39,14 @@ humhub.module('iframe', function (module, require, $) {
 });
 
 
-
-function loadNewUrlContent (iframeUrl) {
+// Load comments with ajax, after the iframe tag, each time URL changes in the iframed website
+function loadNewUrlContent (url) {
     $.ajax({
         method: "POST",
         url: urlContentActionUrl,
         data: {
             containerPageId: $('#iframe-page').attr('data-container-page-id'),
-            url: iframeUrl,
+            url: url,
         },
         success: function(data) {
             $('#iframe-comments').html(data);
@@ -53,9 +56,12 @@ function loadNewUrlContent (iframeUrl) {
 }
 
 
+// Load modal box with comments and form to post a new comment
 function loadIframeComments (commentsUrl) {
     iframeModal.global.load(commentsUrl).then(function(response) {
+        // When modal box is closed
         $(this).on('hide.bs.modal', function (e) {
+            // Reload ajax with new comment(s)
             loadNewUrlContent (iframeUrl);
         })
     }).catch(function(e) {

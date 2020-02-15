@@ -31,6 +31,7 @@ use humhub\modules\comment\widgets\Comment;
     		'class' => 'btn btn-default',
     		'data' => [
     			'action-url' => Url::to(['/comment/comment/show', 'contentModel' => $objectModel, 'contentId' => $objectId, 'mode' => 'popup']),
+    			// next datas are not used because we need to reload ajax after modal box is closed ; This will be done with loadIframeComments() function in module.js
     			// 'action-click' => 'ui.modal.load',
     			// 'modal-id' => 'write-comment-modal',
     		],
@@ -41,6 +42,6 @@ use humhub\modules\comment\widgets\Comment;
 <script type="text/javascript">
     $('#load-iframe-comments').on('click', function(e) {
         e.preventDefault();
-        loadIframeComments($(this).attr('data-action-url'))
+        loadIframeComments($(this).attr('data-action-url')); // function in module.js
     });	
 </script>

@@ -26,5 +26,6 @@ humhub\modules\iframe\assets\Assets::register($this);
 </div>
 
 <script type="text/javascript">
+    // For module.js
     var urlContentActionUrl = '<?= Url::to('page/url-content') ?>';
 </script>
