@@ -12,17 +12,18 @@ humhub.module('iframe', function (module, require, $) {
         iFrameResize(
             {
                 log: false,
-                scrolling: true, // if iframed website has not the content window javascript
+                scrolling: false, // if iframed website has not the content window javascript
                 inPageLinks: true,
 
                 // Each time iframed website has loaded the content window javascript
                 onInit: function(messageData) {
                     // Remove scrollbar
-                    $(this).attr('scrolling', 'no');
+                    $('#iframe-page').attr('scrolling', 'no');
                 },
 
                 // Each time iframed page is loaded or URL changes
                 onMessage: function(messageData) {
+                    // Load new ajax content related to the iframe website URL (comments)
                     iframeUrl = messageData.message;
                     loadNewUrlContent (iframeUrl);
                 },

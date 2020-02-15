@@ -28,9 +28,10 @@ class Events
         if ($space !== null && $space->isModuleEnabled('iframe')) {
 
             // Get pages
-            $containerPage = ContainerPage::findAll([
-                'space_id' => $space['id'],
-            ]);
+            $containerPage = ContainerPage::find()
+                ->where(['space_id' => $space['id']])
+                ->orderBy(['sort_order' => SORT_ASC])
+                ->all();
 
             foreach ($containerPage as $containerPage) {
                 $event->sender->addItem([
