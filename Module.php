@@ -36,7 +36,6 @@ class Module extends ContentContainerModule
     {
         return [
             Space::class,
-            User::class,
         ];
     }
 
@@ -100,8 +99,6 @@ class Module extends ContentContainerModule
     {
         if ($container instanceof Space) {
             return Yii::t('IframeModule.base', 'This module creates pages containing an iframed website where members can comment.');
-        } elseif ($container instanceof User) {
-            return Yii::t('IframeModule.base', 'This module creates pages containing an iframed website where members can comment');
         }
     }
 

@@ -19,11 +19,12 @@ class Assets extends AssetBundle
     ];
 
     public $css = [
-        'iframe.css?v=0.1',
+        'module.css?v=0.1',
     ];
     
     public $js = [
     	'iframeResizer.min.js?v=4.2.9', // https://github.com/davidjbradshaw/iframe-resizer/releases
+        'module.js?v=0.1',
     ];
 
 }

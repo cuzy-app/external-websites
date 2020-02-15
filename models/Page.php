@@ -23,9 +23,10 @@ class Page extends \yii\db\ActiveRecord
     const STATE_ADMINS = 'Admins';
     const STATE_PUBLIC = 'Public';
 
-    const COMMENTS_GLOBAL_STATE_DISABLED = 'Disabled';
-    const COMMENTS_GLOBAL_STATE_ENABLED = 'Enabled';
-    const COMMENTS_GLOBAL_STATE_CLOSED = 'Closed';
+    // comments_global_state must be one of the Url const COMMENTS_STATE_xxx
+
+    // visibility can be humhub\modules\content\models\Content::VISIBILITY_PRIVATE or Content::VISIBILITY_PUBLIC
+
 
     /**
      * @inheritdoc
@@ -49,6 +50,7 @@ class Page extends \yii\db\ActiveRecord
             'sort_order' => 'Sort order',
             'state' => 'State',
             'comments_global_state' => 'Comments global state',
+            'visibility' => 'Visibility',
             'created_at' => 'Created at',
             'created_by' => 'Created by',
             'updated_at' => 'Updated at',
@@ -64,7 +66,7 @@ class Page extends \yii\db\ActiveRecord
        return [
            [['start_url'], 'required'],
            [['title', 'icon', 'start_url', 'target', 'state', 'comments_global_state'], 'string'],
-           [['sort_order'], 'integer'],
+           [['sort_order', 'visibility'], 'integer'],
        ];
     }
 

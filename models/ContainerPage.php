@@ -23,10 +23,11 @@ class ContainerPage extends \yii\db\ActiveRecord
     const STATE_MEMBERS = 'Members';
     const STATE_PUBLIC = 'Public';
 
-    const COMMENTS_GLOBAL_STATE_DISABLED = 'Disabled';
-    const COMMENTS_GLOBAL_STATE_ENABLED = 'Enabled';
-    const COMMENTS_GLOBAL_STATE_CLOSED = 'Closed';
+    // comments_global_state must be one of the ContainerUrl const COMMENTS_STATE_xxx
 
+    // visibility can be humhub\modules\content\models\Content::VISIBILITY_PRIVATE or Content::VISIBILITY_PUBLIC
+
+    
     /**
      * @inheritdoc
      */
@@ -50,6 +51,7 @@ class ContainerPage extends \yii\db\ActiveRecord
             'sort_order' => 'Sort order',
             'state' => 'State',
             'comments_global_state' => 'Comments global state',
+            'visibility' => 'Visibility',
             'created_at' => 'Created at',
             'created_by' => 'Created by',
             'updated_at' => 'Updated at',
@@ -65,7 +67,7 @@ class ContainerPage extends \yii\db\ActiveRecord
        return [
            [['space_id', 'start_url'], 'required'],
            [['title', 'icon', 'start_url', 'target', 'state', 'comments_global_state'], 'string'],
-           [['space_id', 'sort_order'], 'integer'],
+           [['space_id', 'sort_order', 'visibility'], 'integer'],
        ];
     }
 

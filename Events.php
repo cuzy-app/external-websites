@@ -36,12 +36,12 @@ class Events
                 $event->sender->addItem([
                     'label' => $containerPage['title'],
                     'group' => 'modules',
-                    'url' => $space->createUrl('/iframe/container-page?title='.urlencode($containerPage['title'])),
+                    'url' => $space->createUrl('/iframe/page?title='.urlencode($containerPage['title'])),
                     'icon' => '<i class="fa '.$containerPage['icon'].'"></i>',
                     'isActive' => (
                         Yii::$app->controller->module
                         && Yii::$app->controller->module->id == 'iframe'
-                        && Yii::$app->controller->id = 'container-page'
+                        && Yii::$app->controller->id = 'page'
                         && $currentPageTitle !== null
                         && $currentPageTitle == $containerPage['title']
                     ),

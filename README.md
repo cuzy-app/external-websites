@@ -55,9 +55,9 @@ You must copy `iframeResizer.contentWindow.min.js` file (present in the `for-ifr
 
 First release !
 
-As the config page is not yet coded, to add a page :
+As the config page is not yet coded, to add a page (visiblity private) :
 ```
-INSERT INTO `iframe_container_page` (`id`, `space_id`, `title`, `icon`, `start_url`, `target`, `sort_order`, `state`, `comments_global_state`, `created_at`, `created_by`, `updated_at`, `updated_by`) VALUES (NULL, '0', 'My Title', 'fa-graduation-cap', 'http://localhost/test/', 'SpaceMenu', '0', 'Members', 'Enabled', '2020-02-13 11:11:00', '1', '2020-02-13 11:11:00', '1');
+INSERT INTO `iframe_container_page` (`id`, `space_id`, `title`, `icon`, `start_url`, `target`, `sort_order`, `state`, `comments_global_state`, `visibility`, `created_at`, `created_by`, `updated_at`, `updated_by`) VALUES (NULL, '0', 'My Title', 'fa-graduation-cap', 'http://localhost/test/', 'SpaceMenu', '0', 'Members', 'Enabled', '0', '2020-02-13 11:11:00', '1', '2020-02-13 11:11:00', '1');
 ```
 
 
