@@ -103,6 +103,7 @@ class PageController extends ContentContainerController
         return $this->renderAjax('url-content', [
             'containerUrl' => $containerUrl,
             'comments' => $comments,
+            'commentsState' => $containerUrl['comments_state'],
             'objectModel' => $objectModel,
             'objectId' => $objectId,
             'isLimitedComments' => $isLimitedComments,

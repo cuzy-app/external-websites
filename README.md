@@ -63,3 +63,6 @@ INSERT INTO `iframe_container_page` (`id`, `space_id`, `title`, `icon`, `start_u
 
 
 ## TBD
+
+- Config to manage pages
+- Possibility for admin to change comment state for an URL
