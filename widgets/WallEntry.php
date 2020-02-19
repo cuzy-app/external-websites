@@ -14,11 +14,6 @@ namespace humhub\modules\iframe\widgets;
  */
 class WallEntry extends \humhub\modules\content\widgets\WallEntry
 {
-
-    // public $editRoute = '/iframe/page/edit';
-
-    // public $editMode = self::EDIT_MODE_NEW_WINDOW;
-
     public function run()
     {
         return $this->render('wallEntry', [

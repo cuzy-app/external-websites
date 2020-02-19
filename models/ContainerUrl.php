@@ -28,11 +28,23 @@ class ContainerUrl extends ContentActiveRecord implements Searchable
     /**
      * @inheritdoc
      */
-    public $autoAddToWall = false;
-
     public $wallEntryClass = "humhub\modules\iframe\widgets\WallEntry";
 
+    public $streamChannel = 'default';
+
     public $canMove = false;
+
+    /**
+     * @var boolean should the originator automatically follows this content when saved.
+     */
+    public $autoFollow = false;
+
+    /**
+     * If set to true this flag will prevent default ContentCreated Notifications and Activities.
+     * This can be used e.g. for sub content entries, whose creation is not worth mentioning.
+     * @var bool
+     */
+    public $silentContentCreation = true;
 
 
     /**
@@ -87,7 +99,7 @@ class ContainerUrl extends ContentActiveRecord implements Searchable
 
     public function getContentDescription()
     {
-        return $this->containerPage['title'];
+        return $this['title'];
     }
 
     // Searchable Attributes / Informations

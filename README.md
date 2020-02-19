@@ -74,11 +74,13 @@ ALTER TABLE `iframe_url` ADD `title` VARCHAR(255) NULL DEFAULT NULL AFTER `url`;
 ALTER TABLE `iframe_container_url` ADD `title` VARCHAR(255) NULL DEFAULT NULL AFTER `url`; 
 ```
 
+
+### Version 0.3
+
+- Better parametters for stream and notifications
+
 ## TBD
 
 - On the wall, comments are allways Enabled
-- `public $autoAddToWall = false;` doesn't work
-- `public $canMove = false;` doesn't work
-- Notifications : text are not correct and mail subject is not good
 - Config to manage pages
 - Possibility for admin to change comment state for an URL
