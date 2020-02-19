@@ -46,6 +46,7 @@ class m200212_175551_initial extends Migration
         $this->createTable('url', array(
             'id' => 'pk',
             'url' => 'text NOT NULL',
+            'title' => 'varchar(255) DEFAULT NULL',
             'page_id' => 'int(11) NOT NULL',
             'comments_state' => 'varchar(100) DEFAULT NULL',
             'created_at' => 'datetime NOT NULL',
@@ -72,6 +73,7 @@ class m200212_175551_initial extends Migration
         $this->createTable('iframe_container_url', array(
             'id' => 'pk',
             'url' => 'text DEFAULT NULL',
+            'title' => 'varchar(255) DEFAULT NULL',
             'container_page_id' => 'int(11) NOT NULL',
             'comments_state' => 'varchar(100) DEFAULT NULL',
             'created_at' => 'datetime NOT NULL',

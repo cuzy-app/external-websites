@@ -30,7 +30,9 @@ class ContainerUrl extends ContentActiveRecord implements Searchable
      */
     public $autoAddToWall = false;
 
-    public $canMove = true;
+    public $wallEntryClass = "humhub\modules\iframe\widgets\WallEntry";
+
+    public $canMove = false;
 
 
     /**
@@ -49,6 +51,7 @@ class ContainerUrl extends ContentActiveRecord implements Searchable
         return [
             'id' => 'Id',
             'url' => 'iFrame URL',
+            'title' => 'Title',
             'container_page_id' => 'Container page id',
             'comments_state' => 'URL comments State',
             'created_at' => 'Created at',
@@ -65,7 +68,7 @@ class ContainerUrl extends ContentActiveRecord implements Searchable
     {
        return [
            [['container_page_id', 'url'], 'required'],
-           [['url', 'comments_state'], 'string'],
+           [['url', 'title', 'comments_state'], 'string'],
            [['container_page_id'], 'integer'],
        ];
     }

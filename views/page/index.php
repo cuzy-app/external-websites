@@ -16,7 +16,7 @@ humhub\modules\iframe\assets\Assets::register($this);
     <div class="panel-body">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 iframe-content">
-                <iframe src="<?= $containerPage['start_url'] ?>"></iframe>
+                <iframe src="<?= $url ?>"></iframe>
             </div>
         </div>
         <div class="row">

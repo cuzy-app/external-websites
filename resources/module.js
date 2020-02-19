@@ -1,6 +1,6 @@
 // set global vars
 var iframeModal;
-var iframeUrl;
+var iframeMessage;
 
 humhub.module('iframe', function (module, require, $) {
     module.initOnPjaxLoad = true;
@@ -23,9 +23,13 @@ humhub.module('iframe', function (module, require, $) {
 
                 // Each time iframed page is loaded or URL changes
                 onMessage: function(messageData) {
+                    // message sent by iframed website is : {
+                    //   url: window.location.href,
+                    //   title: document.getElementsByTagName("title")[0].innerText
+                    // }
+                    iframeMessage = messageData.message; // update global var
                     // Load new ajax content related to the iframe website URL (comments)
-                    iframeUrl = messageData.message;
-                    loadNewUrlContent (iframeUrl);
+                    loadNewUrlContent ();
                 },
             },
             '#iframe-page iframe'
@@ -41,13 +45,13 @@ humhub.module('iframe', function (module, require, $) {
 
 
 // Load comments with ajax, after the iframe tag, each time URL changes in the iframed website
-function loadNewUrlContent (url) {
+function loadNewUrlContent () {
     $.ajax({
         method: "POST",
         url: urlContentActionUrl,
         data: {
             containerPageId: $('#iframe-page').attr('data-container-page-id'),
-            url: url,
+            iframeMessage: iframeMessage,
         },
         success: function(data) {
             $('#iframe-comments').html(data);
@@ -63,7 +67,7 @@ function loadIframeComments (commentsUrl) {
         // When modal box is closed
         $(this).on('hide.bs.modal', function (e) {
             // Reload ajax with new comment(s)
-            loadNewUrlContent (iframeUrl);
+            loadNewUrlContent ();
         })
     }).catch(function(e) {
         module.log.error(e, true);

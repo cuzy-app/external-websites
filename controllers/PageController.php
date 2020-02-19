@@ -9,6 +9,7 @@
 namespace humhub\modules\iframe\controllers;
 
 use Yii;
+use yii\helpers\BaseStringHelper;
 use humhub\modules\content\components\ContentContainerController;
 use humhub\modules\announcements\components\StreamAction;
 use humhub\modules\iframe\models\ContainerPage;
@@ -23,7 +24,7 @@ use humhub\modules\content\models\Content;
 class PageController extends ContentContainerController
 {
 
-    const MAX_COMMENTS = 1;
+    const MAX_COMMENTS = 20;
 
     /**
      * @inheritdoc
@@ -54,8 +55,16 @@ class PageController extends ContentContainerController
             'title' => $title,
         ]);
 
+        // Set start URL
+        $url = $containerPage['start_url'];
+        if (isset($_GET['urlId'])) {
+            $containerUrl = ContainerUrl::findOne(['id' => $_GET['urlId']]);
+            $url = $containerUrl['url'];
+        }
+
         return $this->render('index', [
             'containerPage' => $containerPage,
+            'url' => $url,
         ]);
     }
 
@@ -65,12 +74,14 @@ class PageController extends ContentContainerController
         // Get iframe URL
         if (
             !isset($_POST['containerPageId'])
-            || !isset($_POST['url'])
+            || !isset($_POST['iframeMessage'])
         ) {
             return;
         }
         $containerPageId = $_POST['containerPageId'];
-        $url = $_POST['url'];
+        $iframeMessage = $_POST['iframeMessage'];
+        $url = $iframeMessage['url'];
+        $title = BaseStringHelper::truncate($iframeMessage['title'], 100, '[...]');
 
         // Get content
         $containerUrl = ContainerUrl::findOne([
@@ -86,9 +97,15 @@ class PageController extends ContentContainerController
             $containerUrl = new ContainerUrl();
             $containerUrl['container_page_id'] = $containerPageId;
             $containerUrl['url'] = $url;
+            $containerUrl['title'] = $title;
             $containerUrl['comments_state'] = $containerPage['comments_global_state'];
             $containerUrl->content->container = $this->space;
             $containerUrl->content->visibility = $containerPage['visibility'];
+            $containerUrl->save();
+        }
+        // If title has changed, update it
+        elseif ($containerUrl['title'] != $title) {
+            $containerUrl['title'] = $title;
             $containerUrl->save();
         }
 

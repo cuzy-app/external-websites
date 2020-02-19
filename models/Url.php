@@ -49,6 +49,7 @@ class Url extends ContentActiveRecord implements Searchable
         return [
             'id' => 'Id',
             'url' => 'iFrame URL',
+            'title' => 'Title',
             'page_id' => 'Page id',
             'comments_state' => 'URL comments State',
             'created_at' => 'Created at',
@@ -65,7 +66,7 @@ class Url extends ContentActiveRecord implements Searchable
     {
        return [
            [['page_id', 'url'], 'required'],
-           [['url', 'comments_state'], 'string'],
+           [['url', 'title', 'comments_state'], 'string'],
            [['page_id'], 'integer'],
        ];
     }

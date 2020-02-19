@@ -40,7 +40,10 @@ You must copy `iframeResizer.contentWindow.min.js` file (present in the `for-ifr
         // Send new URL to parent iframe
         function sendUrlToParentIframe() {
             if ('parentIFrame' in window) {
-                window.parentIFrame.sendMessage(window.location.href);
+                window.parentIFrame.sendMessage({
+                  url: window.location.href,
+                  title: document.getElementsByTagName("title")[0].innerText
+                });
             }
         }
     </script>
@@ -60,9 +63,22 @@ As the config page is not yet coded, to add a page (visiblity private) :
 INSERT INTO `iframe_container_page` (`id`, `space_id`, `title`, `icon`, `start_url`, `target`, `sort_order`, `state`, `comments_global_state`, `visibility`, `created_at`, `created_by`, `updated_at`, `updated_by`) VALUES (NULL, '0', 'My Title', 'fa-graduation-cap', 'http://localhost/test/', 'SpaceMenu', '0', 'Members', 'Enabled', '0', '2020-02-13 11:11:00', '1', '2020-02-13 11:11:00', '1');
 ```
 
+### Version 0.2
 
+- Added WallEntry widget
+- Added Title in `ContainerUrl` and `Url` models
+- **Changed the code for the iframed website**
+
+```
+ALTER TABLE `iframe_url` ADD `title` VARCHAR(255) NULL DEFAULT NULL AFTER `url`;
+ALTER TABLE `iframe_container_url` ADD `title` VARCHAR(255) NULL DEFAULT NULL AFTER `url`; 
+```
 
 ## TBD
 
+- On the wall, comments are allways Enabled
+- `public $autoAddToWall = false;` doesn't work
+- `public $canMove = false;` doesn't work
+- Notifications : text are not correct and mail subject is not good
 - Config to manage pages
 - Possibility for admin to change comment state for an URL
