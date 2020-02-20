@@ -17,12 +17,6 @@ class ContainerPage extends \yii\db\ActiveRecord
     const TARGET_SPACE_NAV = 'SpaceMenu';
     const TARGET_EMPTY = 'WithOutMenu';
 
-    const STATE_DISABLED = 'Disabled';
-    const STATE_ADMINS = 'Admins';
-    const STATE_MODERATORS = 'Moderators';
-    const STATE_MEMBERS = 'Members';
-    const STATE_PUBLIC = 'Public';
-
     // comments_global_state must be one of the ContainerUrl const COMMENTS_STATE_xxx
 
     // visibility can be humhub\modules\content\models\Content::VISIBILITY_PRIVATE or Content::VISIBILITY_PUBLIC
@@ -49,7 +43,8 @@ class ContainerPage extends \yii\db\ActiveRecord
             'start_url' => 'iFrame start URL',
             'target' => 'Target',
             'sort_order' => 'Sort order',
-            'state' => 'State',
+            'content_archived' => 'Content archived',
+            'show_widget' => 'Show Widget',
             'comments_global_state' => 'Comments global state',
             'visibility' => 'Visibility',
             'created_at' => 'Created at',
@@ -66,8 +61,8 @@ class ContainerPage extends \yii\db\ActiveRecord
     {
        return [
            [['space_id', 'start_url'], 'required'],
-           [['title', 'icon', 'start_url', 'target', 'state', 'comments_global_state'], 'string'],
-           [['space_id', 'sort_order', 'visibility'], 'integer'],
+           [['title', 'icon', 'start_url', 'target', 'comments_global_state'], 'string'],
+           [['space_id', 'sort_order', 'content_archived', 'show_widget', 'visibility'], 'integer'],
        ];
     }
 

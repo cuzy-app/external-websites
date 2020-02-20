@@ -19,10 +19,6 @@ class Page extends \yii\db\ActiveRecord
     const TARGET_EMPTY = 'WithOutMenu';
     const TARGET_DIRECTORY = 'DirectoryMenu';
 
-    const STATE_DISABLED = 'Disabled';
-    const STATE_ADMINS = 'Admins';
-    const STATE_PUBLIC = 'Public';
-
     // comments_global_state must be one of the Url const COMMENTS_STATE_xxx
 
     // visibility can be humhub\modules\content\models\Content::VISIBILITY_PRIVATE or Content::VISIBILITY_PUBLIC
@@ -48,7 +44,7 @@ class Page extends \yii\db\ActiveRecord
             'start_url' => 'iFrame start URL',
             'target' => 'Target',
             'sort_order' => 'Sort order',
-            'state' => 'State',
+            'show_widget' => 'Show Widget',
             'comments_global_state' => 'Comments global state',
             'visibility' => 'Visibility',
             'created_at' => 'Created at',
@@ -65,8 +61,8 @@ class Page extends \yii\db\ActiveRecord
     {
        return [
            [['start_url'], 'required'],
-           [['title', 'icon', 'start_url', 'target', 'state', 'comments_global_state'], 'string'],
-           [['sort_order', 'visibility'], 'integer'],
+           [['title', 'icon', 'start_url', 'target', 'comments_global_state'], 'string'],
+           [['sort_order', 'visibility', 'show_widget'], 'integer'],
        ];
     }
 

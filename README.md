@@ -51,17 +51,18 @@ You must copy `iframeResizer.contentWindow.min.js` file (present in the `for-ifr
     <script type="text/javascript" src="path-to-js-files/iframeResizer.contentWindow.min.js"></script>
 ```
 
+As the config page is not yet coded, to add a page (visiblity private) :
+```
+INSERT INTO `iframe_container_page` (`id`, `space_id`, `title`, `icon`, `start_url`, `target`, `sort_order`, `content_archived`, `show_widget`, `comments_global_state`, `visibility`, `created_at`, `created_by`, `updated_at`, `updated_by`) VALUES (NULL, '0', 'My Title', 'fa-graduation-cap', 'http://localhost/test/', 'SpaceMenu', '0', '1', '1', 'Enabled', '0', '2020-02-13 11:11:00', '1', '2020-02-13 11:11:00', '1');
+```
+
+
 
 ## Changelog
 
 ### Version 0.1
 
 First release !
-
-As the config page is not yet coded, to add a page (visiblity private) :
-```
-INSERT INTO `iframe_container_page` (`id`, `space_id`, `title`, `icon`, `start_url`, `target`, `sort_order`, `state`, `comments_global_state`, `visibility`, `created_at`, `created_by`, `updated_at`, `updated_by`) VALUES (NULL, '0', 'My Title', 'fa-graduation-cap', 'http://localhost/test/', 'SpaceMenu', '0', 'Members', 'Enabled', '0', '2020-02-13 11:11:00', '1', '2020-02-13 11:11:00', '1');
-```
 
 ### Version 0.2
 
@@ -77,7 +78,19 @@ ALTER TABLE `iframe_container_url` ADD `title` VARCHAR(255) NULL DEFAULT NULL AF
 
 ### Version 0.3
 
-- Better parametters for stream and notifications
+- Better parameters for stream and notifications
+
+### Version 0.4
+
+- Added `content_archived` and `show_widget` in ContainerPage table
+- Removed `state` in ContainerPage table
+
+```
+ALTER TABLE `iframe_container_page` DROP `state`;
+ALTER TABLE `iframe_container_page` ADD `content_archived` TINYINT(4) NOT NULL DEFAULT '0' AFTER `comments_global_state`, ADD `show_widget` TINYINT(4) NOT NULL DEFAULT '0' AFTER `content_archived`;
+ALTER TABLE `iframe_page` DROP `state`;
+ALTER TABLE `iframe_page` ADD `show_widget` TINYINT(4) NOT NULL DEFAULT '0' AFTER `comments_global_state`;
+```
 
 ## TBD
 

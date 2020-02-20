@@ -101,7 +101,7 @@ class PageController extends ContentContainerController
             $containerUrl['comments_state'] = $containerPage['comments_global_state'];
             $containerUrl->content->container = $this->space;
             $containerUrl->content['visibility'] = $containerPage['visibility'];
-            $containerUrl->content['archived'] = 1;
+            $containerUrl->content['archived'] = $containerPage['content_archived'];
             $containerUrl->save();
         }
         // If title has changed, update it
