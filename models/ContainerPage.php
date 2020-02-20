@@ -43,6 +43,7 @@ class ContainerPage extends \yii\db\ActiveRecord
             'start_url' => 'iFrame start URL',
             'target' => 'Target',
             'sort_order' => 'Sort order',
+            'remove_from_url_title' => 'Text to remove from URL title',
             'content_archived' => 'Content archived',
             'show_widget' => 'Show Widget',
             'comments_global_state' => 'Comments global state',
@@ -61,7 +62,7 @@ class ContainerPage extends \yii\db\ActiveRecord
     {
        return [
            [['space_id', 'start_url'], 'required'],
-           [['title', 'icon', 'start_url', 'target', 'comments_global_state'], 'string'],
+           [['title', 'icon', 'start_url', 'target', 'remove_from_url_title', 'comments_global_state'], 'string'],
            [['space_id', 'sort_order', 'content_archived', 'show_widget', 'visibility'], 'integer'],
        ];
     }

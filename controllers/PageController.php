@@ -97,7 +97,7 @@ class PageController extends ContentContainerController
             $containerUrl = new ContainerUrl();
             $containerUrl['container_page_id'] = $containerPageId;
             $containerUrl['url'] = $url;
-            $containerUrl['title'] = $title;
+            $containerUrl['title'] = str_ireplace($containerPage['remove_from_url_title'], '', $title);
             $containerUrl['comments_state'] = $containerPage['comments_global_state'];
             $containerUrl->content->container = $this->space;
             $containerUrl->content['visibility'] = $containerPage['visibility'];
