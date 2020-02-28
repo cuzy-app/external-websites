@@ -80,7 +80,7 @@ class PageController extends ContentContainerController
         }
         $containerPageId = $_POST['containerPageId'];
         $iframeMessage = $_POST['iframeMessage'];
-        $url = $iframeMessage['url'];
+        $url = rtrim(strtok($iframeMessage['url'], "#"),"/"); // remove anchor (#hash) from URL and / at the end
         $title = BaseStringHelper::truncate($iframeMessage['title'], 100, '[...]');
 
         // Get content
@@ -119,6 +119,7 @@ class PageController extends ContentContainerController
 
         // Render ajax
         return $this->renderAjax('url-content', [
+            'space' => $this->space,
             'containerUrl' => $containerUrl,
             'comments' => $comments,
             'commentsState' => $containerUrl['comments_state'],

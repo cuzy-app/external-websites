@@ -22,7 +22,7 @@ Creates a content each time the URL in the iframe changes, and shows related com
 
 You must copy `iframeResizer.contentWindow.min.js` file (present in the `for-iframed-website` of this humhub plugin, or [download here](https://gitlab.com/funkycram/module-humhub-iframe/-/raw/master/for-iframed-website/iframeResizer.contentWindow.min.js?inline=false)) on the server hosting the website contained within your iFrame and load it adding this code just before `</body>` :
 ```
-    <script>
+    <script type="text/javascript">
         // When iFrameResizer is loaded
         var iFrameResizerLoaded = false; // avoid loading twice (iFrameResizer bug)
         var iFrameResizer = {
@@ -34,14 +34,14 @@ You must copy `iframeResizer.contentWindow.min.js` file (present in the `for-ifr
             }
         };
         // If URL changes without reloading page (ajax)
-        window.onhashchange = function() {
+        window.addEventListener('locationchange', function(){
             sendUrlToParentIframe();
-        };
+        });
         // Send new URL to parent iframe
         function sendUrlToParentIframe() {
             if ('parentIFrame' in window) {
                 window.parentIFrame.sendMessage({
-                  url: window.location.href,
+                  url: location.href.replace(location.hash,""),
                   title: document.getElementsByTagName("title")[0].innerText
                 });
             }
@@ -91,6 +91,12 @@ ALTER TABLE `iframe_container_page` ADD `remove_from_url_title` VARCHAR(255) NUL
 ALTER TABLE `iframe_page` DROP `state`;
 ALTER TABLE `iframe_page` ADD `remove_from_url_title` VARCHAR(255) NULL DEFAULT NULL AFTER `comments_global_state`, ADD `show_widget` TINYINT(4) NOT NULL DEFAULT '0' AFTER `remove_from_url_title`;
 ```
+
+### Version 0.5
+
+- Added current page’s permalink
+- Changes the navigator URL with the current page permalink
+
 
 ## TBD
 

@@ -5,17 +5,38 @@ use humhub\modules\like\widgets\LikeLink;
 // use humhub\modules\comment\widgets\Comments; // Doesnt work with ajax
 use humhub\modules\comment\widgets\Comment;
 use humhub\modules\iframe\models\ContainerUrl;
+
+$permalink = Url::to([
+        '/s/'.urlencode($space['url']).'/iframe/page',
+        'title' => urlencode($containerUrl->containerPage['title']),
+        'urlId' => $containerUrl['id'],
+    ], true);
 ?>
+
+<div class="col-sm-12 colorFont5">
+    <?php if (
+        $commentsState == ContainerUrl::COMMENTS_STATE_ENABLED
+        || $commentsState == ContainerUrl::COMMENTS_STATE_CLOSED
+    ): ?>
+        <?= LikeLink::widget(['object' => $containerUrl]); ?> | 
+    <?php endif; ?>
+    <?= Html::a(
+        Yii::t('IframeModule.base', 'Page’s permalink'),
+        '#',
+        [
+            'data' => [
+                'action-click' => 'content.permalink',
+                'content-permalink' => $permalink,
+            ]
+        ]
+    ) ?>
+    <hr>
+</div>
 
 <?php if (
     $commentsState == ContainerUrl::COMMENTS_STATE_ENABLED
     || $commentsState == ContainerUrl::COMMENTS_STATE_CLOSED
 ): ?>
-    <div class="col-sm-12 social-activities-iframe colorFont5">
-        <?= LikeLink::widget(['object' => $containerUrl]); ?>
-    	<hr>
-    </div>
-
     <div class="col-sm-12 comments">
     	<?php if ($isLimitedComments): ?>
     		<a href="#" class="show show-all-link" data-ui-loader data-action-click="comment.showAll" data-action-url="<?= Url::to(['/comment/comment/show', 'contentModel' => $objectModel, 'contentId' => $objectId]) ?>">
@@ -65,3 +86,7 @@ use humhub\modules\iframe\models\ContainerUrl;
         }
     </style>
 <?php endif; ?>
+
+<script type="text/javascript">
+    window.history.pushState({},'', '<?= $permalink ?>');
+</script>
