@@ -97,6 +97,10 @@ ALTER TABLE `iframe_page` ADD `remove_from_url_title` VARCHAR(255) NULL DEFAULT 
 - Added current page’s permalink
 - Changes the navigator URL with the current page permalink
 
+### Version 0.5.1
+
+- Show comments in a right panel
+
 
 ## TBD
 

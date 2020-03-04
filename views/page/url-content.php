@@ -18,12 +18,13 @@ $permalink = Url::to([
         $commentsState == ContainerUrl::COMMENTS_STATE_ENABLED
         || $commentsState == ContainerUrl::COMMENTS_STATE_CLOSED
     ): ?>
-        <?= LikeLink::widget(['object' => $containerUrl]); ?> | 
+        <?= LikeLink::widget(['object' => $containerUrl]); ?><br>
     <?php endif; ?>
     <?= Html::a(
-        Yii::t('IframeModule.base', 'Page’s permalink'),
+        ' '.Yii::t('IframeModule.base', 'Permalink'),
         '#',
         [
+            'class' => 'permalink',
             'data' => [
                 'action-click' => 'content.permalink',
                 'content-permalink' => $permalink,

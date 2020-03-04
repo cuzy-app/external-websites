@@ -4,3 +4,11 @@
     height: calc(100vh - 150px);
     border: none;
 }
+#iframe-page a.like:before {
+    font-family: FontAwesome;
+    content: "\f164";
+}
+#iframe-page a.permalink:before {
+    font-family: FontAwesome;
+    content: "\f0c1";
+}
