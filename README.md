@@ -101,6 +101,10 @@ ALTER TABLE `iframe_page` ADD `remove_from_url_title` VARCHAR(255) NULL DEFAULT 
 
 - Show comments in a right panel
 
+### Version 0.5.2
+
+- Added compatibility to Humhub 1.4
+
 
 ## TBD
 

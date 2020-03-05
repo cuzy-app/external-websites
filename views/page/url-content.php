@@ -54,7 +54,7 @@ $permalink = Url::to([
 <?php if ($commentsState == ContainerUrl::COMMENTS_STATE_ENABLED): ?>
     <div class="col-sm-12 comment-link">
         <?= Html::a(
-        	Yii::t('CommentModule.widgets_views_form', 'Write a new comment...'),
+        	Yii::t('CommentModule.base', 'Write a new comment...'),
         	'#',
         	[
         		'id' => 'load-iframe-comments',
