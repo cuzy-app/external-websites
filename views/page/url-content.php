@@ -56,5 +56,8 @@ $permalink = Url::to([
     window.history.pushState({},'', '<?= $permalink ?>');
 
     // For module.js
-    var hideSidebar = '<?= $containerUrl->containerPage['hide_sidebar'] ?>';
+    var hideSidebar = false;
+    <?php if ($containerUrl->containerPage['hide_sidebar']) : ?>
+        hideSidebar = true;
+    <?php endif; ?>
 </script>

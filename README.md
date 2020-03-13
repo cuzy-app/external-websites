@@ -117,6 +117,10 @@ ALTER TABLE `iframe_page` ADD `hide_sidebar` TINYINT(4) NOT NULL DEFAULT '0' AFT
 ALTER TABLE `iframe_container_page` ADD `hide_sidebar` TINYINT(4) NOT NULL DEFAULT '0' AFTER `content_archived`; 
 ```
 
+### Version 0.6.1
+
+- Hide sidebar was allways true, now 0 value don't hide sidebar
+
 
 ## TBD
 
