@@ -2,8 +2,8 @@
 use yii\helpers\Html;
 use yii\helpers\Url;
 use humhub\modules\like\widgets\LikeLink;
-// use humhub\modules\comment\widgets\Comments; // Doesnt work with ajax
-use humhub\modules\comment\widgets\Comment;
+use humhub\modules\comment\widgets\Comments;
+use humhub\modules\comment\widgets\CommentLink;
 use humhub\modules\iframe\models\ContainerUrl;
 
 $permalink = Url::to([
@@ -16,23 +16,27 @@ $permalink = Url::to([
 <div id="url-content" class="comment-state-<?= strtolower($commentsState) ?>">
 
     <div class="col-sm-12 colorFont5">
-        <?php if (
-            $commentsState == ContainerUrl::COMMENTS_STATE_ENABLED
-            || $commentsState == ContainerUrl::COMMENTS_STATE_CLOSED
-        ): ?>
-            <?= LikeLink::widget(['object' => $containerUrl]); ?><br>
-        <?php endif; ?>
-        <?= Html::a(
-            ' '.Yii::t('IframeModule.base', 'Permalink'),
-            '#',
-            [
-                'class' => 'permalink',
-                'data' => [
-                    'action-click' => 'content.permalink',
-                    'content-permalink' => $permalink,
+        <div class="wall-entry-controls">
+            <?= Html::a(
+                ' '.Yii::t('IframeModule.base', 'Permalink'),
+                '#',
+                [
+                    'class' => 'permalink',
+                    'data' => [
+                        'action-click' => 'content.permalink',
+                        'content-permalink' => $permalink,
+                    ]
                 ]
-            ]
-        ) ?>
+            ) ?>
+
+            <?php if (
+                $commentsState == ContainerUrl::COMMENTS_STATE_ENABLED
+                || $commentsState == ContainerUrl::COMMENTS_STATE_CLOSED
+            ): ?>
+                &middot; <?= LikeLink::widget(['object' => $containerUrl]); ?>
+                &middot; <?= CommentLink::widget(['object' => $containerUrl]); ?>
+            <?php endif; ?>
+        </div>
     </div>
 
     <?php if (
@@ -40,7 +44,7 @@ $permalink = Url::to([
         || $commentsState == ContainerUrl::COMMENTS_STATE_CLOSED
     ): ?>
         <div class="col-sm-12 comments">
-            <?= \humhub\modules\comment\widgets\Comments::widget(['object' => $containerUrl]) ?>
+            <?= Comments::widget(['object' => $containerUrl]) ?>
         </div>
     <?php endif; ?>
 

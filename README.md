@@ -121,6 +121,10 @@ ALTER TABLE `iframe_container_page` ADD `hide_sidebar` TINYINT(4) NOT NULL DEFAU
 
 - Hide sidebar was allways true, now 0 value don't hide sidebar
 
+### Version 0.6.2
+
+- Show number of comments and better presentation of permalink, link and comments
+
 
 ## TBD
 
