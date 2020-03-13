@@ -45,6 +45,7 @@ class ContainerPage extends \yii\db\ActiveRecord
             'sort_order' => 'Sort order',
             'remove_from_url_title' => 'Text to remove from URL title',
             'content_archived' => 'Content archived',
+            'hide_sidebar' => 'Hide sidebar', // Enterprise theme
             'show_widget' => 'Show Widget',
             'comments_global_state' => 'Comments global state',
             'visibility' => 'Visibility',

@@ -44,6 +44,7 @@ class Page extends \yii\db\ActiveRecord
             'start_url' => 'iFrame start URL',
             'target' => 'Target',
             'sort_order' => 'Sort order',
+            'hide_sidebar' => 'Hide sidebar', // Enterprise theme
             'show_widget' => 'Show Widget',
             'comments_global_state' => 'Comments global state',
             'visibility' => 'Visibility',

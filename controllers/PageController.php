@@ -70,7 +70,6 @@ class PageController extends ContentContainerController
 
 
     public function actionUrlContent () {
-
         // Get iframe URL
         if (
             !isset($_POST['containerPageId'])
@@ -110,23 +109,11 @@ class PageController extends ContentContainerController
             $containerUrl->save();
         }
 
-        // Get comments because humhub\modules\comment\widgets\Comments doesn't work with ajax
-        $objectModel = $containerUrl->content->object_model;
-        $objectId = $containerUrl->content->object_id;
-        $commentsCount = \humhub\modules\comment\models\Comment::GetCommentCount($objectModel, $objectId);
-        $comments = \humhub\modules\comment\models\Comment::GetCommentsLimited($objectModel, $objectId, self::MAX_COMMENTS);
-        $isLimitedComments = ($commentsCount > self::MAX_COMMENTS);
-
         // Render ajax
         return $this->renderAjax('url-content', [
             'space' => $this->space,
             'containerUrl' => $containerUrl,
-            'comments' => $comments,
             'commentsState' => $containerUrl['comments_state'],
-            'objectModel' => $objectModel,
-            'objectId' => $objectId,
-            'isLimitedComments' => $isLimitedComments,
-            'commentsCount' => $commentsCount,
         ]);
     }
 }

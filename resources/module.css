@@ -1,3 +1,19 @@
+/* Force comments to go to bottom if screen width is < 1600px */
+@media (max-width:1700px) {
+    #iframe-page .col-sm-3, #iframe-page .col-sm-9 {
+        float: none;
+        width: 100%;
+    }
+}
+@media (min-width:1700px) {
+    #iframe-page .col-sm-3 {
+        width: calc(100% - 350px);
+    }
+    #iframe-page .col-sm-9 {
+        width: 350px;
+    }
+}
+
 #iframe-page iframe {
     width: 1px;
     min-width: 100%;
@@ -11,4 +27,14 @@
 #iframe-page a.permalink:before {
     font-family: FontAwesome;
     content: "\f0c1";
+}
+
+/* if no comments, comment form is hidden */
+#iframe-page #url-content .comment-container {
+    display: block !important;
+}
+
+/* Hide comment form and make "Like" read only */
+#iframe-page #url-content.comment-state-closed .comment_create, #iframe-page #url-content.comment-state-closed .likeLinkContainer a.likeAnchor {
+    display: none;
 }

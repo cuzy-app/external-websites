@@ -28,8 +28,16 @@ humhub.module('iframe', function (module, require, $) {
                     //   title: document.getElementsByTagName("title")[0].innerText
                     // }
                     iframeMessage = messageData.message; // update global var
-                    // Load new ajax content related to the iframe website URL (comments)
-                    loadNewUrlContent ();
+
+                    // Load comments with ajax, after the iframe tag, each time URL changes in the iframed website
+                    $.pjax.reload('#iframe-comments', {
+                        type : 'POST',
+                        url: urlContentActionUrl,
+                        data: {
+                            containerPageId: $('#iframe-page').attr('data-container-page-id'),
+                            iframeMessage: iframeMessage,
+                        }
+                    });
                 },
             },
             '#iframe-page iframe'
@@ -43,33 +51,10 @@ humhub.module('iframe', function (module, require, $) {
     });
 });
 
-
-// Load comments with ajax, after the iframe tag, each time URL changes in the iframed website
-function loadNewUrlContent () {
-    $.ajax({
-        method: "POST",
-        url: urlContentActionUrl,
-        data: {
-            containerPageId: $('#iframe-page').attr('data-container-page-id'),
-            iframeMessage: iframeMessage,
-        },
-        success: function(data) {
-            $('#iframe-comments').html(data);
-        },
-    }).done(function(msg) {
-    });
-}
-
-
-// Load modal box with comments and form to post a new comment
-function loadIframeComments (commentsUrl) {
-    iframeModal.global.load(commentsUrl).then(function(response) {
-        // When modal box is closed
-        $(this).on('hide.bs.modal', function (e) {
-            // Reload ajax with new comment(s)
-            loadNewUrlContent ();
-        })
-    }).catch(function(e) {
-        module.log.error(e, true);
-    });
-}
+// Hide sidebar if needed
+$(document).on('humhub:ready', function() {
+    if (hideSidebar) {
+        $('#wrapper').addClass('toggled');
+        hideSidebar = false; // can be reactivated by `url-content.php`
+    }
+});

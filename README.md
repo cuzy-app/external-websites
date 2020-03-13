@@ -51,9 +51,9 @@ You must copy `iframeResizer.contentWindow.min.js` file (present in the `for-ifr
     <script type="text/javascript" src="path-to-js-files/iframeResizer.contentWindow.min.js"></script>
 ```
 
-As the config page is not yet coded, to add a page (visiblity private) :
+As the config page is not yet coded, to add a page (visiblity private, hide sidebar) :
 ```
-INSERT INTO `iframe_container_page` (`id`, `space_id`, `title`, `icon`, `start_url`, `target`, `sort_order`, `comments_global_state`, `remove_from_url_title`, `content_archived`, `show_widget`, `visibility`, `created_at`, `created_by`, `updated_at`, `updated_by`) VALUES (NULL, '0', 'My Title', 'fa-graduation-cap', 'http://localhost/test/', 'SpaceMenu', '0', 'Enabled', '', '1', '1', '0', '2020-02-13 11:11:00', '1', '2020-02-13 11:11:00', '1');
+INSERT INTO `iframe_container_page` (`id`, `space_id`, `title`, `icon`, `start_url`, `target`, `sort_order`, `comments_global_state`, `remove_from_url_title`, `content_archived`, `hide_sidebar`, `show_widget`, `visibility`, `created_at`, `created_by`, `updated_at`, `updated_by`) VALUES (NULL, '0', 'My Title', 'fa-graduation-cap', 'http://localhost/test/', 'SpaceMenu', '0', 'Enabled', '', '1', '1', '1', '0', '2020-02-13 11:11:00', '1', '2020-02-13 11:11:00', '1');
 ```
 
 
@@ -104,6 +104,18 @@ ALTER TABLE `iframe_page` ADD `remove_from_url_title` VARCHAR(255) NULL DEFAULT 
 ### Version 0.5.2
 
 - Added compatibility to Humhub 1.4
+
+### Version 0.6
+
+- Show comments in a right panel only if screen is wider than 1700 px (see `module.css`)
+- Bug correction : comments where shown in plain text
+- Comment form is shown in the page (no modal box anymore)
+- Option to hide sidebar menu (enterprise theme, `#sidebar-wrapper` element)
+
+```
+ALTER TABLE `iframe_page` ADD `hide_sidebar` TINYINT(4) NOT NULL DEFAULT '0' AFTER `remove_from_url_title`; 
+ALTER TABLE `iframe_container_page` ADD `hide_sidebar` TINYINT(4) NOT NULL DEFAULT '0' AFTER `content_archived`; 
+```
 
 
 ## TBD
