@@ -2,7 +2,7 @@
 /**
  * iFrame module
  * @link https://gitlab.com/funkycram/module-humhub-iframe
- * @license https://gitlab.com/funkycram/module-humhub-iframe/blob/master/LICENSE
+ * @license https://www.humhub.com/licences
  * @author [FunkycraM](https://marc.fun)
  */
 
@@ -97,10 +97,10 @@ class PageController extends ContentContainerController
             $containerUrl['container_page_id'] = $containerPageId;
             $containerUrl['url'] = $url;
             $containerUrl['title'] = str_ireplace($containerPage['remove_from_url_title'], '', $title);
-            $containerUrl['comments_state'] = $containerPage['comments_global_state'];
+            $containerUrl['hide_in_stream'] = $containerPage['default_hide_in_stream'];
+            $containerUrl['comments_state'] = $containerPage['default_comments_state'];
             $containerUrl->content->container = $this->space;
             $containerUrl->content['visibility'] = $containerPage['visibility'];
-            $containerUrl->content['archived'] = $containerPage['content_archived'];
             $containerUrl->save();
         }
         // If title has changed, update it

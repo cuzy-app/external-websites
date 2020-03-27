@@ -4,56 +4,32 @@ Module Iframe
 ## Description
 
 Creates pages containing an iframed website where members can comment.
+Creates a content each time the URL in the iframe changes, and shows related comments.
 
 @link https://gitlab.com/funkycram/module-humhub-iframe
-@license https://gitlab.com/funkycram/module-humhub-iframe/blob/master/LICENSE
+@license https://www.humhub.com/licences
 @author [FunkycraM](https://marc.fun)
 
-
-## Description
-
-Iframe module for Humhub.
-Enables to create pages integrating iframe content.
 Uses [iFrame Resizer](https://github.com/davidjbradshaw/iframe-resizer).
-Creates a content each time the URL in the iframe changes, and shows related comments.
 
 
 ## Usage
 
-You must copy `iframeResizer.contentWindow.min.js` file (present in the `for-iframed-website` of this humhub plugin, or [download here](https://gitlab.com/funkycram/module-humhub-iframe/-/raw/master/for-iframed-website/iframeResizer.contentWindow.min.js?inline=false)) on the server hosting the website contained within your iFrame and load it adding this code just before `</body>` :
+Copy `for-iframed-website/iframeResizer.contentWindow.min.js` and `for-iframed-website/humhubIframeModule.js` files on the server hosting the website contained within your iFrame. Or, download them with this command line :
 ```
-    <script type="text/javascript">
-        // When iFrameResizer is loaded
-        var iFrameResizerLoaded = false; // avoid loading twice (iFrameResizer bug)
-        var iFrameResizer = {
-            onReady: function(message) {
-                if (!iFrameResizerLoaded) {
-                    sendUrlToParentIframe();
-                }
-                iFrameResizerLoaded = true;
-            }
-        };
-        // If URL changes without reloading page (ajax)
-        window.addEventListener('locationchange', function(){
-            sendUrlToParentIframe();
-        });
-        // Send new URL to parent iframe
-        function sendUrlToParentIframe() {
-            if ('parentIFrame' in window) {
-                window.parentIFrame.sendMessage({
-                  url: location.href.replace(location.hash,""),
-                  title: document.getElementsByTagName("title")[0].innerText
-                });
-            }
-        }
-    </script>
+wget https://gitlab.com/funkycram/module-humhub-iframe/-/raw/master/for-iframed-website/iframeResizer.contentWindow.min.js
+wget https://gitlab.com/funkycram/module-humhub-iframe/-/raw/master/for-iframed-website/humhubIframeModule.js
+```
 
+And load them adding this code just before `</body>` :
+```
+    <script type="text/javascript" src="path-to-js-files/humhubIframeModule.js"></script>
     <script type="text/javascript" src="path-to-js-files/iframeResizer.contentWindow.min.js"></script>
 ```
 
-As the config page is not yet coded, to add a page (visiblity private, hide sidebar) :
+As the config page is not yet coded, to add a page (visiblity private, hide sidebar), use this MySQL command :
 ```
-INSERT INTO `iframe_container_page` (`id`, `space_id`, `title`, `icon`, `start_url`, `target`, `sort_order`, `comments_global_state`, `remove_from_url_title`, `content_archived`, `hide_sidebar`, `show_widget`, `visibility`, `created_at`, `created_by`, `updated_at`, `updated_by`) VALUES (NULL, '0', 'My Title', 'fa-graduation-cap', 'http://localhost/test/', 'SpaceMenu', '0', 'Enabled', '', '1', '1', '1', '0', '2020-02-13 11:11:00', '1', '2020-02-13 11:11:00', '1');
+INSERT INTO `iframe_container_page` (`id`, `space_id`, `title`, `icon`, `start_url`, `target`, `sort_order`, `default_comments_state`, `remove_from_url_title`, `default_hide_in_stream`, `hide_sidebar`, `show_widget`, `visibility`, `created_at`, `created_by`, `updated_at`, `updated_by`) VALUES (NULL, '0', 'My Title', 'fa-graduation-cap', 'http://localhost/test/', 'SpaceMenu', '0', 'Enabled', '', '1', '1', '1', '0', '2020-02-13 11:11:00', '1', '2020-02-13 11:11:00', '1');
 ```
 
 
@@ -124,6 +100,19 @@ ALTER TABLE `iframe_container_page` ADD `hide_sidebar` TINYINT(4) NOT NULL DEFAU
 ### Version 0.6.2
 
 - Show number of comments and better presentation of permalink, link and comments
+
+### Version 0.7
+
+- Changed licence to https://www.humhub.com/licences
+- Added filters in wall
+- Added space configuration to hide content by default with the filters
+- Updated usage explainations in this README.md file
+
+```
+ALTER TABLE `iframe_container_page` CHANGE `content_archived` `default_hide_in_stream` TINYINT NOT NULL DEFAULT '0'; 
+ALTER TABLE `iframe_container_page` CHANGE `comments_global_state` `default_comments_state` VARCHAR(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL;
+ALTER TABLE `iframe_container_url` ADD `hide_in_stream` TINYINT(4) NOT NULL DEFAULT '0' AFTER `container_page_id`; 
+```
 
 
 ## TBD

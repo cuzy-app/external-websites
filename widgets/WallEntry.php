@@ -2,7 +2,7 @@
 /**
  * iFrame module
  * @link https://gitlab.com/funkycram/module-humhub-iframe
- * @license https://gitlab.com/funkycram/module-humhub-iframe/blob/master/LICENSE
+ * @license https://www.humhub.com/licences
  * @author [FunkycraM](https://marc.fun)
  */
 

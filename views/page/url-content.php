@@ -34,7 +34,7 @@ $permalink = Url::to([
                 || $commentsState == ContainerUrl::COMMENTS_STATE_CLOSED
             ): ?>
                 &middot; <?= LikeLink::widget(['object' => $containerUrl]); ?>
-                &middot; <?= CommentLink::widget(['object' => $containerUrl]); ?>
+                &middot; <i class="fa fa-comment"></i> <?= CommentLink::widget(['object' => $containerUrl]); ?>
             <?php endif; ?>
         </div>
     </div>

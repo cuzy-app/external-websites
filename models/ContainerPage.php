@@ -2,7 +2,7 @@
 /**
  * iFrame module
  * @link https://gitlab.com/funkycram/module-humhub-iframe
- * @license https://gitlab.com/funkycram/module-humhub-iframe/blob/master/LICENSE
+ * @license https://www.humhub.com/licences
  * @author [FunkycraM](https://marc.fun)
  */
 
@@ -17,9 +17,9 @@ class ContainerPage extends \yii\db\ActiveRecord
     const TARGET_SPACE_NAV = 'SpaceMenu';
     const TARGET_EMPTY = 'WithOutMenu';
 
-    // comments_global_state must be one of the ContainerUrl const COMMENTS_STATE_xxx
+    // default_comments_state must be one of the ContainerUrl const COMMENTS_STATE_xxx
 
-    // visibility can be humhub\modules\content\models\Content::VISIBILITY_PRIVATE or Content::VISIBILITY_PUBLIC
+    // visibility can be humhub\modules\content\models\Content::VISIBILITY_PRIVATE or Content::VISIBILITY_PUBLIC or Content::VISIBILITY_OWNER
 
     
     /**
@@ -44,10 +44,10 @@ class ContainerPage extends \yii\db\ActiveRecord
             'target' => 'Target',
             'sort_order' => 'Sort order',
             'remove_from_url_title' => 'Text to remove from URL title',
-            'content_archived' => 'Content archived',
+            'default_hide_in_stream' => 'Hide contents in stream',
             'hide_sidebar' => 'Hide sidebar', // Enterprise theme
             'show_widget' => 'Show Widget',
-            'comments_global_state' => 'Comments global state',
+            'default_comments_state' => 'Comments global state',
             'visibility' => 'Visibility',
             'created_at' => 'Created at',
             'created_by' => 'Created by',
@@ -63,8 +63,8 @@ class ContainerPage extends \yii\db\ActiveRecord
     {
        return [
            [['space_id', 'start_url'], 'required'],
-           [['title', 'icon', 'start_url', 'target', 'remove_from_url_title', 'comments_global_state'], 'string'],
-           [['space_id', 'sort_order', 'content_archived', 'show_widget', 'visibility'], 'integer'],
+           [['title', 'icon', 'start_url', 'target', 'remove_from_url_title', 'default_comments_state'], 'string'],
+           [['space_id', 'sort_order', 'default_hide_in_stream', 'show_widget', 'visibility'], 'integer'],
        ];
     }
 

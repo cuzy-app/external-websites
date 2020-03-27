@@ -2,7 +2,7 @@
 /**
  * iFrame module
  * @link https://gitlab.com/funkycram/module-humhub-iframe
- * @license https://gitlab.com/funkycram/module-humhub-iframe/blob/master/LICENSE
+ * @license https://www.humhub.com/licences
  * @author [FunkycraM](https://marc.fun)
  */
 
@@ -65,6 +65,7 @@ class ContainerUrl extends ContentActiveRecord implements Searchable
             'url' => 'iFrame URL',
             'title' => 'Title',
             'container_page_id' => 'Container page id',
+            'hide_in_stream' => 'Hide in stream',
             'comments_state' => 'URL comments State',
             'created_at' => 'Created at',
             'created_by' => 'Created by',
@@ -85,6 +86,7 @@ class ContainerUrl extends ContentActiveRecord implements Searchable
        ];
     }
 
+
     public function getContainerPage()
     {
         return $this
@@ -94,7 +96,10 @@ class ContainerUrl extends ContentActiveRecord implements Searchable
 
     public function getContentName()
     {
-        return $this->containerPage['title'];
+        if (!empty($this->containerPage['title'])) {
+            return $this->containerPage['title'];
+        }
+        return Yii::t('IframeModule.base', 'iFrame');
     }
 
     public function getContentDescription()
@@ -110,7 +115,10 @@ class ContainerUrl extends ContentActiveRecord implements Searchable
 
     public function getIcon()
     {
-        return $this->containerPage['icon'];
+        if (!empty($this->containerPage['icon'])) {
+            return $this->containerPage['icon'];
+        }
+        return 'fa-external-link-square';
     }
 
 }
