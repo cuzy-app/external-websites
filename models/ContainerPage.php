@@ -16,11 +16,6 @@ class ContainerPage extends \yii\db\ActiveRecord
 
     const TARGET_SPACE_NAV = 'SpaceMenu';
     const TARGET_EMPTY = 'WithOutMenu';
-
-    // default_comments_state must be one of the ContainerUrl const COMMENTS_STATE_xxx
-
-    // visibility can be humhub\modules\content\models\Content::VISIBILITY_PRIVATE or Content::VISIBILITY_PUBLIC or Content::VISIBILITY_OWNER
-
     
     /**
      * @inheritdoc
@@ -41,14 +36,14 @@ class ContainerPage extends \yii\db\ActiveRecord
             'title' => 'Title',
             'icon' => 'Icon',
             'start_url' => 'iFrame start URL',
-            'target' => 'Target',
-            'sort_order' => 'Sort order',
+            'target' => 'Target', // self::TARGET_SPACE_NAV or self::TARGET_EMPTY
+            'sort_order' => 'Sort order', // In the menu
             'remove_from_url_title' => 'Text to remove from URL title',
-            'default_hide_in_stream' => 'Hide contents in stream',
+            'default_hide_in_stream' => 'Hide contents in stream', // If hidden, the contents can be seen with the stream filter
             'hide_sidebar' => 'Hide sidebar', // Enterprise theme
             'show_widget' => 'Show Widget',
-            'default_comments_state' => 'Comments global state',
-            'visibility' => 'Visibility',
+            'visibility' => 'Content visibility', // Default value for the Content created ; can be humhub\modules\content\models\Content::VISIBILITY_PRIVATE or Content::VISIBILITY_PUBLIC or Content::VISIBILITY_OWNER
+            'archived' => 'Content archived', // Default value for the Content created ; can be 0 or 1 (new comments are disabled) : humhub\modules\content\models\Content->archive(), humhub\modules\content\models\Content->unarchive()
             'created_at' => 'Created at',
             'created_by' => 'Created by',
             'updated_at' => 'Updated at',
@@ -63,8 +58,8 @@ class ContainerPage extends \yii\db\ActiveRecord
     {
        return [
            [['space_id', 'start_url'], 'required'],
-           [['title', 'icon', 'start_url', 'target', 'remove_from_url_title', 'default_comments_state'], 'string'],
-           [['space_id', 'sort_order', 'default_hide_in_stream', 'show_widget', 'visibility'], 'integer'],
+           [['title', 'icon', 'start_url', 'target', 'remove_from_url_title'], 'string'],
+           [['space_id', 'sort_order', 'default_hide_in_stream', 'show_widget', 'visibility', 'archived'], 'integer'],
        ];
     }
 

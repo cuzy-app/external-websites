@@ -27,11 +27,14 @@ And load them adding this code just before `</body>` :
     <script type="text/javascript" src="path-to-js-files/iframeResizer.contentWindow.min.js"></script>
 ```
 
-As the config page is not yet coded, to add a page (visiblity private, hide sidebar), use this MySQL command :
+For CODIMD in a docker, [see this documentation](https://gitlab.com/funkycram/doc/-/wikis/CodiMd#add-humhub-iframe-module-script-using-dockerfile)
+
+As the config page is not yet coded, to add a page (hide sidebar, visiblity private, not archived), use this MySQL command :
 ```
-INSERT INTO `iframe_container_page` (`id`, `space_id`, `title`, `icon`, `start_url`, `target`, `sort_order`, `default_comments_state`, `remove_from_url_title`, `default_hide_in_stream`, `hide_sidebar`, `show_widget`, `visibility`, `created_at`, `created_by`, `updated_at`, `updated_by`) VALUES (NULL, '0', 'My Title', 'fa-graduation-cap', 'http://localhost/test/', 'SpaceMenu', '0', 'Enabled', '', '1', '1', '1', '0', '2020-02-13 11:11:00', '1', '2020-02-13 11:11:00', '1');
+INSERT INTO `iframe_container_page` (`id`, `space_id`, `title`, `icon`, `start_url`, `target`, `sort_order`, `remove_from_url_title`, `default_hide_in_stream`, `hide_sidebar`, `show_widget`, `visibility`, `archived`, `created_at`, `created_by`, `updated_at`, `updated_by`) VALUES (NULL, '0', 'My Title', 'fa-graduation-cap', 'http://localhost/test/', 'SpaceMenu', '0', '', '1', '1', '1', '0', '0', '2020-02-13 11:11:00', '1', '2020-02-13 11:11:00', '1');
 ```
 
+See `models/ContainerPage.php` -> `attributeLabels()` for more infos
 
 
 ## Changelog
@@ -112,6 +115,21 @@ ALTER TABLE `iframe_container_page` ADD `hide_sidebar` TINYINT(4) NOT NULL DEFAU
 ALTER TABLE `iframe_container_page` CHANGE `content_archived` `default_hide_in_stream` TINYINT NOT NULL DEFAULT '0'; 
 ALTER TABLE `iframe_container_page` CHANGE `comments_global_state` `default_comments_state` VARCHAR(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL;
 ALTER TABLE `iframe_container_url` ADD `hide_in_stream` TINYINT(4) NOT NULL DEFAULT '0' AFTER `container_page_id`; 
+```
+
+### Version 0.8
+
+- Small bug correction in CSS (for large screen)
+- Removed `comments_global_state` and `comments_state` as with the new Humhub 1.4.4 an archived content cannot be commented
+- Added `archived` param in `iframe_container_page`
+- Deleted `iframe_page` and `iframe_url` tables and models as unused
+
+```
+DROP TABLE `iframe_page`, `iframe_url`;
+ALTER TABLE `iframe_container_url` DROP `comments_state`;
+ALTER TABLE `iframe_container_page` DROP `default_comments_state`;
+ALTER TABLE `iframe_container_page` ADD `archived` TINYINT(4) NOT NULL DEFAULT '0' AFTER `visibility`; 
+ALTER TABLE `iframe_container_page` CHANGE `visibility` `visibility` TINYINT(4) NULL DEFAULT '0'; 
 ```
 
 

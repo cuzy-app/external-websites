@@ -6,10 +6,10 @@
     }
 }
 @media (min-width:1700px) {
-    #iframe-page .col-sm-3 {
+    #iframe-page .col-sm-9 {
         width: calc(100% - 350px);
     }
-    #iframe-page .col-sm-9 {
+    #iframe-page .col-sm-3 {
         width: 350px;
     }
 }
@@ -32,9 +32,4 @@
 /* if no comments, comment form is hidden */
 #iframe-page #url-content .comment-container {
     display: block !important;
-}
-
-/* Hide comment form and make "Like" read only */
-#iframe-page #url-content.comment-state-closed .comment_create, #iframe-page #url-content.comment-state-closed .likeLinkContainer a.likeAnchor {
-    display: none;
 }

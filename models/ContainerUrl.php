@@ -20,11 +20,6 @@ class ContainerUrl extends ContentActiveRecord implements Searchable
 {
     public $moduleId = 'iframe';
 
-    const COMMENTS_STATE_DISABLED = 'Disabled';
-    const COMMENTS_STATE_ENABLED = 'Enabled';
-    const COMMENTS_STATE_CLOSED = 'Closed';
-
-
     /**
      * @inheritdoc
      */
@@ -66,7 +61,6 @@ class ContainerUrl extends ContentActiveRecord implements Searchable
             'title' => 'Title',
             'container_page_id' => 'Container page id',
             'hide_in_stream' => 'Hide in stream',
-            'comments_state' => 'URL comments State',
             'created_at' => 'Created at',
             'created_by' => 'Created by',
             'updated_at' => 'Updated at',
@@ -81,8 +75,8 @@ class ContainerUrl extends ContentActiveRecord implements Searchable
     {
        return [
            [['container_page_id', 'url'], 'required'],
-           [['url', 'title', 'comments_state'], 'string'],
-           [['container_page_id'], 'integer'],
+           [['url', 'title'], 'string'],
+           [['container_page_id', 'hide_in_stream'], 'integer'],
        ];
     }
 

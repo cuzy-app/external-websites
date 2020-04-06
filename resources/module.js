@@ -33,6 +33,8 @@ humhub.module('iframe', function (module, require, $) {
                     $.pjax.reload('#iframe-comments', {
                         type : 'POST',
                         url: urlContentActionUrl,
+                        push: false,
+                        replace: false,
                         data: {
                             containerPageId: $('#iframe-page').attr('data-container-page-id'),
                             iframeMessage: iframeMessage,
@@ -53,7 +55,7 @@ humhub.module('iframe', function (module, require, $) {
 
 // Hide sidebar if needed
 $(document).on('humhub:ready', function() {
-    if (hideSidebar) {
+    if (typeof hideSidebar !== 'undefined' && hideSidebar) {
         $('#wrapper').addClass('toggled');
         hideSidebar = false; // can be reactivated by `url-content.php`
     }

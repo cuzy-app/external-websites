@@ -98,9 +98,9 @@ class PageController extends ContentContainerController
             $containerUrl['url'] = $url;
             $containerUrl['title'] = str_ireplace($containerPage['remove_from_url_title'], '', $title);
             $containerUrl['hide_in_stream'] = $containerPage['default_hide_in_stream'];
-            $containerUrl['comments_state'] = $containerPage['default_comments_state'];
             $containerUrl->content->container = $this->space;
             $containerUrl->content['visibility'] = $containerPage['visibility'];
+            $containerUrl->content['archived'] = $containerPage['archived'];
             $containerUrl->save();
         }
         // If title has changed, update it
@@ -113,7 +113,6 @@ class PageController extends ContentContainerController
         return $this->renderAjax('url-content', [
             'space' => $this->space,
             'containerUrl' => $containerUrl,
-            'commentsState' => $containerUrl['comments_state'],
         ]);
     }
 }

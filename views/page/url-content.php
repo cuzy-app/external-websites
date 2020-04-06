@@ -7,13 +7,13 @@ use humhub\modules\comment\widgets\CommentLink;
 use humhub\modules\iframe\models\ContainerUrl;
 
 $permalink = Url::to([
-        '/s/'.urlencode($space['url']).'/iframe/page',
-        'title' => urlencode($containerUrl->containerPage['title']),
-        'urlId' => $containerUrl['id'],
-    ], true);
+    '/s/'.urlencode($space['url']).'/iframe/page',
+    'title' => urlencode($containerUrl->containerPage['title']),
+    'urlId' => $containerUrl['id'],
+], true);
 ?>
 
-<div id="url-content" class="comment-state-<?= strtolower($commentsState) ?>">
+<div id="url-content">
 
     <div class="col-sm-12 colorFont5">
         <div class="wall-entry-controls">
@@ -29,39 +29,25 @@ $permalink = Url::to([
                 ]
             ) ?>
 
-            <?php if (
-                $commentsState == ContainerUrl::COMMENTS_STATE_ENABLED
-                || $commentsState == ContainerUrl::COMMENTS_STATE_CLOSED
-            ): ?>
-                &middot; <?= LikeLink::widget(['object' => $containerUrl]); ?>
-                &middot; <i class="fa fa-comment"></i> <?= CommentLink::widget(['object' => $containerUrl]); ?>
-            <?php endif; ?>
+            &middot; <?= LikeLink::widget(['object' => $containerUrl]); ?>
+            &middot; <i class="fa fa-comment"></i> <?= CommentLink::widget(['object' => $containerUrl]); ?>
         </div>
     </div>
 
-    <?php if (
-        $commentsState == ContainerUrl::COMMENTS_STATE_ENABLED
-        || $commentsState == ContainerUrl::COMMENTS_STATE_CLOSED
-    ): ?>
-        <div class="col-sm-12 comments">
-            <?= Comments::widget(['object' => $containerUrl]) ?>
-        </div>
-    <?php endif; ?>
+    <div class="col-sm-12 comments">
+        <?= Comments::widget(['object' => $containerUrl]) ?>
+    </div>
 
 </div>
 
-<style type="text/css">
-    #iframe-page #url-content.comment-state-closed .likeLinkContainer .likeCount::before {
-        content: '<?= str_replace("'", "’", Yii::t('LikeModule.widgets_views_likeLink', 'Like')) ?> ';
-    }
-</style>
-
 <script type="text/javascript">
-    window.history.pushState({},'', '<?= $permalink ?>');
+    // Update browser URL
+    window.history.replaceState({},'', '<?= $permalink ?>');
 
     // For module.js
-    var hideSidebar = false;
     <?php if ($containerUrl->containerPage['hide_sidebar']) : ?>
-        hideSidebar = true;
+        var hideSidebar = true;
+    <?php else : ?>
+        var hideSidebar = false;
     <?php endif; ?>
 </script>
