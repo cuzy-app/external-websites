@@ -12,13 +12,11 @@ humhub.module('iframe', function (module, require, $) {
         iFrameResize(
             {
                 log: false,
-                scrolling: false, // if iframed website has not the content window javascript
+                scrolling: true, // if iframed website has not the content window javascript
                 inPageLinks: true,
 
                 // Each time iframed website has loaded the content window javascript
                 onInit: function(messageData) {
-                    // Remove scrollbar
-                    $('#iframe-page').attr('scrolling', 'no');
                 },
 
                 // Each time iframed page is loaded or URL changes
@@ -28,6 +26,9 @@ humhub.module('iframe', function (module, require, $) {
                     //   title: document.getElementsByTagName("title")[0].innerText
                     // }
                     iframeMessage = messageData.message; // update global var
+
+                    // Remove scrollbar
+                    $('#iframe-page iframe').attr('scrolling', 'no');
 
                     // Load comments with ajax, after the iframe tag, each time URL changes in the iframed website
                     $.pjax.reload('#iframe-comments', {

@@ -18,4 +18,11 @@ use yii\helpers\Url;
 			[]
 		) ?>
 	</p>
+	<p>
+		<strong><?= Html::a(
+			Yii::t('IframeModule.base', 'Show the page'),
+			$space->createUrl('/iframe/page?title='.urlencode($containerUrl->containerPage['title']).'&urlId='.$containerUrl['id']),
+			[]
+		) ?></strong>
+	</p>
 </div>

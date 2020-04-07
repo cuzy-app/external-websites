@@ -105,11 +105,19 @@ class Events
     }
 
 
+    // Adds filters and hide content related to ContainerUrl with `hide_in_stream` === true
     public static function onStreamFilterBeforeFilter ($event)
     {
+        // if single content (contentId in URL)
+        if (!empty($event->sender->contentId)) {
+            return;
+        }
+
+        // If not in a space
         if (!isset(Yii::$app->controller->contentContainer)) {
             return;
         }
+
         $space = Yii::$app->controller->contentContainer;
         if ($space !== null && $space->isModuleEnabled('iframe')) {
             /** @var $streamQuery WallStreamQuery */

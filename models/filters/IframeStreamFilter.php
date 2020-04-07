@@ -68,7 +68,7 @@ class IframeStreamFilter extends \humhub\modules\stream\models\filters\StreamQue
             }
         }
 
-        // If no filter
+        // If no filter, hide content related to ContainerUrl with `hide_in_stream` === true
         if (!$isFiltered) {
             $this->query->innerJoin(
                 'iframe_container_url',

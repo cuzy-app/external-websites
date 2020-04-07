@@ -23,8 +23,8 @@ wget https://gitlab.com/funkycram/module-humhub-iframe/-/raw/master/for-iframed-
 
 And load them adding this code just before `</body>` :
 ```
-    <script type="text/javascript" src="path-to-js-files/humhubIframeModule.js"></script>
     <script type="text/javascript" src="path-to-js-files/iframeResizer.contentWindow.min.js"></script>
+    <script type="text/javascript" src="path-to-js-files/humhubIframeModule.js"></script>
 ```
 
 For CODIMD in a docker, [see this documentation](https://gitlab.com/funkycram/doc/-/wikis/CodiMd#add-humhub-iframe-module-script-using-dockerfile)
@@ -113,7 +113,7 @@ ALTER TABLE `iframe_container_page` ADD `hide_sidebar` TINYINT(4) NOT NULL DEFAU
 
 ```
 ALTER TABLE `iframe_container_page` CHANGE `content_archived` `default_hide_in_stream` TINYINT NOT NULL DEFAULT '0'; 
-ALTER TABLE `iframe_container_page` CHANGE `comments_global_state` `default_comments_state` VARCHAR(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL;
+ALTER TABLE `iframe_container_page` CHANGE `comments_global_state` `default_comments_state` VARCHAR(100) NULL DEFAULT NULL;
 ALTER TABLE `iframe_container_url` ADD `hide_in_stream` TINYINT(4) NOT NULL DEFAULT '0' AFTER `container_page_id`; 
 ```
 
@@ -131,6 +131,10 @@ ALTER TABLE `iframe_container_page` DROP `default_comments_state`;
 ALTER TABLE `iframe_container_page` ADD `archived` TINYINT(4) NOT NULL DEFAULT '0' AFTER `visibility`; 
 ALTER TABLE `iframe_container_page` CHANGE `visibility` `visibility` TINYINT(4) NULL DEFAULT '0'; 
 ```
+
+### Version 0.8.1
+
+- If the URL specify a specific content (`?contentId=xxx`), don't apply filter to hide it
 
 
 ## TBD
