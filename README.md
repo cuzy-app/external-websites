@@ -15,9 +15,11 @@ Uses [iFrame Resizer](https://github.com/davidjbradshaw/iframe-resizer).
 
 ## Usage
 
-Copy `for-iframed-website/iframeResizer.contentWindow.min.js` and `for-iframed-website/humhubIframeModule.js` files on the server hosting the website contained within your iFrame. Or, download them with this command line :
+Copy the files in `for-iframed-website` on the server hosting the website contained within your iFrame. Or, download them with this command line :
 ```
 wget https://gitlab.com/funkycram/module-humhub-iframe/-/raw/master/for-iframed-website/iframeResizer.contentWindow.min.js
+wget https://gitlab.com/funkycram/module-humhub-iframe/-/raw/master/for-iframed-website/iframeResizer.contentWindow.js
+wget https://gitlab.com/funkycram/module-humhub-iframe/-/raw/master/for-iframed-website/iframeResizer.contentWindow.map
 wget https://gitlab.com/funkycram/module-humhub-iframe/-/raw/master/for-iframed-website/humhubIframeModule.js
 ```
 
@@ -135,6 +137,10 @@ ALTER TABLE `iframe_container_page` CHANGE `visibility` `visibility` TINYINT(4) 
 ### Version 0.8.1
 
 - If the URL specify a specific content (`?contentId=xxx`), don't apply filter to hide it
+
+### Version 0.8.2
+
+- Fix: Added missing javascript map files for iframe-resizer
 
 
 ## TBD
