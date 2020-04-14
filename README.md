@@ -15,7 +15,7 @@ Uses [iFrame Resizer](https://github.com/davidjbradshaw/iframe-resizer).
 
 ## Usage
 
-Copy the files in `for-iframed-website` on the server hosting the website contained within your iFrame. Or, download them with this command line :
+Copy the files in the folder [for-iframed-website](https://gitlab.com/funkycram/module-humhub-iframe/-/tree/master/for-iframed-website) on the server hosting the website contained within your iFrame. Or, download them with this command line :
 ```
 wget https://gitlab.com/funkycram/module-humhub-iframe/-/raw/master/for-iframed-website/iframeResizer.contentWindow.min.js
 wget https://gitlab.com/funkycram/module-humhub-iframe/-/raw/master/for-iframed-website/iframeResizer.contentWindow.js
@@ -141,6 +141,10 @@ ALTER TABLE `iframe_container_page` CHANGE `visibility` `visibility` TINYINT(4) 
 ### Version 0.8.2
 
 - Fix: Added missing javascript map files for iframe-resizer
+
+### Version 0.8.3
+
+- Iframe resiser updated to version 4.2.10
 
 
 ## TBD
