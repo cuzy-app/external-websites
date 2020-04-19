@@ -24,7 +24,7 @@ class Assets extends AssetBundle
     
     public $js = [
     	'iframeResizer.min.js?v=4.2.10', // https://github.com/davidjbradshaw/iframe-resizer/releases
-        'module.js',
+        'module.js?v=0.1',
     ];
 
 }

@@ -63,8 +63,6 @@ class m200212_175551_initial extends Migration
     public function down()
     {
         echo "m190609_090436_initial cannot be reverted.\n";
-        $this->dropTable('iframe_container_page');
-        $this->dropTable('iframe_container_url');
         return false;
     }
 }

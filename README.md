@@ -146,6 +146,10 @@ ALTER TABLE `iframe_container_page` CHANGE `visibility` `visibility` TINYINT(4) 
 
 - Iframe resiser updated to version 4.2.10
 
+### Version 0.8.4
+
+- Bug resolution in `migrations/xxx_initial.php` -> `down` function
+
 
 ## TBD
 
