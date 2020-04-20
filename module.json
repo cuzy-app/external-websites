@@ -3,8 +3,8 @@
     "name": "iFrame",
     "description": "Creates pages containing an iframed website where members can comment",
     "keywords": ["iframe"],
-    "version": "0.8.4",
+    "version": "0.8.5",
     "humhub": {
-        "minVersion": "1.3"
+        "minVersion": "1.5"
     }
 }

@@ -8,7 +8,7 @@
 
 namespace humhub\modules\iframe\assets;
 
-use yii\web\AssetBundle;
+use humhub\components\assets\AssetBundle; // not yii\web\AssetBundle for deferred script loading - see https://docs.humhub.org/docs/develop/modules-migrate/#asset-management - Needs Humhub 1.5+
 
 class Assets extends AssetBundle
 {
