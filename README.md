@@ -154,6 +154,10 @@ ALTER TABLE `iframe_container_page` CHANGE `visibility` `visibility` TINYINT(4) 
 
 - Update for Humhub 1.5 - changed minimum compatibility to Humhub 1.5
 
+### Version 0.8.6
+
+- Fix in `PageController.php`
+
 
 ## TBD
 

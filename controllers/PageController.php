@@ -11,7 +11,7 @@ namespace humhub\modules\iframe\controllers;
 use Yii;
 use yii\helpers\BaseStringHelper;
 use humhub\modules\content\components\ContentContainerController;
-use humhub\modules\announcements\components\StreamAction;
+use humhub\modules\stream\actions\ContentContainerStream;
 use humhub\modules\iframe\models\ContainerPage;
 use humhub\modules\iframe\models\ContainerUrl;
 use humhub\modules\content\models\Content;
@@ -35,9 +35,9 @@ class PageController extends ContentContainerController
     {
         return [
             'stream' => [
-                'class' => StreamAction::class,
+                'class' => ContentContainerStream::class,
                 'includes' => ContainerUrl::class,
-                'mode' => StreamAction::MODE_NORMAL,
+                'mode' => ContentContainerStream::MODE_NORMAL,
                 'contentContainer' => $this->contentContainer
             ],
         ];
