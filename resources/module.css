@@ -14,7 +14,7 @@
     }
 }
 
-#iframe-page iframe {
+#iframe-container {
     width: 1px;
     min-width: 100%;
     height: calc(100vh - 150px);

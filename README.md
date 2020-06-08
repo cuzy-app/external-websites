@@ -158,6 +158,10 @@ ALTER TABLE `iframe_container_page` CHANGE `visibility` `visibility` TINYINT(4) 
 
 - Fix in `PageController.php`
 
+### Version 0.8.7
+
+- Resize iframe if enterprise theme sidebar menu is toggled
+
 
 ## TBD
 
