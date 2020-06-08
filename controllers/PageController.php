@@ -82,6 +82,12 @@ class PageController extends ContentContainerController
         $url = rtrim(strtok($iframeMessage['url'], "#"),"/"); // remove anchor (#hash) from URL and / at the end
         $title = BaseStringHelper::truncate($iframeMessage['title'], 100, '[...]');
 
+        // Get container page
+        $containerPage = ContainerPage::findOne(['id' => $containerPageId]);
+
+        // Remove unwanted text in title
+        $title = str_ireplace($containerPage['remove_from_url_title'], '', $title);
+
         // Get content
         $containerUrl = ContainerUrl::findOne([
             'container_page_id' => $containerPageId,
@@ -90,13 +96,10 @@ class PageController extends ContentContainerController
 
         // if content does not exists, create it
         if ($containerUrl === null) {
-            $containerPage = ContainerPage::findOne([
-                'id' => $containerPageId,
-            ]);
             $containerUrl = new ContainerUrl();
             $containerUrl['container_page_id'] = $containerPageId;
             $containerUrl['url'] = $url;
-            $containerUrl['title'] = str_ireplace($containerPage['remove_from_url_title'], '', $title);
+            $containerUrl['title'] = $title;
             $containerUrl['hide_in_stream'] = $containerPage['default_hide_in_stream'];
             $containerUrl->content->container = $this->space;
             $containerUrl->content['visibility'] = $containerPage['visibility'];

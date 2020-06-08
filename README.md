@@ -162,6 +162,10 @@ ALTER TABLE `iframe_container_page` CHANGE `visibility` `visibility` TINYINT(4) 
 
 - Resize iframe if enterprise theme sidebar menu is toggled
 
+### Version 0.8.8
+
+- Fix : `remove_from_url_title` is now working after page updated
+
 
 ## TBD
 
