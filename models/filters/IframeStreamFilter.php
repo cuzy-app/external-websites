@@ -53,6 +53,7 @@ class IframeStreamFilter extends \humhub\modules\stream\models\filters\StreamQue
 
         foreach ($this->containerPages as $containerPage) {
             if ($this->isFilterActive('container_page_id_'.$containerPage['id'])) {
+
                 // Add left join only once
                 if (!$isFiltered) {
                     $this->query->leftJoin(
@@ -68,11 +69,11 @@ class IframeStreamFilter extends \humhub\modules\stream\models\filters\StreamQue
             }
         }
 
-        // If no filter, hide content related to ContainerUrl with `hide_in_stream` === true
+        // If no filter, hide content related to ContainerUrl with `hide_in_stream` === true and content without any comment
         if (!$isFiltered) {
             $this->query->innerJoin(
-                'iframe_container_url',
-                '(content.object_id NOT IN (SELECT id FROM iframe_container_url)) OR (content.object_id = iframe_container_url.id AND content.object_model = :containerUrlClass AND iframe_container_url.hide_in_stream = 0)',
+                ['iframe_container_url', 'comment'],
+                '(content.object_id NOT IN (SELECT id FROM iframe_container_url)) OR (content.object_id = iframe_container_url.id AND content.object_model = :containerUrlClass AND iframe_container_url.hide_in_stream = 0 AND content.object_id IN (SELECT object_id FROM comment))',
                 [':containerUrlClass' => ContainerUrl::class]
             );
         }

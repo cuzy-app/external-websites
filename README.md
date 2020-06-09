@@ -170,6 +170,10 @@ ALTER TABLE `iframe_container_page` CHANGE `visibility` `visibility` TINYINT(4) 
 
 - Fix : if same title in different spaces, wrong container could be fetched
 
+### Version 0.8.10
+
+- Hide content on stream without any comment
+
 
 ## TBD
 
