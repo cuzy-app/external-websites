@@ -31,9 +31,9 @@ And load them adding this code just before `</body>` :
 
 For CODIMD in a docker, [see this documentation](https://gitlab.com/funkycram/doc/-/wikis/CodiMd#add-humhub-iframe-module-script-using-dockerfile)
 
-As the config page is not yet coded, to add a page (hide sidebar, visiblity private, not archived), use this MySQL command :
+As the config page is not yet coded, to add a page (hide sidebar, visiblity private, not archived), use this MySQL command (title must be unique) :
 ```
-INSERT INTO `iframe_container_page` (`id`, `space_id`, `title`, `icon`, `start_url`, `target`, `sort_order`, `remove_from_url_title`, `default_hide_in_stream`, `hide_sidebar`, `show_widget`, `visibility`, `archived`, `created_at`, `created_by`, `updated_at`, `updated_by`) VALUES (NULL, '0', 'My Title', 'fa-graduation-cap', 'http://localhost/test/', 'SpaceMenu', '0', '', '1', '1', '1', '0', '0', '2020-02-13 11:11:00', '1', '2020-02-13 11:11:00', '1');
+INSERT INTO `iframe_container_page` (`space_id`, `title`, `icon`, `start_url`, `target`, `sort_order`, `remove_from_url_title`, `default_hide_in_stream`, `hide_sidebar`, `show_widget`, `visibility`, `archived`, `created_at`, `created_by`, `updated_at`, `updated_by`) VALUES ('0', 'My Title', 'fa-graduation-cap', 'http://localhost/test/', 'SpaceMenu', '0', '', '1', '1', '1', '0', '0', '2020-02-13 11:11:00', '1', '2020-02-13 11:11:00', '1');
 ```
 
 See `models/ContainerPage.php` -> `attributeLabels()` for more infos
@@ -165,6 +165,10 @@ ALTER TABLE `iframe_container_page` CHANGE `visibility` `visibility` TINYINT(4) 
 ### Version 0.8.8
 
 - Fix : `remove_from_url_title` is now working after page updated
+
+### Version 0.8.9
+
+- Fix : if same title in different spaces, wrong container could be fetched
 
 
 ## TBD

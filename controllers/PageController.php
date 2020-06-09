@@ -52,6 +52,7 @@ class PageController extends ContentContainerController
         $title = urldecode($_GET['title']);
 
         $containerPage = ContainerPage::findOne([
+            'space_id' => $this->space['id'],
             'title' => $title,
         ]);
 
