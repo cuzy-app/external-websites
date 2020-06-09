@@ -61,19 +61,25 @@ class IframeStreamFilter extends \humhub\modules\stream\models\filters\StreamQue
                         'content.object_id = iframe_container_url.id AND content.object_model = :containerUrlClass INNER JOIN `iframe_container_page` ON iframe_container_url.container_page_id = iframe_container_page.id',
                         [':containerUrlClass' => ContainerUrl::class]
                     );
+                    $this->query->leftJoin(
+                        'comment',
+                        'comment.object_id = content.object_id'
+                    );
                 }
                 $isFiltered = true;
 
                 // Filter to show only the filtered container page
                 $this->query->andFilterWhere(['iframe_container_page.id' => $containerPage['id']]);
+                // Hide content without no comment
+                $this->query->andFilterWhere(['comment.object_model' => ContainerUrl::class]);
             }
         }
 
-        // If no filter, hide content related to ContainerUrl with `hide_in_stream` === true and content without any comment
+        // If no filter, hide content related to ContainerUrl with `hide_in_stream` === true and content without no comment
         if (!$isFiltered) {
             $this->query->innerJoin(
                 ['iframe_container_url', 'comment'],
-                '(content.object_id NOT IN (SELECT id FROM iframe_container_url)) OR (content.object_id = iframe_container_url.id AND content.object_model = :containerUrlClass AND iframe_container_url.hide_in_stream = 0 AND content.object_id IN (SELECT object_id FROM comment))',
+                '(content.object_id NOT IN (SELECT id FROM iframe_container_url)) OR (content.object_id = iframe_container_url.id AND content.object_model = :containerUrlClass AND iframe_container_url.hide_in_stream = 0 AND EXISTS (SELECT NULL FROM comment WHERE content.object_id = comment.object_id AND content.object_model = comment.object_model))',
                 [':containerUrlClass' => ContainerUrl::class]
             );
         }
