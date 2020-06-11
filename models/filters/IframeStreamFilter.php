@@ -58,20 +58,25 @@ class IframeStreamFilter extends \humhub\modules\stream\models\filters\StreamQue
                 if (!$isFiltered) {
                     $this->query->leftJoin(
                         'iframe_container_url',
-                        'content.object_id = iframe_container_url.id AND content.object_model = :containerUrlClass INNER JOIN `iframe_container_page` ON iframe_container_url.container_page_id = iframe_container_page.id',
+                        'content.object_id = iframe_container_url.id AND content.object_model = :containerUrlClass',
                         [':containerUrlClass' => ContainerUrl::class]
                     );
                     $this->query->leftJoin(
                         'comment',
                         'comment.object_id = content.object_id'
                     );
+
+                    // Hide content without no comment
+                    $this->query->andFilterWhere(['comment.object_model' => ContainerUrl::class]);
+
+                    // Filter to show only the filtered container page
+                    $this->query->andFilterWhere(['iframe_container_url.container_page_id' => $containerPage['id']]);
+                }
+                else {
+                    // if more than one filter, use 'or'
+                    $this->query->orFilterWhere(['iframe_container_url.container_page_id' => $containerPage['id']]);
                 }
                 $isFiltered = true;
-
-                // Filter to show only the filtered container page
-                $this->query->andFilterWhere(['iframe_container_page.id' => $containerPage['id']]);
-                // Hide content without no comment
-                $this->query->andFilterWhere(['comment.object_model' => ContainerUrl::class]);
             }
         }
 

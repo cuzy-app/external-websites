@@ -38,6 +38,13 @@ INSERT INTO `iframe_container_page` (`space_id`, `title`, `icon`, `start_url`, `
 
 See `models/ContainerPage.php` -> `attributeLabels()` for more infos
 
+## Special features
+
+It is possible to have several instances (container page) of the same iframed website in the same space : comments and "like" are shared between the instances.
+
+If the same URL is shared by several instances in the same space, the URL will be related to the container page having the smaller `sort_order`.
+
+
 
 ## Changelog
 
@@ -173,6 +180,11 @@ ALTER TABLE `iframe_container_page` CHANGE `visibility` `visibility` TINYINT(4) 
 ### Version 0.8.10
 
 - Hide content on stream without any comment
+
+### Version 0.9
+
+- Enables to have several instances (container page) of the same iframed website : comments and "like" are shared between the instances
+- If the same URL is shared by several instances, the URL will be related to the container page having the smaller `sort_order`
 
 
 ## TBD

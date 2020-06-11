@@ -89,11 +89,15 @@ class PageController extends ContentContainerController
         // Remove unwanted text in title
         $title = str_ireplace($containerPage['remove_from_url_title'], '', $title);
 
-        // Get content
-        $containerUrl = ContainerUrl::findOne([
-            'container_page_id' => $containerPageId,
-            'url' => $url,
-        ]);
+        // Get content (there can be only 1 unique URL per space)
+        $containerUrl = ContainerUrl::find()
+            ->joinWith('containerPage')
+            ->where([
+                'and',
+                ['iframe_container_page.space_id' => $this->space['id']],
+                ['iframe_container_url.url' => $url],
+            ])
+            ->one();
 
         // if content does not exists, create it
         if ($containerUrl === null) {
@@ -111,6 +115,14 @@ class PageController extends ContentContainerController
         elseif ($containerUrl['title'] != $title) {
             $containerUrl['title'] = $title;
             $containerUrl->save();
+        }
+        // If related container page is different (case where same URL is accessible form differents containers pages)
+        elseif ($containerPage['id'] != $containerUrl['container_page_id']) {
+            // make this container URL related to smaller sort order container page (the first one in the space menu list)
+            if ($containerPage['sort_order'] < $containerUrl->containerPage['sort_order']) {
+                $containerUrl['container_page_id'] = $containerPage['id'];
+                $containerUrl->save();
+            }
         }
 
         // Render ajax

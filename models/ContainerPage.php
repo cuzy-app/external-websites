@@ -73,10 +73,7 @@ class ContainerPage extends \yii\db\ActiveRecord
 
     public function beforeDelete()
     {
-        foreach ($this->containerUrl as $containerUrl) {
-            $containerUrl->delete();
-// TBD : related content deleted ?
-        }
+        // TBD : if last one of the space, remove all ContainerUrl rows and related content
 
         return parent::beforeDelete();
     }
