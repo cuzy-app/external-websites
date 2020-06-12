@@ -186,6 +186,10 @@ ALTER TABLE `iframe_container_page` CHANGE `visibility` `visibility` TINYINT(4) 
 - Enables to have several instances (container page) of the same iframed website : comments and "like" are shared between the instances
 - If the same URL is shared by several instances, the URL will be related to the container page having the smaller `sort_order`
 
+### Version 0.9.1
+
+- Fix in filter
+
 
 ## TBD
 
