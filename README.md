@@ -190,6 +190,10 @@ ALTER TABLE `iframe_container_page` CHANGE `visibility` `visibility` TINYINT(4) 
 
 - Fix in filter
 
+### Version 0.9.2
+
+- Scroll to top when URL in iframe changes
+
 
 ## TBD
 

@@ -30,6 +30,11 @@ function loadIFrameResizer () {
 
             // Each time iframed page is loaded or URL changes
             onMessage: function(messageData) {
+                // sroll top
+                $('html, body').animate({
+                    scrollTop: 0
+                }, 500);
+
                 // message sent by iframed website is : {
                 //   url: window.location.href,
                 //   title: document.getElementsByTagName("title")[0].innerText
