@@ -14,10 +14,10 @@ humhub\modules\iframe\assets\Assets::register($this);
 
 <div id="iframe-page" class="panel panel-default" data-container-page-id="<?= $containerPage['id'] ?>">
     <div class="panel-body">
-        <div class="col-lg-9 col-md-9 col-sm-9 iframe-content">
+        <div class="col-lg-9 col-md-9 col-sm-9">
             <iframe id="iframe-container" src="<?= $url ?>" onload="loadIFrameResizer()" allowfullscreen></iframe>
         </div>
-        <div class="col-lg-3 col-md-3 col-sm-3 iframe-content">
+        <div class="col-lg-3 col-md-3 col-sm-3">
             <div id="iframe-comments"></div>
         </div>
     </div>

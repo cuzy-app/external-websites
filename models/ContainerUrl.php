@@ -9,11 +9,13 @@
 namespace humhub\modules\iframe\models;
 
 use Yii;
+use yii\db\Expression;
+use humhub\modules\space\models\Space;
 use humhub\modules\content\components\ActiveQueryContent;
 use humhub\modules\content\components\ContentActiveRecord;
 use humhub\modules\content\components\ContentContainerActiveRecord;
 use humhub\modules\search\interfaces\Searchable;
-use yii\db\Expression;
+use humhub\modules\user\models\User;
 
 
 class ContainerUrl extends ContentActiveRecord implements Searchable
@@ -101,10 +103,34 @@ class ContainerUrl extends ContentActiveRecord implements Searchable
         return $this['title'];
     }
 
-    // Searchable Attributes / Informations
+    /**
+     * @inheritdoc
+     */
     public function getSearchAttributes()
     {
-        return $this->containerPage['title'];
+        $attributes = [
+            'message' => $this->containerPage['title'],
+            'url' => $this->url,
+            'user' => $this->getPostAuthorName()
+        ];
+
+        $this->trigger(self::EVENT_SEARCH_ADD, new \humhub\modules\search\events\SearchAddEvent($attributes));
+
+        return $attributes;
+    }
+
+    /**
+     * @return string
+     */
+    private function getPostAuthorName()
+    {
+        $user = User::findOne(['id' => $this->created_by]);
+
+        if ($user !== null && $user->isActive()) {
+            return $user->getDisplayName();
+        }
+
+        return '';
     }
 
     public function getIcon()
@@ -113,6 +139,27 @@ class ContainerUrl extends ContentActiveRecord implements Searchable
             return $this->containerPage['icon'];
         }
         return 'fa-external-link-square';
+    }
+
+
+
+    /**
+     * @inheritdoc
+     * For all users that receive notifications for new content, make them follow the content to sent notifications if new comments, as this module doesn't send notification for each new content to avoid huge amount of notifications (a new content is created for each iframed page visited !)
+     */
+    public function afterSave($insert, $changedAttributes)
+    {
+        $spaceId = $this->initContent->contentContainer['pk'];
+        $space = Space::findOne(['id' => $spaceId]);
+        if ($space !== null) {
+            foreach ($space->memberships as $membership) {
+                if ($membership->send_notifications) {
+                    $this->follow($membership['user_id'], true);
+                }
+            }
+        }
+
+        return parent::afterSave($insert, $changedAttributes);
     }
 
 }
