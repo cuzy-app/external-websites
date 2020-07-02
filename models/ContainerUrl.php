@@ -108,9 +108,11 @@ class ContainerUrl extends ContentActiveRecord implements Searchable
      */
     public function getSearchAttributes()
     {
+        $space = $this->content->container;
+
         $attributes = [
             'message' => $this->containerPage['title'],
-            'url' => $this->url,
+            'url' => $space->createUrl('/iframe/page?title='.urlencode($this->containerPage['title']).'&urlId='.$this['id']),
             'user' => $this->getPostAuthorName()
         ];
 
@@ -149,13 +151,10 @@ class ContainerUrl extends ContentActiveRecord implements Searchable
      */
     public function afterSave($insert, $changedAttributes)
     {
-        $spaceId = $this->initContent->contentContainer['pk'];
-        $space = Space::findOne(['id' => $spaceId]);
-        if ($space !== null) {
-            foreach ($space->memberships as $membership) {
-                if ($membership->send_notifications) {
-                    $this->follow($membership['user_id'], true);
-                }
+        $space = $this->content->container;
+        foreach ($space->memberships as $membership) {
+            if ($membership->send_notifications) {
+                $this->follow($membership['user_id'], true);
             }
         }
 
