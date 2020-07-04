@@ -112,7 +112,8 @@ class ContainerUrl extends ContentActiveRecord implements Searchable
 
         $attributes = [
             'message' => $this->containerPage['title'],
-            'url' => $space->createUrl('/iframe/page?title='.urlencode($this->containerPage['title']).'&urlId='.$this['id']),
+            // url comment because make solr crash
+            // 'url' => $space->createUrl('/iframe/page?title='.urlencode($this->containerPage['title']).'&urlId='.$this['id']),
             'user' => $this->getPostAuthorName()
         ];
 
