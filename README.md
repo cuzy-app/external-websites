@@ -199,6 +199,10 @@ ALTER TABLE `iframe_container_page` CHANGE `visibility` `visibility` TINYINT(4) 
 - Fix: `ContainerUrl->getSearchAttributes` was creating bugs with module search
 - Enh: For all users that receive notifications for new content, make them follow the content to sent notifications if new comments, as this module doesn't send notification for each new content to avoid huge amount of notifications (a new content is created for each iframed page visited !)
 
+### Version 0.11
+
+- Enh : Dashboard : Hide content related to ContainerUrl with `hide_in_stream` === true and content with no comment
+
 
 ## TBD
 

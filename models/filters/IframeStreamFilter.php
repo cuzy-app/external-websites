@@ -89,7 +89,7 @@ class IframeStreamFilter extends \humhub\modules\stream\models\filters\StreamQue
             }
         }
 
-        // If no filter, hide content related to ContainerUrl with `hide_in_stream` === true and content without no comment
+        // If no filter, hide content related to ContainerUrl with `hide_in_stream` === true and content with no comment
         if (!$isFiltered) {
             // If not from iframe module, show it
             $this->query->andFilterWhere(['not', ['content.object_model' => ContainerUrl::class]]);
