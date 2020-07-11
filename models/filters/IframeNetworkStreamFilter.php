@@ -13,7 +13,10 @@ use humhub\modules\iframe\models\ContainerPage;
 use humhub\modules\iframe\models\ContainerUrl;
 
 
-class IframeDashboardStreamFilter extends \humhub\modules\stream\models\filters\StreamQueryFilter
+/**
+ * Add a filter in a stream show in the network (eg: dashboard)
+ */
+class IframeNetworkStreamFilter extends \humhub\modules\stream\models\filters\StreamQueryFilter
 {
     /**
      * Default filters

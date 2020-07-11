@@ -13,7 +13,10 @@ use humhub\modules\iframe\models\ContainerPage;
 use humhub\modules\iframe\models\ContainerUrl;
 
 
-class IframeStreamFilter extends \humhub\modules\stream\models\filters\StreamQueryFilter
+/**
+ * Add filters in a stream show in a space
+ */
+class IframeSpaceStreamFilter extends \humhub\modules\stream\models\filters\StreamQueryFilter
 {
     /**
      * Default filters

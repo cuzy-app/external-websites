@@ -10,8 +10,8 @@ namespace humhub\modules\iframe;
 
 use Yii;
 use humhub\modules\iframe\models\ContainerPage;
-use humhub\modules\iframe\models\filters\IframeStreamFilter;
-use humhub\modules\iframe\models\filters\IframeDashboardStreamFilter;
+use humhub\modules\iframe\models\filters\IframeSpaceStreamFilter;
+use humhub\modules\iframe\models\filters\IframeNetworkStreamFilter;
 use humhub\modules\stream\widgets\WallStreamFilterNavigation;
 
 
@@ -122,12 +122,12 @@ class Events
             $space = Yii::$app->controller->contentContainer;
             if ($space !== null && $space->isModuleEnabled('iframe')) {
                 // Add a new filterHandler to WallStreamQuery
-                $streamQuery->filterHandlers[] = IframeStreamFilter::class;
+                $streamQuery->filterHandlers[] = IframeSpaceStreamFilter::class;
             }
         }
-        // If not in a space (dashboard)
+        // If not in a space (eg: dashboard)
         else {
-            $streamQuery->filterHandlers[] = IframeDashboardStreamFilter::class;
+            $streamQuery->filterHandlers[] = IframeNetworkStreamFilter::class;
         }
     }
 }
