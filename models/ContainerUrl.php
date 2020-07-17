@@ -86,7 +86,7 @@ class ContainerUrl extends ContentActiveRecord implements Searchable
     public function getContainerPage()
     {
         return $this
-            ->hasOne(ContainerPage::className(), ['id' => 'container_page_id']);
+            ->hasOne(ContainerPage::class, ['id' => 'container_page_id']);
     }
 
 
@@ -144,6 +144,18 @@ class ContainerUrl extends ContentActiveRecord implements Searchable
         return 'fa-external-link-square';
     }
 
+
+    /**
+     * @inheritdoc
+     * Set created_by to iframe_container_page creator
+     */
+    public function beforeSave($insert)
+    {
+        $this['created_by'] = $this->containerPage['created_by'];
+        $this->content['created_by'] = $this['created_by'];
+
+        return parent::beforeSave($insert);
+    }
 
 
     /**

@@ -67,7 +67,7 @@ class ContainerPage extends \yii\db\ActiveRecord
     public function getContainerUrl()
     {
         return $this
-            ->hasMany(ContainerUrl::className(), ['container_page_id' => 'id']);
+            ->hasMany(ContainerUrl::class, ['container_page_id' => 'id']);
     }
 
 

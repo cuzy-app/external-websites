@@ -203,6 +203,10 @@ ALTER TABLE `iframe_container_page` CHANGE `visibility` `visibility` TINYINT(4) 
 
 - Enh : Dashboard : Hide content related to ContainerUrl with `hide_in_stream` === true and content with no comment
 
+### Version 0.12
+
+- When insert in table `container_url`, field `created_by` of the insert and the related content takes the value of the related `container_page`
+
 
 ## TBD
 
