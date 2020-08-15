@@ -9,16 +9,10 @@
 namespace humhub\modules\iframe\models;
 
 use Yii;
-use yii\db\Expression;
-use humhub\modules\space\models\Space;
-use humhub\modules\content\components\ActiveQueryContent;
-use humhub\modules\content\components\ContentActiveRecord;
-use humhub\modules\content\components\ContentContainerActiveRecord;
-use humhub\modules\search\interfaces\Searchable;
 use humhub\modules\user\models\User;
 
 
-class ContainerUrl extends ContentActiveRecord implements Searchable
+class ContainerUrl extends \humhub\modules\content\components\ContentActiveRecord implements \humhub\modules\search\interfaces\Searchable
 {
     public $moduleId = 'iframe';
 

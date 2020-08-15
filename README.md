@@ -207,9 +207,14 @@ ALTER TABLE `iframe_container_page` CHANGE `visibility` `visibility` TINYINT(4) 
 
 - When insert in table `container_url`, field `created_by` of the insert and the related content takes the value of the related `container_page`
 
+### Version 0.13
+
+- No change, only some code rewrited better
+
 
 ## TBD
 
 - On the wall, comments are allways Enabled
 - Config to manage pages
 - Possibility for admin to change comment state for an URL
+- https://github.com/humhub/humhub/issues/4251 : ALTER TABLE `comment` ADD INDEX `index_object` (`object_id`)

@@ -11,7 +11,7 @@ namespace humhub\modules\iframe\models;
 use Yii;
 
 
-class ContainerPage extends \yii\db\ActiveRecord
+class ContainerPage extends \humhub\components\ActiveRecord
 {
 
     const TARGET_SPACE_NAV = 'SpaceMenu';

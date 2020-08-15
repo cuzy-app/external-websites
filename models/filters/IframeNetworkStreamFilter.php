@@ -62,7 +62,7 @@ class IframeNetworkStreamFilter extends \humhub\modules\stream\models\filters\St
             'comment.object_id = content.object_id AND comment.object_model = :containerUrlClass',
             [':containerUrlClass' => ContainerUrl::class]
         );
-
+        
         // If not from iframe module, show it
         $this->query->andFilterWhere(['not', ['content.object_model' => ContainerUrl::class]]);
         $this->query->orFilterWhere([

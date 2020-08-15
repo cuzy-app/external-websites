@@ -10,18 +10,13 @@ namespace humhub\modules\iframe\controllers;
 
 use Yii;
 use yii\helpers\BaseStringHelper;
-use humhub\modules\content\components\ContentContainerController;
 use humhub\modules\stream\actions\ContentContainerStream;
 use humhub\modules\iframe\models\ContainerPage;
 use humhub\modules\iframe\models\ContainerUrl;
 use humhub\modules\content\models\Content;
 
 
-/**
- * Class BaseController
- * @package humhub\modules\wiki\controllers
- */
-class PageController extends ContentContainerController
+class PageController extends \humhub\modules\content\components\ContentContainerController
 {
 
     const MAX_COMMENTS = 20;
@@ -52,7 +47,7 @@ class PageController extends ContentContainerController
         $title = urldecode($_GET['title']);
 
         $containerPage = ContainerPage::findOne([
-            'space_id' => $this->space['id'],
+            'space_id' => $this->contentContainer['id'],
             'title' => $title,
         ]);
 
@@ -91,22 +86,17 @@ class PageController extends ContentContainerController
 
         // Get content (there can be only 1 unique URL per space)
         $containerUrl = ContainerUrl::find()
-            ->joinWith('containerPage')
-            ->where([
-                'and',
-                ['iframe_container_page.space_id' => $this->space['id']],
-                ['iframe_container_url.url' => $url],
-            ])
+            ->contentContainer($this->contentContainer) // restrict to current space
+            ->where(['iframe_container_url.url' => $url])
             ->one();
 
         // if content does not exists, create it
         if ($containerUrl === null) {
-            $containerUrl = new ContainerUrl();
+            $containerUrl = new ContainerUrl($this->contentContainer);
             $containerUrl['container_page_id'] = $containerPageId;
             $containerUrl['url'] = $url;
             $containerUrl['title'] = $title;
             $containerUrl['hide_in_stream'] = $containerPage['default_hide_in_stream'];
-            $containerUrl->content->container = $this->space;
             $containerUrl->content['visibility'] = $containerPage['visibility'];
             $containerUrl->content['archived'] = $containerPage['archived'];
             $containerUrl->save();
@@ -127,7 +117,7 @@ class PageController extends ContentContainerController
 
         // Render ajax
         return $this->renderAjax('url-content', [
-            'space' => $this->space,
+            'space' => $this->contentContainer,
             'containerUrl' => $containerUrl,
         ]);
     }
