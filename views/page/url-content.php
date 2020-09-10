@@ -53,8 +53,6 @@ $permalink = $space->createUrl('/iframe/page', $permalinkParams);
             <?php if ($containerUrl !== null): ?>
                 &middot; <?= LikeLink::widget(['object' => $containerUrl]); ?>
                 &middot; <i class="fa fa-comment"></i> <?= CommentLink::widget(['object' => $containerUrl]); ?>
-            <?php else: ?>
-                &middot; <?= FirstLikeLink::widget(['object' => $containerUrl]); ?>
             <?php endif ?>
         </div>
     </div>

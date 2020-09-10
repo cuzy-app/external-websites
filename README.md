@@ -215,13 +215,6 @@ ALTER TABLE `iframe_container_page` CHANGE `visibility` `visibility` TINYINT(4) 
 
 - Enh: content not created before commenting
 
-Todo after update:
-- Purge cache
-- Remove `hide_in_stream` fields:
-```
-ALTER TABLE `iframe_container_page` DROP `default_hide_in_stream`;
-ALTER TABLE `iframe_container_url` DROP `hide_in_stream`;
-```
 
 
 ## TBD

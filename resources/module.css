@@ -40,7 +40,7 @@
     content: "\f0c1";
 }
 
-/* if no comments, comment form is hidden */
-#iframe-page #url-content .comment-container {
-    display: block !important;
+/* Comment input place holder text is truncated, so make it smaller */
+#iframe-page #iframe-comments .ProsemirrorEditor .ProseMirror .placeholder {
+    font-size: 0.8em;
 }
