@@ -1,6 +1,18 @@
 <?php
+/**
+ * iFrame module
+ * @link https://gitlab.com/funkycram/module-humhub-iframe
+ * @license https://www.humhub.com/licences
+ * @author [FunkycraM](https://marc.fun)
+ */
+
 use yii\helpers\Html;
 use yii\helpers\Url;
+
+/**
+ * @var $space humhub\modules\jdn\models\Space
+ * @var $containerUrl humhub\modules\iframe\models\ContainerUrl
+ */
 ?>
 
 

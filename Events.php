@@ -11,7 +11,6 @@ namespace humhub\modules\iframe;
 use Yii;
 use humhub\modules\iframe\models\ContainerPage;
 use humhub\modules\iframe\models\filters\IframeSpaceStreamFilter;
-use humhub\modules\iframe\models\filters\IframeNetworkStreamFilter;
 use humhub\modules\stream\widgets\WallStreamFilterNavigation;
 
 
@@ -43,7 +42,7 @@ class Events
                 $event->sender->addItem([
                     'label' => $containerPage['title'],
                     'group' => 'modules',
-                    'url' => $space->createUrl('/iframe/page?title='.urlencode($containerPage['title'])),
+                    'url' => $space->createUrl('/iframe/page', ['title' => $containerPage['title']]),
                     'icon' => '<i class="fa '.$containerPage['icon'].'"></i>',
                     'isActive' => (
                         Yii::$app->controller->module
@@ -106,7 +105,7 @@ class Events
     }
 
 
-    // Adds filters and hide content related to ContainerUrl with `hide_in_stream` === true
+    // Adds filters
     public static function onStreamFilterBeforeFilter ($event)
     {
         // if single content (contentId in URL)
@@ -124,10 +123,6 @@ class Events
                 // Add a new filterHandler to WallStreamQuery
                 $streamQuery->filterHandlers[] = IframeSpaceStreamFilter::class;
             }
-        }
-        // If not in a space (eg: dashboard)
-        else {
-            $streamQuery->filterHandlers[] = IframeNetworkStreamFilter::class;
         }
     }
 }

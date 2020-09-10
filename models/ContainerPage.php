@@ -39,7 +39,6 @@ class ContainerPage extends \humhub\components\ActiveRecord
             'target' => 'Target', // self::TARGET_SPACE_NAV or self::TARGET_EMPTY
             'sort_order' => 'Sort order', // In the menu
             'remove_from_url_title' => 'Text to remove from URL title',
-            'default_hide_in_stream' => 'Hide contents in stream', // If hidden, the contents can be seen with the stream filter
             'hide_sidebar' => 'Hide sidebar', // Enterprise theme
             'show_widget' => 'Show Widget',
             'visibility' => 'Content visibility', // Default value for the Content created ; can be humhub\modules\content\models\Content::VISIBILITY_PRIVATE or Content::VISIBILITY_PUBLIC or Content::VISIBILITY_OWNER
@@ -59,7 +58,7 @@ class ContainerPage extends \humhub\components\ActiveRecord
        return [
            [['space_id', 'start_url'], 'required'],
            [['title', 'icon', 'start_url', 'target', 'remove_from_url_title'], 'string'],
-           [['space_id', 'sort_order', 'default_hide_in_stream', 'show_widget', 'visibility', 'archived'], 'integer'],
+           [['space_id', 'sort_order', 'show_widget', 'visibility', 'archived'], 'integer'],
        ];
     }
 

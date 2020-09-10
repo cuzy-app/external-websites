@@ -33,7 +33,7 @@ For CODIMD in a docker, [see this documentation](https://gitlab.com/funkycram/do
 
 As the config page is not yet coded, to add a page (hide sidebar, visiblity private, not archived), use this MySQL command (title must be unique) :
 ```
-INSERT INTO `iframe_container_page` (`space_id`, `title`, `icon`, `start_url`, `target`, `sort_order`, `remove_from_url_title`, `default_hide_in_stream`, `hide_sidebar`, `show_widget`, `visibility`, `archived`, `created_at`, `created_by`, `updated_at`, `updated_by`) VALUES ('0', 'My Title', 'fa-graduation-cap', 'http://localhost/test/', 'SpaceMenu', '0', '', '1', '1', '1', '0', '0', '2020-02-13 11:11:00', '1', '2020-02-13 11:11:00', '1');
+INSERT INTO `iframe_container_page` (`space_id`, `title`, `icon`, `start_url`, `target`, `sort_order`, `remove_from_url_title`, `hide_sidebar`, `show_widget`, `visibility`, `archived`, `created_at`, `created_by`, `updated_at`, `updated_by`) VALUES ('0', 'My Title', 'fa-graduation-cap', 'http://localhost/test/', 'SpaceMenu', '0', '', '1', '1', '0', '0', '2020-02-13 11:11:00', '1', '2020-02-13 11:11:00', '1');
 ```
 
 See `models/ContainerPage.php` -> `attributeLabels()` for more infos
@@ -201,7 +201,7 @@ ALTER TABLE `iframe_container_page` CHANGE `visibility` `visibility` TINYINT(4) 
 
 ### Version 0.11
 
-- Enh : Dashboard : Hide content related to ContainerUrl with `hide_in_stream` === true and content with no comment
+- Enh: Dashboard : Hide content related to ContainerUrl with `hide_in_stream` === true and content with no comment
 
 ### Version 0.12
 
@@ -210,6 +210,18 @@ ALTER TABLE `iframe_container_page` CHANGE `visibility` `visibility` TINYINT(4) 
 ### Version 0.13
 
 - No change, only some code rewrited better
+
+### Version 0.14
+
+- Enh: content not created before commenting
+
+Todo after update:
+- Purge cache
+- Remove `hide_in_stream` fields:
+```
+ALTER TABLE `iframe_container_page` DROP `default_hide_in_stream`;
+ALTER TABLE `iframe_container_url` DROP `hide_in_stream`;
+```
 
 
 ## TBD

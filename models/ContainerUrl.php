@@ -56,7 +56,6 @@ class ContainerUrl extends \humhub\modules\content\components\ContentActiveRecor
             'url' => 'iFrame URL',
             'title' => 'Title',
             'container_page_id' => 'Container page id',
-            'hide_in_stream' => 'Hide in stream',
             'created_at' => 'Created at',
             'created_by' => 'Created by',
             'updated_at' => 'Updated at',
@@ -72,7 +71,7 @@ class ContainerUrl extends \humhub\modules\content\components\ContentActiveRecor
        return [
            [['container_page_id', 'url'], 'required'],
            [['url', 'title'], 'string'],
-           [['container_page_id', 'hide_in_stream'], 'integer'],
+           [['container_page_id'], 'integer'],
        ];
     }
 

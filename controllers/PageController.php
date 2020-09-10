@@ -39,32 +39,38 @@ class PageController extends \humhub\modules\content\components\ContentContainer
     }
 
 
-    public function actionIndex ()
+    public function actionIndex ($title)
     {
-        if (!isset($_GET['title'])) {
-            $this->redirect('index');
-        }
-        $title = urldecode($_GET['title']);
-
         $containerPage = ContainerPage::findOne([
             'space_id' => $this->contentContainer['id'],
             'title' => $title,
         ]);
 
         // Set start URL
-        $url = $containerPage['start_url'];
-        if (isset($_GET['urlId'])) {
+        $iframeUrl = $containerPage['start_url'];
+
+        // If urlId is in the URL
+        if (($urlId = Yii::$app->request->get('urlId')) !== null) {
             $containerUrl = ContainerUrl::findOne(['id' => $_GET['urlId']]);
-            $url = $containerUrl['url'];
+            if ($containerUrl !== null) {
+                $iframeUrl = $containerUrl['url'];
+            }
+        }
+        // If iframeUrl is in the URL (ContainerUrl does not exist)
+        else {
+            $iframeUrl = Yii::$app->request->get('iframeUrl', $iframeUrl);
         }
 
         return $this->render('index', [
             'containerPage' => $containerPage,
-            'url' => $url,
+            'iframeUrl' => $iframeUrl,
         ]);
     }
 
 
+    /**
+     * Called by ajax
+     */
     public function actionUrlContent () {
         // Get iframe URL
         if (
@@ -75,50 +81,44 @@ class PageController extends \humhub\modules\content\components\ContentContainer
         }
         $containerPageId = $_POST['containerPageId'];
         $iframeMessage = $_POST['iframeMessage'];
-        $url = rtrim(strtok($iframeMessage['url'], "#"),"/"); // remove anchor (#hash) from URL and / at the end
-        $title = BaseStringHelper::truncate($iframeMessage['title'], 100, '[...]');
+        $iframeUrl = rtrim(strtok($iframeMessage['url'], "#"),"/"); // remove anchor (#hash) from URL and / at the end
+        $iframeTitle = BaseStringHelper::truncate($iframeMessage['title'], 100, '[...]');
 
         // Get container page
         $containerPage = ContainerPage::findOne(['id' => $containerPageId]);
 
         // Remove unwanted text in title
-        $title = str_ireplace($containerPage['remove_from_url_title'], '', $title);
+        $iframeTitle = str_ireplace($containerPage['remove_from_url_title'], '', $iframeTitle);
 
-        // Get content (there can be only 1 unique URL per space)
+        // Get content (there can be only 1 unique URL per space, so we don't filter by container page)
         $containerUrl = ContainerUrl::find()
             ->contentContainer($this->contentContainer) // restrict to current space
-            ->where(['iframe_container_url.url' => $url])
+            ->where(['url' => $iframeUrl])
             ->one();
 
-        // if content does not exists, create it
-        if ($containerUrl === null) {
-            $containerUrl = new ContainerUrl($this->contentContainer);
-            $containerUrl['container_page_id'] = $containerPageId;
-            $containerUrl['url'] = $url;
-            $containerUrl['title'] = $title;
-            $containerUrl['hide_in_stream'] = $containerPage['default_hide_in_stream'];
-            $containerUrl->content['visibility'] = $containerPage['visibility'];
-            $containerUrl->content['archived'] = $containerPage['archived'];
-            $containerUrl->save();
-        }
-        // If title has changed, update it
-        elseif ($containerUrl['title'] != $title) {
-            $containerUrl['title'] = $title;
-            $containerUrl->save();
-        }
-        // If related container page is different (case where same URL is accessible form differents containers pages)
-        elseif ($containerPage['id'] != $containerUrl['container_page_id']) {
-            // make this container URL related to smaller sort order container page (the first one in the space menu list)
-            if ($containerPage['sort_order'] < $containerUrl->containerPage['sort_order']) {
-                $containerUrl['container_page_id'] = $containerPage['id'];
+        if ($containerUrl !== null) {
+            // If title has changed, update it
+            if ($containerUrl['title'] != $iframeTitle) {
+                $containerUrl['title'] = $iframeTitle;
                 $containerUrl->save();
+            }
+            // If related container page is different (case where same URL is accessible form differents containers pages in the same space)
+            if ($containerPage['id'] != $containerUrl['container_page_id']) {
+                // make this container URL related to smaller sort order container page (the first one in the space menu list)
+                if ($containerPage['sort_order'] < $containerUrl->containerPage['sort_order']) {
+                    $containerUrl['container_page_id'] = $containerPage['id'];
+                    $containerUrl->save();
+                }
             }
         }
 
         // Render ajax
         return $this->renderAjax('url-content', [
             'space' => $this->contentContainer,
+            'containerPage' => $containerPage,
             'containerUrl' => $containerUrl,
+            'iframeUrl' => $iframeUrl,
+            'iframeTitle' => $iframeTitle,
         ]);
     }
 }

@@ -26,6 +26,9 @@ class Module extends ContentContainerModule
      */
     public $icon = 'fa-external-link';
 
+    /**
+     * @var string defines path for resources, including the screenshots path for the marketplace
+     */
     public $resourcesPath = 'resources';
 
 
@@ -101,15 +104,4 @@ class Module extends ContentContainerModule
             return Yii::t('IframeModule.base', 'This module creates pages containing an iframed website where members can comment.');
         }
     }
-
-
-    /**
-     * @inheritdoc
-     */
-    // public function getConfigUrl()
-    // {
-    //     return Url::to([
-    //         '/iframe/config'
-    //     ]);
-    // }
 }

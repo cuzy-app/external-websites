@@ -52,79 +52,30 @@ class IframeSpaceStreamFilter extends \humhub\modules\stream\models\filters\Stre
 
     public function apply()
     {
-        $isFiltered = false;
-
         $this->query->leftJoin(
             'iframe_container_url',
             'content.object_id = iframe_container_url.id AND content.object_model = :containerUrlClass',
             [':containerUrlClass' => ContainerUrl::class]
         );
-        $this->query->leftJoin(
-            'comment',
-            'comment.object_id = content.object_id AND comment.object_model = :containerUrlClass',
-            [':containerUrlClass' => ContainerUrl::class]
-        );
 
+        $isFiltered = false;
         foreach ($this->containerPages as $containerPage) {
             if ($this->isFilterActive('container_page_id_'.$containerPage['id'])) {
 
-                // Add left join only once
                 if (!$isFiltered) {
                     $isFiltered = true;
-                    $this->query->andFilterWhere([
-                        'and',
-                        // Filter to show only the filtered container page
-                        ['iframe_container_url.container_page_id' => $containerPage['id']],
-                        // Hide content without no comment
-                        ['comment.object_model' => ContainerUrl::class],
-                    ]);
+                    $this->query->andFilterWhere(['iframe_container_url.container_page_id' => $containerPage['id']]);
                 }
                 else {
                     // if more than one filter, use 'or'
-                    $this->query->orFilterWhere([
-                        'and',
-                        // Filter to show only the filtered container page
-                        ['iframe_container_url.container_page_id' => $containerPage['id']],
-                        // Hide content without no comment
-                        ['comment.object_model' => ContainerUrl::class],
-                    ]);
+                    $this->query->orFilterWhere(['iframe_container_url.container_page_id' => $containerPage['id']]);
                 }
             }
-        }
-
-        // If no filter, hide content related to ContainerUrl with `hide_in_stream` === true and content with no comment
-        if (!$isFiltered) {
-            // If not from iframe module, show it
-            $this->query->andFilterWhere(['not', ['content.object_model' => ContainerUrl::class]]);
-            $this->query->orFilterWhere([
-                'and',
-                // If from iframe module
-                ['content.object_model' => ContainerUrl::class],
-                // Show content if not `hide_in_stream`
-                ['iframe_container_url.hide_in_stream' => 0],
-                // Hide content without no comment
-                ['comment.object_model' => ContainerUrl::class],
-            ]);
         }
     }
 
     public function isFilterActive($filter)
     {
         return in_array($filter, $this->filters);
-    }
-
-    protected function filterContents($hide, $containerPageId)
-    {
-        // $this->query->andWhere([
-        //     'and',
-        //     ['iframe_container_page.id' => $containerPageId],
-        //     ['iframe_container_page.default_hide_in_stream' => $hide]
-        // ]);
-
-
-        // Default filter from database
-        // $this->query->andFilterWhere(['not', ['iframe_container_url.hide_in_stream' => 1]]);
-
-        return $this;
     }
 }
