@@ -226,7 +226,5 @@ ALTER TABLE `iframe_container_url` DROP `hide_in_stream`;
 
 ## TBD
 
-- On the wall, comments are allways Enabled
 - Config to manage pages
 - Possibility for admin to change comment state for an URL
-- https://github.com/humhub/humhub/issues/4251 : ALTER TABLE `comment` ADD INDEX `index_object` (`object_id`)
