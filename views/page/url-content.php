@@ -33,9 +33,8 @@ else {
 $permalink = $space->createUrl('/iframe/page', $permalinkParams, true);
 ?>
 
-<div id="url-content">
-
-    <div class="col-sm-12 colorFont5">
+<div class="panel panel-default">
+    <div class="panel-body">
         <div class="wall-entry-controls">
             <?= Html::a(
                 ' '.Yii::t('IframeModule.base', 'Permalink'),
@@ -54,9 +53,7 @@ $permalink = $space->createUrl('/iframe/page', $permalinkParams, true);
                 &middot; <i class="fa fa-comment"></i> <?= CommentLink::widget(['object' => $containerUrl]); ?>
             <?php endif ?>
         </div>
-    </div>
 
-    <div class="col-sm-12 comments">
         <?php if ($containerUrl !== null): ?>
             <?= Comments::widget(['object' => $containerUrl]) ?>
         <?php else: ?>
@@ -68,14 +65,13 @@ $permalink = $space->createUrl('/iframe/page', $permalinkParams, true);
             ]) ?>
         <?php endif ?>
     </div>
-
 </div>
 
 <script type="text/javascript">
     // Update browser URL
     window.history.replaceState({},'', '<?= $permalink ?>');
 
-    // For module.js
+    // For humhub.iframe.js
     <?php if ($containerPage['hide_sidebar']) : ?>
         var hideSidebar = true;
     <?php else : ?>

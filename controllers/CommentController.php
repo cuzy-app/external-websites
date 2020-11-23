@@ -17,6 +17,8 @@ use humhub\modules\iframe\models\ContainerUrl;
 
 /**
  * CommentController enables to create the content if not exists
+ * Called by form in `iframe\widgets\views\firestCommentForm.php`
+ * For a container URL not created because not having any comment yet
  */
 class CommentController extends \humhub\modules\comment\controllers\CommentController
 {

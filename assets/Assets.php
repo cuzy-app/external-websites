@@ -19,12 +19,12 @@ class Assets extends AssetBundle
     ];
 
     public $css = [
-        'module.css?v1.3',
+        'humhub.iframe.css',
     ];
     
     public $js = [
     	'iframeResizer.min.js?v=4.2.10', // https://github.com/davidjbradshaw/iframe-resizer/releases
-        'module.js?v=0.2',
+        'humhub.iframe.js',
     ];
 
 }

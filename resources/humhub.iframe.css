@@ -1,27 +1,13 @@
-#iframe-page .panel-body {
-    padding: 30px 10px 20px 10px;
+/* Never hide sidebar (comments) */
+#iframe-page .layout-sidebar-container {
+    display: block !important;
 }
 
-/* Force comments to go to bottom if screen width is < 1600px */
+/* Force comments to go to bottom if screen width is < 1250px */
 @media (max-width:1250px) {
-    #iframe-page .col-sm-3, #iframe-page .col-sm-9 {
+    #iframe-page .layout-sidebar-container, #iframe-page .layout-content-container {
         float: none;
         width: 100%;
-    }
-}
-@media (min-width:1250px) {
-    #iframe-page .col-sm-9 {
-        width: 75%;
-    }
-    #iframe-page .col-sm-3 {
-        width: 25%;
-        min-width: 250px;
-        padding-right: 5px;
-        padding-left: 10px;
-    }
-    #iframe-page #iframe-comments #url-content .col-sm-12 {
-        padding-right: 0px;
-        padding-left: 0px;
     }
 }
 

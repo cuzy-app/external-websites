@@ -19,16 +19,17 @@ humhub\modules\iframe\assets\Assets::register($this);
 
 <div id="iframe-page" class="panel panel-default" data-container-page-id="<?= $containerPage['id'] ?>">
     <div class="panel-body">
-        <div class="col-lg-9 col-md-9 col-sm-9">
-            <iframe id="iframe-container" src="<?= $iframeUrl ?>" onload="loadIFrameResizer()" allowfullscreen></iframe>
-        </div>
-        <div class="col-lg-3 col-md-3 col-sm-3">
-            <div id="iframe-comments"></div>
+        <div class="row">
+            <div class="col-md-9 layout-content-container">
+                <iframe id="iframe-container" src="<?= $iframeUrl ?>" onload="humhub.modules.iframe.loadIFrameResizer()" allowfullscreen></iframe>
+            </div>
+            <div class="col-md-3 layout-sidebar-container" id="iframe-comments">
+            </div>
         </div>
     </div>
 </div>
 
 <script type="text/javascript">
-    // For module.js
+    // For humhub.iframe.js
     var urlContentActionUrl = '<?= Url::to('page/url-content') ?>';
 </script>
