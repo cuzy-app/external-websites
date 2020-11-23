@@ -1,7 +1,7 @@
 Changelog
 =========
 
-V0.14 (November, 23, 2020)
+V0.15 (November, 23, 2020)
 --------------------
 - Enh: Moving files to recommanded Humhub module structure: https://docs.humhub.org/docs/develop/modules/
 
