@@ -3,11 +3,11 @@
     "name": "iFrame",
     "description": "Creates pages containing an iframed website where members can comment",
     "keywords": ["iframe"],
-    "version": "0.14",
+    "version": "0.15",
     "humhub": {
-        "minVersion": "1.5"
+        "minVersion": "1.6"
     },
-    "homepage": "https://cuzy.app",
+    "homepage": "https://gitlab.com/funkycram/humhub-modules-iframe",
     "authors": [
         {
             "name": "Marc Farre",
@@ -16,10 +16,5 @@
         }
     ],
     "screenshots": [
-        "resources/screen_1.png", 
-        "resources/screen_2.png", 
-        "resources/screen_3.png",
-        "resources/screen_4.png",
-        "resources/screen_5.png"
     ]
 }

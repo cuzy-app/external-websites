@@ -33,6 +33,8 @@ $submitUrl = Url::to(['/iframe/comment/post']);
     </div>
     <div id="comment_create_form_<?= $id; ?>" class="comment_create" data-ui-widget="comment.Form">
 
+        <hr style="display: none;">
+
         <?= Html::beginForm('#'); ?>
         <?= Html::hiddenInput('iframeUrl', $iframeUrl); ?>
         <?= Html::hiddenInput('iframeTitle', $iframeTitle); ?>
@@ -78,3 +80,9 @@ $submitUrl = Url::to(['/iframe/comment/post']);
         <?= Html::endForm(); ?>
     </div>
 </div>
+
+<script type="text/javascript">
+    $('#comment_create_form_<?= $id; ?> form').on('submit', function(event) {
+        $(this).parent().children('hr').show();
+    });
+</script>

@@ -1,8 +1,8 @@
 <?php
 /**
  * iFrame module
- * @link https://gitlab.com/funkycram/module-humhub-iframe
- * @license https://www.humhub.com/licences
+ * @link https://gitlab.com/funkycram/humhub-modules-iframe
+ * @license https://gitlab.com/funkycram/humhub-modules-iframe/-/raw/master/docs/LICENCE.md
  * @author [FunkycraM](https://marc.fun)
  */
 
@@ -30,8 +30,7 @@ if ($containerUrl !== null) {
 else {
     $permalinkParams['iframeUrl'] = $iframeUrl;
 }
-$permalink = $space->createUrl('/iframe/page', $permalinkParams);
-//$permalink = Url::to($permalinkParams, true);
+$permalink = $space->createUrl('/iframe/page', $permalinkParams, true);
 ?>
 
 <div id="url-content">

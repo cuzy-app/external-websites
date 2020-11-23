@@ -1,12 +1,12 @@
 <?php
 /**
  * iFrame module
- * @link https://gitlab.com/funkycram/module-humhub-iframe
- * @license https://www.humhub.com/licences
+ * @link https://gitlab.com/funkycram/humhub-modules-iframe
+ * @license https://gitlab.com/funkycram/humhub-modules-iframe/-/raw/master/docs/LICENCE.md
  * @author [FunkycraM](https://marc.fun)
  */
 
-namespace humhub\modules\iframe;
+use humhub\modules\iframe\Events;
 
 return [
     'id' => 'iframe',
@@ -16,17 +16,17 @@ return [
     	[
     		'class' => \humhub\modules\space\widgets\Menu::class,
     		'event' => \humhub\modules\space\widgets\Menu::EVENT_INIT,
-    		'callback' => ['\humhub\modules\iframe\Events', 'onSpaceMenuInit'],
+    		'callback' => [Events::class, 'onSpaceMenuInit'],
     	],
         [
             'class' => \humhub\modules\stream\widgets\WallStreamFilterNavigation::class,
             'event' =>  \humhub\modules\stream\widgets\WallStreamFilterNavigation::EVENT_BEFORE_RUN,
-            'callback' => ['\humhub\modules\iframe\Events', 'onStreamFilterBeforeRun']
+            'callback' => [Events::class, 'onStreamFilterBeforeRun']
         ],
     	[
 		    'class' => \humhub\modules\stream\models\WallStreamQuery::class,
 		    'event' =>  \humhub\modules\stream\models\WallStreamQuery::EVENT_BEFORE_FILTER,
-		    'callback' => ['\humhub\modules\iframe\Events', 'onStreamFilterBeforeFilter'],
+		    'callback' => [Events::class, 'onStreamFilterBeforeFilter'],
 		],
     ]
 ];

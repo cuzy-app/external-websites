@@ -1,8 +1,8 @@
 <?php
 /**
  * iFrame module
- * @link https://gitlab.com/funkycram/module-humhub-iframe
- * @license https://www.humhub.com/licences
+ * @link https://gitlab.com/funkycram/humhub-modules-iframe
+ * @license https://gitlab.com/funkycram/humhub-modules-iframe/-/raw/master/docs/LICENCE.md
  * @author [FunkycraM](https://marc.fun)
  */
 
@@ -42,7 +42,7 @@ class ContainerPage extends \humhub\components\ActiveRecord
             'hide_sidebar' => 'Hide sidebar', // Enterprise theme
             'show_widget' => 'Show Widget',
             'visibility' => 'Content visibility', // Default value for the Content created ; can be humhub\modules\content\models\Content::VISIBILITY_PRIVATE or Content::VISIBILITY_PUBLIC or Content::VISIBILITY_OWNER
-            'archived' => 'Content archived', // Default value for the Content created ; can be 0 or 1 (new comments are disabled) : humhub\modules\content\models\Content->archive(), humhub\modules\content\models\Content->unarchive()
+            'archived' => 'Content archived', // Default value for the Content created ; can be 0 or 1 (if 1, new comments are disabled) : humhub\modules\content\models\Content->archive(), humhub\modules\content\models\Content->unarchive()
             'created_at' => 'Created at',
             'created_by' => 'Created by',
             'updated_at' => 'Updated at',
