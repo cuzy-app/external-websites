@@ -16,6 +16,7 @@ use humhub\modules\stream\actions\ContentContainerStream;
 use humhub\modules\iframe\models\ContainerPage;
 use humhub\modules\iframe\models\ContainerUrl;
 use humhub\modules\content\models\Content;
+use humhub\modules\user\models\Group;
 
 
 class PageController extends \humhub\modules\content\components\ContentContainerController
@@ -23,20 +24,60 @@ class PageController extends \humhub\modules\content\components\ContentContainer
 
     public function beforeAction($action)
     {
-        // Try auto login
-        $module = Yii::$app->getModule('iframe');
-        if ($module->tryAutoLogin && Yii::$app->user->isGuest) {
-            foreach (Yii::$app->authClientCollection->clients as $authclient) {
-                if (isset($authclient->autoLogin) && $authclient->autoLogin) {
-                    // Redirect to Identity Provider
-                    if (method_exists($authclient, 'redirectToBroker')) {
-                        return $authclient->redirectToBroker();
+        if (Yii::$app->user->isGuest) {
+
+            // Try auto login
+            if (Yii::$app->request->get('autoLogin') == true) {
+                // If an auth client has attribute autoLogin set to true, this module will auto log the user to the corresponding Identity provider (SSO)
+                foreach (Yii::$app->authClientCollection->clients as $authclient) {
+                    if (isset($authclient->autoLogin) && $authclient->autoLogin) {
+                        // Redirect to Identity Provider
+                        if (method_exists($authclient, 'redirectToBroker')) {
+                            return $authclient->redirectToBroker();
+                        }
+                    }
+                }
+            }
+        }
+        // If logged in
+        else {
+
+            // Auto add user to space if not member
+            if (Yii::$app->request->get('addToSpaceMembers') == true) {
+                $space = $this->getSpaceFromContainerPageId(Yii::$app->request->get('containerPageId'));
+                if (!$space->isMember(Yii::$app->user->id)) {
+                    $space->addMember(Yii::$app->user->id);
+                }
+            }
+
+            // Auto add group related to space to user if not member
+            if (Yii::$app->request->get('addGroupRelatedToSpace') == true) {
+                if (!isset($space)) {
+                    $space = $this->getSpaceFromContainerPageId(Yii::$app->request->get('containerPageId'));
+                }
+                // Get group related to space
+                $group = Group::findOne(['space_id' => $space->id]);
+                if ($group !== null) {
+                    if (!$group->isMember(Yii::$app->user->identity)) {
+                        $group->addUser(Yii::$app->user->identity);
                     }
                 }
             }
         }
 
         return parent::beforeAction($action);
+    }
+
+
+    protected function getSpaceFromContainerPageId ($containerPageId)
+    {
+        if ($containerPageId !== null) {
+            $containerPage = ContainerPage::findOne($containerPageId);
+            if ($containerPage !== null) {
+                return $containerPage->space;
+            }
+        }
+        return null;
     }
 
 
@@ -59,6 +100,9 @@ class PageController extends \humhub\modules\content\components\ContentContainer
             'space_id' => $this->contentContainer['id'],
             'title' => $title,
         ]);
+        if ($containerPage === null) {
+            throw new HttpException(404);
+        }
 
         // Set start URL
         $iframeUrl = $containerPage['start_url'];
@@ -107,7 +151,10 @@ class PageController extends \humhub\modules\content\components\ContentContainer
         $iframeTitle = BaseStringHelper::truncate($title, 100, '[...]');
 
         // Get container page
-        $containerPage = ContainerPage::findOne(['id' => $containerPageId]);
+        $containerPage = ContainerPage::findOne($containerPageId);
+        if ($containerPage === null) {
+            throw new HttpException(404);
+        }
 
         // Remove unwanted text in title
         $iframeTitle = str_ireplace($containerPage['remove_from_url_title'], '', $iframeTitle);
@@ -134,25 +181,22 @@ class PageController extends \humhub\modules\content\components\ContentContainer
             }
         }
 
-        // Render for iframe
-        if ($iframe) {
-            $this->layout = '@humhub/modules/iframe/views/layouts/iframe';
-            return $this->render('url-content', [
-                'space' => $this->contentContainer,
-                'containerPage' => $containerPage,
-                'containerUrl' => $containerUrl,
-                'iframeUrl' => $iframeUrl,
-                'iframeTitle' => $iframeTitle,
-            ]);
-        }
-
-        // Render ajax
-        return $this->renderAjax('url-content', [
+        $viewParams = [
             'space' => $this->contentContainer,
             'containerPage' => $containerPage,
             'containerUrl' => $containerUrl,
             'iframeUrl' => $iframeUrl,
             'iframeTitle' => $iframeTitle,
-        ]);
+        ];
+
+        // Render for iframe
+        if ($iframe) {
+            $this->layout = '@humhub/modules/iframe/views/layouts/iframe';
+            $this->subLayout = '@humhub/modules/iframe/views/page/_layoutForIframe';
+            return $this->render('url-content', $viewParams);
+        }
+
+        // Render ajax
+        return $this->renderAjax('url-content', $viewParams);
     }
 }

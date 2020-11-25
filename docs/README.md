@@ -51,13 +51,14 @@ Allow Humhub to be embeded in an iframe: edit `proteced/config/web.php` and in t
                     "X-Content-Type-Options" => "nosniff",
                     "Referrer-Policy" => "no-referrer-when-downgrade",
                     "X-Permitted-Cross-Domain-Policies" => "master-only",
-                    "X-Frame-Options" => "",
+                    "X-Frame-Options" => "sameorigin",
                     "Content-Security-Policy" => "default-src *; connect-src  *; font-src 'self'; frame-src https://* http://* *; img-src https://* http://* * data:; object-src 'self'; script-src 'self' https://* http://* * 'unsafe-inline' 'report-sample'; style-src * https://* http://* * 'unsafe-inline'; frame-ancestors 'self' https://my-external-website.com;"
                 ]
             ]
         ],
 ```
 And replace `https://my-external-website.com` with your website URL
+If doesn't work, replace `"X-Frame-Options" => "sameorigin",` with `"X-Frame-Options" => "",`
 
 
 ## Special features

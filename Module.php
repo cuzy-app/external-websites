@@ -33,12 +33,6 @@ class Module extends ContentContainerModule
 
 
     /**
-     * If an auth client has attribute autoLogin set to true, this module will auto log the user to the corresponding Identity provider (SSO)
-     */
-    public $tryAutoLogin = true;
-
-
-    /**
      * @inheritdoc
      */
     public function getContentContainerTypes()

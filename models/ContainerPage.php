@@ -9,6 +9,7 @@
 namespace humhub\modules\iframe\models;
 
 use Yii;
+use humhub\modules\space\models\Space;
 
 
 class ContainerPage extends \humhub\components\ActiveRecord
@@ -67,6 +68,12 @@ class ContainerPage extends \humhub\components\ActiveRecord
     {
         return $this
             ->hasMany(ContainerUrl::class, ['container_page_id' => 'id']);
+    }
+
+    public function getSpace()
+    {
+        return $this
+            ->hasOne(Space::class, ['id' => 'space_id']);
     }
 
 
