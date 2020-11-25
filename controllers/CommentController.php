@@ -15,6 +15,7 @@ use humhub\modules\space\models\Space;
 use humhub\modules\iframe\models\ContainerPage;
 use humhub\modules\iframe\models\ContainerUrl;
 
+
 /**
  * CommentController enables to create the content if not exists
  * Called by form in `iframe\widgets\views\firestCommentForm.php`
@@ -62,7 +63,7 @@ class CommentController extends \humhub\modules\comment\controllers\CommentContr
         }
 
         $this->target = $containerUrl;
-        $this->content = $this->target->content;
+        // $this->content = $this->target->content;
 
         return Controller::beforeAction($action);
     }

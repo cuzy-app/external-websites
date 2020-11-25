@@ -31,6 +31,11 @@ else {
     $permalinkParams['iframeUrl'] = $iframeUrl;
 }
 $permalink = $space->createUrl('/iframe/page', $permalinkParams, true);
+
+$this->registerJsConfig('iframe', [
+    'hideSidebar' => $containerPage['hide_sidebar'],
+    'permalink' => $permalink,
+]);
 ?>
 
 <div class="panel panel-default">
@@ -66,15 +71,3 @@ $permalink = $space->createUrl('/iframe/page', $permalinkParams, true);
         <?php endif ?>
     </div>
 </div>
-
-<script type="text/javascript">
-    // Update browser URL
-    window.history.replaceState({},'', '<?= $permalink ?>');
-
-    // For humhub.iframe.js
-    <?php if ($containerPage['hide_sidebar']) : ?>
-        var hideSidebar = true;
-    <?php else : ?>
-        var hideSidebar = false;
-    <?php endif; ?>
-</script>

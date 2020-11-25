@@ -11,6 +11,8 @@ Uses [iFrame Resizer](https://github.com/davidjbradshaw/iframe-resizer).
 
 ## Usage
 
+### Embed external site in iframe
+
 Copy the files in the folder [for-iframed-website](https://gitlab.com/funkycram/humhub-modules-iframe/-/tree/master/docs/install/for-iframed-website) on the server hosting the website contained within your iFrame. Or, download them with this command line :
 ```
 wget https://gitlab.com/funkycram/humhub-modules-iframe/-/raw/master/docs/install/for-iframed-website/iframeResizer.contentWindow.min.js
@@ -33,6 +35,29 @@ INSERT INTO `iframe_container_page` (`space_id`, `title`, `icon`, `start_url`, `
 ```
 
 See `models/ContainerPage.php` -> `attributeLabels()` for more infos
+
+
+### Embed Humhub comments in an external site
+
+You must have something to auto log (and auto register if no account) the user.
+
+Allow Humhub to be embeded in an iframe: edit `proteced/config/web.php` and in the `modules` section, add:
+```
+        'web' => [
+            'security' =>  [
+                "headers" => [
+                    "Strict-Transport-Security" => "max-age=31536000",
+                    "X-XSS-Protection" => "1; mode=block",
+                    "X-Content-Type-Options" => "nosniff",
+                    "Referrer-Policy" => "no-referrer-when-downgrade",
+                    "X-Permitted-Cross-Domain-Policies" => "master-only",
+                    "X-Frame-Options" => "",
+                    "Content-Security-Policy" => "default-src *; connect-src  *; font-src 'self'; frame-src https://* http://* *; img-src https://* http://* * data:; object-src 'self'; script-src 'self' https://* http://* * 'unsafe-inline' 'report-sample'; style-src * https://* http://* * 'unsafe-inline'; frame-ancestors 'self' https://my-external-website.com;"
+                ]
+            ]
+        ],
+```
+And replace `https://my-external-website.com` with your website URL
 
 
 ## Special features

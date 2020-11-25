@@ -33,6 +33,12 @@ class Module extends ContentContainerModule
 
 
     /**
+     * If an auth client has attribute autoLogin set to true, this module will auto log the user to the corresponding Identity provider (SSO)
+     */
+    public $tryAutoLogin = true;
+
+
+    /**
      * @inheritdoc
      */
     public function getContentContainerTypes()
@@ -51,16 +57,31 @@ class Module extends ContentContainerModule
         return [];
     }
 
-    public function disable()
-    {
-        return parent::disable();
-        // what needs to be done if module is completely disabled?
-    }
 
+    /**
+     * @inheritdoc
+     */
     public function enable()
     {
         return parent::enable();
-        // what needs to be done if module is enabled?
+    }
+
+
+    /**
+     * @inheritdoc
+     */
+    public function disable()
+    {
+        foreach (ContainerUrl::find()->all() as $containerUrl) {
+            $containerUrl->delete();
+        }
+
+        foreach (ContainerPage::find()->all() as $containerPage)
+        {
+            $containerPage->delete();
+        }
+
+        return parent::disable();
     }
 
 
@@ -79,6 +100,10 @@ class Module extends ContentContainerModule
     public function disableContentContainer(ContentContainerActiveRecord $container)
     {
         parent::disableContentContainer($container);
+
+        foreach (ContainerUrl::find()->contentContainer($container)->all() as $containerUrl) {
+            $containerUrl->delete();
+        }
 
         foreach (ContainerPage::findAll(['space_id' => $container['id']]) as $containerPage)
         {

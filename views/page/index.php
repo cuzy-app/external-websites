@@ -15,6 +15,9 @@ use yii\helpers\Html;
  */
 
 humhub\modules\iframe\assets\Assets::register($this);
+$this->registerJsConfig('iframe', [
+    'urlContentActionUrl' => Url::to('page/url-content')
+]);
 ?>
 
 <div id="iframe-page" class="panel panel-default" data-container-page-id="<?= $containerPage['id'] ?>">
@@ -28,8 +31,3 @@ humhub\modules\iframe\assets\Assets::register($this);
         </div>
     </div>
 </div>
-
-<script type="text/javascript">
-    // For humhub.iframe.js
-    var urlContentActionUrl = '<?= Url::to('page/url-content') ?>';
-</script>

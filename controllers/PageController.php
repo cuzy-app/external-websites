@@ -9,6 +9,8 @@
 namespace humhub\modules\iframe\controllers;
 
 use Yii;
+use yii\helpers\Url;
+use yii\web\HttpException;
 use yii\helpers\BaseStringHelper;
 use humhub\modules\stream\actions\ContentContainerStream;
 use humhub\modules\iframe\models\ContainerPage;
@@ -19,12 +21,24 @@ use humhub\modules\content\models\Content;
 class PageController extends \humhub\modules\content\components\ContentContainerController
 {
 
-    const MAX_COMMENTS = 20;
+    public function beforeAction($action)
+    {
+        // Try auto login
+        $module = Yii::$app->getModule('iframe');
+        if ($module->tryAutoLogin && Yii::$app->user->isGuest) {
+            foreach (Yii::$app->authClientCollection->clients as $authclient) {
+                if (isset($authclient->autoLogin) && $authclient->autoLogin) {
+                    // Redirect to Identity Provider
+                    if (method_exists($authclient, 'redirectToBroker')) {
+                        return $authclient->redirectToBroker();
+                    }
+                }
+            }
+        }
 
-    /**
-     * @inheritdoc
-     */
-    public $hideSidebar = true;
+        return parent::beforeAction($action);
+    }
+
 
     public function actions()
     {
@@ -50,8 +64,9 @@ class PageController extends \humhub\modules\content\components\ContentContainer
         $iframeUrl = $containerPage['start_url'];
 
         // If urlId is in the URL
-        if (($urlId = Yii::$app->request->get('urlId')) !== null) {
-            $containerUrl = ContainerUrl::findOne(['id' => $_GET['urlId']]);
+        $urlId = Yii::$app->request->get('urlId');
+        if ($urlId !== null) {
+            $containerUrl = ContainerUrl::findOne($urlId);
             if ($containerUrl !== null) {
                 $iframeUrl = $containerUrl['url'];
             }
@@ -72,17 +87,24 @@ class PageController extends \humhub\modules\content\components\ContentContainer
      * Called by ajax
      */
     public function actionUrlContent () {
-        // Get iframe URL
-        if (
-            !isset($_POST['containerPageId'])
-            || !isset($_POST['iframeMessage'])
-        ) {
-            return;
+        $containerPageId = Yii::$app->request->post('containerPageId', Yii::$app->request->get('containerPageId'));
+        $iframeMessage = Yii::$app->request->post('iframeMessage', Yii::$app->request->get('iframeMessage'));
+        if (!empty($iframeMessage)) {
+            $url = $iframeMessage['url'];
+            $title = $iframeMessage['title'];
         }
-        $containerPageId = $_POST['containerPageId'];
-        $iframeMessage = $_POST['iframeMessage'];
-        $iframeUrl = rtrim(strtok($iframeMessage['url'], "#"),"/"); // remove anchor (#hash) from URL and / at the end
-        $iframeTitle = BaseStringHelper::truncate($iframeMessage['title'], 100, '[...]');
+        else {
+            $url = Yii::$app->request->get('url');
+            $title = Yii::$app->request->get('title');
+        }
+
+        // Get iframe URL
+        if (empty($containerPageId) || empty($url)) {
+            throw new HttpException('401', 'Invalid param!');
+        }
+        
+        $iframeUrl = rtrim(strtok($url, "#"),"/"); // remove anchor (#hash) from URL and / at the end
+        $iframeTitle = BaseStringHelper::truncate($title, 100, '[...]');
 
         // Get container page
         $containerPage = ContainerPage::findOne(['id' => $containerPageId]);

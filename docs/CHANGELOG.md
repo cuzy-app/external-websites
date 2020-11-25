@@ -1,6 +1,12 @@
 Changelog
 =========
 
+V0.16 (November, 25, 2020)
+--------------------
+- Chg: Changed `FirstCommentForm` widget to new Hummhub 1.7 specifications
+- Enh: Added auto login with SSO
+
+
 V0.15 (November, 23, 2020)
 --------------------
 - Enh: Moving files to recommanded Humhub module structure: https://docs.humhub.org/docs/develop/modules/

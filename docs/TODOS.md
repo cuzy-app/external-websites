@@ -1,6 +1,7 @@
 TODOS 
 =====
 
+- New wall stream view for Humhub 1.7
 - Config to manage pages
 - Possibility for admin to change comment state for an URL
 

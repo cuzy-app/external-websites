@@ -5,7 +5,7 @@
     "keywords": ["iframe"],
     "version": "0.15",
     "humhub": {
-        "minVersion": "1.6"
+        "minVersion": "1.7"
     },
     "homepage": "https://gitlab.com/funkycram/humhub-modules-iframe",
     "authors": [

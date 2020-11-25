@@ -23,10 +23,7 @@ class Events
     public static function onSpaceMenuInit($event)
     {
         // Get current page URL if exists
-        $currentPageTitle = null;
-        if (isset($_GET['title'])) {
-            $currentPageTitle = urldecode($_GET['title']);
-        }
+        $currentPageTitle = Yii::$app->request->get('title');
 
         $space = $event->sender->space;
 

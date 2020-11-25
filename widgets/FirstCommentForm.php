@@ -9,12 +9,16 @@
 namespace humhub\modules\iframe\widgets;
 
 use Yii;
+use humhub\modules\comment\models\Comment as CommentModel;
 use humhub\modules\comment\permissions\CreateComment;
+use humhub\modules\iframe\models\ContainerUrl;
+
 
 /**
  * This widget is used to create a new comment form when content is not created
+ * 
  */
-class FirstCommentForm extends \humhub\components\Widget
+class FirstCommentForm extends \humhub\modules\comment\widgets\Form
 {
     /**
      * humhub\modules\space\models\Space
@@ -36,6 +40,7 @@ class FirstCommentForm extends \humhub\components\Widget
      */
     public $iframeTitle;
 
+
     /**
      * Executes the widget.
      */
@@ -45,12 +50,17 @@ class FirstCommentForm extends \humhub\components\Widget
             return '';
         }
 
-        /** @var Module $module */
+        // As content is not yet created, check permission with space (future content container)
         if (!$this->space->permissionManager->can(new CreateComment)) {
             return '';
         }
 
+        $this->model = new CommentModel();
+
         return $this->render('firstCommentForm', [
+            'objectModel' => ContainerUrl::class,
+            'model' => $this->model,
+            'isNestedComment' => ($this->object instanceof CommentModel),
             'id' => 'first_comment',
             'containerPageId' => $this->containerPageId,
             'iframeUrl' => $this->iframeUrl,
