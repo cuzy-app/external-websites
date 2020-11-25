@@ -84,9 +84,9 @@ class PageController extends \humhub\modules\content\components\ContentContainer
 
 
     /**
-     * Called by ajax
+     * Called by ajax or in an iframe
      */
-    public function actionUrlContent () {
+    public function actionUrlContent ($iframe = false) {
         $containerPageId = Yii::$app->request->post('containerPageId', Yii::$app->request->get('containerPageId'));
         $iframeMessage = Yii::$app->request->post('iframeMessage', Yii::$app->request->get('iframeMessage'));
         if (!empty($iframeMessage)) {
@@ -132,6 +132,18 @@ class PageController extends \humhub\modules\content\components\ContentContainer
                     $containerUrl->save();
                 }
             }
+        }
+
+        // Render for iframe
+        if ($iframe) {
+            $this->layout = '@humhub/modules/iframe/views/layouts/iframe';
+            return $this->render('url-content', [
+                'space' => $this->contentContainer,
+                'containerPage' => $containerPage,
+                'containerUrl' => $containerUrl,
+                'iframeUrl' => $iframeUrl,
+                'iframeTitle' => $iframeTitle,
+            ]);
         }
 
         // Render ajax
