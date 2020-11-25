@@ -52,13 +52,24 @@ Allow Humhub to be embeded in an iframe: edit `proteced/config/web.php` and in t
                     "Referrer-Policy" => "no-referrer-when-downgrade",
                     "X-Permitted-Cross-Domain-Policies" => "master-only",
                     "X-Frame-Options" => "sameorigin",
-                    "Content-Security-Policy" => "default-src *; connect-src  *; font-src 'self'; frame-src https://* http://* *; img-src https://* http://* * data:; object-src 'self'; script-src 'self' https://* http://* * 'unsafe-inline' 'report-sample'; style-src * https://* http://* * 'unsafe-inline'; frame-ancestors 'self' https://my-external-website.com;"
+                    "Content-Security-Policy" => "default-src *; connect-src  *; font-src 'self'; frame-src https://* http://* *; img-src https://* http://* * data:; object-src 'self'; script-src 'self' https://* http://* * 'unsafe-inline' 'report-sample'; style-src * https://* http://* * 'unsafe-inline'; frame-ancestors 'self' https://my-external-website.tdl;"
                 ]
             ]
         ],
 ```
-And replace `https://my-external-website.com` with your website URL
+And replace `https://my-external-website.tdl` with your website URL
 If doesn't work, replace `"X-Frame-Options" => "sameorigin",` with `"X-Frame-Options" => "",`
+
+
+Code for the website integrating Humhub comments:
+```
+<?php 
+$containerPageId = 1;
+$currentPageUrl = 'http://my-website-integrating-humhub-comments.tdl/my-page.php';
+$currentPageTitle = 'Page title';
+?>
+<iframe src="http://y-humhub.tdl/s/my-space/iframe/page/url-content?containerPageId=<?= $containerPageId ?>&url=<?= urlencode($currentPageUrl) ?>&title=<?= urlencode($currentPageTitle) ?>&iframe=true&autoLogin=true&addToSpaceMembers=true&addGroupRelatedToSpace=true"></iframe>
+```
 
 
 ## Special features
