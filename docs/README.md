@@ -84,14 +84,14 @@ And replace `https://my-external-website.tdl` with your website URL
 If doesn't work, replace `"X-Frame-Options" => "sameorigin",` with `"X-Frame-Options" => "",`
 
 
-Code for the website integrating Humhub comments:
+Code for the website integrating Humhub comments (do not replace params values `0` or `1` with `true` or `false`) :
 ```
 <?php 
-$websiteId = 1;
+$humhubWebsiteId = 1;
 $currentPageUrl = 'http://my-website-integrating-humhub-comments.tdl/my-page.php';
 $currentPageTitle = 'Page title';
 ?>
-<iframe src="http://y-humhub.tdl/s/my-space/external-websites/page?containerPageId=<?= $containerPageId ?>&url=<?= urlencode($currentPageUrl) ?>&title=<?= urlencode($currentPageTitle) ?>&humhubIsHost=false&autoLogin=true&addToSpaceMembers=true&addGroupRelatedToSpace=true"></iframe>
+<iframe src="http://y-humhub.tdl/s/my-space/external-websites/page?websiteId=<?= $humhubWebsiteId ?>&pageUrl=<?= urlencode($currentPageUrl) ?>&pageTitle=<?= urlencode($currentPageTitle) ?>&humhubIsHost=0&autoLogin=1&addToSpaceMembers=1&addGroupRelatedToSpace=1"></iframe>
 ```
 
 

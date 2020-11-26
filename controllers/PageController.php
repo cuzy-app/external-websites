@@ -25,12 +25,16 @@ use humhub\modules\user\models\Group;
 class PageController extends \humhub\modules\content\components\ContentContainerController
 {
 
+    /**
+     * @inheritDoc
+     * If Humhub is guest, the user may not be still logged in
+     */
     public function beforeAction($action)
     {
         if (Yii::$app->user->isGuest) {
 
             // Try auto login
-            if (Yii::$app->request->get('autoLogin') == true) {
+            if (Yii::$app->request->get('autoLogin')) {
                 // If an auth client has attribute autoLogin set to true, this module will auto log the user to the corresponding Identity provider (SSO)
                 foreach (Yii::$app->authClientCollection->clients as $authclient) {
                     if (isset($authclient->autoLogin) && $authclient->autoLogin) {
@@ -45,19 +49,18 @@ class PageController extends \humhub\modules\content\components\ContentContainer
         // If logged in
         else {
 
+            $space = $this->contentContainer;
+
             // Auto add user to space if not member
-            if (Yii::$app->request->get('addToSpaceMembers') == true) {
-                $space = $this->getSpaceFromWebsiteId(Yii::$app->request->get('websiteId'));
-                if (!$space->isMember(Yii::$app->user->id)) {
-                    $space->addMember(Yii::$app->user->id);
-                }
+            if (
+                Yii::$app->request->get('addToSpaceMembers')
+                && !$space->isMember(Yii::$app->user->id)
+            ) {
+                $space->addMember(Yii::$app->user->id);
             }
 
             // Auto add group related to space to user if not member
-            if (Yii::$app->request->get('addGroupRelatedToSpace') == true) {
-                if (!isset($space)) {
-                    $space = $this->getSpaceFromWebsiteId(Yii::$app->request->get('websiteId'));
-                }
+            if (Yii::$app->request->get('addGroupRelatedToSpace')) {
                 // Get group related to space
                 $group = Group::findOne(['space_id' => $space->id]);
                 if ($group !== null) {
@@ -69,18 +72,6 @@ class PageController extends \humhub\modules\content\components\ContentContainer
         }
 
         return parent::beforeAction($action);
-    }
-
-
-    protected function getSpaceFromWebsiteId ($websiteId)
-    {
-        if ($websiteId !== null) {
-            $website = Website::findOne($websiteId);
-            if ($website !== null) {
-                return $website->space;
-            }
-        }
-        return null;
     }
 
 
@@ -99,6 +90,7 @@ class PageController extends \humhub\modules\content\components\ContentContainer
 
     /**
      * Called by ajax (if Humhub is host) or iframe (if Humhub is guest)
+     * If Humhub is guest, see README.md for complete URL to provide in the iframe scr
      * @param $humhubIsHost boolean
      */
     public function actionIndex ($humhubIsHost = true) {
@@ -107,19 +99,21 @@ class PageController extends \humhub\modules\content\components\ContentContainer
 
         // Get page URL and Title (if from ajax, in $iframeMessage array)
         if ($humhubIsHost) {
+            $humhubIsHost = true; // Value is 1 because of GET
             $iframeMessage = Yii::$app->request->post('iframeMessage');
             if (!empty($iframeMessage)) {
-                $pageUrl = $iframeMessage['url'];
-                $pageTitle = $iframeMessage['title'];
+                $pageUrl = $iframeMessage['pageUrl'];
+                $pageTitle = $iframeMessage['pageTitle'];
             }
         }
         else {
-            $pageUrl = Yii::$app->request->get('url');
-            $pageTitle = Yii::$app->request->get('title');
+            $humhubIsHost = false; // Value is 0 because of GET
+            $pageUrl = Yii::$app->request->get('pageUrl');
+            $pageTitle = Yii::$app->request->get('pageTitle');
         }
 
-        if (empty($websiteId) || empty($url)) {
-            throw new HttpException('401', 'Invalid param!');
+        if (empty($websiteId) || empty($pageUrl)) {
+            throw new HttpException('403', 'Invalid param websiteId or pageUrl!');
         }
         
         // Get website
@@ -165,7 +159,7 @@ class PageController extends \humhub\modules\content\components\ContentContainer
         else {
             $permalinkParams['pageUrl'] = $pageUrl;
         }
-        $permalink = $space->createUrl('/external-websites/page', $permalinkParams, true);
+        $permalink = $this->contentContainer->createUrl('/external-websites/page', $permalinkParams, true);
 
         // Create view params
         $viewParams = [
@@ -184,8 +178,8 @@ class PageController extends \humhub\modules\content\components\ContentContainer
         }
 
         // Render for iframe (Humhub is guest)
-        $this->layout = '@humhub/modules/external-websites/views/layouts/iframe';
-        $this->subLayout = '@humhub/modules/external-websites/views/page/_layoutForIframe';
+        $this->layout = '@external-websites/views/layouts/iframe';
+        $this->subLayout = '@external-websites/views/page/_layoutForIframe';
         return $this->render('index', $viewParams);
     }
 }
