@@ -16,7 +16,7 @@ use yii\helpers\Html;
 
 humhub\modules\externalWebsites\assets\HostAssets::register($this);
 $this->registerJsConfig('externalWebsites.Host', [
-    'urlContentActionUrl' => Url::to('page/url-content')
+    'urlContentActionUrl' => Url::to('page/index')
 ]);
 ?>
 

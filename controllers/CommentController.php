@@ -11,6 +11,7 @@ namespace humhub\modules\externalWebsites\controllers;
 use Yii;
 use yii\web\HttpException;
 use humhub\components\Controller;
+use humhub\modules\comment\controllers\CommentController as ParentCommentController;
 use humhub\modules\space\models\Space;
 use humhub\modules\externalWebsites\models\Website;
 use humhub\modules\externalWebsites\models\Page;
@@ -21,7 +22,7 @@ use humhub\modules\externalWebsites\models\Page;
  * Called by form in `external-websites\widgets\views\firestCommentForm.php`
  * For a page not created because not having any comment yet
  */
-class CommentController extends \humhub\modules\comment\controllers\CommentController
+class CommentController extends ParentCommentController
 {
 
     /**

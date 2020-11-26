@@ -110,6 +110,12 @@ class Page extends ContentActiveRecord implements Searchable
         return $this['title'];
     }
 
+    public function getUrl()
+    {
+        $website = $this->website;
+        return $website->space->createUrl('/external-websites/page?title='.urlencode($website['title']).'&pageId='.$this['id']);
+    }
+
     /**
      * @inheritdoc
      */

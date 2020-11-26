@@ -4,6 +4,7 @@ Changelog
 V0.20 (November, 25, 2020)
 --------------------
 - Chg: Module renamed
+- Chg: script in the external website if guest (integrated in iframe): `url` is now `pageUrl` and `title` is now `pageTitle`
 - Chg: Changed name of the tables, files, models, controller and view
 - Chg: Changed `FirstCommentForm` widget to new Hummhub 1.7 specifications
 - Enh: Added auto login with SSO

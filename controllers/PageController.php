@@ -12,6 +12,7 @@ use Yii;
 use yii\helpers\Url;
 use yii\web\HttpException;
 use yii\helpers\BaseStringHelper;
+use humhub\modules\content\components\ContentContainerController;
 use humhub\modules\stream\actions\ContentContainerStream;
 use humhub\modules\externalWebsites\models\Website;
 use humhub\modules\externalWebsites\models\Page;
@@ -22,7 +23,7 @@ use humhub\modules\user\models\Group;
 /**
  * Called by ajax (if Humhub is host) or iframe (if Humhub is guest)
  */
-class PageController extends \humhub\modules\content\components\ContentContainerController
+class PageController extends ContentContainerController
 {
 
     /**
@@ -31,6 +32,7 @@ class PageController extends \humhub\modules\content\components\ContentContainer
      */
     public function beforeAction($action)
     {
+
         if (Yii::$app->user->isGuest) {
 
             // Try auto login
@@ -150,16 +152,18 @@ class PageController extends \humhub\modules\content\components\ContentContainer
         }
 
         // Create permalink
-        $permalinkParams = [
-            'title' => $website['title'],
-        ];
         if ($page !== null) {
-            $permalinkParams['pageId'] = $page['id'];
+            $permalink = $page->url;
         }
         else {
-            $permalinkParams['pageUrl'] = $pageUrl;
+            $permalink = $this->contentContainer->createUrl(
+                '/external-websites/page',
+                [
+                    'title' => $website['title'],
+                    'pageUrl' => $pageUrl,
+                ]
+            );
         }
-        $permalink = $this->contentContainer->createUrl('/external-websites/page', $permalinkParams, true);
 
         // Create view params
         $viewParams = [

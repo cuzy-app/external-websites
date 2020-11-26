@@ -86,6 +86,11 @@ class Website extends \humhub\components\ActiveRecord
             ->hasOne(Space::class, ['id' => 'space_id']);
     }
 
+    public function getUrl()
+    {
+        return $this->space->createUrl('/external-websites/website', ['title' => $this['title']]);
+    }
+
 
     public function beforeDelete()
     {

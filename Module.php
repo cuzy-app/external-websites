@@ -9,7 +9,6 @@
 namespace humhub\modules\externalWebsites;
 
 use Yii;
-use yii\helpers\Url;
 use humhub\modules\content\components\ContentContainerModule;
 use humhub\modules\content\components\ContentContainerActiveRecord;
 use humhub\modules\space\models\Space;

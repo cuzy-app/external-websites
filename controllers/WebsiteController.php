@@ -12,6 +12,7 @@ use Yii;
 use yii\helpers\Url;
 use yii\web\HttpException;
 use yii\helpers\BaseStringHelper;
+use humhub\modules\content\components\ContentContainerController;
 use humhub\modules\stream\actions\ContentContainerStream;
 use humhub\modules\externalWebsites\models\Website;
 use humhub\modules\externalWebsites\models\Page;
@@ -23,7 +24,7 @@ use humhub\modules\user\models\Group;
  * When Humhub is host
  * Show external website pages in an iframe and pages contents addons beside
  */
-class WebsiteController extends \humhub\modules\content\components\ContentContainerController
+class WebsiteController extends ContentContainerController
 {
     public function actionIndex ($title)
     {

@@ -40,7 +40,7 @@ class Events
                 $event->sender->addItem([
                     'label' => $website['title'],
                     'group' => 'modules',
-                    'url' => $space->createUrl('/external-websites/page', ['title' => $website['title']]),
+                    'url' => $website->url,
                     'icon' => '<i class="fa '.$website['icon'].'"></i>',
                     'isActive' => (
                         Yii::$app->controller->module

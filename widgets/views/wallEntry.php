@@ -20,21 +20,18 @@ use yii\helpers\Url;
 	<p>
 		<?= Html::a(
 			$page->website['title'],
-			$space->createUrl('/external-websites/page?title='.urlencode($page->website['title'])),
-			[]
+			$page->website->url
 		) ?>
 		<i class="fa fa-angle-double-right"></i>
 		<?= Html::a(
 			$page['title'],
-			$space->createUrl('/external-websites/page?title='.urlencode($page->website['title']).'&pageId='.$page['id']),
-			[]
+			$page->url
 		) ?>
 	</p>
 	<p>
 		<strong><?= Html::a(
 			Yii::t('ExternalWebsitesModule.base', 'Show the page'),
-			$space->createUrl('/external-websites/page?title='.urlencode($page->website['title']).'&pageId='.$page['id']),
-			[]
+			$page->url
 		) ?></strong>
 	</p>
 </div>

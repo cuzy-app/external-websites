@@ -47,8 +47,8 @@ And add this code just before `</body>` in all pages :
             if ('parentIFrame' in window) {
                 document.getElementsByTagName("html")[0].classList.add("in-iframe");
                 window.parentIFrame.sendMessage({
-                    url: location.href.replace(location.hash,""),
-                    title: document.getElementsByTagName("title")[0].innerText
+                    pageUrl: location.href.replace(location.hash,""),
+                    pageTitle: document.getElementsByTagName("title")[0].innerText
                 });
             }
         }
