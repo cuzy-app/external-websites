@@ -1,8 +1,8 @@
 <?php
 /**
- * iFrame module
- * @link https://gitlab.com/funkycram/humhub-modules-iframe
- * @license https://gitlab.com/funkycram/humhub-modules-iframe/-/raw/master/docs/LICENCE.md
+ * External Websites
+ * @link https://gitlab.com/funkycram/humhub-modules-external-websites
+ * @license https://gitlab.com/funkycram/humhub-modules-external-websites/-/raw/master/docs/LICENCE.md
  * @author [FunkycraM](https://marc.fun)
  */
 
@@ -11,7 +11,7 @@ use yii\helpers\Url;
 
 /**
  * @var $space humhub\modules\jdn\models\Space
- * @var $containerUrl humhub\modules\iframe\models\ContainerUrl
+ * @var $page humhub\modules\externalWebsites\models\Page
  */
 ?>
 
@@ -19,21 +19,21 @@ use yii\helpers\Url;
 <div>
 	<p>
 		<?= Html::a(
-			$containerUrl->containerPage['title'],
-			$space->createUrl('/iframe/page?title='.urlencode($containerUrl->containerPage['title'])),
+			$page->website['title'],
+			$space->createUrl('/external-websites/page?title='.urlencode($page->website['title'])),
 			[]
 		) ?>
 		<i class="fa fa-angle-double-right"></i>
 		<?= Html::a(
-			$containerUrl['title'],
-			$space->createUrl('/iframe/page?title='.urlencode($containerUrl->containerPage['title']).'&urlId='.$containerUrl['id']),
+			$page['title'],
+			$space->createUrl('/external-websites/page?title='.urlencode($page->website['title']).'&pageId='.$page['id']),
 			[]
 		) ?>
 	</p>
 	<p>
 		<strong><?= Html::a(
-			Yii::t('IframeModule.base', 'Show the page'),
-			$space->createUrl('/iframe/page?title='.urlencode($containerUrl->containerPage['title']).'&urlId='.$containerUrl['id']),
+			Yii::t('ExternalWebsitesModule.base', 'Show the page'),
+			$space->createUrl('/external-websites/page?title='.urlencode($page->website['title']).'&pageId='.$page['id']),
 			[]
 		) ?></strong>
 	</p>

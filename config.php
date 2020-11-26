@@ -1,17 +1,17 @@
 <?php
 /**
- * iFrame module
- * @link https://gitlab.com/funkycram/humhub-modules-iframe
- * @license https://gitlab.com/funkycram/humhub-modules-iframe/-/raw/master/docs/LICENCE.md
+ * External Websites
+ * @link https://gitlab.com/funkycram/humhub-modules-external-websites
+ * @license https://gitlab.com/funkycram/humhub-modules-external-websites/-/raw/master/docs/LICENCE.md
  * @author [FunkycraM](https://marc.fun)
  */
 
-use humhub\modules\iframe\Events;
+use humhub\modules\externalWebsites\Events;
 
 return [
-    'id' => 'iframe',
-    'class' => 'humhub\modules\iframe\Module',
-    'namespace' => 'humhub\modules\iframe',
+    'id' => 'external-websites',
+    'class' => 'humhub\modules\externalWebsites\Module',
+    'namespace' => 'humhub\modules\externalWebsites',
     'events' => [
     	[
     		'class' => \humhub\modules\space\widgets\Menu::class,

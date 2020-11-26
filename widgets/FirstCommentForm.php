@@ -1,17 +1,17 @@
 <?php
 /**
- * iFrame module
- * @link https://gitlab.com/funkycram/humhub-modules-iframe
- * @license https://gitlab.com/funkycram/humhub-modules-iframe/-/raw/master/docs/LICENCE.md
+ * External Websites
+ * @link https://gitlab.com/funkycram/humhub-modules-external-websites
+ * @license https://gitlab.com/funkycram/humhub-modules-external-websites/-/raw/master/docs/LICENCE.md
  * @author [FunkycraM](https://marc.fun)
  */
 
-namespace humhub\modules\iframe\widgets;
+namespace humhub\modules\externalWebsites\widgets;
 
 use Yii;
 use humhub\modules\comment\models\Comment as CommentModel;
 use humhub\modules\comment\permissions\CreateComment;
-use humhub\modules\iframe\models\ContainerUrl;
+use humhub\modules\externalWebsites\models\Page;
 
 
 /**
@@ -26,19 +26,19 @@ class FirstCommentForm extends \humhub\modules\comment\widgets\Form
     public $space;
 
     /**
-     * object ContainerPage id
+     * object Website id
      */
-    public $containerPageId;
+    public $websiteId;
 
     /**
-     * page URL in the iframe
+     * page URL
      */
-    public $iframeUrl;
+    public $pageUrl;
 
     /**
-     * page Title in the iframe
+     * page Title
      */
-    public $iframeTitle;
+    public $pageTitle;
 
 
     /**
@@ -58,13 +58,13 @@ class FirstCommentForm extends \humhub\modules\comment\widgets\Form
         $this->model = new CommentModel();
 
         return $this->render('firstCommentForm', [
-            'objectModel' => ContainerUrl::class,
+            'objectModel' => Page::class,
             'model' => $this->model,
             'isNestedComment' => ($this->object instanceof CommentModel),
             'id' => 'first_comment',
-            'containerPageId' => $this->containerPageId,
-            'iframeUrl' => $this->iframeUrl,
-            'iframeTitle' => $this->iframeTitle,
+            'websiteId' => $this->websiteId,
+            'pageUrl' => $this->pageUrl,
+            'pageTitle' => $this->pageTitle,
         ]);
     }
 

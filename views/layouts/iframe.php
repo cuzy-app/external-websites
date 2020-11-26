@@ -19,7 +19,7 @@ AppAsset::register($this);
     <meta charset="<?= Yii::$app->charset ?>">
 </head>
 
-<body class="iframe-container" style="padding: 0 !important;">
+<body class="ew-page-container" style="padding: 0 !important;">
 	<?php $this->beginBody() ?>
 	<?= $content; ?>
 	<?php $this->endBody() ?>

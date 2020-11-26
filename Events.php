@@ -1,23 +1,23 @@
 <?php
 /**
- * iFrame module
- * @link https://gitlab.com/funkycram/humhub-modules-iframe
- * @license https://gitlab.com/funkycram/humhub-modules-iframe/-/raw/master/docs/LICENCE.md
+ * External Websites
+ * @link https://gitlab.com/funkycram/humhub-modules-external-websites
+ * @license https://gitlab.com/funkycram/humhub-modules-external-websites/-/raw/master/docs/LICENCE.md
  * @author [FunkycraM](https://marc.fun)
  */
 
-namespace humhub\modules\iframe;
+namespace humhub\modules\externalWebsites;
 
 use Yii;
-use humhub\modules\iframe\models\ContainerPage;
-use humhub\modules\iframe\models\filters\IframeSpaceStreamFilter;
+use humhub\modules\externalWebsites\models\Website;
+use humhub\modules\externalWebsites\models\filters\ExternalWebsitesSpaceStreamFilter;
 use humhub\modules\stream\widgets\WallStreamFilterNavigation;
 
 
 class Events
 {
-    const FILTER_BLOCK_IFRAME = 'iframe';
-    const FILTER_IFRAME = 'iframe';
+    const FILTER_BLOCK_EXTERNAL_WEBSITE = 'external-websites';
+    const FILTER_EXTERNAL_WEBSITE = 'external-websites';
 
 
     public static function onSpaceMenuInit($event)
@@ -27,26 +27,27 @@ class Events
 
         $space = $event->sender->space;
 
-        if ($space !== null && $space->isModuleEnabled('iframe')) {
+        if ($space !== null && $space->isModuleEnabled('external-websites')) {
 
             // Get pages
-            $containerPages = ContainerPage::find()
+            $websites = Website::find()
                 ->where(['space_id' => $space['id']])
+                ->andWhere(['show_in_menu' => true])
                 ->orderBy(['sort_order' => SORT_ASC])
                 ->all();
 
-            foreach ($containerPages as $containerPage) {
+            foreach ($websites as $website) {
                 $event->sender->addItem([
-                    'label' => $containerPage['title'],
+                    'label' => $website['title'],
                     'group' => 'modules',
-                    'url' => $space->createUrl('/iframe/page', ['title' => $containerPage['title']]),
-                    'icon' => '<i class="fa '.$containerPage['icon'].'"></i>',
+                    'url' => $space->createUrl('/external-websites/page', ['title' => $website['title']]),
+                    'icon' => '<i class="fa '.$website['icon'].'"></i>',
                     'isActive' => (
                         Yii::$app->controller->module
-                        && Yii::$app->controller->module->id == 'iframe'
+                        && Yii::$app->controller->module->id == 'external-websites'
                         && Yii::$app->controller->id = 'page'
                         && $currentPageTitle !== null
-                        && $currentPageTitle == $containerPage['title']
+                        && $currentPageTitle == $website['title']
                     ),
                 ]);
             }
@@ -60,42 +61,42 @@ class Events
             return;
         }
         $space = Yii::$app->controller->contentContainer;
-        if ($space !== null && $space->isModuleEnabled('iframe')) {
+        if ($space !== null && $space->isModuleEnabled('external-websites')) {
 
             /** @var $wallFilterNavigation WallStreamFilterNavigation */
             $wallFilterNavigation = $event->sender;
         
             // Add a new filter block to the last filter panel
             $wallFilterNavigation->addFilterBlock(
-                static::FILTER_BLOCK_IFRAME, [
-                    'title' => Yii::t('IframeModule.model', 'Filter'),
+                static::FILTER_BLOCK_EXTERNAL_WEBSITE, [
+                    'title' => Yii::t('ExternalWebsitesModule.model', 'Filter'),
                     'sortOrder' => 300
                 ],
                 WallStreamFilterNavigation::PANEL_POSITION_CENTER
             );
         
             // Get pages
-            $containerPages = ContainerPage::find()
+            $websites = Website::find()
                 ->where(['space_id' => $space['id']])
                 ->orderBy(['sort_order' => SORT_ASC])
                 ->all();
 
             $sortOrder = 0;
-            foreach ($containerPages as $containerPage) {
+            foreach ($websites as $website) {
                 $sortOrder++;
 
                 // Add a filters to the new filter block
                 $wallFilterNavigation->addFilter(
                     [
-                        'id' => 'container_page_id_'.$containerPage['id'],
+                        'id' => 'website_id_'.$website['id'],
                         'title' => Yii::t(
-                            'IframeModule.models',
+                            'ExternalWebsitesModule.models',
                             '{pageTitle}: show comments',
-                            ['{pageTitle}' => $containerPage['title']]
+                            ['{pageTitle}' => $website['title']]
                         ),
                         'sortOrder' => $sortOrder,
                     ],
-                    static::FILTER_BLOCK_IFRAME
+                    static::FILTER_BLOCK_EXTERNAL_WEBSITE
                 );
             }
         }
@@ -116,9 +117,9 @@ class Events
         // If in a space
         if (isset(Yii::$app->controller->contentContainer)) {
             $space = Yii::$app->controller->contentContainer;
-            if ($space !== null && $space->isModuleEnabled('iframe')) {
+            if ($space !== null && $space->isModuleEnabled('external-websites')) {
                 // Add a new filterHandler to WallStreamQuery
-                $streamQuery->filterHandlers[] = IframeSpaceStreamFilter::class;
+                $streamQuery->filterHandlers[] = ExternalWebsitesSpaceStreamFilter::class;
             }
         }
     }

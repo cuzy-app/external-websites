@@ -1,43 +1,66 @@
-# Module Iframe
+# External Websites
 
 
 ## Overview
 
-Creates pages containing an iframed website where members can comment.
-Creates a content each time the URL in the iframe changes, and shows related comments.
+Creates a content for each external website page, enabling to have Humhub addons (comments, like, files, etc.) in theses pages.
 
 Uses [iFrame Resizer](https://github.com/davidjbradshaw/iframe-resizer).
 
 
 ## Usage
 
-### Embed external site in iframe
+2 possibilities to use this module:
 
-Copy the files in the folder [for-iframed-website](https://gitlab.com/funkycram/humhub-modules-iframe/-/tree/master/docs/install/for-iframed-website) on the server hosting the website contained within your iFrame. Or, download them with this command line :
+### Embed external website in Humhub
+
+**Humhub is host, external website is guest.**
+
+Upload theses files on the external website server:
 ```
-wget https://gitlab.com/funkycram/humhub-modules-iframe/-/raw/master/docs/install/for-iframed-website/iframeResizer.contentWindow.min.js
-wget https://gitlab.com/funkycram/humhub-modules-iframe/-/raw/master/docs/install/for-iframed-website/iframeResizer.contentWindow.js
-wget https://gitlab.com/funkycram/humhub-modules-iframe/-/raw/master/docs/install/for-iframed-website/iframeResizer.contentWindow.map
-wget https://gitlab.com/funkycram/humhub-modules-iframe/-/raw/master/docs/install/for-iframed-website/humhubIframeModule.js
+wget https://gitlab.com/funkycram/humhub-modules-external-websites/-/raw/master/resources/js/iframeResizer/iframeResizer.contentWindow.min.js
+wget https://gitlab.com/funkycram/humhub-modules-external-websites/-/raw/master/resources/js/iframeResizer/iframeResizer.contentWindow.js
+wget https://gitlab.com/funkycram/humhub-modules-external-websites/-/raw/master/resources/js/iframeResizer/iframeResizer.contentWindow.map
 ```
 
-And load them adding this code just before `</body>` :
+And add this code just before `</body>` in all pages :
 ```
     <script type="text/javascript" src="path-to-js-files/iframeResizer.contentWindow.min.js"></script>
-    <script type="text/javascript" src="path-to-js-files/humhubIframeModule.js"></script>
+
+    <script type="text/javascript">
+        // When iFrameResizer is loaded
+        var iFrameResizerLoaded = false; // avoid loading twice (iFrameResizer bug)
+        var iFrameResizer = {
+            onReady: function(message) {
+                if (!iFrameResizerLoaded) {
+                    sendUrlToParentIframe();
+                    iFrameResizerLoaded = true;
+                }
+            }
+        };
+        // If URL changes without reloading page (ajax)
+        window.addEventListener('locationchange', function() {
+            sendUrlToParentIframe();
+        });
+        // Send new URL to parent iframe
+        function sendUrlToParentIframe() {
+            if ('parentIFrame' in window) {
+                document.getElementsByTagName("html")[0].classList.add("in-iframe");
+                window.parentIFrame.sendMessage({
+                    url: location.href.replace(location.hash,""),
+                    title: document.getElementsByTagName("title")[0].innerText
+                });
+            }
+        }
+    </script>
 ```
 
 For CODIMD in a docker, [see this documentation](https://gitlab.com/funkycram/doc/-/wikis/CodiMd#add-humhub-iframe-module-script-using-dockerfile)
 
-As the config page is not yet coded, to add a page (hide sidebar, visiblity private, not archived), use this MySQL command (title must be unique) :
-```
-INSERT INTO `iframe_container_page` (`space_id`, `title`, `icon`, `start_url`, `target`, `sort_order`, `remove_from_url_title`, `hide_sidebar`, `show_widget`, `visibility`, `archived`, `created_at`, `created_by`, `updated_at`, `updated_by`) VALUES ('0', 'My Title', 'fa-graduation-cap', 'http://localhost/test/', 'SpaceMenu', '0', '', '1', '1', '0', '0', '2020-02-13 11:11:00', '1', '2020-02-13 11:11:00', '1');
-```
 
-See `models/ContainerPage.php` -> `attributeLabels()` for more infos
+### Embed Humhub addons (comments, like, files, etc.) in an external website
 
-
-### Embed Humhub comments in an external site
+**Humhub is guest, external website is host.**
 
 You must have something to auto log (and auto register if no account) the user.
 
@@ -64,16 +87,16 @@ If doesn't work, replace `"X-Frame-Options" => "sameorigin",` with `"X-Frame-Opt
 Code for the website integrating Humhub comments:
 ```
 <?php 
-$containerPageId = 1;
+$websiteId = 1;
 $currentPageUrl = 'http://my-website-integrating-humhub-comments.tdl/my-page.php';
 $currentPageTitle = 'Page title';
 ?>
-<iframe src="http://y-humhub.tdl/s/my-space/iframe/page/url-content?containerPageId=<?= $containerPageId ?>&url=<?= urlencode($currentPageUrl) ?>&title=<?= urlencode($currentPageTitle) ?>&iframe=true&autoLogin=true&addToSpaceMembers=true&addGroupRelatedToSpace=true"></iframe>
+<iframe src="http://y-humhub.tdl/s/my-space/external-websites/page?containerPageId=<?= $containerPageId ?>&url=<?= urlencode($currentPageUrl) ?>&title=<?= urlencode($currentPageTitle) ?>&humhubIsHost=false&autoLogin=true&addToSpaceMembers=true&addGroupRelatedToSpace=true"></iframe>
 ```
 
 
 ## Special features
 
-It is possible to have several instances (container page) of the same iframed website in the same space : comments and "like" are shared between the instances.
+It is possible to have several websites of the same external website in the same space.
 
-If the same URL is shared by several instances in the same space, the URL will be related to the container page having the smaller `sort_order`.
+In this case, Humhub addons (comments, like, files, etc.) are shared with the websites and the Humhub addons will be related to the website having the smaller `sort_order`.

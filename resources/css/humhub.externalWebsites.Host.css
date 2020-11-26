@@ -1,32 +1,32 @@
 /* Never hide sidebar (comments) */
-#iframe-page .layout-sidebar-container {
+#ew-website .layout-sidebar-container {
     display: block !important;
 }
 
 /* Force comments to go to bottom if screen width is < 1250px */
 @media (max-width:1250px) {
-    #iframe-page .layout-sidebar-container, #iframe-page .layout-content-container {
+    #ew-website .layout-sidebar-container, #ew-website .layout-content-container {
         float: none;
         width: 100%;
     }
 }
 
-#iframe-container {
+#ew-page-container {
     width: 1px;
     min-width: 100%;
     height: calc(100vh - 150px);
     border: none;
 }
-#iframe-page a.like:before {
+#ew-website a.like:before {
     font-family: FontAwesome;
     content: "\f164";
 }
-#iframe-page a.permalink:before {
+#ew-website a.permalink:before {
     font-family: FontAwesome;
     content: "\f0c1";
 }
 
 /* Comment input place holder text is truncated, so make it smaller */
-#iframe-page #iframe-comments .ProsemirrorEditor .ProseMirror .placeholder {
+#ew-website #ew-page-addons .ProsemirrorEditor .ProseMirror .placeholder {
     font-size: 0.8em;
 }

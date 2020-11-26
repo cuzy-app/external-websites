@@ -29,15 +29,15 @@ use humhub\modules\comment\models\Comment;
  * @var $this \humhub\modules\ui\view\components\View
  * @var $id string for tags attributes
  * @var $model Commen
- * @var $containerPageId int
- * @var $iframeUrl string
- * @var $iframeTitle string
+ * @var $websiteId int
+ * @var $pageUrl string
+ * @var $pageTitle string
  * @var Module $contentModule
  */
 
 /** @var \humhub\modules\content\Module $contentModule */
 $contentModule = Yii::$app->getModule('content');
-$submitUrl = Url::to(['/iframe/comment/post']);
+$submitUrl = Url::to(['/external-websites/comment/post']);
 ?>
 
 <div class="well well-small comment-container" id="comment_<?= $id; ?>">
@@ -55,9 +55,9 @@ $submitUrl = Url::to(['/iframe/comment/post']);
 
         <?= Html::hiddenInput('objectModel', $objectModel) ?>
 
-        <?= Html::hiddenInput('iframeUrl', $iframeUrl); ?>
-        <?= Html::hiddenInput('iframeTitle', $iframeTitle); ?>
-        <?= Html::hiddenInput('containerPageId', $containerPageId); ?>
+        <?= Html::hiddenInput('pageUrl', $pageUrl); ?>
+        <?= Html::hiddenInput('pageTitle', $pageTitle); ?>
+        <?= Html::hiddenInput('websiteId', $websiteId); ?>
 
         <div class="comment-create-input-group">
             <?= $form->field($model, 'message')->widget(RichTextField::class, [

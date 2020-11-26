@@ -1,8 +1,10 @@
 Changelog
 =========
 
-V0.16 (November, 25, 2020)
+V0.20 (November, 25, 2020)
 --------------------
+- Chg: Module renamed
+- Chg: Changed name of the tables, files, models, controller and view
 - Chg: Changed `FirstCommentForm` widget to new Hummhub 1.7 specifications
 - Enh: Added auto login with SSO
 
@@ -23,13 +25,8 @@ First release !
 ### Version 0.2
 
 - Added WallEntry widget
-- Added Title in `ContainerUrl` and `Url` models
+- Added Title in `Page` and `Url` models
 - **Changed the code for the iframed website**
-
-```
-ALTER TABLE `iframe_url` ADD `title` VARCHAR(255) NULL DEFAULT NULL AFTER `url`;
-ALTER TABLE `iframe_container_url` ADD `title` VARCHAR(255) NULL DEFAULT NULL AFTER `url`; 
-```
 
 
 ### Version 0.3
@@ -38,15 +35,8 @@ ALTER TABLE `iframe_container_url` ADD `title` VARCHAR(255) NULL DEFAULT NULL AF
 
 ### Version 0.4
 
-- Added `content_archived` and `show_widget` in ContainerPage table
-- Removed `state` in ContainerPage table
-
-```
-ALTER TABLE `iframe_container_page` DROP `state`;
-ALTER TABLE `iframe_container_page` ADD `remove_from_url_title` VARCHAR(255) NULL DEFAULT NULL AFTER `comments_global_state`, ADD `content_archived` TINYINT(4) NOT NULL DEFAULT '0' AFTER `remove_from_url_title`, ADD `show_widget` TINYINT(4) NOT NULL DEFAULT '0' AFTER `content_archived`;
-ALTER TABLE `iframe_page` DROP `state`;
-ALTER TABLE `iframe_page` ADD `remove_from_url_title` VARCHAR(255) NULL DEFAULT NULL AFTER `comments_global_state`, ADD `show_widget` TINYINT(4) NOT NULL DEFAULT '0' AFTER `remove_from_url_title`;
-```
+- Added `content_archived` and `show_widget` in Website table
+- Removed `state` in Website table
 
 ### Version 0.5
 
@@ -68,11 +58,6 @@ ALTER TABLE `iframe_page` ADD `remove_from_url_title` VARCHAR(255) NULL DEFAULT 
 - Comment form is shown in the page (no modal box anymore)
 - Option to hide sidebar menu (enterprise theme, `#sidebar-wrapper` element)
 
-```
-ALTER TABLE `iframe_page` ADD `hide_sidebar` TINYINT(4) NOT NULL DEFAULT '0' AFTER `remove_from_url_title`; 
-ALTER TABLE `iframe_container_page` ADD `hide_sidebar` TINYINT(4) NOT NULL DEFAULT '0' AFTER `content_archived`; 
-```
-
 ### Version 0.6.1
 
 - Hide sidebar was allways true, now 0 value don't hide sidebar
@@ -83,16 +68,10 @@ ALTER TABLE `iframe_container_page` ADD `hide_sidebar` TINYINT(4) NOT NULL DEFAU
 
 ### Version 0.7
 
-- Changed licence to https://gitlab.com/funkycram/humhub-modules-iframe/-/raw/master/docs/LICENCE.md
+- Changed licence to https://gitlab.com/funkycram/humhub-modules-external-websites/-/raw/master/docs/LICENCE.md
 - Added filters in wall
 - Added space configuration to hide content by default with the filters
 - Updated usage explainations in this README.md file
-
-```
-ALTER TABLE `iframe_container_page` CHANGE `content_archived` `default_hide_in_stream` TINYINT NOT NULL DEFAULT '0'; 
-ALTER TABLE `iframe_container_page` CHANGE `comments_global_state` `default_comments_state` VARCHAR(100) NULL DEFAULT NULL;
-ALTER TABLE `iframe_container_url` ADD `hide_in_stream` TINYINT(4) NOT NULL DEFAULT '0' AFTER `container_page_id`; 
-```
 
 ### Version 0.8
 
@@ -100,14 +79,6 @@ ALTER TABLE `iframe_container_url` ADD `hide_in_stream` TINYINT(4) NOT NULL DEFA
 - Removed `comments_global_state` and `comments_state` as with the new Humhub 1.4.4 an archived content cannot be commented
 - Added `archived` param in `iframe_container_page`
 - Deleted `iframe_page` and `iframe_url` tables and models as unused
-
-```
-DROP TABLE `iframe_page`, `iframe_url`;
-ALTER TABLE `iframe_container_url` DROP `comments_state`;
-ALTER TABLE `iframe_container_page` DROP `default_comments_state`;
-ALTER TABLE `iframe_container_page` ADD `archived` TINYINT(4) NOT NULL DEFAULT '0' AFTER `visibility`; 
-ALTER TABLE `iframe_container_page` CHANGE `visibility` `visibility` TINYINT(4) NULL DEFAULT '0'; 
-```
 
 ### Version 0.8.1
 
@@ -164,12 +135,12 @@ ALTER TABLE `iframe_container_page` CHANGE `visibility` `visibility` TINYINT(4) 
 
 ### Version 0.10
 
-- Fix: `ContainerUrl->getSearchAttributes` was creating bugs with module search
+- Fix: `Page->getSearchAttributes` was creating bugs with module search
 - Enh: For all users that receive notifications for new content, make them follow the content to sent notifications if new comments, as this module doesn't send notification for each new content to avoid huge amount of notifications (a new content is created for each iframed page visited !)
 
 ### Version 0.11
 
-- Enh: Dashboard : Hide content related to ContainerUrl with `hide_in_stream` === true and content with no comment
+- Enh: Dashboard : Hide content related to Page with `hide_in_stream` === true and content with no comment
 
 ### Version 0.12
 

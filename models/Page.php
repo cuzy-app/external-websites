@@ -1,25 +1,39 @@
 <?php
 /**
- * iFrame module
- * @link https://gitlab.com/funkycram/humhub-modules-iframe
- * @license https://gitlab.com/funkycram/humhub-modules-iframe/-/raw/master/docs/LICENCE.md
+ * External Websites
+ * @link https://gitlab.com/funkycram/humhub-modules-external-websites
+ * @license https://gitlab.com/funkycram/humhub-modules-external-websites/-/raw/master/docs/LICENCE.md
  * @author [FunkycraM](https://marc.fun)
  */
 
-namespace humhub\modules\iframe\models;
+namespace humhub\modules\externalWebsites\models;
 
 use Yii;
+use humhub\modules\content\components\ContentActiveRecord;
+use humhub\modules\search\interfaces\Searchable;
 use humhub\modules\user\models\User;
+use humhub\modules\externalWebsites\widgets\WallEntry;
 
 
-class ContainerUrl extends \humhub\modules\content\components\ContentActiveRecord implements \humhub\modules\search\interfaces\Searchable
+/**
+ * Contents corresponding to the pages of the website to which we want to add addons (comments, like, files, etc.)
+ * For each page of the website, when a first comment is posted, a content is created
+ * The relation is done with the URL of the page
+ * 
+ * @property integer $id
+ * @property string $url
+ * @property integer $title
+ * @property integer $website_id
+ */
+
+class Page extends ContentActiveRecord implements Searchable
 {
-    public $moduleId = 'iframe';
+    public $moduleId = 'external-websites';
 
     /**
      * @inheritdoc
      */
-    public $wallEntryClass = "humhub\modules\iframe\widgets\WallEntry";
+    public $wallEntryClass = WallEntry::class;
 
     public $streamChannel = 'default';
 
@@ -28,7 +42,7 @@ class ContainerUrl extends \humhub\modules\content\components\ContentActiveRecor
     /**
      * @var boolean should the originator automatically follows this content when saved.
      */
-    public $autoFollow = false;
+    public $autoFollow = true;
 
     /**
      * If set to true this flag will prevent default ContentCreated Notifications and Activities.
@@ -43,7 +57,7 @@ class ContainerUrl extends \humhub\modules\content\components\ContentActiveRecor
      */
     public static function tableName()
     {
-        return 'iframe_container_url';
+        return 'external_websites_website_page';
     }
 
     /**
@@ -52,10 +66,10 @@ class ContainerUrl extends \humhub\modules\content\components\ContentActiveRecor
     public function attributeLabels()
     {
         return [
-            'id' => 'Id',
-            'url' => 'iFrame URL',
-            'title' => 'Title',
-            'container_page_id' => 'Container page id',
+            'id' => 'ID',
+            'url' => 'Page URL',
+            'title' => 'Page Title',
+            'website_id' => 'Website id',
             'created_at' => 'Created at',
             'created_by' => 'Created by',
             'updated_at' => 'Updated at',
@@ -69,26 +83,26 @@ class ContainerUrl extends \humhub\modules\content\components\ContentActiveRecor
     public function rules()
     {
        return [
-           [['container_page_id', 'url'], 'required'],
+           [['website_id', 'url'], 'required'],
            [['url', 'title'], 'string'],
-           [['container_page_id'], 'integer'],
+           [['website_id'], 'integer'],
        ];
     }
 
 
-    public function getContainerPage()
+    public function getWebsite()
     {
         return $this
-            ->hasOne(ContainerPage::class, ['id' => 'container_page_id']);
+            ->hasOne(Website::class, ['id' => 'website_id']);
     }
 
 
     public function getContentName()
     {
-        if (!empty($this->containerPage['title'])) {
-            return $this->containerPage['title'];
+        if (!empty($this->website['title'])) {
+            return $this->website['title'];
         }
-        return Yii::t('IframeModule.base', 'iFrame');
+        return Yii::t('ExternalWebsitesModule.base', 'Page');
     }
 
     public function getContentDescription()
@@ -104,9 +118,9 @@ class ContainerUrl extends \humhub\modules\content\components\ContentActiveRecor
         $space = $this->content->container;
 
         $attributes = [
-            'message' => $this->containerPage['title'],
+            'message' => $this->website['title'],
             // url comment because make solr crash
-            // 'url' => $space->createUrl('/iframe/page?title='.urlencode($this->containerPage['title']).'&urlId='.$this['id']),
+            // 'url' => $space->createUrl('/external-websites/page?title='.urlencode($this->website['title']).'&pageId='.$this['id']),
             'user' => $this->getPostAuthorName()
         ];
 
@@ -131,8 +145,8 @@ class ContainerUrl extends \humhub\modules\content\components\ContentActiveRecor
 
     public function getIcon()
     {
-        if (!empty($this->containerPage['icon'])) {
-            return $this->containerPage['icon'];
+        if (!empty($this->website['icon'])) {
+            return $this->website['icon'];
         }
         return 'fa-external-link-square';
     }
@@ -140,11 +154,11 @@ class ContainerUrl extends \humhub\modules\content\components\ContentActiveRecor
 
     /**
      * @inheritdoc
-     * Set created_by to iframe_container_page creator
+     * Set created_by to external_websites_website creator
      */
     public function beforeSave($insert)
     {
-        $this['created_by'] = $this->containerPage['created_by'];
+        $this['created_by'] = $this->website['created_by'];
         $this->content['created_by'] = $this['created_by'];
 
         return parent::beforeSave($insert);
@@ -153,14 +167,16 @@ class ContainerUrl extends \humhub\modules\content\components\ContentActiveRecor
 
     /**
      * @inheritdoc
-     * For all users that receive notifications for new content, make them follow the content to sent notifications if new comments, as this module doesn't send notification for each new content to avoid huge amount of notifications (a new content is created for each iframed page visited !)
+     * For all users that receive notifications for new content, make them follow the content to sent notifications if new comments, as this module doesn't send notification for each new content ($this->silentContentCreation value is true)
      */
     public function afterSave($insert, $changedAttributes)
     {
-        $space = $this->content->container;
-        foreach ($space->memberships as $membership) {
-            if ($membership->send_notifications) {
-                $this->follow($membership['user_id'], true);
+        if ($insert) {
+            $space = $this->content->container;
+            foreach ($space->memberships as $membership) {
+                if ($membership->send_notifications) {
+                    $this->follow($membership['user_id'], true);
+                }
             }
         }
 

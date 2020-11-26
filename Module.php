@@ -1,12 +1,12 @@
 <?php
 /**
- * iFrame module
- * @link https://gitlab.com/funkycram/humhub-modules-iframe
- * @license https://gitlab.com/funkycram/humhub-modules-iframe/-/raw/master/docs/LICENCE.md
+ * External Websites
+ * @link https://gitlab.com/funkycram/humhub-modules-external-websites
+ * @license https://gitlab.com/funkycram/humhub-modules-external-websites/-/raw/master/docs/LICENCE.md
  * @author [FunkycraM](https://marc.fun)
  */
 
-namespace humhub\modules\iframe;
+namespace humhub\modules\externalWebsites;
 
 use Yii;
 use yii\helpers\Url;
@@ -14,8 +14,8 @@ use humhub\modules\content\components\ContentContainerModule;
 use humhub\modules\content\components\ContentContainerActiveRecord;
 use humhub\modules\space\models\Space;
 use humhub\modules\user\models\User;
-use humhub\modules\iframe\models\ContainerPage;
-use humhub\modules\iframe\models\ContainerUrl;
+use humhub\modules\externalWebsites\models\Website;
+use humhub\modules\externalWebsites\models\Page;
 
 
 class Module extends ContentContainerModule
@@ -66,13 +66,13 @@ class Module extends ContentContainerModule
      */
     public function disable()
     {
-        foreach (ContainerUrl::find()->all() as $containerUrl) {
-            $containerUrl->delete();
+        foreach (Page::find()->all() as $page) {
+            $page->delete();
         }
 
-        foreach (ContainerPage::find()->all() as $containerPage)
+        foreach (Website::find()->all() as $website)
         {
-            $containerPage->delete();
+            $website->delete();
         }
 
         return parent::disable();
@@ -95,13 +95,13 @@ class Module extends ContentContainerModule
     {
         parent::disableContentContainer($container);
 
-        foreach (ContainerUrl::find()->contentContainer($container)->all() as $containerUrl) {
-            $containerUrl->delete();
+        foreach (Page::find()->contentContainer($container)->all() as $page) {
+            $page->delete();
         }
 
-        foreach (ContainerPage::findAll(['space_id' => $container['id']]) as $containerPage)
+        foreach (Website::findAll(['space_id' => $container['id']]) as $website)
         {
-            $containerPage->delete();
+            $website->delete();
         }
     }
 
@@ -111,7 +111,7 @@ class Module extends ContentContainerModule
      */
     public function getContentContainerName(ContentContainerActiveRecord $container)
     {
-        return Yii::t('IframeModule.base', 'iFrame');
+        return Yii::t('ExternalWebsitesModule.base', 'External websites');
     }
 
     /**
@@ -120,7 +120,7 @@ class Module extends ContentContainerModule
     public function getContentContainerDescription(ContentContainerActiveRecord $container)
     {
         if ($container instanceof Space) {
-            return Yii::t('IframeModule.base', 'This module creates pages containing an iframed website where members can comment.');
+            return Yii::t('ExternalWebsitesModule.base', 'Creates a content for each external website page, enabling to have Humhub addons (comments, like, files, etc.) in theses pages.');
         }
     }
 }

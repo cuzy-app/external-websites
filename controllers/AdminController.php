@@ -1,16 +1,16 @@
 <?php
 /**
- * iFrame module
- * @link https://gitlab.com/funkycram/humhub-modules-iframe
- * @license https://gitlab.com/funkycram/humhub-modules-iframe/-/raw/master/docs/LICENCE.md
+ * External Websites
+ * @link https://gitlab.com/funkycram/humhub-modules-external-websites
+ * @license https://gitlab.com/funkycram/humhub-modules-external-websites/-/raw/master/docs/LICENCE.md
  * @author [FunkycraM](https://marc.fun)
  */
 
-namespace humhub\modules\iframe\controllers;
+namespace humhub\modules\externalWebsites\controllers;
 
 use Yii;
 use humhub\modules\admin\permissions\ManageSettings;
-use humhub\modules\iframe\models\ContainerUrl;
+use humhub\modules\externalWebsites\models\Page;
 use humhub\modules\comment\models\Comment;
 
 /**
@@ -30,18 +30,18 @@ class AdminController extends \humhub\modules\admin\components\Controller
     }
 
     /**
-     * /iframe/admin/delete-all-contents-without-comments
+     * /external-websites/admin/delete-all-contents-without-comments
      */
     public function actionDeleteAllContentsWithoutComments ()
     {
-        foreach (ContainerUrl::find()->all() as $containerUrl) {
-            $content = $containerUrl->content;
+        foreach (Page::find()->all() as $page) {
+            $content = $page->content;
             $comment = Comment::find()
                 ->where(['object_id' => $content['object_id']])
                 ->andWhere(['object_model' => $content['object_model']])
                 ->one();
             if ($comment === null) {
-                $containerUrl->delete();
+                $page->delete();
             }
         }
         return 'done';

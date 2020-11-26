@@ -1,5 +1,5 @@
 
-humhub.module('iframe', function (module, require, $) {
+humhub.module('externalWebsites.Host', function (module, require, $) {
     module.initOnPjaxLoad = true;
 
     // set global vars
@@ -16,7 +16,7 @@ humhub.module('iframe', function (module, require, $) {
                 // If theme body has a sidebar (Enterprise theme)
                 if ($('#wrapper').length) {
 
-                    // If sidebar is toggled, resize iframe
+                    // If sidebar is toggled, resize iframe container
                     var observer = new MutationObserver(function(mutations) {
                         mutations.forEach(function(mutation) {
                             if (mutation.attributeName === "class") {
@@ -24,7 +24,7 @@ humhub.module('iframe', function (module, require, $) {
 
                                 // Resize after 1 seconds because of the 0.5 seconds transition CSS
                                 setTimeout(function(){
-                                    document.getElementById('iframe-container').iFrameResizer.resize();
+                                    document.getElementById('ew-page-container').iFrameResizer.resize();
                                 },1000);
                             }
                         });
@@ -49,10 +49,10 @@ humhub.module('iframe', function (module, require, $) {
         iFrameResize(
             {
                 log: false,
-                scrolling: true, // if iframed website has not the content window javascript
+                scrolling: true, // if iframed page has not the content window javascript
                 inPageLinks: true,
 
-                // Each time iframed website has loaded the content window javascript
+                // Each time iframed page loads the content window javascript
                 onInit: function(messageData) {
                 },
 
@@ -63,29 +63,29 @@ humhub.module('iframe', function (module, require, $) {
                         scrollTop: 0
                     }, 500);
 
-                    // message sent by iframed website is : {
+                    // message sent by iframed page is : {
                     //   url: window.location.href,
                     //   title: document.getElementsByTagName("title")[0].innerText
                     // }
                     iframeMessage = messageData.message; // update global var
 
                     // Remove scrollbar
-                    $('#iframe-container').attr('scrolling', 'no');
+                    $('#ew-page-container').attr('scrolling', 'no');
 
                     // Load comments with ajax, after the iframe tag, each time URL changes in the iframed website
-                    $.pjax.reload('#iframe-comments', {
+                    $.pjax.reload('#ew-page-addons', {
                         type : 'POST',
                         url: module.config.urlContentActionUrl,
                         push: false,
                         replace: false,
                         data: {
-                            containerPageId: $('#iframe-page').attr('data-container-page-id'),
+                            websiteId: $('#ew-website').attr('data-container-page-id'),
                             iframeMessage: iframeMessage,
                         }
                     });
                 },
             },
-            '#iframe-container'
+            '#ew-page-container'
         );
     };
 

@@ -1,24 +1,27 @@
 <?php
 /**
- * iFrame module
- * @link https://gitlab.com/funkycram/humhub-modules-iframe
- * @license https://gitlab.com/funkycram/humhub-modules-iframe/-/raw/master/docs/LICENCE.md
+ * External Websites
+ * @link https://gitlab.com/funkycram/humhub-modules-external-websites
+ * @license https://gitlab.com/funkycram/humhub-modules-external-websites/-/raw/master/docs/LICENCE.md
  * @author [FunkycraM](https://marc.fun)
  */
 
-namespace humhub\modules\iframe\controllers;
+namespace humhub\modules\externalWebsites\controllers;
 
 use Yii;
 use yii\helpers\Url;
 use yii\web\HttpException;
 use yii\helpers\BaseStringHelper;
 use humhub\modules\stream\actions\ContentContainerStream;
-use humhub\modules\iframe\models\ContainerPage;
-use humhub\modules\iframe\models\ContainerUrl;
+use humhub\modules\externalWebsites\models\Website;
+use humhub\modules\externalWebsites\models\Page;
 use humhub\modules\content\models\Content;
 use humhub\modules\user\models\Group;
 
 
+/**
+ * Called by ajax (if Humhub is host) or iframe (if Humhub is guest)
+ */
 class PageController extends \humhub\modules\content\components\ContentContainerController
 {
 
@@ -44,7 +47,7 @@ class PageController extends \humhub\modules\content\components\ContentContainer
 
             // Auto add user to space if not member
             if (Yii::$app->request->get('addToSpaceMembers') == true) {
-                $space = $this->getSpaceFromContainerPageId(Yii::$app->request->get('containerPageId'));
+                $space = $this->getSpaceFromWebsiteId(Yii::$app->request->get('websiteId'));
                 if (!$space->isMember(Yii::$app->user->id)) {
                     $space->addMember(Yii::$app->user->id);
                 }
@@ -53,7 +56,7 @@ class PageController extends \humhub\modules\content\components\ContentContainer
             // Auto add group related to space to user if not member
             if (Yii::$app->request->get('addGroupRelatedToSpace') == true) {
                 if (!isset($space)) {
-                    $space = $this->getSpaceFromContainerPageId(Yii::$app->request->get('containerPageId'));
+                    $space = $this->getSpaceFromWebsiteId(Yii::$app->request->get('websiteId'));
                 }
                 // Get group related to space
                 $group = Group::findOne(['space_id' => $space->id]);
@@ -69,12 +72,12 @@ class PageController extends \humhub\modules\content\components\ContentContainer
     }
 
 
-    protected function getSpaceFromContainerPageId ($containerPageId)
+    protected function getSpaceFromWebsiteId ($websiteId)
     {
-        if ($containerPageId !== null) {
-            $containerPage = ContainerPage::findOne($containerPageId);
-            if ($containerPage !== null) {
-                return $containerPage->space;
+        if ($websiteId !== null) {
+            $website = Website::findOne($websiteId);
+            if ($website !== null) {
+                return $website->space;
             }
         }
         return null;
@@ -86,7 +89,7 @@ class PageController extends \humhub\modules\content\components\ContentContainer
         return [
             'stream' => [
                 'class' => ContentContainerStream::class,
-                'includes' => ContainerUrl::class,
+                'includes' => Page::class,
                 'mode' => ContentContainerStream::MODE_NORMAL,
                 'contentContainer' => $this->contentContainer
             ],
@@ -94,109 +97,95 @@ class PageController extends \humhub\modules\content\components\ContentContainer
     }
 
 
-    public function actionIndex ($title)
-    {
-        $containerPage = ContainerPage::findOne([
-            'space_id' => $this->contentContainer['id'],
-            'title' => $title,
-        ]);
-        if ($containerPage === null) {
-            throw new HttpException(404);
-        }
+    /**
+     * Called by ajax (if Humhub is host) or iframe (if Humhub is guest)
+     * @param $humhubIsHost boolean
+     */
+    public function actionIndex ($humhubIsHost = true) {
+        // Get website ID (POST if ajax, GET if iframe)
+        $websiteId = Yii::$app->request->post('websiteId', Yii::$app->request->get('websiteId'));
 
-        // Set start URL
-        $iframeUrl = $containerPage['start_url'];
-
-        // If urlId is in the URL
-        $urlId = Yii::$app->request->get('urlId');
-        if ($urlId !== null) {
-            $containerUrl = ContainerUrl::findOne($urlId);
-            if ($containerUrl !== null) {
-                $iframeUrl = $containerUrl['url'];
+        // Get page URL and Title (if from ajax, in $iframeMessage array)
+        if ($humhubIsHost) {
+            $iframeMessage = Yii::$app->request->post('iframeMessage');
+            if (!empty($iframeMessage)) {
+                $pageUrl = $iframeMessage['url'];
+                $pageTitle = $iframeMessage['title'];
             }
         }
-        // If iframeUrl is in the URL (ContainerUrl does not exist)
         else {
-            $iframeUrl = Yii::$app->request->get('iframeUrl', $iframeUrl);
+            $pageUrl = Yii::$app->request->get('url');
+            $pageTitle = Yii::$app->request->get('title');
         }
 
-        return $this->render('index', [
-            'containerPage' => $containerPage,
-            'iframeUrl' => $iframeUrl,
-        ]);
-    }
-
-
-    /**
-     * Called by ajax or in an iframe
-     */
-    public function actionUrlContent ($iframe = false) {
-        $containerPageId = Yii::$app->request->post('containerPageId', Yii::$app->request->get('containerPageId'));
-        $iframeMessage = Yii::$app->request->post('iframeMessage', Yii::$app->request->get('iframeMessage'));
-        if (!empty($iframeMessage)) {
-            $url = $iframeMessage['url'];
-            $title = $iframeMessage['title'];
-        }
-        else {
-            $url = Yii::$app->request->get('url');
-            $title = Yii::$app->request->get('title');
-        }
-
-        // Get iframe URL
-        if (empty($containerPageId) || empty($url)) {
+        if (empty($websiteId) || empty($url)) {
             throw new HttpException('401', 'Invalid param!');
         }
         
-        $iframeUrl = rtrim(strtok($url, "#"),"/"); // remove anchor (#hash) from URL and / at the end
-        $iframeTitle = BaseStringHelper::truncate($title, 100, '[...]');
-
-        // Get container page
-        $containerPage = ContainerPage::findOne($containerPageId);
-        if ($containerPage === null) {
+        // Get website
+        $website = Website::findOne($websiteId);
+        if ($website === null) {
             throw new HttpException(404);
         }
 
-        // Remove unwanted text in title
-        $iframeTitle = str_ireplace($containerPage['remove_from_url_title'], '', $iframeTitle);
+        // Format page URL and Title
+        $pageUrl = rtrim(strtok($pageUrl, "#"),"/"); // remove anchor (#hash) from URL and / at the end
+        $pageTitle = str_ireplace($website['remove_from_url_title'], '', $pageTitle); // Remove unwanted text in title
+        $pageTitle = BaseStringHelper::truncate($pageTitle, 100, '[...]');
 
-        // Get content (there can be only 1 unique URL per space, so we don't filter by container page)
-        $containerUrl = ContainerUrl::find()
+        // Get content (there can be only 1 unique URL per space, so we don't filter by website)
+        $page = Page::find()
             ->contentContainer($this->contentContainer) // restrict to current space
-            ->where(['url' => $iframeUrl])
+            ->where(['url' => $pageUrl])
             ->one();
 
-        if ($containerUrl !== null) {
+        if ($page !== null) {
             // If title has changed, update it
-            if ($containerUrl['title'] != $iframeTitle) {
-                $containerUrl['title'] = $iframeTitle;
-                $containerUrl->save();
+            if ($page['title'] != $pageTitle) {
+                $page['title'] = $pageTitle;
+                $page->save();
             }
-            // If related container page is different (case where same URL is accessible form differents containers pages in the same space)
-            if ($containerPage['id'] != $containerUrl['container_page_id']) {
-                // make this container URL related to smaller sort order container page (the first one in the space menu list)
-                if ($containerPage['sort_order'] < $containerUrl->containerPage['sort_order']) {
-                    $containerUrl['container_page_id'] = $containerPage['id'];
-                    $containerUrl->save();
+            // If related website is different (case where same URL is accessible form differents websites in the same space)
+            if ($website['id'] != $page['website_id']) {
+                // Make this page related to smaller sort order website (the first one in the space menu list)
+                if ($website['sort_order'] < $page->website['sort_order']) {
+                    $page['website_id'] = $website['id'];
+                    $page->save();
                 }
             }
         }
 
+        // Create permalink
+        $permalinkParams = [
+            'title' => $website['title'],
+        ];
+        if ($page !== null) {
+            $permalinkParams['pageId'] = $page['id'];
+        }
+        else {
+            $permalinkParams['pageUrl'] = $pageUrl;
+        }
+        $permalink = $space->createUrl('/external-websites/page', $permalinkParams, true);
+
+        // Create view params
         $viewParams = [
             'space' => $this->contentContainer,
-            'containerPage' => $containerPage,
-            'containerUrl' => $containerUrl,
-            'iframeUrl' => $iframeUrl,
-            'iframeTitle' => $iframeTitle,
+            'website' => $website,
+            'page' => $page,
+            'pageUrl' => $pageUrl,
+            'pageTitle' => $pageTitle,
+            'permalink' => $permalink,
+            'humhubIsHost' => $humhubIsHost,
         ];
 
-        // Render for iframe
-        if ($iframe) {
-            $this->layout = '@humhub/modules/iframe/views/layouts/iframe';
-            $this->subLayout = '@humhub/modules/iframe/views/page/_layoutForIframe';
-            return $this->render('url-content', $viewParams);
+        // Render for ajax (Humhub is host)
+        if ($humhubIsHost) {
+            return $this->renderAjax('index', $viewParams);
         }
 
-        // Render ajax
-        return $this->renderAjax('url-content', $viewParams);
+        // Render for iframe (Humhub is guest)
+        $this->layout = '@humhub/modules/external-websites/views/layouts/iframe';
+        $this->subLayout = '@humhub/modules/external-websites/views/page/_layoutForIframe';
+        return $this->render('index', $viewParams);
     }
 }

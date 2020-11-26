@@ -10,57 +10,60 @@ class m200212_175551_initial extends Migration
     /**
      * {@inheritdoc}
      */
-    // public function safeUp()
-    // {
-
-    // }
+    public function safeUp()
+    {
+        $this->createTable('external_websites_website', array(
+            'id' => $this->primaryKey(),
+            'space_id' => $this->integer(11)->notNull(),
+            'title' => $this->string(255),
+            'icon' => $this->string(100),
+            'first_page_url' => $this->text()->notNull(),
+            'show_in_menu' => $this->boolean()->defaultValue(false),
+            'sort_order' => $this->integer(11)->defaultValue(0),
+            'remove_from_url_title' => $this->string(255),
+            'hide_sidebar' => $this->boolean()->defaultValue(false),
+            'default_content_visibility' => $this->tinyInteger()->defaultValue(0),
+            'default_content_archived' => $this->tinyInteger()->defaultValue(0),
+            'created_at' => $this->dateTime(),
+            'created_by' => $this->integer(11),
+            'updated_at' => $this->dateTime(),
+            'updated_by' => $this->integer(11),
+        ), '');
+        $this->createTable('external_websites_website_page', array(
+            'id' => $this->primaryKey(),
+            'url' => $this->text(),
+            'title' => $this->string(255),
+            'website_id' => $this->integer(11)->notNull(),
+            'created_at' => $this->dateTime(),
+            'created_by' => $this->integer(11),
+            'updated_at' => $this->dateTime(),
+            'updated_by' => $this->integer(11),
+        ), '');
+    }
 
     /**
      * {@inheritdoc}
      */
-    // public function safeDown()
-    // {
-    //     echo "m200212_175551_initial cannot be reverted.\n";
+    public function safeDown()
+    {
+        echo "m200212_175551_initial cannot be reverted.\n";
 
-    //     return false;
-    // }
+        return false;
+    }
 
+
+    /*
     // Use up()/down() to run migration code without a transaction.
     public function up()
     {
-        $this->createTable('iframe_container_page', array(
-            'id' => 'pk',
-            'space_id' => 'int(11) NOT NULL',
-            'title' => 'varchar(255) DEFAULT NULL',
-            'icon' => 'varchar(100) DEFAULT NULL',
-            'start_url' => 'text NOT NULL',
-            'target' => 'varchar(100) DEFAULT NULL',
-            'sort_order' => 'int(11) DEFAULT 0',
-            'remove_from_url_title' => 'varchar(255) DEFAULT NULL',
-            'hide_sidebar' => 'tinyint(4) DEFAULT 0',
-            'show_widget' => 'tinyint(4) DEFAULT 0',
-            'visibility' => 'tinyint(4) DEFAULT 0',
-            'archived' => 'tinyint(4) DEFAULT 0',
-            'created_at' => 'datetime NOT NULL',
-            'created_by' => 'int(11) NOT NULL',
-            'updated_at' => 'datetime NOT NULL',
-            'updated_by' => 'int(11) NOT NULL',
-        ), '');
-        $this->createTable('iframe_container_url', array(
-            'id' => 'pk',
-            'url' => 'text DEFAULT NULL',
-            'title' => 'varchar(255) DEFAULT NULL',
-            'container_page_id' => 'int(11) NOT NULL',
-            'created_at' => 'datetime NOT NULL',
-            'created_by' => 'int(11) NOT NULL',
-            'updated_at' => 'datetime NOT NULL',
-            'updated_by' => 'int(11) NOT NULL',
-        ), '');
+
     }
 
     public function down()
     {
-        echo "m190609_090436_initial cannot be reverted.\n";
+        echo "m200212_175551_initial cannot be reverted.\n";
+
         return false;
     }
+    */
 }
