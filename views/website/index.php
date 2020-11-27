@@ -3,7 +3,7 @@
  * External Websites
  * @link https://gitlab.com/funkycram/humhub-modules-external-websites
  * @license https://gitlab.com/funkycram/humhub-modules-external-websites/-/raw/master/docs/LICENCE.md
- * @author [FunkycraM](https://marc.fun)
+ * @author [Marc Farre](https://marc.fun)
  */
 
 use yii\helpers\Url;
@@ -16,11 +16,11 @@ use yii\helpers\Html;
 
 humhub\modules\externalWebsites\assets\HostAssets::register($this);
 $this->registerJsConfig('externalWebsites.Host', [
-    'urlContentActionUrl' => Url::to('page/index')
+    'pageActionUrl' => Url::to('page/index')
 ]);
 ?>
 
-<div id="ew-website" class="panel panel-default" data-container-page-id="<?= $website['id'] ?>">
+<div id="ew-website" class="panel panel-default" data-container-page-id="<?= $website->id ?>">
     <div class="panel-body">
         <div class="row">
             <div class="col-md-9 layout-content-container" id="ew-page-iframed">

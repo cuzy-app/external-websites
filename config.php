@@ -3,10 +3,16 @@
  * External Websites
  * @link https://gitlab.com/funkycram/humhub-modules-external-websites
  * @license https://gitlab.com/funkycram/humhub-modules-external-websites/-/raw/master/docs/LICENCE.md
- * @author [FunkycraM](https://marc.fun)
+ * @author [Marc Farre](https://marc.fun)
  */
 
 use humhub\modules\externalWebsites\Events;
+use humhub\modules\space\widgets\Menu;
+use humhub\modules\stream\widgets\WallStreamFilterNavigation;
+use humhub\modules\stream\models\WallStreamQuery;
+use humhub\modules\space\widgets\HeaderControlsMenu;
+use humhub\widgets\BaseMenu;
+
 
 return [
     'id' => 'external-websites',
@@ -14,20 +20,24 @@ return [
     'namespace' => 'humhub\modules\externalWebsites',
     'events' => [
     	[
-    		'class' => \humhub\modules\space\widgets\Menu::class,
-    		'event' => \humhub\modules\space\widgets\Menu::EVENT_INIT,
+    		'class' => Menu::class,
+    		'event' => Menu::EVENT_INIT,
     		'callback' => [Events::class, 'onSpaceMenuInit'],
     	],
         [
-            'class' => \humhub\modules\stream\widgets\WallStreamFilterNavigation::class,
-            'event' =>  \humhub\modules\stream\widgets\WallStreamFilterNavigation::EVENT_BEFORE_RUN,
+            'class' => WallStreamFilterNavigation::class,
+            'event' =>  WallStreamFilterNavigation::EVENT_BEFORE_RUN,
             'callback' => [Events::class, 'onStreamFilterBeforeRun']
         ],
     	[
-		    'class' => \humhub\modules\stream\models\WallStreamQuery::class,
-		    'event' =>  \humhub\modules\stream\models\WallStreamQuery::EVENT_BEFORE_FILTER,
+		    'class' => WallStreamQuery::class,
+		    'event' =>  WallStreamQuery::EVENT_BEFORE_FILTER,
 		    'callback' => [Events::class, 'onStreamFilterBeforeFilter'],
 		],
+        [
+            'class' => HeaderControlsMenu::class,
+            'event' => BaseMenu::EVENT_INIT,
+            'callback' => [Events::class, 'onSpaceAdminMenuInit']],
     ]
 ];
 ?>

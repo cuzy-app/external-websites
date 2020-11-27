@@ -3,7 +3,7 @@
  * External Websites
  * @link https://gitlab.com/funkycram/humhub-modules-external-websites
  * @license https://gitlab.com/funkycram/humhub-modules-external-websites/-/raw/master/docs/LICENCE.md
- * @author [FunkycraM](https://marc.fun)
+ * @author [Marc Farre](https://marc.fun)
  */
 
 use yii\helpers\Html;
@@ -26,7 +26,7 @@ use humhub\modules\externalWebsites\widgets\FirstCommentForm;
 // If Humhub is host
 if ($humhubIsHost) {
     $this->registerJsConfig('externalWebsites.Host', [
-        'hideSidebar' => $website['hide_sidebar'],
+        'hideSidebar' => $website->hide_sidebar,
         'permalink' => $permalink,
     ]);
 }
@@ -62,7 +62,7 @@ else {
         <?php else: ?>
             <?= FirstCommentForm::widget([
                 'space' => $space,
-                'websiteId' => $website['id'],
+                'websiteId' => $website->id,
                 'pageUrl' => $pageUrl,
                 'pageTitle' => $pageTitle,
             ]) ?>

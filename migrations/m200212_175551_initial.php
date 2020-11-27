@@ -31,8 +31,8 @@ class m200212_175551_initial extends Migration
         ), '');
         $this->createTable('external_websites_website_page', array(
             'id' => $this->primaryKey(),
-            'url' => $this->text(),
             'title' => $this->string(255),
+            'page_url' => $this->text(),
             'website_id' => $this->integer(11)->notNull(),
             'created_at' => $this->dateTime(),
             'created_by' => $this->integer(11),

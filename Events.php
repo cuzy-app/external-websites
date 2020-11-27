@@ -3,12 +3,13 @@
  * External Websites
  * @link https://gitlab.com/funkycram/humhub-modules-external-websites
  * @license https://gitlab.com/funkycram/humhub-modules-external-websites/-/raw/master/docs/LICENCE.md
- * @author [FunkycraM](https://marc.fun)
+ * @author [Marc Farre](https://marc.fun)
  */
 
 namespace humhub\modules\externalWebsites;
 
 use Yii;
+use humhub\modules\ui\menu\MenuLink;
 use humhub\modules\externalWebsites\models\Website;
 use humhub\modules\externalWebsites\models\filters\ExternalWebsitesSpaceStreamFilter;
 use humhub\modules\stream\widgets\WallStreamFilterNavigation;
@@ -31,23 +32,21 @@ class Events
 
             // Get pages
             $websites = Website::find()
-                ->where(['space_id' => $space['id']])
+                ->where(['space_id' => $space->id])
                 ->andWhere(['show_in_menu' => true])
                 ->orderBy(['sort_order' => SORT_ASC])
                 ->all();
 
             foreach ($websites as $website) {
                 $event->sender->addItem([
-                    'label' => $website['title'],
+                    'label' => $website->title,
                     'group' => 'modules',
                     'url' => $website->url,
-                    'icon' => '<i class="fa '.$website['icon'].'"></i>',
+                    'icon' => '<i class="fa '.$website->icon.'"></i>',
                     'isActive' => (
-                        Yii::$app->controller->module
-                        && Yii::$app->controller->module->id == 'external-websites'
-                        && Yii::$app->controller->id = 'page'
+                        MenuLink::isActiveState('external-websites', 'website', 'index')
                         && $currentPageTitle !== null
-                        && $currentPageTitle == $website['title']
+                        && $currentPageTitle == $website->title
                     ),
                 ]);
             }
@@ -77,7 +76,7 @@ class Events
         
             // Get pages
             $websites = Website::find()
-                ->where(['space_id' => $space['id']])
+                ->where(['space_id' => $space->id])
                 ->orderBy(['sort_order' => SORT_ASC])
                 ->all();
 
@@ -88,11 +87,11 @@ class Events
                 // Add a filters to the new filter block
                 $wallFilterNavigation->addFilter(
                     [
-                        'id' => 'website_id_'.$website['id'],
+                        'id' => 'website_id_'.$website->id,
                         'title' => Yii::t(
                             'ExternalWebsitesModule.models',
                             '{pageTitle}: show comments',
-                            ['{pageTitle}' => $website['title']]
+                            ['{pageTitle}' => $website->title]
                         ),
                         'sortOrder' => $sortOrder,
                     ],
@@ -103,7 +102,9 @@ class Events
     }
 
 
-    // Adds filters
+    /**
+     * Adds filters
+     */
     public static function onStreamFilterBeforeFilter ($event)
     {
         // if single content (contentId in URL)
@@ -121,6 +122,26 @@ class Events
                 // Add a new filterHandler to WallStreamQuery
                 $streamQuery->filterHandlers[] = ExternalWebsitesSpaceStreamFilter::class;
             }
+        }
+    }
+
+
+    public static function onSpaceAdminMenuInit($event)
+    {
+        try {
+            /* @var $space \humhub\modules\space\models\Space */
+            $space = $event->sender->space;
+            if ($space->isModuleEnabled('external-websites') && $space->isAdmin() && $space->isMember()) {
+                $event->sender->addItem([
+                    'label' => Yii::t('ExternalWebsitesModule.base', 'External websites'),
+                    'group' => 'admin',
+                    'url' => $space->createUrl('/external-websites/manage/websites'),
+                    'icon' => '<i class="fa fa-desktop"></i>',
+                    'isActive' => MenuLink::isActiveState('external-websites', 'manage', 'websites'),
+                ]);
+            }
+        } catch (\Throwable $e) {
+            Yii::error($e);
         }
     }
 }

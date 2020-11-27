@@ -3,7 +3,7 @@
  * External Websites
  * @link https://gitlab.com/funkycram/humhub-modules-external-websites
  * @license https://gitlab.com/funkycram/humhub-modules-external-websites/-/raw/master/docs/LICENCE.md
- * @author [FunkycraM](https://marc.fun)
+ * @author [Marc Farre](https://marc.fun)
  */
 
 namespace humhub\modules\externalWebsites\models\filters;
@@ -21,7 +21,7 @@ class ExternalWebsitesSpaceStreamFilter extends \humhub\modules\stream\models\fi
     /**
      * Default filters
      */
-    // 'website_id_'.$website['id']
+    // 'website_id_'.$website->id
 
     /**
      * Array of stream filters to apply to the query.
@@ -43,7 +43,7 @@ class ExternalWebsitesSpaceStreamFilter extends \humhub\modules\stream\models\fi
     public function init()
     {
         $space = Yii::$app->controller->contentContainer;
-        $this->websites = Website::findAll(['space_id' => $space['id']]);
+        $this->websites = Website::findAll(['space_id' => $space->id]);
 
         $this->filters = $this->streamQuery->filters;
         parent::init();
@@ -60,15 +60,15 @@ class ExternalWebsitesSpaceStreamFilter extends \humhub\modules\stream\models\fi
 
         $isFiltered = false;
         foreach ($this->websites as $website) {
-            if ($this->isFilterActive('website_id_'.$website['id'])) {
+            if ($this->isFilterActive('website_id_'.$website->id)) {
 
                 if (!$isFiltered) {
                     $isFiltered = true;
-                    $this->query->andFilterWhere(['external_websites_website_page.website_id' => $website['id']]);
+                    $this->query->andFilterWhere(['external_websites_website_page.website_id' => $website->id]);
                 }
                 else {
                     // if more than one filter, use 'or'
-                    $this->query->orFilterWhere(['external_websites_website_page.website_id' => $website['id']]);
+                    $this->query->orFilterWhere(['external_websites_website_page.website_id' => $website->id]);
                 }
             }
         }

@@ -75,7 +75,7 @@ humhub.module('externalWebsites.Host', function (module, require, $) {
                     // Load comments with ajax, after the iframe tag, each time URL changes in the iframed website
                     $.pjax.reload('#ew-page-addons', {
                         type : 'POST',
-                        url: module.config.urlContentActionUrl,
+                        url: module.config.pageActionUrl,
                         push: false,
                         replace: false,
                         data: {

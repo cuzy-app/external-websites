@@ -8,18 +8,20 @@
 
 namespace humhub\modules\externalWebsites\widgets;
 
+use humhub\components\Widget;
 
 /**
- * WallEntry is used to display page content addons inside the stream.
+ * IconSelect widget renders a icon selection
  */
-class WallEntry extends \humhub\modules\content\widgets\WallEntry
+class IconSelect extends Widget
 {
+
+    public $model;
+    
     public function run()
     {
-        return $this->render('wallEntry', [
-            'page' => $this->contentObject,
-            'space' => $this->contentObject->content->container
+        return $this->render('iconSelect', [
+            'model' => $this->model,
         ]);
     }
-
 }

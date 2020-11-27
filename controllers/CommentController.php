@@ -3,7 +3,7 @@
  * External Websites
  * @link https://gitlab.com/funkycram/humhub-modules-external-websites
  * @license https://gitlab.com/funkycram/humhub-modules-external-websites/-/raw/master/docs/LICENCE.md
- * @author [FunkycraM](https://marc.fun)
+ * @author [Marc Farre](https://marc.fun)
  */
 
 namespace humhub\modules\externalWebsites\controllers;
@@ -45,21 +45,21 @@ class CommentController extends ParentCommentController
         $website = Website::findOne($websiteId);
 
         // Get space
-        $space = Space::findOne($website['space_id']);
+        $space = Space::findOne($website->space_id);
 
         // Check if not exists (if someone else has commented after form has been loaded)
         $page = Page::find()
             ->contentContainer($space) // restrict to current space
-            ->where(['url' => $pageUrl])
+            ->where(['page_url' => $pageUrl])
             ->one();
 
         if ($page === null) {
             $page = new Page($space);
-            $page['website_id'] = $websiteId;
-            $page['url'] = $pageUrl;
-            $page['title'] = $pageTitle;
-            $page->content['visibility'] = $website['default_content_visibility'];
-            $page->content['archived'] = $website['default_content_archived'];
+            $page->website_id = $websiteId;
+            $page->page_url = $pageUrl;
+            $page->title = $pageTitle;
+            $page->content['visibility'] = $website->default_content_visibility;
+            $page->content['archived'] = $website->default_content_archived;
             $page->save();
         }
 

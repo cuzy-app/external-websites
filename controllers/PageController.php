@@ -3,7 +3,7 @@
  * External Websites
  * @link https://gitlab.com/funkycram/humhub-modules-external-websites
  * @license https://gitlab.com/funkycram/humhub-modules-external-websites/-/raw/master/docs/LICENCE.md
- * @author [FunkycraM](https://marc.fun)
+ * @author [Marc Farre](https://marc.fun)
  */
 
 namespace humhub\modules\externalWebsites\controllers;
@@ -126,26 +126,26 @@ class PageController extends ContentContainerController
 
         // Format page URL and Title
         $pageUrl = rtrim(strtok($pageUrl, "#"),"/"); // remove anchor (#hash) from URL and / at the end
-        $pageTitle = str_ireplace($website['remove_from_url_title'], '', $pageTitle); // Remove unwanted text in title
+        $pageTitle = str_ireplace($website->remove_from_url_title, '', $pageTitle); // Remove unwanted text in title
         $pageTitle = BaseStringHelper::truncate($pageTitle, 100, '[...]');
 
         // Get content (there can be only 1 unique URL per space, so we don't filter by website)
         $page = Page::find()
             ->contentContainer($this->contentContainer) // restrict to current space
-            ->where(['url' => $pageUrl])
+            ->where(['page_url' => $pageUrl])
             ->one();
 
         if ($page !== null) {
             // If title has changed, update it
-            if ($page['title'] != $pageTitle) {
-                $page['title'] = $pageTitle;
+            if ($page->title != $pageTitle) {
+                $page->title = $pageTitle;
                 $page->save();
             }
             // If related website is different (case where same URL is accessible form differents websites in the same space)
-            if ($website['id'] != $page['website_id']) {
+            if ($website->id != $page->website_id) {
                 // Make this page related to smaller sort order website (the first one in the space menu list)
-                if ($website['sort_order'] < $page->website['sort_order']) {
-                    $page['website_id'] = $website['id'];
+                if ($website->sort_order < $page->website->sort_order) {
+                    $page->website_id = $website->id;
                     $page->save();
                 }
             }
@@ -159,7 +159,7 @@ class PageController extends ContentContainerController
             $permalink = $this->contentContainer->createUrl(
                 '/external-websites/page',
                 [
-                    'title' => $website['title'],
+                    'title' => $website->title,
                     'pageUrl' => $pageUrl,
                 ]
             );

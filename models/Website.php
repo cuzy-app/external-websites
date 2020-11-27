@@ -3,7 +3,7 @@
  * External Websites
  * @link https://gitlab.com/funkycram/humhub-modules-external-websites
  * @license https://gitlab.com/funkycram/humhub-modules-external-websites/-/raw/master/docs/LICENCE.md
- * @author [FunkycraM](https://marc.fun)
+ * @author [Marc Farre](https://marc.fun)
  */
 
 namespace humhub\modules\externalWebsites\models;
@@ -16,7 +16,7 @@ use humhub\modules\space\models\Space;
  * 
  * @property integer $space_id
  * @property string $title
- * @property string $Icon Fontawesome
+ * @property string $icon Fontawesome
  * @property string $first_page_url
  * @property boolean $show_in_menu
  * @property integer $sort_order 
@@ -88,7 +88,7 @@ class Website extends \humhub\components\ActiveRecord
 
     public function getUrl()
     {
-        return $this->space->createUrl('/external-websites/website', ['title' => $this['title']]);
+        return $this->space->createUrl('/external-websites/website', ['title' => $this->title]);
     }
 
 

@@ -3,7 +3,7 @@
  * External Websites
  * @link https://gitlab.com/funkycram/humhub-modules-external-websites
  * @license https://gitlab.com/funkycram/humhub-modules-external-websites/-/raw/master/docs/LICENCE.md
- * @author [FunkycraM](https://marc.fun)
+ * @author [Marc Farre](https://marc.fun)
  */
 
 namespace humhub\modules\externalWebsites\controllers;
@@ -30,7 +30,7 @@ class WebsiteController extends ContentContainerController
     {
         // Get website from title
         $website = Website::findOne([
-            'space_id' => $this->contentContainer['id'],
+            'space_id' => $this->contentContainer->id,
             'title' => $title,
         ]);
         if ($website === null) {
@@ -38,14 +38,14 @@ class WebsiteController extends ContentContainerController
         }
 
         // Set first page URL
-        $pageUrl = $website['first_page_url'];
+        $pageUrl = $website->first_page_url;
 
         // If pageId is in the URL
         $pageId = Yii::$app->request->get('pageId');
         if ($pageId !== null) {
             $page = Page::findOne($pageId);
             if ($page !== null) {
-                $pageUrl = $page['url'];
+                $pageUrl = $page->page_url;
             }
         }
         // If pageUrl is in the URL (Page does not exist)

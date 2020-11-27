@@ -3,7 +3,7 @@
  * External Websites
  * @link https://gitlab.com/funkycram/humhub-modules-external-websites
  * @license https://gitlab.com/funkycram/humhub-modules-external-websites/-/raw/master/docs/LICENCE.md
- * @author [FunkycraM](https://marc.fun)
+ * @author [Marc Farre](https://marc.fun)
  */
 
 namespace humhub\modules\externalWebsites;
@@ -23,7 +23,7 @@ class Module extends ContentContainerModule
     /**
      * @var string defines the icon
      */
-    public $icon = 'fa-external-link';
+    public $icon = 'fa-desktop';
 
     /**
      * @var string defines path for resources, including the screenshots path for the marketplace
@@ -98,7 +98,7 @@ class Module extends ContentContainerModule
             $page->delete();
         }
 
-        foreach (Website::findAll(['space_id' => $container['id']]) as $website)
+        foreach (Website::findAll(['space_id' => $container->id]) as $website)
         {
             $website->delete();
         }

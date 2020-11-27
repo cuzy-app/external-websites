@@ -3,7 +3,7 @@
  * External Websites
  * @link https://gitlab.com/funkycram/humhub-modules-external-websites
  * @license https://gitlab.com/funkycram/humhub-modules-external-websites/-/raw/master/docs/LICENCE.md
- * @author [FunkycraM](https://marc.fun)
+ * @author [Marc Farre](https://marc.fun)
  */
 
 namespace humhub\modules\externalWebsites\models;
@@ -21,8 +21,8 @@ use humhub\modules\externalWebsites\widgets\WallEntry;
  * The relation is done with the URL of the page
  * 
  * @property integer $id
- * @property string $url
  * @property integer $title
+ * @property string $page_url
  * @property integer $website_id
  */
 
@@ -67,8 +67,8 @@ class Page extends ContentActiveRecord implements Searchable
     {
         return [
             'id' => 'ID',
-            'url' => 'Page URL',
-            'title' => 'Page Title',
+            'title' => 'Title',
+            'page_url' => 'Page URL',
             'website_id' => 'Website id',
             'created_at' => 'Created at',
             'created_by' => 'Created by',
@@ -83,8 +83,8 @@ class Page extends ContentActiveRecord implements Searchable
     public function rules()
     {
        return [
-           [['website_id', 'url'], 'required'],
-           [['url', 'title'], 'string'],
+           [['website_id', 'page_url'], 'required'],
+           [['title', 'page_url'], 'string'],
            [['website_id'], 'integer'],
        ];
     }
@@ -99,21 +99,21 @@ class Page extends ContentActiveRecord implements Searchable
 
     public function getContentName()
     {
-        if (!empty($this->website['title'])) {
-            return $this->website['title'];
+        if (!empty($this->website->title)) {
+            return $this->website->title;
         }
         return Yii::t('ExternalWebsitesModule.base', 'Page');
     }
 
     public function getContentDescription()
     {
-        return $this['title'];
+        return $this->title;
     }
 
     public function getUrl()
     {
         $website = $this->website;
-        return $website->space->createUrl('/external-websites/page?title='.urlencode($website['title']).'&pageId='.$this['id']);
+        return $website->space->createUrl('/external-websites/page?title='.urlencode($website->title).'&pageId='.$this->id);
     }
 
     /**
@@ -124,9 +124,9 @@ class Page extends ContentActiveRecord implements Searchable
         $space = $this->content->container;
 
         $attributes = [
-            'message' => $this->website['title'],
+            'message' => $this->website->title,
             // url comment because make solr crash
-            // 'url' => $space->createUrl('/external-websites/page?title='.urlencode($this->website['title']).'&pageId='.$this['id']),
+            // 'page_url' => $space->createUrl('/external-websites/page?title='.urlencode($this->website->title).'&pageId='.$this->id),
             'user' => $this->getPostAuthorName()
         ];
 
@@ -151,10 +151,10 @@ class Page extends ContentActiveRecord implements Searchable
 
     public function getIcon()
     {
-        if (!empty($this->website['icon'])) {
-            return $this->website['icon'];
+        if (!empty($this->website->icon)) {
+            return $this->website->icon;
         }
-        return 'fa-external-link-square';
+        return 'fa-desktop';
     }
 
 
@@ -164,8 +164,8 @@ class Page extends ContentActiveRecord implements Searchable
      */
     public function beforeSave($insert)
     {
-        $this['created_by'] = $this->website['created_by'];
-        $this->content['created_by'] = $this['created_by'];
+        $this->created_by = $this->website->created_by;
+        $this->content->created_by = $this->created_by;
 
         return parent::beforeSave($insert);
     }
@@ -181,7 +181,7 @@ class Page extends ContentActiveRecord implements Searchable
             $space = $this->content->container;
             foreach ($space->memberships as $membership) {
                 if ($membership->send_notifications) {
-                    $this->follow($membership['user_id'], true);
+                    $this->follow($membership->user_id, true);
                 }
             }
         }
