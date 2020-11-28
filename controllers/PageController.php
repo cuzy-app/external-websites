@@ -93,85 +93,88 @@ class PageController extends ContentContainerController
     /**
      * Called by ajax (if Humhub is host) or iframe (if Humhub is guest)
      * If Humhub is guest, see README.md for complete URL to provide in the iframe scr
-     * @param $humhubIsHost boolean
+     * @param $humhubIsHost integer (0 or 1)
      */
-    public function actionIndex ($humhubIsHost = true) {
-        // Get website ID (POST if ajax, GET if iframe)
-        $websiteId = Yii::$app->request->post('websiteId', Yii::$app->request->get('websiteId'));
+    public function actionIndex ($id = null, $websiteId = null, $humhubIsHost = 1) {
 
-        // Get page URL and Title (if from ajax, in $iframeMessage array)
-        if ($humhubIsHost) {
-            $humhubIsHost = true; // Value is 1 because of GET
-            $iframeMessage = Yii::$app->request->post('iframeMessage');
-            if (!empty($iframeMessage)) {
-                $pageUrl = $iframeMessage['pageUrl'];
-                $pageTitle = $iframeMessage['pageTitle'];
-            }
+        // If page exists and called from URL
+        if ($id !== null) {
+            $page = Page::findOne($id);
+            $website = $page->website;
+            $title = $page->title;
+            $pageUrl = $page->pageUrl;
         }
         else {
-            $humhubIsHost = false; // Value is 0 because of GET
-            $pageUrl = Yii::$app->request->get('pageUrl');
-            $pageTitle = Yii::$app->request->get('pageTitle');
-        }
-
-        if (empty($websiteId) || empty($pageUrl)) {
-            throw new HttpException('403', 'Invalid param websiteId or pageUrl!');
-        }
-        
-        // Get website
-        $website = Website::findOne($websiteId);
-        if ($website === null) {
-            throw new HttpException(404);
-        }
-
-        // Format page URL and Title
-        $pageUrl = rtrim(strtok($pageUrl, "#"),"/"); // remove anchor (#hash) from URL and / at the end
-        $pageTitle = str_ireplace($website->remove_from_url_title, '', $pageTitle); // Remove unwanted text in title
-        $pageTitle = BaseStringHelper::truncate($pageTitle, 100, '[...]');
-
-        // Get content (there can be only 1 unique URL per space, so we don't filter by website)
-        $page = Page::find()
-            ->contentContainer($this->contentContainer) // restrict to current space
-            ->where(['page_url' => $pageUrl])
-            ->one();
-
-        if ($page !== null) {
-            // If title has changed, update it
-            if ($page->title != $pageTitle) {
-                $page->title = $pageTitle;
-                $page->save();
+            // Get website (could be retreive with $page->website, but as some pages may be shared with several websites, we need to specify the website desired)
+            $website = Website::findOne($websiteId);
+            if ($website === null) {
+                throw new HttpException(404);
             }
-            // If related website is different (case where same URL is accessible form differents websites in the same space)
-            if ($website->id != $page->website_id) {
-                // Make this page related to smaller sort order website (the first one in the space menu list)
-                if ($website->sort_order < $page->website->sort_order) {
-                    $page->website_id = $website->id;
+
+            // Get page URL
+            $pageUrl = Yii::$app->request->post('pageUrl', Yii::$app->request->get('pageUrl'));
+            if (empty($pageUrl)) {
+                throw new HttpException('403', 'Invalid param pageUrl!');
+            }
+            $pageUrl = rtrim(strtok($pageUrl, "#"),"/"); // remove anchor (#hash) from URL and / at the end
+
+            // Get title
+            $pageTitle = Yii::$app->request->post('pageTitle', Yii::$app->request->get('pageTitle', ''));
+            $pageTitle = str_ireplace($website->remove_from_url_title, '', $pageTitle); // Remove unwanted text in title
+            $title = BaseStringHelper::truncate($pageTitle, 100, '[...]');
+
+            // Get content (there can be only 1 unique URL per space, so we don't filter by website)
+            $page = Page::find()
+                ->contentContainer($this->contentContainer) // restrict to current space
+                ->where(['page_url' => $pageUrl])
+                ->one();
+
+            if ($page !== null) {
+                // If title has changed, update it
+                if ($page->title != $title) {
+                    $page->title = $title;
                     $page->save();
+                }
+                
+                // If related website is different (case where same URL is accessible form differents websites in the same space)
+                if ($website->id != $page->website_id) {
+                    // Make this page related to smaller sort order website (the first one in the space menu list)
+                    if ($website->sort_order < $page->website->sort_order) {
+                        $page->website_id = $website->id;
+                        $page->save();
+                    }
                 }
             }
         }
 
+
         // Create permalink
-        if ($page !== null) {
-            $permalink = $page->url;
+        if ($humhubIsHost) {
+            if ($page !== null) {
+                $permalink = $page->url;
+            }
+            else {
+                $permalink = $this->contentContainer->createUrl(
+                    '/external-websites/website',
+                    [
+                        'id' => $website->id,
+                        'pageUrl' => $pageUrl,
+                    ],
+                    true
+                );
+            }
         }
         else {
-            $permalink = $this->contentContainer->createUrl(
-                '/external-websites/page',
-                [
-                    'title' => $website->title,
-                    'pageUrl' => $pageUrl,
-                ]
-            );
+            $permalink = $pageUrl;
         }
 
         // Create view params
         $viewParams = [
-            'space' => $this->contentContainer,
+            'contentContainer' => $this->contentContainer,
             'website' => $website,
             'page' => $page,
             'pageUrl' => $pageUrl,
-            'pageTitle' => $pageTitle,
+            'title' => $title,
             'permalink' => $permalink,
             'humhubIsHost' => $humhubIsHost,
         ];

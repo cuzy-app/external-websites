@@ -1,6 +1,6 @@
 <?php
 return [
 	'Filter' => 'Filtrer',
-	'{pageTitle}: show comments' => '{pageTitle} : Afficher les commentaires',
+	'{title}: show comments' => '{title} : Afficher les commentaires',
 ];
 ?>

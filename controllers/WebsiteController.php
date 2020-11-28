@@ -26,13 +26,10 @@ use humhub\modules\user\models\Group;
  */
 class WebsiteController extends ContentContainerController
 {
-    public function actionIndex ($title)
+    public function actionIndex ($id)
     {
         // Get website from title
-        $website = Website::findOne([
-            'space_id' => $this->contentContainer->id,
-            'title' => $title,
-        ]);
+        $website = Website::findOne($id);
         if ($website === null) {
             throw new HttpException(404);
         }
@@ -54,6 +51,7 @@ class WebsiteController extends ContentContainerController
         }
 
         return $this->render('index', [
+            'contentContainer' => $this->contentContainer,
             'website' => $website,
             'pageUrl' => $pageUrl,
         ]);

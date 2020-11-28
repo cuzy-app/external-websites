@@ -34,7 +34,7 @@ class CommentController extends ParentCommentController
         $this->module = Yii::$app->getModule('comment');
 
         $pageUrl = Yii::$app->request->post('pageUrl');
-        $pageTitle = Yii::$app->request->post('pageTitle', '');
+        $title = Yii::$app->request->post('title', '');
         $websiteId = (int)Yii::$app->request->post('websiteId');
 
         if (empty($pageUrl) || empty($websiteId)) {
@@ -57,7 +57,7 @@ class CommentController extends ParentCommentController
             $page = new Page($space);
             $page->website_id = $websiteId;
             $page->page_url = $pageUrl;
-            $page->title = $pageTitle;
+            $page->title = $title;
             $page->content['visibility'] = $website->default_content_visibility;
             $page->content['archived'] = $website->default_content_archived;
             $page->save();

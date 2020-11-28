@@ -88,17 +88,15 @@ class Website extends \humhub\components\ActiveRecord
 
     public function getUrl()
     {
-        return $this->space->createUrl('/external-websites/website', ['title' => $this->title]);
+        return $this->space->createUrl('/external-websites/website', ['id' => $this->id]);
     }
 
 
     public function beforeDelete()
     {
-        // TBD : if last one of the space, remove all Page rows and related content
-
-        // C’est pas très simple à cause des contenus qui peuvent être partagés par plusieurs onglets.
-        // Si on supprime un onglet, on pourra supprimer tout le contenu lié à cet onglet qui n’a pas de commentaire, mais s’il y a des commentaires, faudra juste mettre à NULL website_id en attendant qu’il soit éventuelle réaffecté à un autre onglet.
-        // Par contre, quand on supprimera le dernier onglet, on pourra supprimer tous les contenus créés par le module iframe, de la même manière que c’est déjà le cas quand on désactive le module.
+        foreach (Page::find()->contentContainer($this->space)->all() as $page) {
+            $page->delete();
+        }
 
         return parent::beforeDelete();
     }

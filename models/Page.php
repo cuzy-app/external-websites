@@ -112,8 +112,11 @@ class Page extends ContentActiveRecord implements Searchable
 
     public function getUrl()
     {
-        $website = $this->website;
-        return $website->space->createUrl('/external-websites/page?title='.urlencode($website->title).'&pageId='.$this->id);
+        // TBD: if host: return $this->page_url;
+        return $this->website->space->createUrl('/external-websites/website', [
+            'id' => $this->website->id,
+            'pageId' => $this->id,
+        ]);
     }
 
     /**

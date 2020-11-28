@@ -20,12 +20,6 @@ class WebsiteSearch extends Website
     public $query;
 
     /**
-     * instance of \humhub\modules\space\models\Space
-     */
-    public $contentContainer;
-
-
-    /**
      * @inheritdoc
      */
     public function attributes()
@@ -40,7 +34,11 @@ class WebsiteSearch extends Website
      */
     public function rules()
     {
-        return parent::rules();
+        return [
+           [['title', 'icon', 'first_page_url', 'remove_from_url_title'], 'string'],
+           [['space_id', 'sort_order', 'default_content_visibility', 'default_content_archived'], 'integer'],
+           [['show_in_menu', 'hide_sidebar'], 'boolean'],
+       ];
     }
 
     /**
@@ -64,8 +62,8 @@ class WebsiteSearch extends Website
         $query = ($this->query == null) ? Website::find() : $this->query;
         /* @var $query \humhub\modules\user\components\ActiveQueryUser */
 
-        if (!empty($this->contentContainer)) {
-            $query->contentContainer($this->contentContainer);
+        if (!empty($this->space_id)) {
+            $query->andWhere(['space_id' => $this->space_id]);
         }
 
         $dataProvider = new ActiveDataProvider([

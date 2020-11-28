@@ -10,17 +10,18 @@ use yii\helpers\Url;
 use yii\helpers\Html;
 
 /**
+ * @var $contentContainer humhub\modules\Space\models\Space
  * @var $pageUrl string url
  * @var $website humhub\modules\externalWebsites\models\Website
  */
 
 humhub\modules\externalWebsites\assets\HostAssets::register($this);
 $this->registerJsConfig('externalWebsites.Host', [
-    'pageActionUrl' => Url::to('page/index')
+    'pageActionUrl' => $contentContainer->createUrl('page/index', ['websiteId' => $website->id])
 ]);
 ?>
 
-<div id="ew-website" class="panel panel-default" data-container-page-id="<?= $website->id ?>">
+<div id="ew-website" class="panel panel-default">
     <div class="panel-body">
         <div class="row">
             <div class="col-md-9 layout-content-container" id="ew-page-iframed">

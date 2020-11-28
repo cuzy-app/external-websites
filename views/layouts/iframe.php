@@ -8,6 +8,7 @@ use yii\helpers\Html;
 
 AppAsset::register($this);
 ?>
+
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
 <html lang="en">

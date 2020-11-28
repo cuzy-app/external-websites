@@ -23,7 +23,7 @@ class FirstCommentForm extends \humhub\modules\comment\widgets\Form
     /**
      * humhub\modules\space\models\Space
      */
-    public $space;
+    public $contentContainer;
 
     /**
      * object Website id
@@ -38,7 +38,7 @@ class FirstCommentForm extends \humhub\modules\comment\widgets\Form
     /**
      * page Title
      */
-    public $pageTitle;
+    public $title;
 
 
     /**
@@ -51,7 +51,7 @@ class FirstCommentForm extends \humhub\modules\comment\widgets\Form
         }
 
         // As content is not yet created, check permission with space (future content container)
-        if (!$this->space->permissionManager->can(new CreateComment)) {
+        if (!$this->contentContainer->permissionManager->can(new CreateComment)) {
             return '';
         }
 
@@ -64,7 +64,7 @@ class FirstCommentForm extends \humhub\modules\comment\widgets\Form
             'id' => 'first_comment',
             'websiteId' => $this->websiteId,
             'pageUrl' => $this->pageUrl,
-            'pageTitle' => $this->pageTitle,
+            'title' => $this->title,
         ]);
     }
 

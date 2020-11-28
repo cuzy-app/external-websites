@@ -14,13 +14,13 @@ use humhub\modules\comment\widgets\CommentLink;
 use humhub\modules\externalWebsites\widgets\FirstCommentForm;
 
 /**
- * @var $space humhub\modules\jdn\models\Space
+ * @var $contentContainer humhub\modules\Space\models\Space
  * @var $website humhub\modules\externalWebsites\models\Website
  * @var $page humhub\modules\externalWebsites\models\Page
  * @var $pageUrl string page url
- * @var $pageTitle string page title
+ * @var $title string page title
  * @var $permalink string
- * @var $humhubIsHost boolean
+ * @var $humhubIsHost integer (0 or 1)
  */
 
 // If Humhub is host
@@ -61,10 +61,10 @@ else {
             <?= Comments::widget(['object' => $page]) ?>
         <?php else: ?>
             <?= FirstCommentForm::widget([
-                'space' => $space,
+                'contentContainer' => $contentContainer,
                 'websiteId' => $website->id,
+                'title' => $title,
                 'pageUrl' => $pageUrl,
-                'pageTitle' => $pageTitle,
             ]) ?>
         <?php endif ?>
     </div>

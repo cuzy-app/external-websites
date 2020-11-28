@@ -7,16 +7,11 @@
  */
 
 use humhub\libs\Html;
-use humhub\modules\custom_pages\assets\Assets;
-use humhub\modules\custom_pages\models\ContainerSnippet;
-use \humhub\modules\custom_pages\models\Snippet;
 
 /**
  * @var $model humhub\modules\externalWebsites\models\WebsiteSearch
  */
 
-
-Assets::register($this);
 
 $faIcons = [
     'fa-adjust' => '&#xf042',
@@ -605,13 +600,13 @@ $faIcons = [
 
 
 
-<div class="form-group">
-    <label class="control-label" for="Page[icon]"><?= $page->getAttributeLabel('icon') ?></label>
+<div class="form-group field-websiteform-icon required">
+    <label class="control-label" for="websiteform-icon"><?= $model->getAttributeLabel('icon') ?></label>
 
-    <select class='selectpicker form-control' name="<?= $page->formName() ?>[icon]">
+    <select id="websiteform-icon" class='selectpicker form-control' name="<?= $model->formName() ?>[icon]">
         <?php foreach ($faIcons as $name => $value): ?>
 
-            <option class="" value="<?= $name; ?>" <?php if ($page->icon == $name): ?>selected='selected'<?php endif; ?>>
+            <option class="" value="<?= $name; ?>"<?php if ($model->icon == $name): ?> selected='selected'<?php endif; ?>>
                 <?= (substr($name, 0, 2) == 'fa') ?  substr($name, 3) : $name ?>
             </option>
 
@@ -620,7 +615,7 @@ $faIcons = [
 </div>
 
 
-<?= Html::script(<<<JS
+<script type="text/javascript">
     var formatState = function(state) {
         if (!state.id) {
             return state.text;
@@ -629,10 +624,9 @@ $faIcons = [
         return $('<span><i class="fa '+state.element.value+'"></i> ' + state.text + '</span>');
     };
 
-    $(".selectpicker").select2({
+    $("#websiteform-icon.selectpicker").select2({
         theme: "humhub",
         templateResult: formatState,
         templateSelection: formatState
     });
-JS
-) ?>
+</script>

@@ -9,10 +9,13 @@
 namespace humhub\modules\externalWebsites\controllers;
 
 use Yii;
+use humhub\modules\space\models\Space;
 use humhub\modules\content\components\ContentContainerController;
 use humhub\modules\content\components\ContentContainerControllerAccess;
-use humhub\modules\externalWebsites\models\forms\WebsiteForm;
 use humhub\modules\externalWebsites\models\Website;
+use humhub\modules\externalWebsites\models\WebsiteSearch;
+use humhub\modules\externalWebsites\models\forms\WebsiteForm;
+
 
 
 class ManageController extends ContentContainerController
@@ -30,7 +33,7 @@ class ManageController extends ContentContainerController
     public function actionWebsites()
     {
         // Get data provider
-        $searchModel = new WebsiteSearch(['contentContainer' => $this->contentContainer]);
+        $searchModel = new WebsiteSearch(['space_id' => $this->contentContainer->id]);
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('websites', [
@@ -42,7 +45,7 @@ class ManageController extends ContentContainerController
 
 
     public function actionAddWebsite() {
-        $model = new WebsiteForm(['contentContainer' => $this->contentContainer]);
+        $model = new WebsiteForm(['space_id' => $this->contentContainer->id]);
 
         if ($model->load(Yii::$app->request->post())) {
             if ($model->validate() && $model->save()) {
@@ -54,7 +57,7 @@ class ManageController extends ContentContainerController
             return $this->redirect('websites');
         }
 
-        return $this->renderAjax('add-websites', [
+        return $this->renderAjax('add-website', [
             'model' => $model,
         ]);
     }
@@ -62,7 +65,7 @@ class ManageController extends ContentContainerController
 
     public function actionEditWebsite($websiteId) {
         $model = new WebsiteForm([
-            'contentContainer' => $this->contentContainer,
+            'space_id' => $this->contentContainer->id,
             'id' => $websiteId
         ]);
 
@@ -76,7 +79,7 @@ class ManageController extends ContentContainerController
             return $this->redirect('websites');
         }
 
-        return $this->renderAjax('edit-websites', [
+        return $this->renderAjax('edit-website', [
             'model' => $model,
         ]);
     }

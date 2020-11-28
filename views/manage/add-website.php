@@ -8,10 +8,10 @@
 
 use yii\helpers\Html;
 use yii\helpers\Url;
+use yii\bootstrap\ActiveForm;
 use humhub\widgets\ModalDialog;
 use humhub\widgets\ModalButton;
-use yii\bootstrap\ActiveForm;
-// use humhub\modules\custom_pages\widgets\PageIconSelect;
+use humhub\modules\externalWebsites\widgets\IconSelect;
 
 /**
  * @var $this \humhub\components\View
@@ -24,13 +24,12 @@ use yii\bootstrap\ActiveForm;
 ]) ?>
 	<div class="modal-body">
         <?php $form = ActiveForm::begin(); ?>
-        	<?= $form->field($model, 'title')->textInput($calendarEntriesOptions) ?>
-            <?php /*<?= PageIconSelect::widget(['model' => $model]) ?>*/ ?>
-    		<?= $form->field($model, 'icon')->dropDownList($model->iconsList) ?>
+            <?= $form->field($model, 'title')->textInput() ?>
+            <?= IconSelect::widget(['model' => $model]) ?>
             <?= $form->field($model, 'first_page_url')->textInput() ?>
             <?= $form->field($model, 'show_in_menu')->radioList($model->yesNoList) ?>
             <?= $form->field($model, 'sort_order')->textInput() ?>
-            <?= $form->field($model, 'remove_from_url_title')->radioList($model->yesNoList) ?>
+            <?= $form->field($model, 'remove_from_url_title')->textInput() ?>
             <?= $form->field($model, 'hide_sidebar')->radioList($model->yesNoList) ?>
             <?= $form->field($model, 'default_content_visibility')->dropDownList($model->contentVisibilityList) ?>
             <?= $form->field($model, 'default_content_archived')->radioList($model->yesNoList) ?>

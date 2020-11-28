@@ -24,7 +24,7 @@ class Events
     public static function onSpaceMenuInit($event)
     {
         // Get current page URL if exists
-        $currentPageTitle = Yii::$app->request->get('title');
+        $currentTitle = Yii::$app->request->get('title');
 
         $space = $event->sender->space;
 
@@ -33,7 +33,7 @@ class Events
             // Get pages
             $websites = Website::find()
                 ->where(['space_id' => $space->id])
-                ->andWhere(['show_in_menu' => true])
+                ->andWhere(['show_in_menu' => 1])
                 ->orderBy(['sort_order' => SORT_ASC])
                 ->all();
 
@@ -45,8 +45,8 @@ class Events
                     'icon' => '<i class="fa '.$website->icon.'"></i>',
                     'isActive' => (
                         MenuLink::isActiveState('external-websites', 'website', 'index')
-                        && $currentPageTitle !== null
-                        && $currentPageTitle == $website->title
+                        && $currentTitle !== null
+                        && $currentTitle == $website->title
                     ),
                 ]);
             }
@@ -90,8 +90,8 @@ class Events
                         'id' => 'website_id_'.$website->id,
                         'title' => Yii::t(
                             'ExternalWebsitesModule.models',
-                            '{pageTitle}: show comments',
-                            ['{pageTitle}' => $website->title]
+                            '{title}: show comments',
+                            ['{title}' => $website->title]
                         ),
                         'sortOrder' => $sortOrder,
                     ],

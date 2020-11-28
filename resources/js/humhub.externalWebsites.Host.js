@@ -7,7 +7,7 @@ humhub.module('externalWebsites.Host', function (module, require, $) {
 
     var init = function(isPjax) { 
 
-        if (isPjax) {
+        if (isPjax && $('#ew-website').length) {
             // Update browser URL
             window.history.replaceState({},'', module.config.permalink);
 
@@ -79,8 +79,8 @@ humhub.module('externalWebsites.Host', function (module, require, $) {
                         push: false,
                         replace: false,
                         data: {
-                            websiteId: $('#ew-website').attr('data-container-page-id'),
-                            iframeMessage: iframeMessage,
+                            pageUrl: iframeMessage.pageUrl,
+                            pageTitle: iframeMessage.pageTitle
                         }
                     });
                 },

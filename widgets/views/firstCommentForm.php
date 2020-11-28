@@ -31,7 +31,7 @@ use humhub\modules\comment\models\Comment;
  * @var $model Commen
  * @var $websiteId int
  * @var $pageUrl string
- * @var $pageTitle string
+ * @var $title string
  * @var Module $contentModule
  */
 
@@ -56,7 +56,7 @@ $submitUrl = Url::to(['/external-websites/comment/post']);
         <?= Html::hiddenInput('objectModel', $objectModel) ?>
 
         <?= Html::hiddenInput('pageUrl', $pageUrl); ?>
-        <?= Html::hiddenInput('pageTitle', $pageTitle); ?>
+        <?= Html::hiddenInput('title', $title); ?>
         <?= Html::hiddenInput('websiteId', $websiteId); ?>
 
         <div class="comment-create-input-group">
