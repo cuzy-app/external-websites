@@ -26,7 +26,7 @@ class WebsiteForm extends \yii\base\Model
     public $sort_order = 100;
     public $remove_from_url_title = '';
     public $hide_sidebar = false;
-    public $default_content_visibility = Content::VISIBILITY_PRIVATE;
+    public $default_content_visibility = null;
     public $default_content_archived = 0;
 
 
@@ -123,6 +123,7 @@ class WebsiteForm extends \yii\base\Model
     public function getContentVisibilityList()
     {
         return [
+            null => Yii::t('CalendarEventsExtensionModule.base', 'Space\'s default content visibility'),
             Content::VISIBILITY_PRIVATE => Yii::t('CalendarEventsExtensionModule.base', 'Private'),
             Content::VISIBILITY_PUBLIC => Yii::t('CalendarEventsExtensionModule.base', 'Public'),
             Content::VISIBILITY_OWNER => Yii::t('CalendarEventsExtensionModule.base', 'Owner'),

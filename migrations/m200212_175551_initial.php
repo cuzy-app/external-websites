@@ -22,7 +22,7 @@ class m200212_175551_initial extends Migration
             'sort_order' => $this->integer(11)->defaultValue(0),
             'remove_from_url_title' => $this->string(255),
             'hide_sidebar' => $this->boolean()->defaultValue(false),
-            'default_content_visibility' => $this->tinyInteger()->defaultValue(0),
+            'default_content_visibility' => $this->tinyInteger(),
             'default_content_archived' => $this->tinyInteger()->defaultValue(0),
             'created_at' => $this->dateTime(),
             'created_by' => $this->integer(11),
