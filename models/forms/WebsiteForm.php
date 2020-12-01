@@ -122,8 +122,8 @@ class WebsiteForm extends \yii\base\Model
     public function getYesNoList()
     {
         return [
-            1 => Yii::t('CalendarEventsExtensionModule.base', 'Yes'),
-            0 => Yii::t('CalendarEventsExtensionModule.base', 'No'),
+            1 => Yii::t('ExternalWebsitesModule.base', 'Yes'),
+            0 => Yii::t('ExternalWebsitesModule.base', 'No'),
         ];
     }
 
@@ -131,10 +131,10 @@ class WebsiteForm extends \yii\base\Model
     public function getContentVisibilityList()
     {
         return [
-            null => Yii::t('CalendarEventsExtensionModule.base', 'Space\'s default content visibility'),
-            Content::VISIBILITY_PRIVATE => Yii::t('CalendarEventsExtensionModule.base', 'Private'),
-            Content::VISIBILITY_PUBLIC => Yii::t('CalendarEventsExtensionModule.base', 'Public'),
-            Content::VISIBILITY_OWNER => Yii::t('CalendarEventsExtensionModule.base', 'Owner'),
+            null => Yii::t('ExternalWebsitesModule.base', 'Space\'s default content visibility'),
+            Content::VISIBILITY_PRIVATE => Yii::t('ExternalWebsitesModule.base', 'Private'),
+            Content::VISIBILITY_PUBLIC => Yii::t('ExternalWebsitesModule.base', 'Public'),
+            Content::VISIBILITY_OWNER => Yii::t('ExternalWebsitesModule.base', 'Owner'),
         ];
     }
 }

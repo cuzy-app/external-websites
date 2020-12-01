@@ -39,15 +39,24 @@ $websiteForm = new WebsiteForm;
         <?php $columns = [
             [
                 'attribute' => 'id',
+                'headerOptions' => ['style' => 'min-width: 40px;'],
             ],
             [
                 'attribute' => 'title',
+                'headerOptions' => ['style' => 'min-width: 120px;'],
             ],
             [
                 'attribute' => 'icon',
                 'format' => 'raw',
                 'value' => function ($model) {
                     return '<i class="fa '.$model->icon.'"></i>';
+                }
+            ],
+            [
+                'attribute' => 'humhub_is_host',
+                'format' => 'raw',
+                'value' => function ($model) use ($websiteForm) {
+                    return $websiteForm->yesNoList[$model->humhub_is_host];
                 }
             ],
             [

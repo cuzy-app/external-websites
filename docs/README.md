@@ -106,7 +106,7 @@ $addGroupRelatedToSpace = 1;
 ```
 
 
-## Special features
+## Advanced features
 
 It is possible to have several websites of the same external website in the same space. In this case, Humhub addons (comments, like, files, etc.) are shared with the websites and the Humhub addons will be related to the website having the smaller `sort_order`.
 
