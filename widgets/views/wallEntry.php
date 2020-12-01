@@ -18,20 +18,15 @@ use yii\helpers\Url;
 
 <div>
 	<p>
-		<?= Html::a(
-			$page->website->title,
-			$page->website->url
-		) ?>
-		<i class="fa fa-angle-double-right"></i>
-		<?= Html::a(
-			$page->title,
-			$page->url
-		) ?>
+		<strong><?= Html::encode($page->title) ?></strong>
 	</p>
 	<p>
 		<strong><?= Html::a(
 			Yii::t('ExternalWebsitesModule.base', 'Show the page'),
-			$page->url
+			$page->url,
+			[
+				'class' => 'btn btn-primary'
+			]
 		) ?></strong>
 	</p>
 </div>

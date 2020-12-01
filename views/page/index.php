@@ -20,6 +20,7 @@ use humhub\modules\externalWebsites\widgets\FirstCommentForm;
  * @var $pageUrl string page url
  * @var $title string page title
  * @var $permalink string
+ * @var $showOnlyPermalink boolean
  * @var $humhubIsHost integer (0 or 1)
  */
 
@@ -51,21 +52,23 @@ else {
                 ]
             ) ?>
 
-            <?php if ($page !== null): ?>
+            <?php if ($page !== null && !$showOnlyPermalink): ?>
                 &middot; <?= LikeLink::widget(['object' => $page]); ?>
                 &middot; <i class="fa fa-comment"></i> <?= CommentLink::widget(['object' => $page]); ?>
             <?php endif ?>
         </div>
 
-        <?php if ($page !== null): ?>
-            <?= Comments::widget(['object' => $page]) ?>
-        <?php else: ?>
-            <?= FirstCommentForm::widget([
-                'contentContainer' => $contentContainer,
-                'websiteId' => $website->id,
-                'title' => $title,
-                'pageUrl' => $pageUrl,
-            ]) ?>
+        <?php if (!$showOnlyPermalink): ?>        
+            <?php if ($page !== null): ?>
+                <?= Comments::widget(['object' => $page]) ?>
+            <?php else: ?>
+                <?= FirstCommentForm::widget([
+                    'contentContainer' => $contentContainer,
+                    'websiteId' => $website->id,
+                    'title' => $title,
+                    'pageUrl' => $pageUrl,
+                ]) ?>
+            <?php endif ?>
         <?php endif ?>
     </div>
 </div>

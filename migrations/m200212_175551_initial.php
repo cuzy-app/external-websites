@@ -17,6 +17,7 @@ class m200212_175551_initial extends Migration
             'space_id' => $this->integer(11)->notNull(),
             'title' => $this->string(255),
             'icon' => $this->string(100),
+            'humhub_is_host' => $this->boolean()->defaultValue(true),
             'first_page_url' => $this->text()->notNull(),
             'show_in_menu' => $this->boolean()->defaultValue(false),
             'sort_order' => $this->integer(11)->defaultValue(0),

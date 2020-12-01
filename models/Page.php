@@ -67,9 +67,9 @@ class Page extends ContentActiveRecord implements Searchable
     {
         return [
             'id' => 'ID',
-            'title' => 'Title',
-            'page_url' => 'Page URL',
-            'website_id' => 'Website id',
+            'title' => Yii::t('ExternalWebsitesModule.base', 'Title'),
+            'page_url' => Yii::t('ExternalWebsitesModule.base', 'Page URL'),
+            'website_id' => Yii::t('ExternalWebsitesModule.base', 'Website ID'),
             'created_at' => 'Created at',
             'created_by' => 'Created by',
             'updated_at' => 'Updated at',
@@ -112,11 +112,16 @@ class Page extends ContentActiveRecord implements Searchable
 
     public function getUrl()
     {
-        // TBD: if host: return $this->page_url;
-        return $this->website->space->createUrl('/external-websites/website', [
-            'id' => $this->website->id,
-            'pageId' => $this->id,
-        ]);
+        // If Humhub is host
+        if ($this->website->humhub_is_host) {
+            return $this->website->space->createUrl('/external-websites/website', [
+                'id' => $this->website->id,
+                'pageId' => $this->id,
+            ]);
+        }
+
+        // If Humhub is guest
+        return $this->page_url;
     }
 
     /**

@@ -21,6 +21,7 @@ class WebsiteForm extends \yii\base\Model
     public $space_id;
     public $title;
     public $icon = 'fa-desktop';
+    public $humhub_is_host = true;
     public $first_page_url;
     public $show_in_menu = 1;
     public $sort_order = 100;
@@ -39,6 +40,7 @@ class WebsiteForm extends \yii\base\Model
         ) {
             $this->title = $website->title;
             $this->icon = $website->icon;
+            $this->humhub_is_host = $website->humhub_is_host;
             $this->first_page_url = $website->first_page_url;
             $this->show_in_menu = $website->show_in_menu;
             $this->sort_order = $website->sort_order;
@@ -60,7 +62,7 @@ class WebsiteForm extends \yii\base\Model
            [['title', 'icon', 'first_page_url'], 'required'],
            [['title', 'icon', 'first_page_url', 'remove_from_url_title'], 'string'],
            [['sort_order', 'default_content_visibility', 'default_content_archived'], 'integer'],
-           [['show_in_menu', 'hide_sidebar'], 'boolean'],
+           [['humhub_is_host', 'show_in_menu', 'hide_sidebar'], 'boolean'],
        ];
     }
 
@@ -69,7 +71,7 @@ class WebsiteForm extends \yii\base\Model
      */
     public function attributeLabels()
     {
-        return parent::attributeLabels();
+        return Website::attributeLabels();
     }
 
     /**
@@ -78,6 +80,10 @@ class WebsiteForm extends \yii\base\Model
     public function attributeHints()
     {
         return [
+            'humhub_is_host' => Yii::t('ExternalWebsitesModule.base', 'Humhub can be: <br>- Host: external website is guest and embedded in an iframe<br>- Guest: external website is host, Humhub addons (comments, like, files, etc.) are embedded in an iframe.<br>See README.md for more informations and usage.'),
+            'remove_from_url_title' => Yii::t('ExternalWebsitesModule.base', 'The name of the Humhub content associated with each page of the external website corresponds to the page title (HTML title tag). It is possible to delete part of the text of this title.'),
+            'hide_sidebar' => Yii::t('ExternalWebsitesModule.base', 'If your theme has a sidebar whose tag id is "wrapper" (e.g. Enterprise theme)'),
+
         ];
     }
 
@@ -101,6 +107,7 @@ class WebsiteForm extends \yii\base\Model
         // Save values
         $website->title = $this->title;
         $website->icon = $this->icon;
+        $website->humhub_is_host = $this->humhub_is_host;
         $website->first_page_url = $this->first_page_url;
         $website->show_in_menu = $this->show_in_menu;
         $website->sort_order = $this->sort_order;

@@ -1,6 +1,4 @@
 <?php
-return [
-	'Filter' => 'Filtrer',
-	'{title}: show comments' => '{title} : Afficher les commentaires',
-];
-?>
+return array (
+  '{title}: show comments' => '{title} : Afficher les commentaires',
+);

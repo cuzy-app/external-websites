@@ -10,11 +10,13 @@ Uses [iFrame Resizer](https://github.com/davidjbradshaw/iframe-resizer).
 
 ## Usage
 
-2 possibilities to use this module:
+The module must be activated in a space. Then, in the space header controll menu, you can add some websites.
+
+For each website added, there are 2 possibilities:
 
 ### Embed external website in Humhub
 
-**Humhub is host, external website is guest.**
+**Humhub is host, external website is guest and embedded in an iframe.**
 
 Upload theses files on the external website server:
 ```
@@ -60,11 +62,11 @@ For CODIMD in a docker, [see this documentation](https://gitlab.com/funkycram/do
 
 ### Embed Humhub addons (comments, like, files, etc.) in an external website
 
-**Humhub is guest, external website is host.**
+**Humhub is guest, external website is host. Humhub addons are embedded in an iframe.**
 
 You must have something to auto log (and auto register if no account) the user.
 
-Allow Humhub to be embeded in an iframe: edit `proteced/config/web.php` and in the `modules` section, add:
+Allow Humhub to be embedded in an iframe: edit `proteced/config/web.php` and in the `modules` section, add:
 ```
         'web' => [
             'security' =>  [
@@ -84,19 +86,32 @@ And replace `https://my-external-website.tdl` with your website URL
 If doesn't work, replace `"X-Frame-Options" => "sameorigin",` with `"X-Frame-Options" => "",`
 
 
-Code for the website integrating Humhub comments (do not replace params values `0` or `1` with `true` or `false`) :
+Code for the website integrating Humhub comments:
 ```
 <?php 
+// Integer - Humhub Website ID (get this value from the "Websites managment" page)
 $humhubWebsiteId = 1;
+// String - This page URL
 $currentPageUrl = 'http://my-website-integrating-humhub-comments.tdl/my-page.php';
+// String - This page title (usually the value in the <title> tag)
 $currentPageTitle = 'Page title';
+// Boolean (1 or 0) - Auto login (available if the module `authclients-addon` is installed and SSO is configured)
+$autoLogin = 1;
+// Boolean (1 or 0) - After login, if not already the case, add the user to the related space members, so that he can comment the pages
+$addToSpaceMembers = 1;
+// Boolean (1 or 0) - After login, if not already the case, add the user to the group members related to the space
+$addGroupRelatedToSpace = 1;
 ?>
-<iframe src="http://y-humhub.tdl/s/my-space/external-websites/page?websiteId=<?= $humhubWebsiteId ?>&pageUrl=<?= urlencode($currentPageUrl) ?>&pageTitle=<?= urlencode($currentPageTitle) ?>&humhubIsHost=0&autoLogin=1&addToSpaceMembers=1&addGroupRelatedToSpace=1"></iframe>
+<iframe src="http://my-humhub.tdl/s/my-space/external-websites/page?websiteId=<?= $humhubWebsiteId ?>&pageUrl=<?= urlencode($currentPageUrl) ?>&pageTitle=<?= urlencode($currentPageTitle) ?>&autoLogin=<?= $autoLogin ?>&addToSpaceMembers=<?= $addToSpaceMembers ?>&addGroupRelatedToSpace=<?= $addGroupRelatedToSpace ?>"></iframe>
 ```
 
 
 ## Special features
 
-It is possible to have several websites of the same external website in the same space.
+It is possible to have several websites of the same external website in the same space. In this case, Humhub addons (comments, like, files, etc.) are shared with the websites and the Humhub addons will be related to the website having the smaller `sort_order`.
 
-In this case, Humhub addons (comments, like, files, etc.) are shared with the websites and the Humhub addons will be related to the website having the smaller `sort_order`.
+If the content related to a page is archived and all comments have been removed, only the permalink will be shown
+
+If Humhub is guest:
+- If the module `authclients-addon` is installed, the module can try to auto login with SSO
+- after login, the module can add the user to the related space members and to the space's related group members

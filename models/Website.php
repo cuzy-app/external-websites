@@ -17,6 +17,7 @@ use humhub\modules\space\models\Space;
  * @property integer $space_id
  * @property string $title
  * @property string $icon Fontawesome
+ * @property boolean $humhub_is_host
  * @property string $first_page_url
  * @property boolean $show_in_menu
  * @property integer $sort_order 
@@ -43,16 +44,17 @@ class Website extends \humhub\components\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'space_id' => 'Space Id',
-            'title' => 'Title',
-            'icon' => 'Icon',
-            'first_page_url' => 'Website first page URL',
-            'show_in_menu' => 'Show in space menu',
-            'sort_order' => 'Sort order',
-            'remove_from_url_title' => 'Text to remove from URL title',
-            'hide_sidebar' => 'Hide sidebar',
-            'default_content_visibility' => 'Content visibility default value',
-            'default_content_archived' => 'Content archived default value',
+            'space_id' => Yii::t('ExternalWebsitesModule.base', 'Space ID'),
+            'title' => Yii::t('ExternalWebsitesModule.base', 'Title'),
+            'icon' => Yii::t('ExternalWebsitesModule.base', 'Icon'),
+            'humhub_is_host' => Yii::t('ExternalWebsitesModule.base', 'Humhub is host'),
+            'first_page_url' => Yii::t('ExternalWebsitesModule.base', 'Website first page URL'),
+            'show_in_menu' => Yii::t('ExternalWebsitesModule.base', 'Show in space menu'),
+            'sort_order' => Yii::t('ExternalWebsitesModule.base', 'Sort order'),
+            'remove_from_url_title' => Yii::t('ExternalWebsitesModule.base', 'Text to remove from URL title'),
+            'hide_sidebar' => Yii::t('ExternalWebsitesModule.base', 'Hide sidebar'),
+            'default_content_visibility' => Yii::t('ExternalWebsitesModule.base', 'Content visibility default value'),
+            'default_content_archived' => Yii::t('ExternalWebsitesModule.base', 'Content archived default value'),
             'created_at' => 'Created at',
             'created_by' => 'Created by',
             'updated_at' => 'Updated at',
@@ -69,7 +71,7 @@ class Website extends \humhub\components\ActiveRecord
            [['space_id', 'first_page_url'], 'required'],
            [['title', 'icon', 'first_page_url', 'remove_from_url_title'], 'string'],
            [['space_id', 'sort_order', 'default_content_visibility', 'default_content_archived'], 'integer'],
-           [['show_in_menu', 'hide_sidebar'], 'boolean'],
+           [['humhub_is_host', 'show_in_menu', 'hide_sidebar'], 'boolean'],
        ];
     }
 

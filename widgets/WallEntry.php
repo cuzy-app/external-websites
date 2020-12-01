@@ -8,18 +8,24 @@
 
 namespace humhub\modules\externalWebsites\widgets;
 
+use humhub\modules\content\widgets\stream\WallStreamModuleEntryWidget;
+
 
 /**
- * WallEntry is used to display page content addons inside the stream.
+ * WallStreamEntryWidget is used to display page content addons inside the stream.
  */
-class WallEntry extends \humhub\modules\content\widgets\WallEntry
+class WallEntry extends WallStreamModuleEntryWidget
 {
-    public function run()
+    public function renderContent()
     {
         return $this->render('wallEntry', [
-            'page' => $this->contentObject,
-            'space' => $this->contentObject->content->container
+            'page' => $this->model,
+            'space' => $this->model->content->container
         ]);
     }
 
+    protected function getTitle()
+    {
+        return $this->model->website->title;
+    }
 }

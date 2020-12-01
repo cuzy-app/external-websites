@@ -18,6 +18,7 @@ use humhub\modules\externalWebsites\models\Website;
 use humhub\modules\externalWebsites\models\Page;
 use humhub\modules\content\models\Content;
 use humhub\modules\user\models\Group;
+use humhub\modules\comment\models\Comment;
 
 
 /**
@@ -93,9 +94,10 @@ class PageController extends ContentContainerController
     /**
      * Called by ajax (if Humhub is host) or iframe (if Humhub is guest)
      * If Humhub is guest, see README.md for complete URL to provide in the iframe scr
-     * @param $humhubIsHost integer (0 or 1)
+     * @param $id Page ID
+     * @param $websiteId Website ID
      */
-    public function actionIndex ($id = null, $websiteId = null, $humhubIsHost = 1) {
+    public function actionIndex ($id = null, $websiteId = null) {
 
         // If page exists and called from URL
         if ($id !== null) {
@@ -147,7 +149,6 @@ class PageController extends ContentContainerController
             }
         }
 
-
         // Create permalink
         if ($humhubIsHost) {
             if ($page !== null) {
@@ -168,6 +169,16 @@ class PageController extends ContentContainerController
             $permalink = $pageUrl;
         }
 
+        // If content archived and no comments, show only permalink
+        $showOnlyPermalink = false;
+        if (
+            $page !== null
+            && $page->content->archived
+            && Comment::GetCommentCount(Page::class, $page->id) == 0
+        ) {
+            $showOnlyPermalink = true;
+        }
+
         // Create view params
         $viewParams = [
             'contentContainer' => $this->contentContainer,
@@ -176,6 +187,7 @@ class PageController extends ContentContainerController
             'pageUrl' => $pageUrl,
             'title' => $title,
             'permalink' => $permalink,
+            'showOnlyPermalink' => $showOnlyPermalink,
             'humhubIsHost' => $humhubIsHost,
         ];
 

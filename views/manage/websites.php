@@ -38,6 +38,9 @@ $websiteForm = new WebsiteForm;
 
         <?php $columns = [
             [
+                'attribute' => 'id',
+            ],
+            [
                 'attribute' => 'title',
             ],
             [
