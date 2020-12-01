@@ -3,13 +3,16 @@ Changelog
 
 V0.20 (November, 25, 2020)
 --------------------
-- Chg: Module renamed
+- Enh: Added websites managment interface (add, edit, delete)
+- Enh: It is now possible to embed Humhub addons in the external website (Humhub is in guest mode)
+- Enh: Guest mode: Added auto login with SSO, auto add to space and related group members
+- Enh: If the content related to a page is archived and all comments have been removed, only the permalink will be shown
+- Enh: Wall entry updated for Humhub 1.7
+- Enh: Documentation on module usage in `docs/README.md`
+- Chg: Module renamed (iframe -> external-websites)
 - Chg: Script in the external website if guest (integrated in iframe): `url` is now `pageUrl` and `title` is now `pageTitle`
 - Chg: Changed name of the tables, files, models, controller and view
 - Chg: Changed `FirstCommentForm` widget to new Hummhub 1.7 specifications
-- Enh: Added auto login with SSO
-- Enh: Wall entry updated for Humhub 1.7
-- Enh: If the content related to a page is archived and all comments have been removed, only the permalink will be shown
 
 
 V0.15 (November, 23, 2020)
