@@ -13,6 +13,7 @@ V0.20 (November, 25, 2020)
 - Chg: Script in the external website if guest (integrated in iframe): `url` is now `pageUrl` and `title` is now `pageTitle`
 - Chg: Changed name of the tables, files, models, controller and view
 - Chg: Changed `FirstCommentForm` widget to new Hummhub 1.7 specifications
+- Enh: Possibility to authentifiate external website with JWT
 
 
 V0.15 (November, 23, 2020)

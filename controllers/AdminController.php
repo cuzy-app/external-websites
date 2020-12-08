@@ -31,20 +31,31 @@ class AdminController extends Controller
     }
 
     /**
+     * Hidden page. Access with this URL:
      * /external-websites/admin/delete-all-contents-without-comments
      */
-    public function actionDeleteAllContentsWithoutComments ()
+    // public function actionDeleteAllContentsWithoutComments ()
+    // {
+    //     foreach (Page::find()->all() as $page) {
+    //         $content = $page->content;
+    //         $comment = Comment::find()
+    //             ->where(['object_id' => $content['object_id']])
+    //             ->andWhere(['object_model' => $content['object_model']])
+    //             ->one();
+    //         if ($comment === null) {
+    //             $page->delete();
+    //         }
+    //     }
+    //     return 'done';
+    // }
+
+
+    /**
+     * Hidden page. Access with this URL:
+     * /external-websites/admin/generate-secret-key
+     */
+    public function actionGenerateSecretKey()
     {
-        foreach (Page::find()->all() as $page) {
-            $content = $page->content;
-            $comment = Comment::find()
-                ->where(['object_id' => $content['object_id']])
-                ->andWhere(['object_model' => $content['object_model']])
-                ->one();
-            if ($comment === null) {
-                $page->delete();
-            }
-        }
-        return 'done';
+        echo Yii::$app->security->generateRandomString(86);
     }
 }

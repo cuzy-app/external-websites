@@ -153,13 +153,15 @@ If Humhub is guest:
 
 If Humhub is guest, to embed Humhub addons, it is possible to ask Humhub to check if the external website is authorized.
 
-In that case, you must add a HS512 secret key in `proteced/config/common.php`:
+In that case, you must add a HS512 secret key in `proteced/config/common.php` (any 84 characters string):
 ```
     'modules' => [
         'external-websites' => [
             'jwtKey' => 'your-512-bit-secret',
         ],
+    ],
 ```
+To generate a random secret key, you can go to this URL : `https://your-humhub-site.tdl/external-websites/admin/generate-secret-key`
 
 To get the token, in https://jwt.io/:
 - Select algorithm HS512
