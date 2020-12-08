@@ -32,6 +32,13 @@ class Module extends ContentContainerModule
 
 
     /**
+     * @var string HS512 JWT secret key
+     * Optional, to check if the external website is autorized to embed Humhub in an iframe
+     */
+    public $jwtKey = '';
+
+
+    /**
      * @inheritdoc
      */
     public function getContentContainerTypes()

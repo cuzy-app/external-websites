@@ -14,6 +14,7 @@ The module must be activated in a space. Then, in the space header controll menu
 
 For each website added, there are 2 possibilities:
 
+
 ### Embed external website in Humhub
 
 **Humhub is host, external website is guest and embedded in an iframe.**
@@ -86,9 +87,19 @@ And replace `https://my-external-website.tdl` with your website URL
 If doesn't work, replace `"X-Frame-Options" => "sameorigin",` with `"X-Frame-Options" => "",`
 
 
+Upload theses files on the external website server:
+```
+wget https://gitlab.com/funkycram/humhub-modules-external-websites/-/raw/master/resources/js/iframeResizer/iframeResizer.min.js
+wget https://gitlab.com/funkycram/humhub-modules-external-websites/-/raw/master/resources/js/iframeResizer/iframeResizer.js
+wget https://gitlab.com/funkycram/humhub-modules-external-websites/-/raw/master/resources/js/iframeResizer/iframeResizer.map
+```
+
+
 Code for the website integrating Humhub comments:
 ```
 <?php 
+// String space URL (In space managment, "advanced" tab)
+$spaceUrl = 'my-space';
 // Integer - Humhub Website ID (get this value from the "Websites managment" page)
 $humhubWebsiteId = 1;
 // String - This page URL
@@ -102,16 +113,66 @@ $addToSpaceMembers = 1;
 // Boolean (1 or 0) - After login, if not already the case, add the user to the group members related to the space
 $addGroupRelatedToSpace = 1;
 ?>
-<iframe src="http://my-humhub.tdl/s/my-space/external-websites/page?websiteId=<?= $humhubWebsiteId ?>&pageUrl=<?= urlencode($currentPageUrl) ?>&pageTitle=<?= urlencode($currentPageTitle) ?>&autoLogin=<?= $autoLogin ?>&addToSpaceMembers=<?= $addToSpaceMembers ?>&addGroupRelatedToSpace=<?= $addGroupRelatedToSpace ?>"></iframe>
+
+<style type="text/css">
+    iframe#humhub-comments {
+        width: 100%;
+    }
+</style>
+
+<!-- Where you want to show the comments -->
+<iframe id="humhub-comments" src="http://my-humhub.tdl/s/<?= $spaceUrl ?>/external-websites/page?websiteId=<?= $humhubWebsiteId ?>&pageUrl=<?= urlencode($currentPageUrl) ?>&pageTitle=<?= urlencode($currentPageTitle) ?>&autoLogin=<?= $autoLogin ?>&addToSpaceMembers=<?= $addToSpaceMembers ?>&addGroupRelatedToSpace=<?= $addGroupRelatedToSpace ?>"></iframe>
+
+<!-- Just before </body> -->
+<script type="text/javascript" src="path-to-js-files/iframeResizer.min.js"></script>
+<script type="text/javascript">
+    iFrameResize({ log: false }, '#humhub-comments')
+</script>
 ```
 
 
+
 ## Advanced features
+
+
+### Specific behaviors
 
 It is possible to have several websites of the same external website in the same space. In this case, Humhub addons (comments, like, files, etc.) are shared with the websites and the Humhub addons will be related to the website having the smaller `sort_order`.
 
 If the content related to a page is archived and all comments have been removed, only the permalink will be shown
 
+
+### Auto login and auto add user to space and group
+
 If Humhub is guest:
-- If the module `authclients-addon` is installed, the module can try to auto login with SSO
-- after login, the module can add the user to the related space members and to the space's related group members
+- If the module `authclients-addon` is installed, the module can try to auto login with SSO (if user doesn't exists, the account is created automatically)
+- After login, the module can add the user to the related space members and to the space's related group members
+
+
+### Authentification with JWT
+
+If Humhub is guest, to embed Humhub addons, it is possible to ask Humhub to check if the external website is authorized.
+
+In that case, you must add a HS512 secret key in `proteced/config/common.php`:
+```
+    'modules' => [
+        'external-websites' => [
+            'jwtKey' => 'your-512-bit-secret',
+        ],
+```
+
+To get the token, in https://jwt.io/:
+- Select algorithm HS512
+- In PAYLOAD:DATA, replace with (in this example, 1 is the website ID):
+```
+{
+ "website_id": 1
+}
+```
+- VERIFY SIGNATURE: replace `your-512-bit-secret` by the secret key and uncheck `secret base64 encoded`
+- Copy the encoded token
+
+If the iframe `src` attribute, you must add this to the URL:
+```
+&website_id=your-encoded-token
+```

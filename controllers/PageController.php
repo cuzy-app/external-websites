@@ -11,7 +11,9 @@ namespace humhub\modules\externalWebsites\controllers;
 use Yii;
 use yii\helpers\Url;
 use yii\web\HttpException;
+use yii\web\ForbiddenHttpException;
 use yii\helpers\BaseStringHelper;
+use Firebase\JWT\JWT;
 use humhub\modules\content\components\ContentContainerController;
 use humhub\modules\stream\actions\ContentContainerStream;
 use humhub\modules\externalWebsites\models\Website;
@@ -26,6 +28,16 @@ use humhub\modules\comment\models\Comment;
  */
 class PageController extends ContentContainerController
 {
+    /**
+     * @var humhub\modules\externalWebsites\models\Website
+     */
+    public $website;
+
+    /**
+     * @var humhub\modules\externalWebsites\models\Page
+     */
+    public $page;
+
 
     /**
      * @inheritDoc
@@ -33,42 +45,67 @@ class PageController extends ContentContainerController
      */
     public function beforeAction($action)
     {
+        // Get Website
+        $id = Yii::$app->request->get('id');
+        $websiteId = Yii::$app->request->get('websiteId');
 
-        if (Yii::$app->user->isGuest) {
+        // If page exists and called from URL
+        if ($id !== null) {
+            $this->page = Page::findOne($id);
+            $this->website = $this->page->website;
+        }
+        else {
+            // Get website (could be retreive with $page->website, but as some pages may be shared with several websites, we need to specify the website desired)
+            $this->website = Website::findOne($websiteId);
+            if ($this->website === null) {
+                throw new HttpException(404);
+            }
+        }
 
-            // Try auto login
-            if (Yii::$app->request->get('autoLogin')) {
-                // If an auth client has attribute autoLogin set to true, this module will auto log the user to the corresponding Identity provider (SSO)
-                foreach (Yii::$app->authClientCollection->clients as $authclient) {
-                    if (isset($authclient->autoLogin) && $authclient->autoLogin) {
-                        // Redirect to Identity Provider
-                        if (method_exists($authclient, 'redirectToBroker')) {
-                            return $authclient->redirectToBroker();
+        // If Humhub is guest
+        if (!$this->website->humhub_is_host) {
+
+            // Check if website making the request is authorized
+            if (!$this->checkPermissionWithJwt()) {
+                throw new ForbiddenHttpException();
+            }
+
+            if (Yii::$app->user->isGuest) {
+
+                // Try auto login
+                if (Yii::$app->request->get('autoLogin')) {
+                    // If an auth client has attribute autoLogin set to true, this module will auto log the user to the corresponding Identity provider (SSO)
+                    foreach (Yii::$app->authClientCollection->clients as $authclient) {
+                        if (isset($authclient->autoLogin) && $authclient->autoLogin) {
+                            // Redirect to Identity Provider
+                            if (method_exists($authclient, 'redirectToBroker')) {
+                                return $authclient->redirectToBroker();
+                            }
                         }
                     }
                 }
             }
-        }
-        // If logged in
-        else {
+            // If logged in
+            else {
 
-            $space = $this->contentContainer;
+                $space = $this->contentContainer;
 
-            // Auto add user to space if not member
-            if (
-                Yii::$app->request->get('addToSpaceMembers')
-                && !$space->isMember(Yii::$app->user->id)
-            ) {
-                $space->addMember(Yii::$app->user->id);
-            }
+                // Auto add user to space if not member
+                if (
+                    Yii::$app->request->get('addToSpaceMembers')
+                    && !$space->isMember(Yii::$app->user->id)
+                ) {
+                    $space->addMember(Yii::$app->user->id);
+                }
 
-            // Auto add group related to space to user if not member
-            if (Yii::$app->request->get('addGroupRelatedToSpace')) {
-                // Get group related to space
-                $group = Group::findOne(['space_id' => $space->id]);
-                if ($group !== null) {
-                    if (!$group->isMember(Yii::$app->user->identity)) {
-                        $group->addUser(Yii::$app->user->identity);
+                // Auto add group related to space to user if not member
+                if (Yii::$app->request->get('addGroupRelatedToSpace')) {
+                    // Get group related to space
+                    $group = Group::findOne(['space_id' => $space->id]);
+                    if ($group !== null) {
+                        if (!$group->isMember(Yii::$app->user->identity)) {
+                            $group->addUser(Yii::$app->user->identity);
+                        }
                     }
                 }
             }
@@ -94,25 +131,23 @@ class PageController extends ContentContainerController
     /**
      * Called by ajax (if Humhub is host) or iframe (if Humhub is guest)
      * If Humhub is guest, see README.md for complete URL to provide in the iframe scr
-     * @param $id Page ID
-     * @param $websiteId Website ID
+     * All params are optional, but we need a least either $id or ($websiteId and $pageUrl)
+     * @param $id Page ID (1)
+     * @param $websiteId Website ID (1)
+     * @param $pageUrl Page page_url
+     * @param $pageTitle Page title
+     * @param $autoLogin boolean (1)
+     * @param $token string HS512 JWT token (1)
+     * (1) used by beforeAction function
      */
-    public function actionIndex ($id = null, $websiteId = null) {
+    public function actionIndex () {
 
         // If page exists and called from URL
-        if ($id !== null) {
-            $page = Page::findOne($id);
-            $website = $page->website;
-            $title = $page->title;
-            $pageUrl = $page->pageUrl;
+        if ($this->page !== null) {
+            $title = $this->page->title;
+            $pageUrl = $this->page->page_url;
         }
         else {
-            // Get website (could be retreive with $page->website, but as some pages may be shared with several websites, we need to specify the website desired)
-            $website = Website::findOne($websiteId);
-            if ($website === null) {
-                throw new HttpException(404);
-            }
-
             // Get page URL
             $pageUrl = Yii::$app->request->post('pageUrl', Yii::$app->request->get('pageUrl'));
             if (empty($pageUrl)) {
@@ -122,43 +157,43 @@ class PageController extends ContentContainerController
 
             // Get title
             $pageTitle = Yii::$app->request->post('pageTitle', Yii::$app->request->get('pageTitle', ''));
-            $pageTitle = str_ireplace($website->remove_from_url_title, '', $pageTitle); // Remove unwanted text in title
+            $pageTitle = str_ireplace($this->website->remove_from_url_title, '', $pageTitle); // Remove unwanted text in title
             $title = BaseStringHelper::truncate($pageTitle, 100, '[...]');
 
             // Get content (there can be only 1 unique URL per space, so we don't filter by website)
-            $page = Page::find()
+            $this->page = Page::find()
                 ->contentContainer($this->contentContainer) // restrict to current space
                 ->where(['page_url' => $pageUrl])
                 ->one();
 
-            if ($page !== null) {
+            if ($this->page !== null) {
                 // If title has changed, update it
-                if ($page->title != $title) {
-                    $page->title = $title;
-                    $page->save();
+                if ($this->page->title != $title) {
+                    $this->page->title = $title;
+                    $this->page->save();
                 }
                 
                 // If related website is different (case where same URL is accessible form differents websites in the same space)
-                if ($website->id != $page->website_id) {
+                if ($this->website->id != $this->page->website_id) {
                     // Make this page related to smaller sort order website (the first one in the space menu list)
-                    if ($website->sort_order < $page->website->sort_order) {
-                        $page->website_id = $website->id;
-                        $page->save();
+                    if ($this->website->sort_order < $this->page->website->sort_order) {
+                        $this->page->website_id = $this->website->id;
+                        $this->page->save();
                     }
                 }
             }
         }
 
         // Create permalink
-        if ($humhubIsHost) {
-            if ($page !== null) {
-                $permalink = $page->url;
+        if ($this->website->humhub_is_host) {
+            if ($this->page !== null) {
+                $permalink = $this->page->url;
             }
             else {
                 $permalink = $this->contentContainer->createUrl(
                     '/external-websites/website',
                     [
-                        'id' => $website->id,
+                        'id' => $this->website->id,
                         'pageUrl' => $pageUrl,
                     ],
                     true
@@ -172,9 +207,9 @@ class PageController extends ContentContainerController
         // If content archived and no comments, show only permalink
         $showOnlyPermalink = false;
         if (
-            $page !== null
-            && $page->content->archived
-            && Comment::GetCommentCount(Page::class, $page->id) == 0
+            $this->page !== null
+            && $this->page->content->archived
+            && Comment::GetCommentCount(Page::class, $this->page->id) == 0
         ) {
             $showOnlyPermalink = true;
         }
@@ -182,17 +217,17 @@ class PageController extends ContentContainerController
         // Create view params
         $viewParams = [
             'contentContainer' => $this->contentContainer,
-            'website' => $website,
-            'page' => $page,
+            'website' => $this->website,
+            'page' => $this->page,
             'pageUrl' => $pageUrl,
             'title' => $title,
             'permalink' => $permalink,
             'showOnlyPermalink' => $showOnlyPermalink,
-            'humhubIsHost' => $humhubIsHost,
+            'humhubIsHost' => $this->website->humhub_is_host,
         ];
 
         // Render for ajax (Humhub is host)
-        if ($humhubIsHost) {
+        if ($this->website->humhub_is_host) {
             return $this->renderAjax('index', $viewParams);
         }
 
@@ -200,5 +235,40 @@ class PageController extends ContentContainerController
         $this->layout = '@external-websites/views/layouts/iframe';
         $this->subLayout = '@external-websites/views/page/_layoutForIframe';
         return $this->render('index', $viewParams);
+    }
+
+
+    /**
+     * Check permission using JWT Bearer Header
+     *
+     * @return boolean
+     * @throws HttpException
+     */
+    private function checkPermissionWithJwt()
+    {
+        /** @var Module $module */
+        $module = Yii::$app->getModule('external-websites');
+
+        // If no JWT key in the configuration, do not check permission with JWT
+        if (empty($module->jwtKey)) {
+            return true;
+        }
+
+        $token = Yii::$app->request->get('token');
+
+        try {
+            $validData = JWT::decode($token, $module->jwtKey, ['HS512']);
+
+            if (!empty($validData->website_id)) {
+                if ($validData->website_id == $this->website->id) {
+                    return true;
+                }
+            }
+
+        } catch (Exception $e) {
+            throw new HttpException(401, $e->getMessage());
+        }
+
+        return false;
     }
 }
