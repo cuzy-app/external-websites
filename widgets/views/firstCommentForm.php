@@ -89,7 +89,7 @@ $submitUrl = Url::to(['/external-websites/comment/post']);
             </div>
         </div>
 
-        <div id="comment_create_upload_progress_<?= $id ?>" style="display:none;margin:10px 0px;"></div>
+        <div id="comment_create_upload_progress_<?= $id ?>" style="display:none;margin:10px 0;"></div>
 
         <?= FilePreview::widget([
             'id' => 'comment_create_upload_preview_' . $id,

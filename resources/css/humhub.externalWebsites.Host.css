@@ -30,3 +30,8 @@
 #ew-website #ew-page-addons .ProsemirrorEditor .ProseMirror .placeholder {
     font-size: 0.8em;
 }
+
+/* Force comment form to display even (case where content exists, but have no comment) */
+#ew-website #ew-page-addons .comment-container {
+    display: block !important;
+}

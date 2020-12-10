@@ -7,11 +7,11 @@
  */
 
 use humhub\modules\externalWebsites\Events;
-use humhub\modules\space\widgets\Menu;
+use humhub\modules\space\widgets\Menu as SpaceMenu;
 use humhub\modules\stream\widgets\WallStreamFilterNavigation;
 use humhub\modules\stream\models\WallStreamQuery;
 use humhub\modules\space\widgets\HeaderControlsMenu;
-use humhub\widgets\BaseMenu;
+use humhub\modules\ui\menu\widgets\Menu as UiMenu;
 
 
 return [
@@ -20,8 +20,8 @@ return [
     'namespace' => 'humhub\modules\externalWebsites',
     'events' => [
     	[
-    		'class' => Menu::class,
-    		'event' => Menu::EVENT_INIT,
+    		'class' => SpaceMenu::class,
+    		'event' => SpaceMenu::EVENT_INIT,
     		'callback' => [Events::class, 'onSpaceMenuInit'],
     	],
         [
@@ -36,7 +36,7 @@ return [
 		],
         [
             'class' => HeaderControlsMenu::class,
-            'event' => BaseMenu::EVENT_INIT,
+            'event' => UiMenu::EVENT_INIT,
             'callback' => [Events::class, 'onSpaceAdminMenuInit']],
     ]
 ];

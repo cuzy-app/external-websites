@@ -48,6 +48,7 @@ class Events
                         && $currentTitle !== null
                         && $currentTitle == $website->title
                     ),
+                    'htmlOptions' => $website->humhub_is_host ? [] : ['target' => '_blank'],
                 ]);
             }
         }
