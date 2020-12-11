@@ -13,7 +13,7 @@ return array (
   'External websites' => 'Zunanja spletna mesta',
   'Hide sidebar' => 'Skrij stransko vrstico',
   'Humhub can be: <br>- Host: external website is guest and embedded in an iframe<br>- Guest: external website is host, Humhub addons (comments, like, files, etc.) are embedded in an iframe.<br>See README.md for more informations and usage.' => 'Humhub je lahko:<br> - gostitelj: zunanje spletno mesto je gostujoče in vdelano v okvir iframe<br> - Gost: zunanje spletno mesto je gostitelj, dodatki Humhub (komentarji, všečki, datoteke itd.) So vdelani v okvir iframe.<br> Za več informacij in uporabo glejte README.md.',
-  'Humhub is host' => 'Humhub je gostitelj',
+  'Humhub is guest' => 'Humhub je gost',
   'Icon' => 'Ikona',
   'If your theme has a sidebar whose tag id is "wrapper" (e.g. Enterprise theme)' => 'Če ima vaša tema stransko vrstico, katere ID oznake je "ovoj" (npr. Tema podjetja)',
   'No' => 'Ne',

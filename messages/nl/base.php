@@ -13,7 +13,7 @@ return array (
   'External websites' => 'Externe websites',
   'Hide sidebar' => 'Verberg zijbalk',
   'Humhub can be: <br>- Host: external website is guest and embedded in an iframe<br>- Guest: external website is host, Humhub addons (comments, like, files, etc.) are embedded in an iframe.<br>See README.md for more informations and usage.' => 'Humhub kan zijn:<br> - Host: externe website is gast en ingebed in een iframe<br> - Gast: externe website is host, Humhub-add-ons (opmerkingen, vind-ik-leuks, bestanden, enz.) Zijn ingebed in een iframe.<br> Zie README.md voor meer informatie en gebruik.',
-  'Humhub is host' => 'Humhub is de verhuurder',
+  'Humhub is guest' => 'Humhub is te gast',
   'Icon' => 'Icoon',
   'If your theme has a sidebar whose tag id is "wrapper" (e.g. Enterprise theme)' => 'Als uw thema een zijbalk heeft waarvan de tag-ID "wrapper" is (bijv. Enterprise-thema)',
   'No' => 'Nee',

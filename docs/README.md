@@ -10,16 +10,16 @@ Uses [iFrame Resizer](https://github.com/davidjbradshaw/iframe-resizer).
 
 ## Usage
 
-The module must be activated in a space. Then, in the space header controll menu, you can add some websites.
+The module must be activated in a space. Then, in the space header control menu, you can add some websites.
 
 For each website added, there are 2 possibilities:
 
 
 ### Embed external website in Humhub
 
-**Humhub is host, external website is guest and embedded in an iframe.**
+**Humhub is host (parent), external website is embedded in Humhub within an iframe.**
 
-Upload theses files on the external website server:
+Upload these files on the external website server:
 ```
 wget https://gitlab.com/funkycram/humhub-modules-external-websites/-/raw/master/resources/js/iframeResizer/iframeResizer.contentWindow.min.js
 wget https://gitlab.com/funkycram/humhub-modules-external-websites/-/raw/master/resources/js/iframeResizer/iframeResizer.contentWindow.js
@@ -58,12 +58,10 @@ And add this code just before `</body>` in all pages :
     </script>
 ```
 
-For CODIMD in a docker, [see this documentation](https://gitlab.com/funkycram/doc/-/wikis/CodiMd#add-humhub-iframe-module-script-using-dockerfile)
-
 
 ### Embed Humhub addons (comments, like, files, etc.) in an external website
 
-**Humhub is guest, external website is host. Humhub addons are embedded in an iframe.**
+**Humhub is embedded, external website is host (parent). Humhub addons are in an iframe.**
 
 You must have something to auto log (and auto register if no account) the user.
 
@@ -87,7 +85,7 @@ And replace `https://my-external-website.tdl` with your website URL
 If doesn't work, replace `"X-Frame-Options" => "sameorigin",` with `"X-Frame-Options" => "",`
 
 
-Upload theses files on the external website server:
+Upload these files on the external website server:
 ```
 wget https://gitlab.com/funkycram/humhub-modules-external-websites/-/raw/master/resources/js/iframeResizer/iframeResizer.min.js
 wget https://gitlab.com/funkycram/humhub-modules-external-websites/-/raw/master/resources/js/iframeResizer/iframeResizer.js
@@ -103,7 +101,7 @@ $spaceUrl = 'my-space';
 // Integer - Humhub Website ID (get this value from the "Websites managment" page)
 $humhubWebsiteId = 1;
 // String - This page URL
-$currentPageUrl = 'http://my-website-integrating-humhub-comments.tdl/my-page.php';
+$currentPageUrl = 'http://my-website-integrating-humhub-addons.tdl/my-page.php';
 // String - This page title (usually the value in the <title> tag)
 $currentPageTitle = 'Page title';
 // Boolean (1 or 0) - Auto login (available if the module `authclients-addon` is installed and SSO is configured)
@@ -115,18 +113,21 @@ $addGroupRelatedToSpace = 1;
 ?>
 
 <style type="text/css">
-    iframe#humhub-comments {
+    iframe#humhub-addons {
         width: 100%;
     }
 </style>
 
 <!-- Where you want to show the comments -->
-<iframe id="humhub-comments" src="http://my-humhub.tdl/s/<?= $spaceUrl ?>/external-websites/page?websiteId=<?= $humhubWebsiteId ?>&pageUrl=<?= urlencode($currentPageUrl) ?>&pageTitle=<?= urlencode($currentPageTitle) ?>&autoLogin=<?= $autoLogin ?>&addToSpaceMembers=<?= $addToSpaceMembers ?>&addGroupRelatedToSpace=<?= $addGroupRelatedToSpace ?>"></iframe>
+<iframe id="humhub-addons" src="http://my-humhub.tdl/s/<?= $spaceUrl ?>/external-websites/page?websiteId=<?= $humhubWebsiteId ?>&pageUrl=<?= urlencode($currentPageUrl) ?>&pageTitle=<?= urlencode($currentPageTitle) ?>&autoLogin=<?= $autoLogin ?>&addToSpaceMembers=<?= $addToSpaceMembers ?>&addGroupRelatedToSpace=<?= $addGroupRelatedToSpace ?>"></iframe>
 
 <!-- Just before </body> -->
 <script type="text/javascript" src="path-to-js-files/iframeResizer.min.js"></script>
 <script type="text/javascript">
-    iFrameResize({ log: false }, '#humhub-comments')
+    iFrameResize({
+        log: false,
+        scrolling: true,
+    }, '#humhub-addons');
 </script>
 ```
 
@@ -144,14 +145,14 @@ If the content related to a page is archived and all comments have been removed,
 
 ### Auto login and auto add user to space and group
 
-If Humhub is guest:
+If Humhub is embedded:
 - If the module `authclients-addon` is installed, the module can try to auto login with SSO (if user doesn't exists, the account is created automatically)
 - After login, the module can add the user to the related space members and to the space's related group members
 
 
 ### Authentification with JWT
 
-If Humhub is guest, to embed Humhub addons, it is possible to ask Humhub to check if the external website is authorized.
+If Humhub is embedded, it is possible to ask Humhub to check if the external website is authorized.
 
 In that case, you must add a HS512 secret key in `proteced/config/common.php` (any 84 characters string):
 ```

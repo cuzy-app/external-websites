@@ -13,7 +13,7 @@ return array (
   'External websites' => 'Sit entènèt ekstèn',
   'Hide sidebar' => 'Kache ankadre',
   'Humhub can be: <br>- Host: external website is guest and embedded in an iframe<br>- Guest: external website is host, Humhub addons (comments, like, files, etc.) are embedded in an iframe.<br>See README.md for more informations and usage.' => 'Humhub ka:<br> - Akèy: sit entènèt ekstèn se envite ak entegre nan yon iframe<br> - Guest: sit entènèt ekstèn se lame, Humhub addons (kòmantè, tankou, dosye, elatriye) yo entegre nan yon iframe.<br> Gade README.md pou plis enfòmasyon ak itilizasyon.',
-  'Humhub is host' => 'Humhub se lame',
+  'Humhub is guest' => 'Humhub se envite',
   'Icon' => 'Icon',
   'If your theme has a sidebar whose tag id is "wrapper" (e.g. Enterprise theme)' => 'Si tèm ou a gen yon ankadre ki gen tag id se "pakè" (egzanp Enterprise tèm)',
   'No' => 'Non',

@@ -13,7 +13,7 @@ return array (
   'External websites' => 'Външни уебсайтове',
   'Hide sidebar' => 'Скриване на страничната лента',
   'Humhub can be: <br>- Host: external website is guest and embedded in an iframe<br>- Guest: external website is host, Humhub addons (comments, like, files, etc.) are embedded in an iframe.<br>See README.md for more informations and usage.' => 'Humhub може да бъде:<br> - Хост: външният уебсайт е гост и е вграден в рамка<br> - Гост: външният уебсайт е хост, добавките на Humhub (коментари, харесвания, файлове и т.н.) са вградени във вградена рамка.<br> Вижте README.md за повече информация и употреба.',
-  'Humhub is host' => 'Humhub е домакин',
+  'Humhub is guest' => 'Humhub гостува',
   'Icon' => 'Икона',
   'If your theme has a sidebar whose tag id is "wrapper" (e.g. Enterprise theme)' => 'Ако вашата тема има странична лента, чийто идентификатор на маркера е "обвивка" (напр. Корпоративна тема)',
   'No' => 'Не',

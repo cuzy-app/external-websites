@@ -13,7 +13,7 @@ return array (
   'External websites' => 'Serwisy zewnętrzne',
   'Hide sidebar' => 'Ukryj pasek boczny',
   'Humhub can be: <br>- Host: external website is guest and embedded in an iframe<br>- Guest: external website is host, Humhub addons (comments, like, files, etc.) are embedded in an iframe.<br>See README.md for more informations and usage.' => 'Humhub może być:<br> - Host: zewnętrzna witryna jest gościnna i osadzona w ramce iframe<br> - Gość: zewnętrzna strona jest hostem, dodatki Humhub (komentarze, polubienia, pliki itp.) Są osadzone w ramce iframe.<br> Zobacz README.md, aby uzyskać więcej informacji i zastosowań.',
-  'Humhub is host' => 'Humhub jest gospodarzem',
+  'Humhub is guest' => 'Humhub jest gościem',
   'Icon' => 'Ikona',
   'If your theme has a sidebar whose tag id is "wrapper" (e.g. Enterprise theme)' => 'Jeśli Twój motyw ma pasek boczny, którego identyfikator tagu to „opakowanie” (np. Motyw Enterprise)',
   'No' => 'Nie',

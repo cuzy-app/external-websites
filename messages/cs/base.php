@@ -13,7 +13,7 @@ return array (
   'External websites' => 'Externí webové stránky',
   'Hide sidebar' => 'Skrýt postranní panel',
   'Humhub can be: <br>- Host: external website is guest and embedded in an iframe<br>- Guest: external website is host, Humhub addons (comments, like, files, etc.) are embedded in an iframe.<br>See README.md for more informations and usage.' => 'Humhub může být:<br> - Host: externí web je host a je vložen do iframe<br> - Host: externí web je hostitelem, doplňky Humhub (komentáře, lajky, soubory atd.) Jsou vloženy do prvku iframe.<br> Další informace a použití naleznete v souboru README.md.',
-  'Humhub is host' => 'Humhub je hostitelem',
+  'Humhub is guest' => 'Humhub je hostem',
   'Icon' => 'Ikona',
   'If your theme has a sidebar whose tag id is "wrapper" (e.g. Enterprise theme)' => 'Pokud má váš motiv postranní panel, jehož ID značky je „wrapper“ (např. Motiv Enterprise)',
   'No' => 'Ne',

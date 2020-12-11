@@ -13,7 +13,7 @@ return array (
   'External websites' => '外部ウェブサイト',
   'Hide sidebar' => 'サイドバーを非表示',
   'Humhub can be: <br>- Host: external website is guest and embedded in an iframe<br>- Guest: external website is host, Humhub addons (comments, like, files, etc.) are embedded in an iframe.<br>See README.md for more informations and usage.' => 'Humhubは次のようになります。<br> -ホスト：外部Webサイトはゲストであり、iframeに埋め込まれています<br>-ゲスト：外部Webサイトがホストであり、Humhubアドオン（コメント、いいね、ファイルなど）がiframeに埋め込まれています。<br>詳細と使用法については、README.mdを参照してください。',
-  'Humhub is host' => 'Humhubがホストです',
+  'Humhub is guest' => 'Humhubがゲストです',
   'Icon' => 'アイコン',
   'If your theme has a sidebar whose tag id is "wrapper" (e.g. Enterprise theme)' => 'タグIDが「ラッパー」であるサイドバーがテーマにある場合（例：エンタープライズテーマ）',
   'No' => '番号',

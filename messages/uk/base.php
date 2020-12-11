@@ -13,7 +13,7 @@ return array (
   'External websites' => 'Зовнішні веб-сайти',
   'Hide sidebar' => 'Сховати бічну панель',
   'Humhub can be: <br>- Host: external website is guest and embedded in an iframe<br>- Guest: external website is host, Humhub addons (comments, like, files, etc.) are embedded in an iframe.<br>See README.md for more informations and usage.' => 'Humhub може бути:<br> - Хост: зовнішній веб-сайт є гостьовим і вбудований у фрейм<br> - Гість: зовнішній веб-сайт є хостом, аддони Humhub (коментарі, наприклад, файли тощо) вбудовані у фрейм.<br> Для отримання додаткової інформації та використання див. README.md.',
-  'Humhub is host' => 'Хамхуб - господар',
+  'Humhub is guest' => 'Гість Humhub',
   'Icon' => 'Піктограма',
   'If your theme has a sidebar whose tag id is "wrapper" (e.g. Enterprise theme)' => 'Якщо у вашої теми є бічна панель, ідентифікатор тегу якої - "обгортка" (наприклад, тема підприємства)',
   'No' => 'Немає',

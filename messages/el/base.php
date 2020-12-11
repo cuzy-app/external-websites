@@ -13,7 +13,7 @@ return array (
   'External websites' => 'Εξωτερικοί ιστότοποι',
   'Hide sidebar' => 'Απόκρυψη πλευρικής γραμμής',
   'Humhub can be: <br>- Host: external website is guest and embedded in an iframe<br>- Guest: external website is host, Humhub addons (comments, like, files, etc.) are embedded in an iframe.<br>See README.md for more informations and usage.' => 'Το Humhub μπορεί να είναι:<br> - Host: ο εξωτερικός ιστότοπος είναι επισκέπτης και ενσωματωμένος σε iframe<br> - Επισκέπτης: ο εξωτερικός ιστότοπος είναι κεντρικός υπολογιστής, τα πρόσθετα Humhub (σχόλια, όπως, αρχεία κ.λπ.) είναι ενσωματωμένα σε ένα iframe.<br> Δείτε το README.md για περισσότερες πληροφορίες και χρήση.',
-  'Humhub is host' => 'Ο / Η Humhub είναι οικοδεσπότης',
+  'Humhub is guest' => 'Το Humhub είναι επισκέπτης',
   'Icon' => 'Εικόνισμα',
   'If your theme has a sidebar whose tag id is "wrapper" (e.g. Enterprise theme)' => 'Εάν το θέμα σας έχει πλευρική γραμμή του οποίου το αναγνωριστικό ετικέτας είναι "wrapper" (π.χ. Θέμα επιχείρησης)',
   'No' => 'Οχι',

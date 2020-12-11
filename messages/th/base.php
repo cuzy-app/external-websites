@@ -13,7 +13,7 @@ return array (
   'External websites' => 'เว็บไซต์ภายนอก',
   'Hide sidebar' => 'ซ่อนแถบด้านข้าง',
   'Humhub can be: <br>- Host: external website is guest and embedded in an iframe<br>- Guest: external website is host, Humhub addons (comments, like, files, etc.) are embedded in an iframe.<br>See README.md for more informations and usage.' => 'Humhub สามารถ:<br> - โฮสต์: เว็บไซต์ภายนอกเป็นของแขกและฝังอยู่ใน iframe<br> - ผู้เยี่ยมชม: เว็บไซต์ภายนอกเป็นโฮสต์ส่วนเสริม Humhub (ความคิดเห็นเช่นไฟล์ ฯลฯ ) จะฝังอยู่ใน iframe<br> ดู README.md สำหรับข้อมูลเพิ่มเติมและการใช้งาน',
-  'Humhub is host' => 'Humhub เป็นเจ้าภาพ',
+  'Humhub is guest' => 'Humhub เป็นแขก',
   'Icon' => 'ไอคอน',
   'If your theme has a sidebar whose tag id is "wrapper" (e.g. Enterprise theme)' => 'หากธีมของคุณมีแถบด้านข้างที่มีรหัสแท็กคือ "wrapper" (เช่นธีมองค์กร)',
   'No' => 'ไม่',

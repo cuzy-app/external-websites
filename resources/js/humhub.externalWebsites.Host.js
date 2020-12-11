@@ -52,10 +52,6 @@ humhub.module('externalWebsites.Host', function (module, require, $) {
                 scrolling: true, // if iframed page has not the content window javascript
                 inPageLinks: true,
 
-                // Each time iframed page loads the content window javascript
-                onInit: function(messageData) {
-                },
-
                 // Each time iframed page is loaded or URL changes
                 onMessage: function(messageData) {
                     // sroll top

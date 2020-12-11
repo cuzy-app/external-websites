@@ -30,7 +30,6 @@ class Module extends ContentContainerModule
      */
     public $resourcesPath = 'resources';
 
-
     /**
      * @var string HS512 JWT secret key
      * Optional, to check if the external website is autorized to embed Humhub in an iframe

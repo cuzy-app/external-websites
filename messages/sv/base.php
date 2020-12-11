@@ -13,7 +13,7 @@ return array (
   'External websites' => 'Externa webbplatser',
   'Hide sidebar' => 'Dölj sidofältet',
   'Humhub can be: <br>- Host: external website is guest and embedded in an iframe<br>- Guest: external website is host, Humhub addons (comments, like, files, etc.) are embedded in an iframe.<br>See README.md for more informations and usage.' => 'Humhub kan vara:<br> - Värd: extern webbplats är gäst och inbäddad i en iframe<br> - Gäst: extern webbplats är värd, Humhub-tillägg (kommentarer, liknande, filer etc.) är inbäddade i en iframe.<br> Se README.md för mer information och användning.',
-  'Humhub is host' => 'Humhub är en värd',
+  'Humhub is guest' => 'Humhub är gäst',
   'Icon' => 'Ikon',
   'If your theme has a sidebar whose tag id is "wrapper" (e.g. Enterprise theme)' => 'Om ditt tema har ett sidofält vars tagg-ID är "wrapper" (t.ex. Enterprise-tema)',
   'No' => 'Nej',

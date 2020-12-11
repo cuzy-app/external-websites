@@ -13,7 +13,7 @@ return array (
   'External websites' => 'Ārējās vietnes',
   'Hide sidebar' => 'Slēpt sānjoslu',
   'Humhub can be: <br>- Host: external website is guest and embedded in an iframe<br>- Guest: external website is host, Humhub addons (comments, like, files, etc.) are embedded in an iframe.<br>See README.md for more informations and usage.' => 'Humhub var būt:<br> - resursdators: ārējā vietne ir viesis un iegulta iframe<br> - Viesis: ārējā vietne ir mitinātājs, Humhub papildinājumi (komentāri, piemēram, faili utt.) Ir iegulti iframe.<br> Plašāku informāciju un lietojumu skatiet vietnē README.md.',
-  'Humhub is host' => 'Humhubs ir saimnieks',
+  'Humhub is guest' => 'Humhubs ir viesis',
   'Icon' => 'Ikona',
   'If your theme has a sidebar whose tag id is "wrapper" (e.g. Enterprise theme)' => 'Ja jūsu motīvam ir sānjosla, kuras taga ID ir “iesaiņotājs” (piem., Uzņēmuma tēma)',
   'No' => 'Nē',

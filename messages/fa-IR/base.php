@@ -13,7 +13,7 @@ return array (
   'External websites' => 'وب سایت های خارجی',
   'Hide sidebar' => 'پنهان کردن نوار کناری',
   'Humhub can be: <br>- Host: external website is guest and embedded in an iframe<br>- Guest: external website is host, Humhub addons (comments, like, files, etc.) are embedded in an iframe.<br>See README.md for more informations and usage.' => 'هوم هاب می تواند باشد:<br> - میزبان: وب سایت خارجی مهمان است و در یک iframe جاسازی شده است<br> - مهمان: وب سایت خارجی میزبان است ، افزودنیهای Humhub (نظرات ، مانند ، پرونده ها و ...) در یک iframe جاسازی شده است<br> برای اطلاعات بیشتر و استفاده از آن ، به README.md مراجعه کنید.',
-  'Humhub is host' => 'هوم هاب میزبان است',
+  'Humhub is guest' => 'هوم هاب مهمان است',
   'Icon' => 'آیکون',
   'If your theme has a sidebar whose tag id is "wrapper" (e.g. Enterprise theme)' => 'اگر طرح زمینه شما دارای یک نوار کناری است که شناسه برچسب آن "wrapper" است (به عنوان مثال طرح Enterprise)',
   'No' => 'نه',

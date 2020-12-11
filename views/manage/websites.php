@@ -53,10 +53,10 @@ $websiteForm = new WebsiteForm;
                 }
             ],
             [
-                'attribute' => 'humhub_is_host',
+                'attribute' => 'humhub_is_embedded',
                 'format' => 'raw',
                 'value' => function ($model) use ($websiteForm) {
-                    return $websiteForm->yesNoList[$model->humhub_is_host];
+                    return $websiteForm->yesNoList[$model->humhub_is_embedded];
                 }
             ],
             [

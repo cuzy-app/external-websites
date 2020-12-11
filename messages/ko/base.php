@@ -13,7 +13,7 @@ return array (
   'External websites' => '외부 웹 사이트',
   'Hide sidebar' => '사이드 바 숨기기',
   'Humhub can be: <br>- Host: external website is guest and embedded in an iframe<br>- Guest: external website is host, Humhub addons (comments, like, files, etc.) are embedded in an iframe.<br>See README.md for more informations and usage.' => 'Humhub는 다음과 같습니다.<br> -호스트 : 외부 웹 사이트는 게스트이며 iframe에 삽입됩니다.<br> -게스트 : 외부 웹 사이트가 호스트이고, Humhub 애드온 (댓글, 좋아요, 파일 등)이 iframe에 포함되어 있습니다.<br> 자세한 정보와 사용법은 README.md를 참조하십시오.',
-  'Humhub is host' => 'Humhub 님은 호스트입니다.',
+  'Humhub is guest' => 'Humhub는 손님입니다',
   'Icon' => '상',
   'If your theme has a sidebar whose tag id is "wrapper" (e.g. Enterprise theme)' => '테마에 태그 ID가 "래퍼"인 사이드 바가있는 경우 (예 : Enterprise 테마)',
   'No' => '아니',

@@ -13,7 +13,7 @@ return array (
   'External websites' => 'אתרים חיצוניים',
   'Hide sidebar' => 'הסתר את סרגל הצד',
   'Humhub can be: <br>- Host: external website is guest and embedded in an iframe<br>- Guest: external website is host, Humhub addons (comments, like, files, etc.) are embedded in an iframe.<br>See README.md for more informations and usage.' => 'Humhub יכול להיות:<br> - מארח: אתר חיצוני מתארח ומוטמע ב- iframe<br> - אורח: אתר חיצוני מתארח, תוספות Humhub (הערות, כמו, קבצים וכו \') מוטמעות ב- iframe.<br> ראה מידע נוסף על השימוש ב- README.md.',
-  'Humhub is host' => 'Humhub הוא מארח',
+  'Humhub is guest' => 'חומוב מתארח',
   'Icon' => 'אייקון',
   'If your theme has a sidebar whose tag id is "wrapper" (e.g. Enterprise theme)' => 'אם לעיצוב שלך יש סרגל צד שמזהה התג שלו הוא "עטיפה" (למשל נושא ארגוני)',
   'No' => 'לא',

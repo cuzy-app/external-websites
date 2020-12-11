@@ -24,7 +24,7 @@ use humhub\modules\comment\models\Comment;
 
 
 /**
- * Called by ajax (if Humhub is host) or iframe (if Humhub is guest)
+ * Called by ajax (if Humhub is host) or iframe (if Humhub is embedded)
  */
 class PageController extends ContentContainerController
 {
@@ -41,7 +41,7 @@ class PageController extends ContentContainerController
 
     /**
      * @inheritDoc
-     * If Humhub is guest, the user may not be still logged in
+     * If Humhub is embedded, the user may not be still logged in
      */
     public function beforeAction($action)
     {
@@ -62,8 +62,8 @@ class PageController extends ContentContainerController
             }
         }
 
-        // If Humhub is guest
-        if (!$this->website->humhub_is_host) {
+        // If Humhub is embedded
+        if ($this->website->humhub_is_embedded) {
 
             // Check if website making the request is authorized
             if (!$this->checkPermissionWithJwt()) {
@@ -129,8 +129,8 @@ class PageController extends ContentContainerController
 
 
     /**
-     * Called by ajax (if Humhub is host) or iframe (if Humhub is guest)
-     * If Humhub is guest, see README.md for complete URL to provide in the iframe scr
+     * Called by ajax (if Humhub is host) or iframe (if Humhub is embedded)
+     * If Humhub is embedded, see README.md for complete URL to provide in the iframe scr
      * All params are optional, but we need a least either $id or ($websiteId and $pageUrl)
      * @param $id Page ID (1)
      * @param $websiteId Website ID (1)
@@ -185,7 +185,7 @@ class PageController extends ContentContainerController
         }
 
         // Create permalink
-        if ($this->website->humhub_is_host) {
+        if (!$this->website->humhub_is_embedded) {
             if ($this->page !== null) {
                 $permalink = $this->page->url;
             }
@@ -223,15 +223,15 @@ class PageController extends ContentContainerController
             'title' => $title,
             'permalink' => $permalink,
             'showOnlyPermalink' => $showOnlyPermalink,
-            'humhubIsHost' => $this->website->humhub_is_host,
+            'humhubIsEmbedded' => $this->website->humhub_is_embedded,
         ];
 
         // Render for ajax (Humhub is host)
-        if ($this->website->humhub_is_host) {
+        if (!$this->website->humhub_is_embedded) {
             return $this->renderAjax('index', $viewParams);
         }
 
-        // Render for iframe (Humhub is guest)
+        // Render for iframe (Humhub is embedded)
         $this->layout = '@external-websites/views/layouts/iframe';
         $this->subLayout = '@external-websites/views/page/_layoutForIframe';
         return $this->render('index', $viewParams);

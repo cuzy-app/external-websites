@@ -13,7 +13,7 @@ return array (
   'External websites' => 'Išorinės svetainės',
   'Hide sidebar' => 'Slėpti šoninę juostą',
   'Humhub can be: <br>- Host: external website is guest and embedded in an iframe<br>- Guest: external website is host, Humhub addons (comments, like, files, etc.) are embedded in an iframe.<br>See README.md for more informations and usage.' => 'Humhub gali būti:<br> - Priimančioji: išorinė svetainė yra svečias ir įterptas į „iframe“<br> - Svečias: išorinė svetainė yra priegloba, „Humhub“ priedai (komentarai, „Patinka“, failai ir kt.) Yra įterpti į „iframe“.<br> Daugiau informacijos ir naudojimo žr. README.md.',
-  'Humhub is host' => 'Humhubas yra šeimininkas',
+  'Humhub is guest' => 'Svečias yra Humhubas',
   'Icon' => 'Piktograma',
   'If your theme has a sidebar whose tag id is "wrapper" (e.g. Enterprise theme)' => 'Jei jūsų temoje yra šoninė juosta, kurios žymos ID yra „wrapper“ (pvz., „Enterprise“ tema)',
   'No' => 'Ne',

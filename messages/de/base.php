@@ -13,7 +13,7 @@ return array (
   'External websites' => 'Externe Websites',
   'Hide sidebar' => 'Seitenleiste ausblenden',
   'Humhub can be: <br>- Host: external website is guest and embedded in an iframe<br>- Guest: external website is host, Humhub addons (comments, like, files, etc.) are embedded in an iframe.<br>See README.md for more informations and usage.' => 'Humhub kann sein:<br> - Host: Die externe Website ist Gast und in einen Iframe eingebettet<br> - Gast: Externe Website ist Host, Humhub-Addons (Kommentare, wie, Dateien usw.) sind in einen Iframe eingebettet.<br> Weitere Informationen und Verwendung finden Sie unter README.md.',
-  'Humhub is host' => 'Humhub ist Gastgeber',
+  'Humhub is guest' => 'Humhub ist Gast',
   'Icon' => 'Symbol',
   'If your theme has a sidebar whose tag id is "wrapper" (e.g. Enterprise theme)' => 'Wenn Ihr Thema eine Seitenleiste hat, deren Tag-ID "Wrapper" ist (z. B. Enterprise-Thema)',
   'No' => 'Nein',

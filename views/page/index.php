@@ -21,19 +21,19 @@ use humhub\modules\externalWebsites\widgets\FirstCommentForm;
  * @var $title string page title
  * @var $permalink string
  * @var $showOnlyPermalink boolean
- * @var $humhubIsHost integer (0 or 1)
+ * @var $humhubIsEmbedded integer (0 or 1)
  */
 
 // If Humhub is host
-if ($humhubIsHost) {
+if (!$humhubIsEmbedded) {
     $this->registerJsConfig('externalWebsites.Host', [
         'hideSidebar' => $website->hide_sidebar,
         'permalink' => $permalink,
     ]);
 }
-// If Humhub is guest
+// If Humhub is embedded
 else {
-    humhub\modules\externalWebsites\assets\GuestAssets::register($this);
+    humhub\modules\externalWebsites\assets\EmbeddedAssets::register($this);
 }
 ?>
 

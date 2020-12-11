@@ -13,7 +13,7 @@ return array (
   'External websites' => 'Các trang web bên ngoài',
   'Hide sidebar' => 'Ẩn thanh bên',
   'Humhub can be: <br>- Host: external website is guest and embedded in an iframe<br>- Guest: external website is host, Humhub addons (comments, like, files, etc.) are embedded in an iframe.<br>See README.md for more informations and usage.' => 'Humhub có thể là:<br> - Máy chủ: trang web bên ngoài là khách và được nhúng trong iframe<br> - Khách: trang web bên ngoài là máy chủ lưu trữ, các tiện ích bổ sung Humhub (nhận xét, thích, tệp, v.v.) được nhúng trong iframe.<br> Xem README.md để biết thêm thông tin và cách sử dụng.',
-  'Humhub is host' => 'Humhub là máy chủ',
+  'Humhub is guest' => 'Humhub là khách',
   'Icon' => 'Biểu tượng',
   'If your theme has a sidebar whose tag id is "wrapper" (e.g. Enterprise theme)' => 'Nếu chủ đề của bạn có thanh bên có id thẻ là "wrapper" (ví dụ: chủ đề Doanh nghiệp)',
   'No' => 'Không',

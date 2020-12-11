@@ -13,7 +13,7 @@ return array (
   'External websites' => 'ውጫዊ ድርጣቢያዎች',
   'Hide sidebar' => 'የጎን አሞሌን ደብቅ',
   'Humhub can be: <br>- Host: external website is guest and embedded in an iframe<br>- Guest: external website is host, Humhub addons (comments, like, files, etc.) are embedded in an iframe.<br>See README.md for more informations and usage.' => 'ሁምብብ ሊሆን ይችላል<br> - አስተናጋጅ: የውጭ ድርጣቢያ እንግዳ እና በኢፍሬም ውስጥ የተካተተ ነው<br> - እንግዳ-የውጭ ድር ጣቢያ አስተናጋጅ ነው ፣ የሁምብ addons (አስተያየቶች ፣ እንደ ፣ ፋይሎች ፣ ወዘተ.) በኢፍሬም ውስጥ ተካትተዋል ፡፡<br> ለተጨማሪ መረጃ እና አጠቃቀም README.md ን ይመልከቱ።',
-  'Humhub is host' => 'ሁምሁብ አስተናጋጅ ነው',
+  'Humhub is guest' => 'ሁምብብ እንግዳ ነው',
   'Icon' => 'አዶ',
   'If your theme has a sidebar whose tag id is "wrapper" (e.g. Enterprise theme)' => 'የእርስዎ ገጽታ የመለያ መታወቂያው “መጠቅለያ” የጎን አሞሌ ካለው (ለምሳሌ የድርጅት ገጽታ)',
   'No' => 'አይ',

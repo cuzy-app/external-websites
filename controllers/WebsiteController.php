@@ -21,7 +21,7 @@ use humhub\modules\user\models\Group;
 
 
 /**
- * When Humhub is host (if guest, redirects to external website)
+ * When Humhub is host (if embedded, redirects to external website)
  * Show external website pages in an iframe and pages contents addons beside
  * @param $id Website ID
  * @param $pageId Page ID
@@ -50,8 +50,8 @@ class WebsiteController extends ContentContainerController
             $pageUrl = $website->first_page_url;
         }
 
-        // If Humhub is guest, redirect to external website
-        if (!$website->humhub_is_host) {
+        // If Humhub is embedded, redirect to external website
+        if ($website->humhub_is_embedded) {
             return $this->redirect($pageUrl);
         }
 

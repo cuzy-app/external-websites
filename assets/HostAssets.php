@@ -10,6 +10,11 @@ namespace humhub\modules\externalWebsites\assets;
 
 use humhub\components\assets\AssetBundle;
 
+/**
+ * Class HostAssets
+ * @package humhub\modules\externalWebsites\assets
+ * Assests when external website is embedded in Humhub
+ */
 class HostAssets extends AssetBundle
 {
     public $sourcePath = '@external-websites/resources';

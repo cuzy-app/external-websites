@@ -13,7 +13,7 @@ return array (
   'External websites' => 'Situs web eksternal',
   'Hide sidebar' => 'Sembunyikan sidebar',
   'Humhub can be: <br>- Host: external website is guest and embedded in an iframe<br>- Guest: external website is host, Humhub addons (comments, like, files, etc.) are embedded in an iframe.<br>See README.md for more informations and usage.' => 'Humhub bisa berupa:<br> - Host: situs web eksternal adalah tamu dan disematkan dalam iframe<br> - Tamu: situs web eksternal adalah host, addon Humhub (komentar, suka, file, dll.) Disematkan dalam iframe.<br> Lihat README.md untuk informasi dan penggunaan lebih lanjut.',
-  'Humhub is host' => 'Humhub adalah tuan rumahnya',
+  'Humhub is guest' => 'Humhub adalah tamu',
   'Icon' => 'Ikon',
   'If your theme has a sidebar whose tag id is "wrapper" (e.g. Enterprise theme)' => 'Jika tema Anda memiliki sidebar dengan id tag "wrapper" (mis. Tema Perusahaan)',
   'No' => 'Tidak',

@@ -13,7 +13,7 @@ return array (
   'External websites' => 'Külső webhelyek',
   'Hide sidebar' => 'Oldalsáv elrejtése',
   'Humhub can be: <br>- Host: external website is guest and embedded in an iframe<br>- Guest: external website is host, Humhub addons (comments, like, files, etc.) are embedded in an iframe.<br>See README.md for more informations and usage.' => 'A Humhub lehet:<br> - Host: a külső webhely vendég és beágyazott egy iframe-be<br> - Vendég: A külső webhely host, a Humhub kiegészítők (megjegyzések, lájkolások, fájlok stb.) Be vannak ágyazva egy iframe-be.<br> További információkért és használatért lásd a README.md oldalt.',
-  'Humhub is host' => 'Humhub a házigazda',
+  'Humhub is guest' => 'Humhub vendég',
   'Icon' => 'Ikon',
   'If your theme has a sidebar whose tag id is "wrapper" (e.g. Enterprise theme)' => 'Ha a témának van olyan oldalsávja, amelynek címkeazonosítója „burkoló” (pl. Vállalati téma)',
   'No' => 'Nem',

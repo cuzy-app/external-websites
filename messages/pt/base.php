@@ -13,7 +13,7 @@ return array (
   'External websites' => 'Sites externos',
   'Hide sidebar' => 'Ocultar barra lateral',
   'Humhub can be: <br>- Host: external website is guest and embedded in an iframe<br>- Guest: external website is host, Humhub addons (comments, like, files, etc.) are embedded in an iframe.<br>See README.md for more informations and usage.' => 'Humhub pode ser:<br> - Host: o site externo é convidado e incorporado em um iframe<br> - Visitante: o site externo é o host, os complementos do Humhub (comentários, curtidas, arquivos, etc.) são incorporados a um iframe.<br> Veja README.md para mais informações e uso.',
-  'Humhub is host' => 'Humhub é o anfitrião',
+  'Humhub is guest' => 'Humhub é convidado',
   'Icon' => 'Ícone',
   'If your theme has a sidebar whose tag id is "wrapper" (e.g. Enterprise theme)' => 'Se o seu tema tem uma barra lateral cujo id da tag é "wrapper" (por exemplo, tema Enterprise)',
   'No' => 'Não',

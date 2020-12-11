@@ -13,7 +13,7 @@ return array (
   'External websites' => 'Eksterne websteder',
   'Hide sidebar' => 'Skjul sidebjælke',
   'Humhub can be: <br>- Host: external website is guest and embedded in an iframe<br>- Guest: external website is host, Humhub addons (comments, like, files, etc.) are embedded in an iframe.<br>See README.md for more informations and usage.' => 'Humhub kan være:<br> - Vært: Eksternt websted er gæst og indlejret i en iframe<br> - Gæst: Eksternt websted er vært, Humhub-tilføjelser (kommentarer som filer, osv.) Er indlejret i en iframe.<br> Se README.md for mere information og brug.',
-  'Humhub is host' => 'Humhub er vært',
+  'Humhub is guest' => 'Humhub er gæst',
   'Icon' => 'Ikon',
   'If your theme has a sidebar whose tag id is "wrapper" (e.g. Enterprise theme)' => 'Hvis dit tema har et sidebjælke, hvis tag-id er "wrapper" (f.eks. Enterprise-tema)',
   'No' => 'Ingen',

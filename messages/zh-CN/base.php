@@ -13,7 +13,7 @@ return array (
   'External websites' => '外部网站',
   'Hide sidebar' => '隐藏侧边栏',
   'Humhub can be: <br>- Host: external website is guest and embedded in an iframe<br>- Guest: external website is host, Humhub addons (comments, like, files, etc.) are embedded in an iframe.<br>See README.md for more informations and usage.' => 'Humhub可以是：<br> -主机：外部网站是访客，并嵌入到iframe中<br>-访客：外部网站是托管网站，Humhub插件（注释，文件等）嵌入到iframe中。<br>有关更多信息和用法，请参见README.md。',
-  'Humhub is host' => 'Humhub是房东',
+  'Humhub is guest' => 'Humhub来宾',
   'Icon' => '图标',
   'If your theme has a sidebar whose tag id is "wrapper" (e.g. Enterprise theme)' => '如果您的主题有一个标记为“包装”的侧边栏（例如，企业主题）',
   'No' => '没有',

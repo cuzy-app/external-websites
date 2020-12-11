@@ -113,7 +113,7 @@ class Page extends ContentActiveRecord implements Searchable
     public function getUrl()
     {
         // If Humhub is host
-        if ($this->website->humhub_is_host) {
+        if (!$this->website->humhub_is_embedded) {
             return $this->website->space->createUrl('/external-websites/website', [
                 'id' => $this->website->id,
                 'pageId' => $this->id,

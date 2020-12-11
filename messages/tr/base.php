@@ -13,7 +13,7 @@ return array (
   'External websites' => 'Harici web siteleri',
   'Hide sidebar' => 'Kenar çubuğunu gizle',
   'Humhub can be: <br>- Host: external website is guest and embedded in an iframe<br>- Guest: external website is host, Humhub addons (comments, like, files, etc.) are embedded in an iframe.<br>See README.md for more informations and usage.' => 'Humhub şunlar olabilir:<br> - Barındırıcı: harici web sitesi misafirdir ve bir iframe içine yerleştirilmiştir<br> - Konuk: harici web sitesi ana bilgisayardır, Humhub eklentileri (yorumlar, beğeniler, dosyalar vb.) Bir iframe\'e yerleştirilmiştir.<br> Daha fazla bilgi ve kullanım için README.md\'ye bakın.',
-  'Humhub is host' => 'Humhub ev sahibi',
+  'Humhub is guest' => 'Humhub misafir',
   'Icon' => 'Simge',
   'If your theme has a sidebar whose tag id is "wrapper" (e.g. Enterprise theme)' => 'Temanızın etiket kimliği "sarmalayıcı" olan bir kenar çubuğu varsa (ör. Kurumsal teması)',
   'No' => 'Hayır',

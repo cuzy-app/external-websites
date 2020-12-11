@@ -13,7 +13,7 @@ return array (
   'External websites' => 'Site-uri web externe',
   'Hide sidebar' => 'Ascunde bara laterală',
   'Humhub can be: <br>- Host: external website is guest and embedded in an iframe<br>- Guest: external website is host, Humhub addons (comments, like, files, etc.) are embedded in an iframe.<br>See README.md for more informations and usage.' => 'Humhub poate fi:<br> - Gazdă: site-ul extern este invitat și încorporat într-un iframe<br> - Oaspeți: site-ul extern este gazdă, suplimentele Humhub (comentarii, like, fișiere etc.) sunt încorporate într-un iframe.<br> Consultați README.md pentru mai multe informații și utilizare.',
-  'Humhub is host' => 'Humhub este gazda',
+  'Humhub is guest' => 'Humhub este invitat',
   'Icon' => 'Pictogramă',
   'If your theme has a sidebar whose tag id is "wrapper" (e.g. Enterprise theme)' => 'Dacă tema dvs. are o bară laterală al cărei cod de etichetă este „wrapper” (de exemplu, tema Enterprise)',
   'No' => 'Nu',

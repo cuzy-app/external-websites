@@ -26,7 +26,7 @@ use humhub\modules\externalWebsites\widgets\IconSelect;
         <?php $form = ActiveForm::begin(); ?>
         	<?= $form->field($model, 'title')->textInput() ?>
             <?= IconSelect::widget(['model' => $model]) ?>
-            <?= $form->field($model, 'humhub_is_host')->radioList($model->yesNoList) ?>
+            <?= $form->field($model, 'humhub_is_embedded')->radioList($model->yesNoList) ?>
             <?= $form->field($model, 'first_page_url')->textInput() ?>
             <?= $form->field($model, 'show_in_menu')->radioList($model->yesNoList) ?>
             <?= $form->field($model, 'sort_order')->textInput() ?>
