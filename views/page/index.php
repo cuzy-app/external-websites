@@ -14,7 +14,7 @@ use humhub\modules\comment\widgets\CommentLink;
 use humhub\modules\externalWebsites\widgets\FirstCommentForm;
 
 /**
- * @var $contentContainer humhub\modules\Space\models\Space
+ * @var $contentContainer humhub\modules\space\models\Space
  * @var $website humhub\modules\externalWebsites\models\Website
  * @var $page humhub\modules\externalWebsites\models\Page
  * @var $pageUrl string page url

@@ -10,7 +10,7 @@ use yii\helpers\Url;
 use yii\helpers\Html;
 
 /**
- * @var $contentContainer humhub\modules\Space\models\Space
+ * @var $contentContainer humhub\modules\space\models\Space
  * @var $pageUrl string url
  * @var $website humhub\modules\externalWebsites\models\Website
  */

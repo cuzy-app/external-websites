@@ -40,10 +40,11 @@ class m200212_175551_initial extends Migration
             'updated_at' => $this->dateTime(),
             'updated_by' => $this->integer(11),
         ), '');
-        $this->createTable('external_websites_space_embedded', array(
+        $this->createTable('external_websites_space_extra_behavior', array(
             'id' => $this->primaryKey(),
             'space_id' => $this->integer(11)->notNull(),
-            'external_website_url' => $this->string(255),
+            'hide' => $this->boolean()->defaultValue(false),
+            'url_to_redirect' => $this->string(1024),
             'created_at' => $this->dateTime(),
             'created_by' => $this->integer(11),
             'updated_at' => $this->dateTime(),
