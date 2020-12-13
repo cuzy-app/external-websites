@@ -13,6 +13,8 @@ use humhub\modules\ui\menu\MenuLink;
 use humhub\modules\externalWebsites\models\Website;
 use humhub\modules\externalWebsites\models\filters\ExternalWebsitesSpaceStreamFilter;
 use humhub\modules\stream\widgets\WallStreamFilterNavigation;
+use humhub\modules\externalWebsites\assets\EmbeddedAssets;
+use humhub\modules\externalWebsites\widgets\AddClassToHtmlTag;
 
 
 class Events
@@ -143,6 +145,19 @@ class Events
             }
         } catch (\Throwable $e) {
             Yii::error($e);
+        }
+    }
+
+    public static function onViewBeginBody($event)
+    {
+        /** @var LayoutAddons $layoutAddons */
+        $view = $event->sender;
+
+        $module = Yii::$app->getModule('external-websites');
+
+        if ($module->registerAssetsIfHumhubIsEmbedded) {
+            echo AddClassToHtmlTag::widget();
+            EmbeddedAssets::register(Yii::$app->view);
         }
     }
 }

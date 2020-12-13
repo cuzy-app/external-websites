@@ -120,7 +120,7 @@ class Page extends ContentActiveRecord implements Searchable
             ]);
         }
 
-        // If Humhub is guest
+        // If Humhub is embedded
         return $this->page_url;
     }
 

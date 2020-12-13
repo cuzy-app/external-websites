@@ -12,6 +12,7 @@ use humhub\modules\stream\widgets\WallStreamFilterNavigation;
 use humhub\modules\stream\models\WallStreamQuery;
 use humhub\modules\space\widgets\HeaderControlsMenu;
 use humhub\modules\ui\menu\widgets\Menu as UiMenu;
+use humhub\modules\ui\view\components\View;
 
 
 return [
@@ -37,7 +38,13 @@ return [
         [
             'class' => HeaderControlsMenu::class,
             'event' => UiMenu::EVENT_INIT,
-            'callback' => [Events::class, 'onSpaceAdminMenuInit']],
-    ]
+            'callback' => [Events::class, 'onSpaceAdminMenuInit']
+		],
+		[
+			'class' => View::class,
+			'event' => View::EVENT_BEGIN_BODY,
+			'callback' => [Events::class, 'onViewBeginBody']
+		],
+	]
 ];
 ?>

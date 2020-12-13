@@ -25,7 +25,8 @@ use yii\helpers\Url;
 			Yii::t('ExternalWebsitesModule.base', 'Show the page'),
 			$page->url,
 			[
-				'class' => 'btn btn-primary'
+				'class' => 'btn btn-primary',
+                'target' => ($page->website->humhub_is_embedded) ? '_blank' : '_self',
 			]
 		) ?></strong>
 	</p>

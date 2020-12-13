@@ -8,6 +8,10 @@ Creates a content for each external website page, enabling to have Humhub addons
 Uses [iFrame Resizer](https://github.com/davidjbradshaw/iframe-resizer).
 
 
+## Features
+
+TBD
+
 ## Usage
 
 The module must be activated in a space. Then, in the space header control menu, you can add some websites.
