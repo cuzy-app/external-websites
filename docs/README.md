@@ -3,23 +3,33 @@
 
 ## Overview
 
-Creates a content for each external website page, enabling to have Humhub addons (comments, like, files, etc.) in theses pages.
+Creates a content for each external website page, enabling to have Humhub addons (comments, like, files, permalink) in theses pages.
 
 Uses [iFrame Resizer](https://github.com/davidjbradshaw/iframe-resizer).
 
 
 ## Features
 
-TBD
+- Add Humhub addons to external website pages; 2 possibilities:
+  - external website is embedded in Humhub
+  - Humhub addons are embedded in external website 
+- Space's contents redirected to external website 
+- Humhub embeded in an external website
+
 
 ## Usage
+
+### Add Humhub addons to external website pages 
+
+Addons are: comments, like, files and permalink that are attached to a content.
+Here, for each external website page, a content is created when a first comment is posted.
 
 The module must be activated in a space. Then, in the space header control menu, you can add some websites.
 
 For each website added, there are 2 possibilities:
 
 
-### Embed external website in Humhub
+#### Embed external website in Humhub
 
 **Humhub is host (parent), external website is embedded in Humhub within an iframe.**
 
@@ -63,7 +73,7 @@ And add this code just before `</body>` in all pages :
 ```
 
 
-### Embed Humhub addons (comments, like, files, etc.) in an external website
+#### Embed Humhub addons in an external website
 
 **Humhub is embedded, external website is host (parent). Humhub addons are in an iframe.**
 
@@ -99,13 +109,15 @@ wget https://gitlab.com/funkycram/humhub-modules-external-websites/-/raw/master/
 
 Code for the website integrating Humhub comments:
 ```
-<?php 
+<?php
+// Humhub URL (without / at the end)
+$humhubUrl = 'https://www.my-humhub.tdl';
 // String space URL (In space managment, "advanced" tab)
 $spaceUrl = 'my-space';
 // Integer - Humhub Website ID (get this value from the "Websites managment" page)
 $humhubWebsiteId = 1;
 // String - This page URL
-$currentPageUrl = 'http://my-website-integrating-humhub-addons.tdl/my-page.php';
+$currentPageUrl = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 // String - This page title (usually the value in the <title> tag)
 $currentPageTitle = 'Page title';
 // Boolean (1 or 0) - Auto login (available if the module `authclients-addon` is installed and SSO is configured)
@@ -114,35 +126,133 @@ $autoLogin = 1;
 $addToSpaceMembers = 1;
 // Boolean (1 or 0) - After login, if not already the case, add the user to the group members related to the space
 $addGroupRelatedToSpace = 1;
+// JWT token for this $humhubWebsiteId value (optional, see bellow "Authentification with JWT")
+$token = '';
 ?>
 
-<style type="text/css">
-    iframe#humhub-addons {
-        width: 100%;
-    }
-</style>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>My title</title>
 
-<!-- Where you want to show the comments -->
-<iframe id="humhub-addons" src="http://my-humhub.tdl/s/<?= $spaceUrl ?>/external-websites/page?websiteId=<?= $humhubWebsiteId ?>&pageUrl=<?= urlencode($currentPageUrl) ?>&pageTitle=<?= urlencode($currentPageTitle) ?>&autoLogin=<?= $autoLogin ?>&addToSpaceMembers=<?= $addToSpaceMembers ?>&addGroupRelatedToSpace=<?= $addGroupRelatedToSpace ?>"></iframe>
+	<style type="text/css">
+		iframe#humhub-addons {
+			width: 100%;
+		}
+	</style>
+</head>
+<body>
 
-<!-- Just before </body> -->
-<script type="text/javascript" src="path-to-js-files/iframeResizer.min.js"></script>
-<script type="text/javascript">
-    iFrameResize({
-        log: false,
-        scrolling: true,
-    }, '#humhub-addons');
-</script>
+	<p>My page content</p>
+
+	<!-- Where you want to show the addons -->
+	<iframe id="humhub-addons" src="<?= $humhubUrl ?>/s/<?= $spaceUrl ?>/external-websites/page?websiteId=<?= $humhubWebsiteId ?>&pageUrl=<?= urlencode($currentPageUrl) ?>&pageTitle=<?= urlencode($currentPageTitle) ?>&autoLogin=<?= $autoLogin ?>&addToSpaceMembers=<?= $addToSpaceMembers ?>&addGroupRelatedToSpace=<?= $addGroupRelatedToSpace ?>&token=<?= $token ?>" style="min-height: 700px;"></iframe>
+
+	<!-- Just before </body> -->
+	<script type="text/javascript" src="js/iframeResizer.min.js"></script>
+	<script type="text/javascript">
+		const iframes = iFrameResize({
+			log: false,
+			scrolling: true,
+			onInit: function() {
+				// Remove min-height if iframe resizer has loaded (e.g. after SSO login)
+				document.getElementById("humhub-addons").style.minHeight="auto";
+				document.getElementById("humhub-addons").scrolling="no";
+			}
+		}, '#humhub-addons');
+	</script>
+
+</body>
+</html>
 ```
 
+### Humhub embeded in an external website
+
+It is possible to add some specific scripts (javascript) to Humhub if embedded in an iframe.
+In that case, in `proteced/config/common.php` add this parameter:
+```
+    'modules' => [
+        'external-websites' => [
+            'registerAssetsIfHumhubIsEmbedded' => true,
+        ],
+    ],
+```
+
+This will add 2 scripts:
+- To add a class to the html tag to know if Humhub is in an iframe or not
+- iframeResizer.contentWindow.js file enabling to the external website to resize the iframe containing Humhub (see https://github.com/davidjbradshaw/iframe-resizer)
+
+On the external website:
+
+Upload these files on the external website server:
+```
+wget https://gitlab.com/funkycram/humhub-modules-external-websites/-/raw/master/resources/js/iframeResizer/iframeResizer.min.js
+wget https://gitlab.com/funkycram/humhub-modules-external-websites/-/raw/master/resources/js/iframeResizer/iframeResizer.js
+wget https://gitlab.com/funkycram/humhub-modules-external-websites/-/raw/master/resources/js/iframeResizer/iframeResizer.map
+```
+
+Example of PHP file that can be used with the external website:
+```
+<?php
+$humhubUrl = 'http://www.my-humhub.tdl/dashboard';
+
+// If you want to make redirections work (see "Space's contents redirected to external website")
+if (isset($_GET['humhubUrl'])) {
+	$humhubUrl = $_GET['humhubUrl'];
+}
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>My title</title>
+
+	<style type="text/css">
+		iframe#humhub {
+			width: 100%;
+		}
+	</style>
+</head>
+<body>
+
+	<p>Humhub integration</p>
+
+	<!-- Where you want to show Humhub -->
+	<iframe id="humhub" src="<?= $humhubUrl ?>" style="min-height: 700px;"></iframe>
+
+	<!-- Just before </body> -->
+	<script type="text/javascript" src="js/iframeResizer.min.js"></script>
+	<script type="text/javascript">
+		const iframes = iFrameResize({
+			log: false,
+			scrolling: true,
+			onInit: function() {
+				// Remove min-height if iframe resizer has loaded (e.g. after SSO login)
+				document.getElementById("humhub").style.minHeight="auto";
+				document.getElementById("humhub").scrolling="no";
+			}
+		}, '#humhub');
+	</script>
+
+</body>
+</html>
+```
+
+
+### Space's contents redirected to external website
+
+If the module is activated in a space, in the settings, it is possible to activate contents redirections to external website.
+If activated, contents URLs are redirected to and external website with the orignal content URL in the URL param `humhubUrl`. (see "Humhub embeded in an external website")
+E.g. https://www.my-external-website.tdl?humhubUrl=https://wwww.my-humhub.tdl/s/space-name/xxx
 
 
 ## Advanced features
 
-
 ### Specific behaviors
 
-It is possible to have several websites of the same external website in the same space. In this case, Humhub addons (comments, like, files, etc.) are shared with the websites and the Humhub addons will be related to the website having the smaller `sort_order`.
+It is possible to have several websites of the same external website in the same space. In this case, Humhub addons are shared with the websites and the Humhub addons will be related to the website having the smaller `sort_order`.
 
 If the content related to a page is archived and all comments have been removed, only the permalink will be shown
 
