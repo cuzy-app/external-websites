@@ -13,20 +13,20 @@ use humhub\components\assets\AssetBundle;
 /**
  * Class EmbeddedAssets
  * @package humhub\modules\externalWebsites\assets
- * Assests when Humhub is embedded in the external website
+ * Assests to redirect URLs to an external website
  */
-class EmbeddedAssets extends AssetBundle
+class RedirectionsAssets extends AssetBundle
 {
     public $sourcePath = '@external-websites/resources';
 
-    public $jsOptions = ['position' => \yii\web\View::POS_END];
+    public $jsOptions = ['position' => \yii\web\View::POS_HEAD];
 
     public $publishOptions = ['forceCopy' => false];
 
     public $css = [
     ];
-    
+
     public $js = [
-    	'js/iframeResizer/iframeResizer.contentWindow.min.js?v=4.2.11', // https://github.com/davidjbradshaw/iframe-resizer/releases
+        'js/humhub.externalWebsites.Redirections.js',
     ];
 }

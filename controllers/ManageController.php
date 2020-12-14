@@ -15,6 +15,7 @@ use humhub\modules\content\components\ContentContainerControllerAccess;
 use humhub\modules\externalWebsites\models\Website;
 use humhub\modules\externalWebsites\models\WebsiteSearch;
 use humhub\modules\externalWebsites\models\forms\WebsiteForm;
+use humhub\modules\externalWebsites\models\forms\SpaceSettingsForm;
 
 
 
@@ -95,5 +96,24 @@ class ManageController extends ContentContainerController
         $this->view->success(Yii::t('ExternalWebsitesModule.base', 'website deleted'));
 
         return $this->redirect('websites');
+    }
+
+
+    public function actionSpaceSettings() {
+        $spaceSettingsForm = new SpaceSettingsForm(['contentContainer' => $this->contentContainer]);
+
+        if ($spaceSettingsForm->load(Yii::$app->request->post())) {
+            if ($spaceSettingsForm->validate() && $spaceSettingsForm->save()) {
+                $this->view->saved();
+            }
+            else {
+                $this->view->error('Error');
+            }
+            return $this->redirect('websites');
+        }
+
+        return $this->renderAjax('spaceSettings', [
+            'spaceSettingsForm' => $spaceSettingsForm,
+        ]);
     }
 }

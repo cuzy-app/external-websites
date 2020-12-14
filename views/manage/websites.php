@@ -36,6 +36,15 @@ $websiteForm = new WebsiteForm;
             ]
         ) ?>
 
+        <?= Html::a(
+            '<i class="fa fa-cogs"></i> '.Yii::t('ExternalWebsitesModule.base', 'Space settings'),
+            $contentContainer->createUrl('/external-websites/manage/space-settings'),
+            [
+                'class' => 'btn btn-default pull-right',
+                'data-target' => '#globalModal',
+            ]
+        ) ?>
+
         <?php $columns = [
             [
                 'attribute' => 'id',

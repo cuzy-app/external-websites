@@ -8,5 +8,5 @@ TODOS
 
 - Tester avec différents navigateurs comme Safari
 
-Paramétrage dans l'espace pour indiquer que intégré dans un site externe (URL).
-Si oui et si pas déjà dans l'iframe (donc redirection en javascript), rediriger les liens concernant cet espace vers le site externe qui devra appeler la bonne sous page de l'espace en iframe
+
+Possibilité de masquer un espace aux non admins

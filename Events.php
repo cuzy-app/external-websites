@@ -10,11 +10,13 @@ namespace humhub\modules\externalWebsites;
 
 use Yii;
 use humhub\modules\ui\menu\MenuLink;
+use humhub\modules\stream\widgets\WallStreamFilterNavigation;
 use humhub\modules\externalWebsites\models\Website;
 use humhub\modules\externalWebsites\models\filters\ExternalWebsitesSpaceStreamFilter;
-use humhub\modules\stream\widgets\WallStreamFilterNavigation;
 use humhub\modules\externalWebsites\assets\EmbeddedAssets;
+use humhub\modules\externalWebsites\assets\RedirectionsAssets;
 use humhub\modules\externalWebsites\widgets\AddClassToHtmlTag;
+use humhub\modules\space\models\Space;
 
 
 class Events
@@ -136,7 +138,7 @@ class Events
             $space = $event->sender->space;
             if ($space->isModuleEnabled('external-websites') && $space->isAdmin() && $space->isMember()) {
                 $event->sender->addItem([
-                    'label' => Yii::t('ExternalWebsitesModule.base', 'External websites'),
+                    'label' => Yii::t('ExternalWebsitesModule.base', 'Manage external websites & settings'),
                     'group' => 'admin',
                     'url' => $space->createUrl('/external-websites/manage/websites'),
                     'icon' => '<i class="fa fa-desktop"></i>',
@@ -159,5 +161,26 @@ class Events
             echo AddClassToHtmlTag::widget();
             EmbeddedAssets::register(Yii::$app->view);
         }
+    }
+
+    public static function onContentContainerControllerBeforeAction($event)
+    {
+        $contentContainer = $event->sender->contentContainer;
+
+        if (get_class($contentContainer) !== Space::class) {
+            return;
+        }
+
+        $settings = Yii::$app->getModule('external-websites')->settings->space($contentContainer);
+
+        $urlToRedirect = $settings->get('urlToRedirect');
+        if (!empty($settings->get('urlToRedirect'))) {
+            $urlToRedirect = str_replace('{humhubUrl}', urlencode(\yii\helpers\Url::current([], true)), $urlToRedirect);
+        }
+
+        RedirectionsAssets::register(Yii::$app->view);
+        Yii::$app->view->registerJsConfig('externalWebsites.Redirections', [
+            'urlToRedirect' => $urlToRedirect,
+        ]);
     }
 }

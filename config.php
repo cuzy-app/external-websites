@@ -13,7 +13,7 @@ use humhub\modules\stream\models\WallStreamQuery;
 use humhub\modules\space\widgets\HeaderControlsMenu;
 use humhub\modules\ui\menu\widgets\Menu as UiMenu;
 use humhub\modules\ui\view\components\View;
-
+use humhub\modules\content\components\ContentContainerController;
 
 return [
     'id' => 'external-websites',
@@ -44,6 +44,11 @@ return [
 			'class' => View::class,
 			'event' => View::EVENT_BEGIN_BODY,
 			'callback' => [Events::class, 'onViewBeginBody']
+		],
+		[
+			'class' => ContentContainerController::class,
+			'event' => ContentContainerController::EVENT_BEFORE_ACTION,
+			'callback' => [Events::class, 'onContentContainerControllerBeforeAction']
 		],
 	]
 ];

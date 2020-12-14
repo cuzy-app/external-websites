@@ -14,7 +14,7 @@ Uses [iFrame Resizer](https://github.com/davidjbradshaw/iframe-resizer).
   - external website is embedded in Humhub
   - Humhub addons are embedded in external website 
 - Space's contents redirected to external website 
-- Humhub embeded in an external website
+- Humhub embedded in an external website
 
 
 ## Usage
@@ -167,7 +167,7 @@ $token = '';
 </html>
 ```
 
-### Humhub embeded in an external website
+### Humhub embedded in an external website
 
 It is possible to add some specific scripts (javascript) to Humhub if embedded in an iframe.
 In that case, in `proteced/config/common.php` add this parameter:
@@ -199,7 +199,7 @@ $humhubUrl = 'http://www.my-humhub.tdl/dashboard';
 
 // If you want to make redirections work (see "Space's contents redirected to external website")
 if (isset($_GET['humhubUrl'])) {
-	$humhubUrl = $_GET['humhubUrl'];
+	$humhubUrl = urldecode($_GET['humhubUrl']);
 }
 ?>
 
@@ -243,9 +243,14 @@ if (isset($_GET['humhubUrl'])) {
 
 ### Space's contents redirected to external website
 
-If the module is activated in a space, in the settings, it is possible to activate contents redirections to external website.
-If activated, contents URLs are redirected to and external website with the orignal content URL in the URL param `humhubUrl`. (see "Humhub embeded in an external website")
-E.g. https://www.my-external-website.tdl?humhubUrl=https://wwww.my-humhub.tdl/s/space-name/xxx
+If the module is activated in a space, in the settings, it is possible to activate contents redirections to external website (see "Humhub embedded in an external website").
+
+Redirects only if the user arrives directly on the space URL.
+It is still possible to navigate in the space if already in Humhub (PJax load).
+
+{humhubUrl} will be replaced with the Humhub's source URL.
+
+E.g https://www.my-external-website.tdl?humhubUrl={humhubUrl} value will redirect https://wwww.my-humhub.tdl/s/space-name/xxx to https://www.my-external-website.tdl?humhubUrl=https://wwww.my-humhub.tdl/s/space-name/xxx
 
 
 ## Advanced features
