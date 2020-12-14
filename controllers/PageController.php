@@ -232,8 +232,7 @@ class PageController extends ContentContainerController
         }
 
         // Render for iframe (Humhub is embedded)
-        $module = Yii::$app->getModule('external-websites');
-        $this->layout = $module->humhubEmbeddedLayout;
+        $this->layout = '@external-websites/views/layouts/iframe';
         $this->subLayout = '@external-websites/views/page/_layoutForIframe';
         return $this->render('index', $viewParams);
     }
