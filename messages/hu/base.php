@@ -11,6 +11,7 @@ return array (
   'Error: website not added' => 'Hiba: a webhely nem lett hozzáadva',
   'Error: website not updated' => 'Hiba: a webhely nem frissült',
   'External websites' => 'Külső webhelyek',
+  'Filter' => 'Szűrő',
   'Hide sidebar' => 'Oldalsáv elrejtése',
   'Humhub can be: <br>- Host: external website is embedded and embedded in an iframe<br>- Embedded: external website is host, Humhub addons (comments, like, files, etc.) are embedded in an iframe.<br>See README.md for more informations and usage.' => 'A Humhub lehet:<br> - Host: a külső webhely be van ágyazva és be van ágyazva egy iframe-be<br> - Beágyazva: a külső webhely gazda, a Humhub-kiegészítők (megjegyzések, like, fájlok stb.) Be vannak ágyazva egy iframe-be.<br> További információkért és használatért lásd a README.md oldalt.',
   'Humhub is embedded' => 'Humhub be van ágyazva',
@@ -42,4 +43,6 @@ return array (
   'Websites managment' => 'Webhelyek kezelése',
   'Yes' => 'Igen',
   'website deleted' => 'weboldal törölve',
+  '{humhubUrl} will be replaced with the Humhub\'s source URL. E.g https://www.my-external-website.tdl?humhubUrl={humhubUrl} value will redirect https://wwww.my-humhub.tdl/s/space-name/xxx to https://www.my-external-website.tdl?humhubUrl=https://wwww.my-humhub.tdl/s/space-name/xxx' => '{humhubUrl} helyébe a Humhub forrás URL-je lép. Pl. Https: //www.my-external-website.tdl? HumhubUrl = {humhubUrl} érték átirányítja a https: //wwww.my-humhub.tdl/s/space-name/xxx címet a https: //www.my-external webhelyre -website.tdl? humhubUrl = https: //wwww.my-humhub.tdl/s/space-name/xxx',
+  '{title}: show comments' => '{title} : mutatják a megjegyzéseket',
 );

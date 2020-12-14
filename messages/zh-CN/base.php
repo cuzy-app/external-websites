@@ -11,6 +11,7 @@ return array (
   'Error: website not added' => '错误：未添加网站',
   'Error: website not updated' => '错误：网站未更新',
   'External websites' => '外部网站',
+  'Filter' => '过滤',
   'Hide sidebar' => '隐藏侧边栏',
   'Humhub can be: <br>- Host: external website is embedded and embedded in an iframe<br>- Embedded: external website is host, Humhub addons (comments, like, files, etc.) are embedded in an iframe.<br>See README.md for more informations and usage.' => 'Humhub可以是：<br> -主机：外部网站已嵌入并嵌入到iframe中<br>-嵌入式：外部网站是托管网站，Humhub插件（注释，文件等）嵌入在iframe中。<br>有关更多信息和用法，请参见README.md。',
   'Humhub is embedded' => 'Humhub已嵌入',
@@ -42,4 +43,6 @@ return array (
   'Websites managment' => '网站管理',
   'Yes' => '是',
   'website deleted' => '网站已删除',
+  '{humhubUrl} will be replaced with the Humhub\'s source URL. E.g https://www.my-external-website.tdl?humhubUrl={humhubUrl} value will redirect https://wwww.my-humhub.tdl/s/space-name/xxx to https://www.my-external-website.tdl?humhubUrl=https://wwww.my-humhub.tdl/s/space-name/xxx' => '{humhubUrl}将替换为Humhub的源URL。例如https：//www.my-external-website.tdl？humhubUrl = {humhubUrl}值会将https：//wwww.my-humhub.tdl/s/space-name/xxx重定向到https：//www.my-external -website.tdl？humhubUrl = https：//wwww.my-humhub.tdl/s/space-name/xxx',
+  '{title}: show comments' => '{title} ：显示评论',
 );

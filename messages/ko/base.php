@@ -11,6 +11,7 @@ return array (
   'Error: website not added' => '오류 : 웹 사이트가 추가되지 않았습니다.',
   'Error: website not updated' => '오류 : 웹 사이트가 업데이트되지 않았습니다.',
   'External websites' => '외부 웹 사이트',
+  'Filter' => '필터',
   'Hide sidebar' => '사이드 바 숨기기',
   'Humhub can be: <br>- Host: external website is embedded and embedded in an iframe<br>- Embedded: external website is host, Humhub addons (comments, like, files, etc.) are embedded in an iframe.<br>See README.md for more informations and usage.' => 'Humhub는 다음과 같습니다.<br> -호스트 : 외부 웹 사이트가 iframe에 삽입 및 삽입됩니다.<br> -내장 : 외부 웹 사이트는 호스트이고, Humhub 애드온 (댓글, 좋아요, 파일 등)이 iframe에 내장됩니다.<br> 자세한 정보와 사용법은 README.md를 참조하십시오.',
   'Humhub is embedded' => 'Humhub가 내장되어 있습니다.',
@@ -42,4 +43,6 @@ return array (
   'Websites managment' => '웹 사이트 관리',
   'Yes' => '예',
   'website deleted' => '웹 사이트가 삭제되었습니다.',
+  '{humhubUrl} will be replaced with the Humhub\'s source URL. E.g https://www.my-external-website.tdl?humhubUrl={humhubUrl} value will redirect https://wwww.my-humhub.tdl/s/space-name/xxx to https://www.my-external-website.tdl?humhubUrl=https://wwww.my-humhub.tdl/s/space-name/xxx' => '{humhubUrl} 은 Humhub의 소스 URL로 대체됩니다. 예 : https : //www.my-external-website.tdl? humhubUrl = {humhubUrl} 값은 https : //wwww.my-humhub.tdl/s/space-name/xxx를 https : //www.my-external로 리디렉션합니다. -website.tdl? humhubUrl = https : //wwww.my-humhub.tdl/s/space-name/xxx',
+  '{title}: show comments' => '{title} : 댓글 표시',
 );

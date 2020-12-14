@@ -11,6 +11,7 @@ return array (
   'Error: website not added' => 'Virhe: verkkosivustoa ei lisätty',
   'Error: website not updated' => 'Virhe: verkkosivustoa ei päivitetty',
   'External websites' => 'Ulkoiset verkkosivustot',
+  'Filter' => 'Suodattaa',
   'Hide sidebar' => 'Piilota sivupalkki',
   'Humhub can be: <br>- Host: external website is embedded and embedded in an iframe<br>- Embedded: external website is host, Humhub addons (comments, like, files, etc.) are embedded in an iframe.<br>See README.md for more informations and usage.' => 'Humhub voi olla:<br> - Isäntä: ulkoinen verkkosivusto on upotettu ja upotettu iframe-kehykseen<br> - Upotettu: ulkoinen verkkosivusto on isäntä, Humhub-lisäosat (kommentit, tykkäykset, tiedostot jne.) Upotetaan iframe-kehykseen.<br> Katso lisätietoja ja käyttöä kohdasta README.md.',
   'Humhub is embedded' => 'Humhub on upotettu',
@@ -42,4 +43,6 @@ return array (
   'Websites managment' => 'Verkkosivustojen hallinta',
   'Yes' => 'Joo',
   'website deleted' => 'verkkosivusto poistettu',
+  '{humhubUrl} will be replaced with the Humhub\'s source URL. E.g https://www.my-external-website.tdl?humhubUrl={humhubUrl} value will redirect https://wwww.my-humhub.tdl/s/space-name/xxx to https://www.my-external-website.tdl?humhubUrl=https://wwww.my-humhub.tdl/s/space-name/xxx' => '{humhubUrl} korvataan Humhubin lähde-URL: llä. Esim. Https: {humhubUrl} ? HumhubUrl = {humhubUrl} arvo ohjaa https: //wwww.my-humhub.tdl/s/space-name/xxx osoitteeseen https: //www.my-external -website.tdl? humhubUrl = https: //wwww.my-humhub.tdl/s/space-name/xxx',
+  '{title}: show comments' => '{title} : näytä kommentit',
 );

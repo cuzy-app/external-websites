@@ -11,6 +11,7 @@ return array (
   'Error: website not added' => 'Fel: webbplatsen har inte lagts till',
   'Error: website not updated' => 'Fel: webbplatsen har inte uppdaterats',
   'External websites' => 'Externa webbplatser',
+  'Filter' => 'Filtrera',
   'Hide sidebar' => 'Dölj sidofältet',
   'Humhub can be: <br>- Host: external website is embedded and embedded in an iframe<br>- Embedded: external website is host, Humhub addons (comments, like, files, etc.) are embedded in an iframe.<br>See README.md for more informations and usage.' => 'Humhub kan vara:<br> - Värd: extern webbplats är inbäddad och inbäddad i en iframe<br> - Inbäddad: extern webbplats är värd, Humhub-tillägg (kommentarer, filer, etc.) är inbäddade i en iframe.<br> Se README.md för mer information och användning.',
   'Humhub is embedded' => 'Humhub är inbäddad',
@@ -42,4 +43,6 @@ return array (
   'Websites managment' => 'Hantering av webbplatser',
   'Yes' => 'Ja',
   'website deleted' => 'webbplats borttagen',
+  '{humhubUrl} will be replaced with the Humhub\'s source URL. E.g https://www.my-external-website.tdl?humhubUrl={humhubUrl} value will redirect https://wwww.my-humhub.tdl/s/space-name/xxx to https://www.my-external-website.tdl?humhubUrl=https://wwww.my-humhub.tdl/s/space-name/xxx' => '{humhubUrl} kommer att ersättas med Humhubs käll-URL. Exempelvis https: //www.my-external-website.tdl? HumhubUrl = {humhubUrl} värde omdirigerar https: //wwww.my-humhub.tdl/s/space-name/xxx till https: //www.my-external -webbplats.tdl? humhubUrl = https: //wwww.my-humhub.tdl/s/space-name/xxx',
+  '{title}: show comments' => '{title} : visa kommentarer',
 );

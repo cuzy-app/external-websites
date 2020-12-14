@@ -11,6 +11,7 @@ return array (
   'Error: website not added' => 'Грешка: уебсайтът не е добавен',
   'Error: website not updated' => 'Грешка: уебсайтът не е актуализиран',
   'External websites' => 'Външни уебсайтове',
+  'Filter' => 'Филтър',
   'Hide sidebar' => 'Скриване на страничната лента',
   'Humhub can be: <br>- Host: external website is embedded and embedded in an iframe<br>- Embedded: external website is host, Humhub addons (comments, like, files, etc.) are embedded in an iframe.<br>See README.md for more informations and usage.' => 'Humhub може да бъде:<br> - Хост: външният уебсайт е вграден и вграден във вградена рамка<br> - Вграден: външният уебсайт е хост, добавките на Humhub (коментари, харесвания, файлове и т.н.) са вградени във вградена рамка.<br> Вижте README.md за повече информация и употреба.',
   'Humhub is embedded' => 'Humhub е вграден',
@@ -42,4 +43,6 @@ return array (
   'Websites managment' => 'Управление на уебсайтове',
   'Yes' => 'Да',
   'website deleted' => 'уебсайтът е изтрит',
+  '{humhubUrl} will be replaced with the Humhub\'s source URL. E.g https://www.my-external-website.tdl?humhubUrl={humhubUrl} value will redirect https://wwww.my-humhub.tdl/s/space-name/xxx to https://www.my-external-website.tdl?humhubUrl=https://wwww.my-humhub.tdl/s/space-name/xxx' => '{humhubUrl} ще бъде заменен с изходния URL адрес на Humhub. Например https: //www.my-external-website.tdl? HumhubUrl = {humhubUrl} стойността ще пренасочи https: //wwww.my-humhub.tdl/s/space-name/xxx към https: //www.my-external -website.tdl? humhubUrl = https: //wwww.my-humhub.tdl/s/space-name/xxx',
+  '{title}: show comments' => '{title} : покажи коментари',
 );

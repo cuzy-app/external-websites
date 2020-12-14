@@ -63,7 +63,7 @@ class SpaceSettingsForm extends \yii\base\Model
     public function attributeHints()
     {
         return [
-            'urlToRedirect' => Yii::t('CalendarEventsExtensionModule.base', '{humhubUrl} will be replaced with the Humhub\'s source URL. E.g https://www.my-external-website.tdl?humhubUrl={humhubUrl} value will redirect https://wwww.my-humhub.tdl/s/space-name/xxx to https://www.my-external-website.tdl?humhubUrl=https://wwww.my-humhub.tdl/s/space-name/xxx'),
+            'urlToRedirect' => Yii::t('ExternalWebsitesModule.base', '{humhubUrl} will be replaced with the Humhub\'s source URL. E.g https://www.my-external-website.tdl?humhubUrl={humhubUrl} value will redirect https://wwww.my-humhub.tdl/s/space-name/xxx to https://www.my-external-website.tdl?humhubUrl=https://wwww.my-humhub.tdl/s/space-name/xxx'),
         ];
     }
 

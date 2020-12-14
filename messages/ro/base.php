@@ -11,6 +11,7 @@ return array (
   'Error: website not added' => 'Eroare: site-ul web nu a fost adăugat',
   'Error: website not updated' => 'Eroare: site-ul web nu a fost actualizat',
   'External websites' => 'Site-uri web externe',
+  'Filter' => 'Filtru',
   'Hide sidebar' => 'Ascunde bara laterală',
   'Humhub can be: <br>- Host: external website is embedded and embedded in an iframe<br>- Embedded: external website is host, Humhub addons (comments, like, files, etc.) are embedded in an iframe.<br>See README.md for more informations and usage.' => 'Humhub poate fi:<br> - Gazdă: site-ul extern este încorporat și încorporat într-un iframe<br> - Încorporat: site-ul extern este gazdă, suplimentele Humhub (comentarii, like, fișiere etc.) sunt încorporate într-un iframe.<br> Consultați README.md pentru mai multe informații și utilizare.',
   'Humhub is embedded' => 'Humhub este încorporat',
@@ -42,4 +43,6 @@ return array (
   'Websites managment' => 'Gestionarea site-urilor web',
   'Yes' => 'da',
   'website deleted' => 'site web șters',
+  '{humhubUrl} will be replaced with the Humhub\'s source URL. E.g https://www.my-external-website.tdl?humhubUrl={humhubUrl} value will redirect https://wwww.my-humhub.tdl/s/space-name/xxx to https://www.my-external-website.tdl?humhubUrl=https://wwww.my-humhub.tdl/s/space-name/xxx' => '{humhubUrl} va fi înlocuit cu adresa URL sursă a lui Humhub. De exemplu, https: //www.my-external-website.tdl? HumhubUrl = valoarea {humhubUrl} va redirecționa https: //wwww.my-humhub.tdl/s/space-name/xxx către https: //www.my-external -website.tdl? humhubUrl = https: //wwww.my-humhub.tdl/s/space-name/xxx',
+  '{title}: show comments' => '{title} : arată comentarii',
 );

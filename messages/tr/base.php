@@ -11,6 +11,7 @@ return array (
   'Error: website not added' => 'Hata: web sitesi eklenmedi',
   'Error: website not updated' => 'Hata: web sitesi güncellenmedi',
   'External websites' => 'Harici web siteleri',
+  'Filter' => 'Filtrele',
   'Hide sidebar' => 'Kenar çubuğunu gizle',
   'Humhub can be: <br>- Host: external website is embedded and embedded in an iframe<br>- Embedded: external website is host, Humhub addons (comments, like, files, etc.) are embedded in an iframe.<br>See README.md for more informations and usage.' => 'Humhub şunlar olabilir:<br> - Ana bilgisayar: harici web sitesi yerleşiktir ve bir iframe\'e yerleştirilmiştir<br> - Gömülü: harici web sitesi ana bilgisayardır, Humhub eklentileri (yorumlar, beğeniler, dosyalar vb.) Bir iframe içine yerleştirilmiştir.<br> Daha fazla bilgi ve kullanım için README.md\'ye bakın.',
   'Humhub is embedded' => 'Humhub gömülü',
@@ -42,4 +43,6 @@ return array (
   'Websites managment' => 'Web siteleri yönetimi',
   'Yes' => 'Evet',
   'website deleted' => 'web sitesi silindi',
+  '{humhubUrl} will be replaced with the Humhub\'s source URL. E.g https://www.my-external-website.tdl?humhubUrl={humhubUrl} value will redirect https://wwww.my-humhub.tdl/s/space-name/xxx to https://www.my-external-website.tdl?humhubUrl=https://wwww.my-humhub.tdl/s/space-name/xxx' => '{humhubUrl} , Humhub\'ın kaynak URL\'si ile değiştirilecektir. Örneğin https: //www.my-external-website.tdl? HumhubUrl = {humhubUrl} değeri https: //wwww.my-humhub.tdl/s/space-name/xxx’i https: //www.my-external’a yönlendirecektir. -website.tdl? humhubUrl = https: //wwww.my-humhub.tdl/s/space-name/xxx',
+  '{title}: show comments' => '{title} : yorumları göster',
 );

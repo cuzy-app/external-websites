@@ -11,6 +11,7 @@ return array (
   'Error: website not added' => 'Chyba: web nebyl přidán',
   'Error: website not updated' => 'Chyba: web není aktualizován',
   'External websites' => 'Externí webové stránky',
+  'Filter' => 'Filtr',
   'Hide sidebar' => 'Skrýt postranní panel',
   'Humhub can be: <br>- Host: external website is embedded and embedded in an iframe<br>- Embedded: external website is host, Humhub addons (comments, like, files, etc.) are embedded in an iframe.<br>See README.md for more informations and usage.' => 'Humhub může být:<br> - Hostitel: externí web je vložen a vložen do iframe<br> - Vestavěné: externí web je hostitelem, doplňky Humhub (komentáře, lajky, soubory atd.) Jsou vloženy do prvku iframe.<br> Další informace a použití naleznete v souboru README.md.',
   'Humhub is embedded' => 'Humhub je vložený',
@@ -42,4 +43,6 @@ return array (
   'Websites managment' => 'Správa webových stránek',
   'Yes' => 'Ano',
   'website deleted' => 'web smazán',
+  '{humhubUrl} will be replaced with the Humhub\'s source URL. E.g https://www.my-external-website.tdl?humhubUrl={humhubUrl} value will redirect https://wwww.my-humhub.tdl/s/space-name/xxx to https://www.my-external-website.tdl?humhubUrl=https://wwww.my-humhub.tdl/s/space-name/xxx' => '{humhubUrl} bude nahrazen zdrojovou adresou URL Humhub. Např. Https: //www.my-external-website.tdl? HumhubUrl = {humhubUrl} hodnota přesměruje https: //wwww.my-humhub.tdl/s/space-name/xxx na https: //www.my-external -website.tdl? humhubUrl = https: //wwww.my-humhub.tdl/s/space-name/xxx',
+  '{title}: show comments' => '{title} : zobrazit komentáře',
 );

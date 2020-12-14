@@ -11,6 +11,7 @@ return array (
   'Error: website not added' => 'Fout: website niet toegevoegd',
   'Error: website not updated' => 'Fout: website niet bijgewerkt',
   'External websites' => 'Externe websites',
+  'Filter' => 'Filter',
   'Hide sidebar' => 'Verberg zijbalk',
   'Humhub can be: <br>- Host: external website is embedded and embedded in an iframe<br>- Embedded: external website is host, Humhub addons (comments, like, files, etc.) are embedded in an iframe.<br>See README.md for more informations and usage.' => 'Humhub kan zijn:<br> - Host: externe website is ingebed en ingebed in een iframe<br> - Ingebed: externe website is host, Humhub-add-ons (opmerkingen, like, bestanden, enz.) Zijn ingebed in een iframe.<br> Zie README.md voor meer informatie en gebruik.',
   'Humhub is embedded' => 'Humhub is ingebed',
@@ -42,4 +43,6 @@ return array (
   'Websites managment' => 'Beheer van websites',
   'Yes' => 'Ja',
   'website deleted' => 'website verwijderd',
+  '{humhubUrl} will be replaced with the Humhub\'s source URL. E.g https://www.my-external-website.tdl?humhubUrl={humhubUrl} value will redirect https://wwww.my-humhub.tdl/s/space-name/xxx to https://www.my-external-website.tdl?humhubUrl=https://wwww.my-humhub.tdl/s/space-name/xxx' => '{humhubUrl} wordt vervangen door de bron-URL van de Humhub. Bijv. Https: //www.my-external-website.tdl? HumhubUrl = {humhubUrl} waarde zal https: //wwww.my-humhub.tdl/s/space-name/xxx omleiden naar https: //www.my-external -website.tdl? humhubUrl = https: //wwww.my-humhub.tdl/s/space-name/xxx',
+  '{title}: show comments' => '{title} : opmerkingen weergeven',
 );

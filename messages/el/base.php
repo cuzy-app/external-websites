@@ -11,6 +11,7 @@ return array (
   'Error: website not added' => 'Σφάλμα: δεν προστέθηκε ιστότοπος',
   'Error: website not updated' => 'Σφάλμα: ο ιστότοπος δεν ενημερώθηκε',
   'External websites' => 'Εξωτερικοί ιστότοποι',
+  'Filter' => 'Φίλτρο',
   'Hide sidebar' => 'Απόκρυψη πλευρικής γραμμής',
   'Humhub can be: <br>- Host: external website is embedded and embedded in an iframe<br>- Embedded: external website is host, Humhub addons (comments, like, files, etc.) are embedded in an iframe.<br>See README.md for more informations and usage.' => 'Το Humhub μπορεί να είναι:<br> - Host: εξωτερικός ιστότοπος είναι ενσωματωμένος και ενσωματωμένος σε iframe<br> - Ενσωματωμένος: εξωτερικός ιστότοπος φιλοξενείται, τα πρόσθετα Humhub (σχόλια, όπως, αρχεία κ.λπ.) ενσωματώνονται σε ένα iframe.<br> Δείτε το README.md για περισσότερες πληροφορίες και χρήση.',
   'Humhub is embedded' => 'Το Humhub είναι ενσωματωμένο',
@@ -42,4 +43,6 @@ return array (
   'Websites managment' => 'Διαχείριση ιστότοπων',
   'Yes' => 'Ναί',
   'website deleted' => 'ο ιστότοπος διαγράφηκε',
+  '{humhubUrl} will be replaced with the Humhub\'s source URL. E.g https://www.my-external-website.tdl?humhubUrl={humhubUrl} value will redirect https://wwww.my-humhub.tdl/s/space-name/xxx to https://www.my-external-website.tdl?humhubUrl=https://wwww.my-humhub.tdl/s/space-name/xxx' => '{humhubUrl} θα αντικατασταθεί με το URL προέλευσης του Humhub. Π.χ. https: //www.my-external-website.tdl? HumhubUrl = {humhubUrl} τιμή θα ανακατευθύνει https: //wwww.my-humhub.tdl/s/space-name/xxx στο https: //www.my-external -website.tdl? humhubUrl = https: //wwww.my-humhub.tdl/s/space-name/xxx',
+  '{title}: show comments' => '{title} : εμφάνιση σχολίων',
 );

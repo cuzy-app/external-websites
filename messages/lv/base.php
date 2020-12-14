@@ -11,6 +11,7 @@ return array (
   'Error: website not added' => 'Kļūda: vietne nav pievienota',
   'Error: website not updated' => 'Kļūda: vietne nav atjaunināta',
   'External websites' => 'Ārējās vietnes',
+  'Filter' => 'Filtrēt',
   'Hide sidebar' => 'Slēpt sānjoslu',
   'Humhub can be: <br>- Host: external website is embedded and embedded in an iframe<br>- Embedded: external website is host, Humhub addons (comments, like, files, etc.) are embedded in an iframe.<br>See README.md for more informations and usage.' => 'Humhub var būt:<br> - Host: ārējā vietne ir iegulta un iegulta iframe<br> - Iegults: ārējā vietne ir mitinātājs, Humhub papildinājumi (komentāri, piemēram, faili utt.) Ir iegulti iframe.<br> Plašāku informāciju un lietojumu skatiet vietnē README.md.',
   'Humhub is embedded' => 'Humhub ir iestrādāts',
@@ -42,4 +43,6 @@ return array (
   'Websites managment' => 'Vietņu pārvaldība',
   'Yes' => 'Jā',
   'website deleted' => 'vietne ir izdzēsta',
+  '{humhubUrl} will be replaced with the Humhub\'s source URL. E.g https://www.my-external-website.tdl?humhubUrl={humhubUrl} value will redirect https://wwww.my-humhub.tdl/s/space-name/xxx to https://www.my-external-website.tdl?humhubUrl=https://wwww.my-humhub.tdl/s/space-name/xxx' => '{humhubUrl} tiks aizstāts ar Humhub avota URL. Piemēram, https: //www.my-external-website.tdl? HumhubUrl = {humhubUrl} vērtība novirzīs https: //wwww.my-humhub.tdl/s/space-name/xxx uz https: //www.my-external -website.tdl? humhubUrl = https: //wwww.my-humhub.tdl/s/space-name/xxx',
+  '{title}: show comments' => '{title} : parādīt komentārus',
 );

@@ -11,6 +11,7 @@ return array (
   'Error: website not added' => 'Erè: sit entènèt pa te ajoute',
   'Error: website not updated' => 'Erè: sit entènèt pa mete ajou',
   'External websites' => 'Sit entènèt ekstèn',
+  'Filter' => 'Filtre',
   'Hide sidebar' => 'Kache ankadre',
   'Humhub can be: <br>- Host: external website is embedded and embedded in an iframe<br>- Embedded: external website is host, Humhub addons (comments, like, files, etc.) are embedded in an iframe.<br>See README.md for more informations and usage.' => 'Humhub ka:<br> - Akèy: se sit entènèt ekstèn entegre ak entegre nan yon iframe<br> - Embedded: sit entènèt ekstèn se lame, Humhub addons (kòmantè, tankou, dosye, elatriye) yo entegre nan yon iframe.<br> Gade README.md pou plis enfòmasyon ak itilizasyon.',
   'Humhub is embedded' => 'Humhub entegre',
@@ -42,4 +43,6 @@ return array (
   'Websites managment' => 'Sit wèb jesyon',
   'Yes' => 'Wi',
   'website deleted' => 'sit entènèt efase',
+  '{humhubUrl} will be replaced with the Humhub\'s source URL. E.g https://www.my-external-website.tdl?humhubUrl={humhubUrl} value will redirect https://wwww.my-humhub.tdl/s/space-name/xxx to https://www.my-external-website.tdl?humhubUrl=https://wwww.my-humhub.tdl/s/space-name/xxx' => '{humhubUrl} pral ranplase ak URL sous Humhub la. Eg https: //www.my-external-website.tdl? HumhubUrl = {humhubUrl} valè pral redireksyon https: //wwww.my-humhub.tdl/s/space-name/xxx a https: //www.my-external -website.tdl? humhubUrl = https: //wwww.my-humhub.tdl/s/space-name/xxx',
+  '{title}: show comments' => '{title} : montre kòmantè',
 );

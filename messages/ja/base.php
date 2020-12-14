@@ -11,6 +11,7 @@ return array (
   'Error: website not added' => 'エラー：ウェブサイトが追加されていません',
   'Error: website not updated' => 'エラー：ウェブサイトが更新されていません',
   'External websites' => '外部ウェブサイト',
+  'Filter' => 'フィルタ',
   'Hide sidebar' => 'サイドバーを非表示',
   'Humhub can be: <br>- Host: external website is embedded and embedded in an iframe<br>- Embedded: external website is host, Humhub addons (comments, like, files, etc.) are embedded in an iframe.<br>See README.md for more informations and usage.' => 'Humhubは次のようになります。<br> -ホスト：外部Webサイトがiframeに埋め込まれています<br>-埋め込み：外部Webサイトがホストであり、Humhubアドオン（コメント、いいね、ファイルなど）がiframeに埋め込まれています。<br>詳細と使用法については、README.mdを参照してください。',
   'Humhub is embedded' => 'Humhubが埋め込まれています',
@@ -42,4 +43,6 @@ return array (
   'Websites managment' => 'ウェブサイト管理',
   'Yes' => 'はい',
   'website deleted' => 'ウェブサイトを削除',
+  '{humhubUrl} will be replaced with the Humhub\'s source URL. E.g https://www.my-external-website.tdl?humhubUrl={humhubUrl} value will redirect https://wwww.my-humhub.tdl/s/space-name/xxx to https://www.my-external-website.tdl?humhubUrl=https://wwww.my-humhub.tdl/s/space-name/xxx' => '{humhubUrl}は、HumhubのソースURLに置き換えられます。例：https：//www.my-external-website.tdl？humhubUrl = {humhubUrl}値は、https：//wwww.my-humhub.tdl/s/space-name/xxxをhttps：//www.my-externalにリダイレクトします-website.tdl？humhubUrl = https：//wwww.my-humhub.tdl/s/space-name/xxx',
+  '{title}: show comments' => '{title} ：コメントを表示',
 );

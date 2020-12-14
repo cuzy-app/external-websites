@@ -11,6 +11,7 @@ return array (
   'Error: website not added' => 'خطا: وب سایت اضافه نشده است',
   'Error: website not updated' => 'خطا: وب سایت به روز نشده است',
   'External websites' => 'وب سایت های خارجی',
+  'Filter' => 'فیلتر',
   'Hide sidebar' => 'پنهان کردن نوار کناری',
   'Humhub can be: <br>- Host: external website is embedded and embedded in an iframe<br>- Embedded: external website is host, Humhub addons (comments, like, files, etc.) are embedded in an iframe.<br>See README.md for more informations and usage.' => 'هوم هاب می تواند باشد:<br> - میزبان: وب سایت خارجی در iframe جاسازی شده و تعبیه شده است<br> - تعبیه شده: وب سایت خارجی میزبان است ، افزودنیهای Humhub (نظرات ، مانند ، پرونده ها و غیره) در یک iframe جاسازی شده است.<br> برای اطلاعات بیشتر و استفاده از آن ، به README.md مراجعه کنید.',
   'Humhub is embedded' => 'هوم هاب تعبیه شده است',
@@ -42,4 +43,6 @@ return array (
   'Websites managment' => 'مدیریت وب سایت ها',
   'Yes' => 'آره',
   'website deleted' => 'وب سایت حذف شد',
+  '{humhubUrl} will be replaced with the Humhub\'s source URL. E.g https://www.my-external-website.tdl?humhubUrl={humhubUrl} value will redirect https://wwww.my-humhub.tdl/s/space-name/xxx to https://www.my-external-website.tdl?humhubUrl=https://wwww.my-humhub.tdl/s/space-name/xxx' => '{humhubUrl} با منبع منبع Humhub جایگزین خواهد شد. به عنوان مثال https: //www.my-external-website.tdl؟ humhubUrl = مقدار {humhubUrl} به https: //wwww.my-humhub.tdl/s/space-name/xxx به https: //www.my-external هدایت می شود -website.tdl؟ humhubUrl = https: //wwww.my-humhub.tdl/s/space-name/xxx',
+  '{title}: show comments' => '{title} : نمایش نظرات',
 );

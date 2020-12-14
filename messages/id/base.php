@@ -11,6 +11,7 @@ return array (
   'Error: website not added' => 'Kesalahan: situs web tidak ditambahkan',
   'Error: website not updated' => 'Kesalahan: situs web tidak diperbarui',
   'External websites' => 'Situs web eksternal',
+  'Filter' => 'Saring',
   'Hide sidebar' => 'Sembunyikan sidebar',
   'Humhub can be: <br>- Host: external website is embedded and embedded in an iframe<br>- Embedded: external website is host, Humhub addons (comments, like, files, etc.) are embedded in an iframe.<br>See README.md for more informations and usage.' => 'Humhub bisa berupa:<br> - Host: situs web eksternal disematkan dan disematkan dalam iframe<br> - Tersemat: situs web eksternal adalah host, add-on Humhub (komentar, suka, file, dll.) Disematkan dalam iframe.<br> Lihat README.md untuk informasi dan penggunaan lebih lanjut.',
   'Humhub is embedded' => 'Humhub tertanam',
@@ -42,4 +43,6 @@ return array (
   'Websites managment' => 'Manajemen situs web',
   'Yes' => 'Iya',
   'website deleted' => 'situs web dihapus',
+  '{humhubUrl} will be replaced with the Humhub\'s source URL. E.g https://www.my-external-website.tdl?humhubUrl={humhubUrl} value will redirect https://wwww.my-humhub.tdl/s/space-name/xxx to https://www.my-external-website.tdl?humhubUrl=https://wwww.my-humhub.tdl/s/space-name/xxx' => '{humhubUrl} akan diganti dengan URL sumber Humhub. Misalnya https: //www.my-external-website.tdl? HumhubUrl = nilai {humhubUrl} akan mengalihkan https: //wwww.my-humhub.tdl/s/space-name/xxx ke https: //www.my-external -website.tdl? humhubUrl = https: //wwww.my-humhub.tdl/s/space-name/xxx',
+  '{title}: show comments' => '{title} : tampilkan komentar',
 );

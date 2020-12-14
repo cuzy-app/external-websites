@@ -73,7 +73,7 @@ class Events
             // Add a new filter block to the last filter panel
             $wallFilterNavigation->addFilterBlock(
                 static::FILTER_BLOCK_EXTERNAL_WEBSITE, [
-                    'title' => Yii::t('ExternalWebsitesModule.model', 'Filter'),
+                    'title' => Yii::t('ExternalWebsitesModule.base', 'Filter'),
                     'sortOrder' => 300
                 ],
                 WallStreamFilterNavigation::PANEL_POSITION_CENTER
@@ -94,7 +94,7 @@ class Events
                     [
                         'id' => 'website_id_'.$website->id,
                         'title' => Yii::t(
-                            'ExternalWebsitesModule.models',
+                            'ExternalWebsitesModule.base',
                             '{title}: show comments',
                             ['{title}' => $website->title]
                         ),

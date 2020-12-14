@@ -11,6 +11,7 @@ return array (
   'Error: website not added' => 'Error: lloc web no afegit',
   'Error: website not updated' => 'Error: lloc web no actualitzat',
   'External websites' => 'Llocs web externs',
+  'Filter' => 'Filtre',
   'Hide sidebar' => 'Amaga la barra lateral',
   'Humhub can be: <br>- Host: external website is embedded and embedded in an iframe<br>- Embedded: external website is host, Humhub addons (comments, like, files, etc.) are embedded in an iframe.<br>See README.md for more informations and usage.' => 'Humhub pot ser:<br> - Amfitrió: el lloc web extern està incrustat i incrustat en un iframe<br> - Incrustat: el lloc web extern és un amfitrió, els complements Humhub (comentaris, com ara, fitxers, etc.) s’incorporen en un iframe.<br> Consulteu README.md per obtenir més informació i ús.',
   'Humhub is embedded' => 'Humhub està incrustat',
@@ -42,4 +43,6 @@ return array (
   'Websites managment' => 'Gestió de llocs web',
   'Yes' => 'Sí',
   'website deleted' => 'lloc web suprimit',
+  '{humhubUrl} will be replaced with the Humhub\'s source URL. E.g https://www.my-external-website.tdl?humhubUrl={humhubUrl} value will redirect https://wwww.my-humhub.tdl/s/space-name/xxx to https://www.my-external-website.tdl?humhubUrl=https://wwww.my-humhub.tdl/s/space-name/xxx' => '{humhubUrl} se substituirà per l\'URL d\'origen de Humhub. Per exemple, https: //www.my-external-website.tdl? HumhubUrl = {humhubUrl} valor redirigirà https: //wwww.my-humhub.tdl/s/space-name/xxx a https: //www.my-external -website.tdl? humhubUrl = https: //wwww.my-humhub.tdl/s/space-name/xxx',
+  '{title}: show comments' => '{title} : mostra comentaris',
 );

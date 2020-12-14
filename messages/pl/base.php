@@ -11,6 +11,7 @@ return array (
   'Error: website not added' => 'Błąd: witryna nie została dodana',
   'Error: website not updated' => 'Błąd: witryna nie została zaktualizowana',
   'External websites' => 'Serwisy zewnętrzne',
+  'Filter' => 'Filtr',
   'Hide sidebar' => 'Ukryj pasek boczny',
   'Humhub can be: <br>- Host: external website is embedded and embedded in an iframe<br>- Embedded: external website is host, Humhub addons (comments, like, files, etc.) are embedded in an iframe.<br>See README.md for more informations and usage.' => 'Humhub może być:<br> - Host: zewnętrzna witryna jest osadzona i osadzona w ramce iframe<br> - Osadzone: zewnętrzna strona jest hostem, dodatki Humhub (komentarze, polubienia, pliki itp.) Są osadzone w ramce iframe.<br> Zobacz README.md, aby uzyskać więcej informacji i zastosowań.',
   'Humhub is embedded' => 'Humhub jest osadzony',
@@ -42,4 +43,6 @@ return array (
   'Websites managment' => 'Zarządzanie stronami internetowymi',
   'Yes' => 'tak',
   'website deleted' => 'strona internetowa została usunięta',
+  '{humhubUrl} will be replaced with the Humhub\'s source URL. E.g https://www.my-external-website.tdl?humhubUrl={humhubUrl} value will redirect https://wwww.my-humhub.tdl/s/space-name/xxx to https://www.my-external-website.tdl?humhubUrl=https://wwww.my-humhub.tdl/s/space-name/xxx' => '{humhubUrl} zostanie zastąpiony źródłowym adresem URL Humhub. Np. Https: //www.my-external-website.tdl? HumhubUrl = wartość {humhubUrl} przekieruje https: //wwww.my-humhub.tdl/s/space-name/xxx do https: //www.my-external -website.tdl? humhubUrl = https: //wwww.my-humhub.tdl/s/space-name/xxx',
+  '{title}: show comments' => '{title} : pokaż komentarze',
 );

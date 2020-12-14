@@ -11,6 +11,7 @@ return array (
   'Error: website not added' => 'Feil: nettstedet er ikke lagt til',
   'Error: website not updated' => 'Feil: nettstedet er ikke oppdatert',
   'External websites' => 'Eksterne nettsteder',
+  'Filter' => 'Filter',
   'Hide sidebar' => 'Skjul sidefelt',
   'Humhub can be: <br>- Host: external website is embedded and embedded in an iframe<br>- Embedded: external website is host, Humhub addons (comments, like, files, etc.) are embedded in an iframe.<br>See README.md for more informations and usage.' => 'Humhub kan være:<br> - Vert: eksternt nettsted er innebygd og innebygd i en iframe<br> - Innebygd: eksternt nettsted er vert, Humhub-tillegg (kommentarer, filer, etc.) er innebygd i en iframe.<br> Se README.md for mer informasjon og bruk.',
   'Humhub is embedded' => 'Humhub er innebygd',
@@ -42,4 +43,6 @@ return array (
   'Websites managment' => 'Administrasjon av nettsteder',
   'Yes' => 'Ja',
   'website deleted' => 'nettstedet er slettet',
+  '{humhubUrl} will be replaced with the Humhub\'s source URL. E.g https://www.my-external-website.tdl?humhubUrl={humhubUrl} value will redirect https://wwww.my-humhub.tdl/s/space-name/xxx to https://www.my-external-website.tdl?humhubUrl=https://wwww.my-humhub.tdl/s/space-name/xxx' => '{humhubUrl} vil bli erstattet med Humhubs kilde-URL. F.eks https: //www.my-external-website.tdl? HumhubUrl = {humhubUrl} verdi vil omdirigere https: //wwww.my-humhub.tdl/s/space-name/xxx til https: //www.my-external -website.tdl? humhubUrl = https: //wwww.my-humhub.tdl/s/space-name/xxx',
+  '{title}: show comments' => '{title} : vis kommentarer',
 );

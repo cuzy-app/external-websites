@@ -11,6 +11,7 @@ return array (
   'Error: website not added' => 'Lỗi: trang web không được thêm vào',
   'Error: website not updated' => 'Lỗi: trang web không được cập nhật',
   'External websites' => 'Các trang web bên ngoài',
+  'Filter' => 'Bộ lọc',
   'Hide sidebar' => 'Ẩn thanh bên',
   'Humhub can be: <br>- Host: external website is embedded and embedded in an iframe<br>- Embedded: external website is host, Humhub addons (comments, like, files, etc.) are embedded in an iframe.<br>See README.md for more informations and usage.' => 'Humhub có thể là:<br> - Máy chủ: trang web bên ngoài được nhúng và nhúng trong iframe<br> - Được nhúng: trang web bên ngoài là máy chủ lưu trữ, các tiện ích bổ sung Humhub (nhận xét, thích, tệp, v.v.) được nhúng trong iframe.<br> Xem README.md để biết thêm thông tin và cách sử dụng.',
   'Humhub is embedded' => 'Humhub được nhúng',
@@ -42,4 +43,6 @@ return array (
   'Websites managment' => 'Quản lý trang web',
   'Yes' => 'Đúng',
   'website deleted' => 'trang web đã bị xóa',
+  '{humhubUrl} will be replaced with the Humhub\'s source URL. E.g https://www.my-external-website.tdl?humhubUrl={humhubUrl} value will redirect https://wwww.my-humhub.tdl/s/space-name/xxx to https://www.my-external-website.tdl?humhubUrl=https://wwww.my-humhub.tdl/s/space-name/xxx' => '{humhubUrl} sẽ được thay thế bằng URL nguồn của Humhub. Ví dụ: https: //www.my-external-website.tdl? HumhubUrl = {humhubUrl} giá trị sẽ chuyển hướng https: //wwww.my-humhub.tdl/s/space-name/xxx thành https: //www.my-external -website.tdl? humhubUrl = https: //wwww.my-humhub.tdl/s/space-name/xxx',
+  '{title}: show comments' => '{title} : hiển thị bình luận',
 );

@@ -12,6 +12,7 @@ return [
     'Error: website not added' => '',
     'Error: website not updated' => '',
     'External websites' => '',
+    'Filter' => '',
     'Hide sidebar' => '',
     'Humhub can be: <br>- Host: external website is embedded and embedded in an iframe<br>- Embedded: external website is host, Humhub addons (comments, like, files, etc.) are embedded in an iframe.<br>See README.md for more informations and usage.' => '',
     'Humhub is embedded' => '',
@@ -43,4 +44,6 @@ return [
     'Websites managment' => '',
     'Yes' => '',
     'website deleted' => '',
+    '{humhubUrl} will be replaced with the Humhub\'s source URL. E.g https://www.my-external-website.tdl?humhubUrl={humhubUrl} value will redirect https://wwww.my-humhub.tdl/s/space-name/xxx to https://www.my-external-website.tdl?humhubUrl=https://wwww.my-humhub.tdl/s/space-name/xxx' => '',
+    '{title}: show comments' => '',
 ];

@@ -11,6 +11,7 @@ return array (
   'Error: website not added' => 'Pogreška: web mjesto nije dodano',
   'Error: website not updated' => 'Pogreška: web mjesto nije ažurirano',
   'External websites' => 'Vanjske web stranice',
+  'Filter' => 'filtar',
   'Hide sidebar' => 'Sakrij bočnu traku',
   'Humhub can be: <br>- Host: external website is embedded and embedded in an iframe<br>- Embedded: external website is host, Humhub addons (comments, like, files, etc.) are embedded in an iframe.<br>See README.md for more informations and usage.' => 'Humhub može biti:<br> - Host: vanjska web stranica ugrađena je i ugrađena u iframe<br> - Ugrađeno: vanjska web lokacija je domaćin, Humhub dodaci (komentari, lajkovi, datoteke itd.) Ugrađeni su u iframe.<br> Pogledajte README.md za više informacija i upotrebu.',
   'Humhub is embedded' => 'Humhub je ugrađen',
@@ -42,4 +43,6 @@ return array (
   'Websites managment' => 'Upravljanje web stranicama',
   'Yes' => 'Da',
   'website deleted' => 'web stranica izbrisana',
+  '{humhubUrl} will be replaced with the Humhub\'s source URL. E.g https://www.my-external-website.tdl?humhubUrl={humhubUrl} value will redirect https://wwww.my-humhub.tdl/s/space-name/xxx to https://www.my-external-website.tdl?humhubUrl=https://wwww.my-humhub.tdl/s/space-name/xxx' => '{humhubUrl} bit će zamijenjen izvornim URL-om Humhuba. Npr. Https: //www.my-external-website.tdl? HumhubUrl = {humhubUrl} vrijednost će preusmjeriti https: //wwww.my-humhub.tdl/s/space-name/xxx na https: //www.my-external -website.tdl? humhubUrl = https: //wwww.my-humhub.tdl/s/space-name/xxx',
+  '{title}: show comments' => '{title} : prikaži komentare',
 );

@@ -11,6 +11,7 @@ return array (
   'Error: website not added' => 'ስህተት: ድር ጣቢያ አልተጨመረም',
   'Error: website not updated' => 'ስህተት: ድር ጣቢያ አልተዘመነም',
   'External websites' => 'ውጫዊ ድርጣቢያዎች',
+  'Filter' => 'ማጣሪያ',
   'Hide sidebar' => 'የጎን አሞሌን ደብቅ',
   'Humhub can be: <br>- Host: external website is embedded and embedded in an iframe<br>- Embedded: external website is host, Humhub addons (comments, like, files, etc.) are embedded in an iframe.<br>See README.md for more informations and usage.' => 'ሁምብብ ሊሆን ይችላል<br> - አስተናጋጅ: የውጭ ድርጣቢያ በኢፍሬም ውስጥ ተካትቶ ተካትቷል<br> - የተከተተ ውጫዊ ድርጣቢያ አስተናጋጅ ነው ፣ የሁምብ addons (አስተያየቶች ፣ እንደ ፣ ፋይሎች ፣ ወዘተ) በኢፍሬም ውስጥ ተካተዋል ፡፡<br> ለተጨማሪ መረጃ እና አጠቃቀም README.md ን ይመልከቱ።',
   'Humhub is embedded' => 'ሑሙብ ተካትቷል',
@@ -42,4 +43,6 @@ return array (
   'Websites managment' => 'የድርጣቢያዎች አስተዳደር',
   'Yes' => 'አዎ',
   'website deleted' => 'ድር ጣቢያ ተሰር deletedል',
+  '{humhubUrl} will be replaced with the Humhub\'s source URL. E.g https://www.my-external-website.tdl?humhubUrl={humhubUrl} value will redirect https://wwww.my-humhub.tdl/s/space-name/xxx to https://www.my-external-website.tdl?humhubUrl=https://wwww.my-humhub.tdl/s/space-name/xxx' => '{humhubUrl} በ Humhub ምንጭ ዩ.አር.ኤል ይተካል። Eg https: //www.my-external-website.tdl? HumhubUrl = {humhubUrl} እሴት https: //wwww.my-humhub.tdl/s/space-name/xxx ወደ https: //www.my-external ያዞራል -website.tdl? humhubUrl = https: //wwww.my-humhub.tdl/s/space-name/xxx',
+  '{title}: show comments' => '{title} : አስተያየቶችን አሳይ',
 );

@@ -11,6 +11,7 @@ return array (
   'Error: website not added' => 'ข้อผิดพลาด: ไม่ได้เพิ่มเว็บไซต์',
   'Error: website not updated' => 'ข้อผิดพลาด: เว็บไซต์ไม่อัปเดต',
   'External websites' => 'เว็บไซต์ภายนอก',
+  'Filter' => 'กรอง',
   'Hide sidebar' => 'ซ่อนแถบด้านข้าง',
   'Humhub can be: <br>- Host: external website is embedded and embedded in an iframe<br>- Embedded: external website is host, Humhub addons (comments, like, files, etc.) are embedded in an iframe.<br>See README.md for more informations and usage.' => 'Humhub สามารถ:<br> - โฮสต์: เว็บไซต์ภายนอกถูกฝังและฝังไว้ใน iframe<br> - ฝังตัว: เว็บไซต์ภายนอกเป็นโฮสต์ส่วนเสริม Humhub (ความคิดเห็นเช่นไฟล์ ฯลฯ ) จะฝังอยู่ใน iframe<br> ดู README.md สำหรับข้อมูลเพิ่มเติมและการใช้งาน',
   'Humhub is embedded' => 'Humhub ถูกฝังอยู่',
@@ -42,4 +43,6 @@ return array (
   'Websites managment' => 'การจัดการเว็บไซต์',
   'Yes' => 'ใช่',
   'website deleted' => 'ลบเว็บไซต์แล้ว',
+  '{humhubUrl} will be replaced with the Humhub\'s source URL. E.g https://www.my-external-website.tdl?humhubUrl={humhubUrl} value will redirect https://wwww.my-humhub.tdl/s/space-name/xxx to https://www.my-external-website.tdl?humhubUrl=https://wwww.my-humhub.tdl/s/space-name/xxx' => '{humhubUrl} จะถูกแทนที่ด้วย URL ต้นทางของ Humhub เช่น https: //www.my-external-website.tdl? humhubUrl = ค่า {humhubUrl} จะเปลี่ยนเส้นทาง https: //wwww.my-humhub.tdl/s/space-name/xxx เป็น https: //www.my-external -website.tdl? humhubUrl = https: //wwww.my-humhub.tdl/s/space-name/xxx',
+  '{title}: show comments' => '{title} : แสดงความคิดเห็น',
 );

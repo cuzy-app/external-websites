@@ -11,6 +11,7 @@ return array (
   'Error: website not added' => 'Помилка: веб-сайт не додано',
   'Error: website not updated' => 'Помилка: веб-сайт не оновлено',
   'External websites' => 'Зовнішні веб-сайти',
+  'Filter' => 'Фільтр',
   'Hide sidebar' => 'Сховати бічну панель',
   'Humhub can be: <br>- Host: external website is embedded and embedded in an iframe<br>- Embedded: external website is host, Humhub addons (comments, like, files, etc.) are embedded in an iframe.<br>See README.md for more informations and usage.' => 'Humhub може бути:<br> - Хост: зовнішній веб-сайт вбудований і вбудований у фрейм<br> - Вбудований: зовнішній веб-сайт є хостом, аддони Humhub (коментарі, наприклад, файли тощо) вбудовані в iframe.<br> Для отримання додаткової інформації та використання див. README.md.',
   'Humhub is embedded' => 'Вбудовано Humhub',
@@ -42,4 +43,6 @@ return array (
   'Websites managment' => 'Управління веб-сайтами',
   'Yes' => 'Так',
   'website deleted' => 'веб-сайт видалено',
+  '{humhubUrl} will be replaced with the Humhub\'s source URL. E.g https://www.my-external-website.tdl?humhubUrl={humhubUrl} value will redirect https://wwww.my-humhub.tdl/s/space-name/xxx to https://www.my-external-website.tdl?humhubUrl=https://wwww.my-humhub.tdl/s/space-name/xxx' => '{humhubUrl} буде замінено вихідною URL-адресою Humhub. Наприклад, https: //www.my-external-website.tdl? HumhubUrl = значення {humhubUrl} перенаправить https: //wwww.my-humhub.tdl/s/space-name/xxx на https: //www.my-external -website.tdl? humhubUrl = https: //wwww.my-humhub.tdl/s/space-name/xxx',
+  '{title}: show comments' => '{title} : показати коментарі',
 );
