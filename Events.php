@@ -167,7 +167,7 @@ class Events
     {
         $contentContainer = $event->sender->contentContainer;
 
-        if (get_class($contentContainer) !== Space::class) {
+        if ($contentContainer !== null || get_class($contentContainer) !== Space::class) {
             return;
         }
 
