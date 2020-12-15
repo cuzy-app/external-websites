@@ -1,19 +1,21 @@
 Changelog
 =========
 
-V0.20 (November, 25, 2020)
+V0.20 (December, 15, 2020)
 --------------------
+- Chg: Module renamed (iframe -> external-websites)
 - Enh: Added websites management interface (add, edit, delete)
+  Enh: Added space settings to redirect contents to an external website
 - Enh: It is now possible to embed Humhub addons in the external website (Humhub is embedded)
-- Enh: Guest mode: Added auto login with SSO, auto add to space and related group members
+  Enh: If full Humhub is embeded, possibility to add iframeResizer plugin so that the external website can auto resize iframe window
+- Enh: Guest mode: Added auto login with SSO
 - Enh: If the content related to a page is archived and all comments have been removed, only the permalink will be shown
 - Enh: Wall entry updated for Humhub 1.7
 - Enh: Documentation on module usage in `docs/README.md`
-- Chg: Module renamed (iframe -> external-websites)
+- Enh: Possibility to auto add groups to the current user via an JWT token
 - Chg: Script in the external website if embedded Humhub: `url` is now `pageUrl` and `title` is now `pageTitle`
 - Chg: Changed name of the tables, files, models, controller and view
 - Chg: Changed `FirstCommentForm` widget to new Hummhub 1.7 specifications
-- Enh: Possibility to authentifiate external website with JWT
 
 
 V0.15 (November, 23, 2020)
