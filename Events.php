@@ -10,6 +10,7 @@ namespace humhub\modules\externalWebsites;
 
 use Firebase\JWT\JWT;
 use Yii;
+use yii\web\HttpException;
 use humhub\modules\ui\menu\MenuLink;
 use humhub\modules\stream\widgets\WallStreamFilterNavigation;
 use humhub\modules\externalWebsites\models\Website;
@@ -18,7 +19,7 @@ use humhub\modules\externalWebsites\assets\EmbeddedAssets;
 use humhub\modules\externalWebsites\assets\RedirectionsAssets;
 use humhub\modules\externalWebsites\widgets\AddClassToHtmlTag;
 use humhub\modules\space\models\Space;
-use yii\web\HttpException;
+use humhub\modules\user\models\Group;
 
 
 class Events
