@@ -79,24 +79,17 @@ And add this code just before `</body>` in all pages :
 
 You must have something to auto log (and auto register if no account) the user.
 
-Allow Humhub to be embedded in an iframe: edit `proteced/config/web.php` and in the `modules` section, add:
+Allow Humhub to be embedded in an iframe by adding `frame-ancestors` in the headers: edit `proteced/config/web.php` and in the `modules` section, add:
 ```
         'web' => [
             'security' =>  [
                 "headers" => [
-                    "Strict-Transport-Security" => "max-age=31536000",
-                    "X-XSS-Protection" => "1; mode=block",
-                    "X-Content-Type-Options" => "nosniff",
-                    "Referrer-Policy" => "no-referrer-when-downgrade",
-                    "X-Permitted-Cross-Domain-Policies" => "master-only",
-                    "X-Frame-Options" => "sameorigin",
                     "Content-Security-Policy" => "default-src *; connect-src  *; font-src 'self'; frame-src https://* http://* *; img-src https://* http://* * data:; object-src 'self'; script-src 'self' https://* http://* * 'unsafe-inline' 'report-sample'; style-src * https://* http://* * 'unsafe-inline'; frame-ancestors 'self' https://my-external-website.tdl;"
                 ]
             ]
         ],
 ```
 And replace `https://my-external-website.tdl` with your website URL
-If doesn't work, replace `"X-Frame-Options" => "sameorigin",` with `"X-Frame-Options" => "",`
 
 
 Upload these files on the external website server:
