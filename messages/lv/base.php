@@ -40,7 +40,7 @@ return array (
   'Website edition' => 'Vietnes izdevums',
   'Website first page URL' => 'Vietnes pirmās lapas URL',
   'Website updated' => 'Vietne atjaunināta',
-  'Websites managment' => 'Vietņu pārvaldība',
+  'Websites management' => 'Vietņu pārvaldība',
   'Yes' => 'Jā',
   'website deleted' => 'vietne ir izdzēsta',
   '{humhubUrl} will be replaced with the Humhub\'s source URL. E.g https://www.my-external-website.tdl?humhubUrl={humhubUrl} value will redirect https://wwww.my-humhub.tdl/s/space-name/xxx to https://www.my-external-website.tdl?humhubUrl=https://wwww.my-humhub.tdl/s/space-name/xxx' => '{humhubUrl} tiks aizstāts ar Humhub avota URL. Piemēram, https: //www.my-external-website.tdl? HumhubUrl = {humhubUrl} vērtība novirzīs https: //wwww.my-humhub.tdl/s/space-name/xxx uz https: //www.my-external -website.tdl? humhubUrl = https: //wwww.my-humhub.tdl/s/space-name/xxx',

@@ -40,7 +40,7 @@ return array (
   'Website edition' => 'Ediția site-ului web',
   'Website first page URL' => 'Adresa URL a primei pagini web',
   'Website updated' => 'Site web actualizat',
-  'Websites managment' => 'Gestionarea site-urilor web',
+  'Websites management' => 'Gestionarea site-urilor web',
   'Yes' => 'da',
   'website deleted' => 'site web șters',
   '{humhubUrl} will be replaced with the Humhub\'s source URL. E.g https://www.my-external-website.tdl?humhubUrl={humhubUrl} value will redirect https://wwww.my-humhub.tdl/s/space-name/xxx to https://www.my-external-website.tdl?humhubUrl=https://wwww.my-humhub.tdl/s/space-name/xxx' => '{humhubUrl} va fi înlocuit cu adresa URL sursă a lui Humhub. De exemplu, https: //www.my-external-website.tdl? HumhubUrl = valoarea {humhubUrl} va redirecționa https: //wwww.my-humhub.tdl/s/space-name/xxx către https: //www.my-external -website.tdl? humhubUrl = https: //wwww.my-humhub.tdl/s/space-name/xxx',

@@ -40,7 +40,7 @@ return array (
   'Website edition' => 'מהדורת אתרים',
   'Website first page URL' => 'כתובת האתר של העמוד הראשון של האתר',
   'Website updated' => 'האתר עודכן',
-  'Websites managment' => 'ניהול אתרים',
+  'Websites management' => 'ניהול אתרים',
   'Yes' => 'כן',
   'website deleted' => 'האתר נמחק',
   '{humhubUrl} will be replaced with the Humhub\'s source URL. E.g https://www.my-external-website.tdl?humhubUrl={humhubUrl} value will redirect https://wwww.my-humhub.tdl/s/space-name/xxx to https://www.my-external-website.tdl?humhubUrl=https://wwww.my-humhub.tdl/s/space-name/xxx' => '{humhubUrl} יוחלף בכתובת המקור של Humhub. למשל https: //www.my-external-website.tdl? HumhubUrl = humhubUrl {humhubUrl} מחדש https: //wwww.my-humhub.tdl/s/space-name/xxx אל https: //www.my-external -website.tdl? humhubUrl = https: //wwww.my-humhub.tdl/s/space-name/xxx',

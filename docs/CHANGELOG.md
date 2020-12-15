@@ -3,7 +3,7 @@ Changelog
 
 V0.20 (November, 25, 2020)
 --------------------
-- Enh: Added websites managment interface (add, edit, delete)
+- Enh: Added websites management interface (add, edit, delete)
 - Enh: It is now possible to embed Humhub addons in the external website (Humhub is embedded)
 - Enh: Guest mode: Added auto login with SSO, auto add to space and related group members
 - Enh: If the content related to a page is archived and all comments have been removed, only the permalink will be shown

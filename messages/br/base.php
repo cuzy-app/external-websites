@@ -41,7 +41,7 @@ return [
     'Website edition' => '',
     'Website first page URL' => '',
     'Website updated' => '',
-    'Websites managment' => '',
+    'Websites management' => '',
     'Yes' => '',
     'website deleted' => '',
     '{humhubUrl} will be replaced with the Humhub\'s source URL. E.g https://www.my-external-website.tdl?humhubUrl={humhubUrl} value will redirect https://wwww.my-humhub.tdl/s/space-name/xxx to https://www.my-external-website.tdl?humhubUrl=https://wwww.my-humhub.tdl/s/space-name/xxx' => '',

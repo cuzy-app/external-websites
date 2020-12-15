@@ -40,7 +40,7 @@ return array (
   'Website edition' => 'Weboldal kiadás',
   'Website first page URL' => 'A webhely első oldalának URL-je',
   'Website updated' => 'Weboldal frissítve',
-  'Websites managment' => 'Webhelyek kezelése',
+  'Websites management' => 'Webhelyek kezelése',
   'Yes' => 'Igen',
   'website deleted' => 'weboldal törölve',
   '{humhubUrl} will be replaced with the Humhub\'s source URL. E.g https://www.my-external-website.tdl?humhubUrl={humhubUrl} value will redirect https://wwww.my-humhub.tdl/s/space-name/xxx to https://www.my-external-website.tdl?humhubUrl=https://wwww.my-humhub.tdl/s/space-name/xxx' => '{humhubUrl} helyébe a Humhub forrás URL-je lép. Pl. Https: //www.my-external-website.tdl? HumhubUrl = {humhubUrl} érték átirányítja a https: //wwww.my-humhub.tdl/s/space-name/xxx címet a https: //www.my-external webhelyre -website.tdl? humhubUrl = https: //wwww.my-humhub.tdl/s/space-name/xxx',

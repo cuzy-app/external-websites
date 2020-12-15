@@ -40,7 +40,7 @@ return array (
   'Website edition' => 'Nettstedutgave',
   'Website first page URL' => 'Nettsteds første URL',
   'Website updated' => 'Nettstedet er oppdatert',
-  'Websites managment' => 'Administrasjon av nettsteder',
+  'Websites management' => 'Administrasjon av nettsteder',
   'Yes' => 'Ja',
   'website deleted' => 'nettstedet er slettet',
   '{humhubUrl} will be replaced with the Humhub\'s source URL. E.g https://www.my-external-website.tdl?humhubUrl={humhubUrl} value will redirect https://wwww.my-humhub.tdl/s/space-name/xxx to https://www.my-external-website.tdl?humhubUrl=https://wwww.my-humhub.tdl/s/space-name/xxx' => '{humhubUrl} vil bli erstattet med Humhubs kilde-URL. F.eks https: //www.my-external-website.tdl? HumhubUrl = {humhubUrl} verdi vil omdirigere https: //wwww.my-humhub.tdl/s/space-name/xxx til https: //www.my-external -website.tdl? humhubUrl = https: //wwww.my-humhub.tdl/s/space-name/xxx',

@@ -40,7 +40,7 @@ return array (
   'Website edition' => 'Edizione del sito web',
   'Website first page URL' => 'URL della prima pagina del sito web',
   'Website updated' => 'Sito web aggiornato',
-  'Websites managment' => 'Gestione siti web',
+  'Websites management' => 'Gestione siti web',
   'Yes' => 'sì',
   'website deleted' => 'sito web eliminato',
   '{humhubUrl} will be replaced with the Humhub\'s source URL. E.g https://www.my-external-website.tdl?humhubUrl={humhubUrl} value will redirect https://wwww.my-humhub.tdl/s/space-name/xxx to https://www.my-external-website.tdl?humhubUrl=https://wwww.my-humhub.tdl/s/space-name/xxx' => '{humhubUrl} verrà sostituito con l\'URL di origine di Humhub. Ad esempio, https: //www.my-external-website.tdl? HumhubUrl = {humhubUrl} valore reindirizzerà https: //wwww.my-humhub.tdl/s/space-name/xxx a https: //www.my-external -website.tdl? humhubUrl = https: //wwww.my-humhub.tdl/s/space-name/xxx',

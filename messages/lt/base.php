@@ -40,7 +40,7 @@ return array (
   'Website edition' => 'Svetainės leidimas',
   'Website first page URL' => 'Svetainės pirmojo puslapio URL',
   'Website updated' => 'Svetainė atnaujinta',
-  'Websites managment' => 'Tinklalapių valdymas',
+  'Websites management' => 'Tinklalapių valdymas',
   'Yes' => 'Taip',
   'website deleted' => 'svetainė ištrinta',
   '{humhubUrl} will be replaced with the Humhub\'s source URL. E.g https://www.my-external-website.tdl?humhubUrl={humhubUrl} value will redirect https://wwww.my-humhub.tdl/s/space-name/xxx to https://www.my-external-website.tdl?humhubUrl=https://wwww.my-humhub.tdl/s/space-name/xxx' => '{humhubUrl} bus pakeistas „Humhub“ šaltinio URL. Pvz., Https: //www.my-external-website.tdl? HumhubUrl = {humhubUrl} reikšmė peradresuos https: //wwww.my-humhub.tdl/s/space-name/xxx į https: //www.my-external -website.tdl? humhubUrl = https: //wwww.my-humhub.tdl/s/space-name/xxx',

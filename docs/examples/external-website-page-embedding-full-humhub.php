@@ -1,0 +1,59 @@
+<?php
+/**
+ * Enter your params here
+ */
+// Humhub URL
+$humhubUrl = 'http://www.my-humhub.tdl/dashboard';
+// JWT token (optional, see docs/README.md "Auto add groups to user")
+$token = '';
+
+/**
+ * If you want to make redirections work (see docs/README.md "Space's contents redirected to external website")
+ */
+if (isset($_GET['humhubUrl'])) {
+    $humhubUrl = urldecode($_GET['humhubUrl']);
+}
+
+/**
+ * Add token param
+ */
+if (!empty($token)) {
+    $humhubUrl .= ((strpos($humhubUrl) === false) ? '?' : '&').'token='.$token;
+}
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>My title</title>
+
+    <style type="text/css">
+        iframe#humhub {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<h2>My page with Humhub embedded</h2>
+
+<!-- Where you want to show Humhub -->
+<iframe id="humhub" src="<?= $humhubUrl ?>" style="min-height: 700px;"></iframe>
+
+<!-- Just before </body> -->
+<script type="text/javascript" src="js/iframeResizer.min.js"></script>
+<script type="text/javascript">
+    const iframes = iFrameResize({
+        log: false,
+        scrolling: true,
+        onInit: function() {
+            // Remove min-height if iframe resizer has loaded (e.g. after SSO login)
+            document.getElementById("humhub").style.minHeight="auto";
+            document.getElementById("humhub").scrolling="no";
+        }
+    }, '#humhub');
+</script>
+
+</body>
+</html>

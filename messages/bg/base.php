@@ -40,7 +40,7 @@ return array (
   'Website edition' => 'Издание на уебсайт',
   'Website first page URL' => 'URL адрес на първата страница на уебсайта',
   'Website updated' => 'Уебсайтът е актуализиран',
-  'Websites managment' => 'Управление на уебсайтове',
+  'Websites management' => 'Управление на уебсайтове',
   'Yes' => 'Да',
   'website deleted' => 'уебсайтът е изтрит',
   '{humhubUrl} will be replaced with the Humhub\'s source URL. E.g https://www.my-external-website.tdl?humhubUrl={humhubUrl} value will redirect https://wwww.my-humhub.tdl/s/space-name/xxx to https://www.my-external-website.tdl?humhubUrl=https://wwww.my-humhub.tdl/s/space-name/xxx' => '{humhubUrl} ще бъде заменен с изходния URL адрес на Humhub. Например https: //www.my-external-website.tdl? HumhubUrl = {humhubUrl} стойността ще пренасочи https: //wwww.my-humhub.tdl/s/space-name/xxx към https: //www.my-external -website.tdl? humhubUrl = https: //wwww.my-humhub.tdl/s/space-name/xxx',

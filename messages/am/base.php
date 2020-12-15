@@ -40,7 +40,7 @@ return array (
   'Website edition' => 'የድር ጣቢያ እትም',
   'Website first page URL' => 'የድር ጣቢያ የመጀመሪያ ገጽ ዩ.አር.ኤል.',
   'Website updated' => 'ድርጣቢያ ተዘምኗል',
-  'Websites managment' => 'የድርጣቢያዎች አስተዳደር',
+  'Websites management' => 'የድርጣቢያዎች አስተዳደር',
   'Yes' => 'አዎ',
   'website deleted' => 'ድር ጣቢያ ተሰር deletedል',
   '{humhubUrl} will be replaced with the Humhub\'s source URL. E.g https://www.my-external-website.tdl?humhubUrl={humhubUrl} value will redirect https://wwww.my-humhub.tdl/s/space-name/xxx to https://www.my-external-website.tdl?humhubUrl=https://wwww.my-humhub.tdl/s/space-name/xxx' => '{humhubUrl} በ Humhub ምንጭ ዩ.አር.ኤል ይተካል። Eg https: //www.my-external-website.tdl? HumhubUrl = {humhubUrl} እሴት https: //wwww.my-humhub.tdl/s/space-name/xxx ወደ https: //www.my-external ያዞራል -website.tdl? humhubUrl = https: //wwww.my-humhub.tdl/s/space-name/xxx',

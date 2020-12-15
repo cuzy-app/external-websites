@@ -40,7 +40,7 @@ return array (
   'Website edition' => 'Ấn bản trang web',
   'Website first page URL' => 'URL trang đầu tiên của trang web',
   'Website updated' => 'Đã cập nhật trang web',
-  'Websites managment' => 'Quản lý trang web',
+  'Websites management' => 'Quản lý trang web',
   'Yes' => 'Đúng',
   'website deleted' => 'trang web đã bị xóa',
   '{humhubUrl} will be replaced with the Humhub\'s source URL. E.g https://www.my-external-website.tdl?humhubUrl={humhubUrl} value will redirect https://wwww.my-humhub.tdl/s/space-name/xxx to https://www.my-external-website.tdl?humhubUrl=https://wwww.my-humhub.tdl/s/space-name/xxx' => '{humhubUrl} sẽ được thay thế bằng URL nguồn của Humhub. Ví dụ: https: //www.my-external-website.tdl? HumhubUrl = {humhubUrl} giá trị sẽ chuyển hướng https: //wwww.my-humhub.tdl/s/space-name/xxx thành https: //www.my-external -website.tdl? humhubUrl = https: //wwww.my-humhub.tdl/s/space-name/xxx',

@@ -40,7 +40,7 @@ return array (
   'Website edition' => 'Veb-sayt nashri',
   'Website first page URL' => 'Veb-saytning birinchi sahifasi URL',
   'Website updated' => 'Veb-sayt yangilandi',
-  'Websites managment' => 'Veb-saytlarni boshqarish',
+  'Websites management' => 'Veb-saytlarni boshqarish',
   'Yes' => 'Ha',
   'website deleted' => 'veb-sayt o\'chirildi',
   '{humhubUrl} will be replaced with the Humhub\'s source URL. E.g https://www.my-external-website.tdl?humhubUrl={humhubUrl} value will redirect https://wwww.my-humhub.tdl/s/space-name/xxx to https://www.my-external-website.tdl?humhubUrl=https://wwww.my-humhub.tdl/s/space-name/xxx' => '{humhubUrl} o\'rniga Humhub manbai URL manzili qo\'yiladi. Masalan, https: //www.my-external-website.tdl? HumhubUrl = {humhubUrl} qiymati https: //wwww.my-humhub.tdl/s/space-name/xxx-ni https: //www.my-external-ga yo\'naltiradi -website.tdl? humhubUrl = https: //wwww.my-humhub.tdl/s/space-name/xxx',

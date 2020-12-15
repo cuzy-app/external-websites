@@ -40,7 +40,7 @@ return array (
   'Website edition' => 'ウェブサイト版',
   'Website first page URL' => 'ウェブサイトの最初のページのURL',
   'Website updated' => 'ウェブサイトを更新',
-  'Websites managment' => 'ウェブサイト管理',
+  'Websites management' => 'ウェブサイト管理',
   'Yes' => 'はい',
   'website deleted' => 'ウェブサイトを削除',
   '{humhubUrl} will be replaced with the Humhub\'s source URL. E.g https://www.my-external-website.tdl?humhubUrl={humhubUrl} value will redirect https://wwww.my-humhub.tdl/s/space-name/xxx to https://www.my-external-website.tdl?humhubUrl=https://wwww.my-humhub.tdl/s/space-name/xxx' => '{humhubUrl}は、HumhubのソースURLに置き換えられます。例：https：//www.my-external-website.tdl？humhubUrl = {humhubUrl}値は、https：//wwww.my-humhub.tdl/s/space-name/xxxをhttps：//www.my-externalにリダイレクトします-website.tdl？humhubUrl = https：//wwww.my-humhub.tdl/s/space-name/xxx',

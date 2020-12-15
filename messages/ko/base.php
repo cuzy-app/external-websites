@@ -40,7 +40,7 @@ return array (
   'Website edition' => '웹 사이트 에디션',
   'Website first page URL' => '웹 사이트 첫 페이지 URL',
   'Website updated' => '웹 사이트 업데이트',
-  'Websites managment' => '웹 사이트 관리',
+  'Websites management' => '웹 사이트 관리',
   'Yes' => '예',
   'website deleted' => '웹 사이트가 삭제되었습니다.',
   '{humhubUrl} will be replaced with the Humhub\'s source URL. E.g https://www.my-external-website.tdl?humhubUrl={humhubUrl} value will redirect https://wwww.my-humhub.tdl/s/space-name/xxx to https://www.my-external-website.tdl?humhubUrl=https://wwww.my-humhub.tdl/s/space-name/xxx' => '{humhubUrl} 은 Humhub의 소스 URL로 대체됩니다. 예 : https : //www.my-external-website.tdl? humhubUrl = {humhubUrl} 값은 https : //wwww.my-humhub.tdl/s/space-name/xxx를 https : //www.my-external로 리디렉션합니다. -website.tdl? humhubUrl = https : //wwww.my-humhub.tdl/s/space-name/xxx',

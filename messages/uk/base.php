@@ -40,7 +40,7 @@ return array (
   'Website edition' => 'Видання веб-сайту',
   'Website first page URL' => 'URL-адреса першої сторінки веб-сайту',
   'Website updated' => 'Веб-сайт оновлено',
-  'Websites managment' => 'Управління веб-сайтами',
+  'Websites management' => 'Управління веб-сайтами',
   'Yes' => 'Так',
   'website deleted' => 'веб-сайт видалено',
   '{humhubUrl} will be replaced with the Humhub\'s source URL. E.g https://www.my-external-website.tdl?humhubUrl={humhubUrl} value will redirect https://wwww.my-humhub.tdl/s/space-name/xxx to https://www.my-external-website.tdl?humhubUrl=https://wwww.my-humhub.tdl/s/space-name/xxx' => '{humhubUrl} буде замінено вихідною URL-адресою Humhub. Наприклад, https: //www.my-external-website.tdl? HumhubUrl = значення {humhubUrl} перенаправить https: //wwww.my-humhub.tdl/s/space-name/xxx на https: //www.my-external -website.tdl? humhubUrl = https: //wwww.my-humhub.tdl/s/space-name/xxx',

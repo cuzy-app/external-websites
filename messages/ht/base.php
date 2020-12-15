@@ -40,7 +40,7 @@ return array (
   'Website edition' => 'Sit wèb edisyon',
   'Website first page URL' => 'Sit entènèt premye paj URL',
   'Website updated' => 'Sit wèb mete ajou',
-  'Websites managment' => 'Sit wèb jesyon',
+  'Websites management' => 'Sit wèb jesyon',
   'Yes' => 'Wi',
   'website deleted' => 'sit entènèt efase',
   '{humhubUrl} will be replaced with the Humhub\'s source URL. E.g https://www.my-external-website.tdl?humhubUrl={humhubUrl} value will redirect https://wwww.my-humhub.tdl/s/space-name/xxx to https://www.my-external-website.tdl?humhubUrl=https://wwww.my-humhub.tdl/s/space-name/xxx' => '{humhubUrl} pral ranplase ak URL sous Humhub la. Eg https: //www.my-external-website.tdl? HumhubUrl = {humhubUrl} valè pral redireksyon https: //wwww.my-humhub.tdl/s/space-name/xxx a https: //www.my-external -website.tdl? humhubUrl = https: //wwww.my-humhub.tdl/s/space-name/xxx',

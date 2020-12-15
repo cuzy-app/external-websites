@@ -40,7 +40,7 @@ return array (
   'Website edition' => 'Έκδοση ιστότοπου',
   'Website first page URL' => 'URL πρώτης σελίδας ιστότοπου',
   'Website updated' => 'Ο ιστότοπος ενημερώθηκε',
-  'Websites managment' => 'Διαχείριση ιστότοπων',
+  'Websites management' => 'Διαχείριση ιστότοπων',
   'Yes' => 'Ναί',
   'website deleted' => 'ο ιστότοπος διαγράφηκε',
   '{humhubUrl} will be replaced with the Humhub\'s source URL. E.g https://www.my-external-website.tdl?humhubUrl={humhubUrl} value will redirect https://wwww.my-humhub.tdl/s/space-name/xxx to https://www.my-external-website.tdl?humhubUrl=https://wwww.my-humhub.tdl/s/space-name/xxx' => '{humhubUrl} θα αντικατασταθεί με το URL προέλευσης του Humhub. Π.χ. https: //www.my-external-website.tdl? HumhubUrl = {humhubUrl} τιμή θα ανακατευθύνει https: //wwww.my-humhub.tdl/s/space-name/xxx στο https: //www.my-external -website.tdl? humhubUrl = https: //wwww.my-humhub.tdl/s/space-name/xxx',

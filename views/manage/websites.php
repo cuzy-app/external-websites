@@ -23,7 +23,7 @@ $websiteForm = new WebsiteForm;
 
 <div id="ew-manage-websites" class="panel panel-default">
     <div class="panel-heading">
-        <strong><?= Yii::t('ExternalWebsitesModule.base', 'Websites managment') ?></strong>
+        <strong><?= Yii::t('ExternalWebsitesModule.base', 'Websites management') ?></strong>
     </div>
 
     <div class="panel-body">

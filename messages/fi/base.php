@@ -40,7 +40,7 @@ return array (
   'Website edition' => 'Verkkosivustopainos',
   'Website first page URL' => 'Sivuston ensimmäisen sivun URL-osoite',
   'Website updated' => 'Verkkosivusto päivitetty',
-  'Websites managment' => 'Verkkosivustojen hallinta',
+  'Websites management' => 'Verkkosivustojen hallinta',
   'Yes' => 'Joo',
   'website deleted' => 'verkkosivusto poistettu',
   '{humhubUrl} will be replaced with the Humhub\'s source URL. E.g https://www.my-external-website.tdl?humhubUrl={humhubUrl} value will redirect https://wwww.my-humhub.tdl/s/space-name/xxx to https://www.my-external-website.tdl?humhubUrl=https://wwww.my-humhub.tdl/s/space-name/xxx' => '{humhubUrl} korvataan Humhubin lähde-URL: llä. Esim. Https: {humhubUrl} ? HumhubUrl = {humhubUrl} arvo ohjaa https: //wwww.my-humhub.tdl/s/space-name/xxx osoitteeseen https: //www.my-external -website.tdl? humhubUrl = https: //wwww.my-humhub.tdl/s/space-name/xxx',

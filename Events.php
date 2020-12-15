@@ -8,6 +8,7 @@
 
 namespace humhub\modules\externalWebsites;
 
+use Firebase\JWT\JWT;
 use Yii;
 use humhub\modules\ui\menu\MenuLink;
 use humhub\modules\stream\widgets\WallStreamFilterNavigation;
@@ -17,6 +18,7 @@ use humhub\modules\externalWebsites\assets\EmbeddedAssets;
 use humhub\modules\externalWebsites\assets\RedirectionsAssets;
 use humhub\modules\externalWebsites\widgets\AddClassToHtmlTag;
 use humhub\modules\space\models\Space;
+use yii\web\HttpException;
 
 
 class Events
@@ -165,8 +167,72 @@ class Events
 
     public static function onContentContainerControllerBeforeAction($event)
     {
-        $contentContainer = $event->sender->contentContainer;
+        if (Yii::$app->user->isGuest && Yii::$app->request->get('autoLogin')) {
+            $this->tryAutoLogin();
+        }
 
+        $token = Yii::$app->request->get('token');
+        if(!Yii::$app->user->isGuest && !empty($token)) {
+            $this->tryAddingGroupsToUser($token);
+        }
+
+        $this->tryRedirecting($event->sender->contentContainer);
+    }
+
+
+    /**
+     * @return mixed
+     * If autoLogin param true in URL, try auto login
+     */
+    private function tryAutoLogin()
+    {
+        // If an auth client has attribute autoLogin set to true, this module will auto log the user to the corresponding Identity provider (SSO)
+        foreach (Yii::$app->authClientCollection->clients as $authclient) {
+            if (isset($authclient->autoLogin) && $authclient->autoLogin) {
+                // Redirect to Identity Provider
+                if (method_exists($authclient, 'redirectToBroker')) {
+                    return $authclient->redirectToBroker(true);
+                }
+            }
+        }
+    }
+
+
+    /**
+     * @param $token HS512 JWT token
+     * @throws HttpException
+     * If logged in AND JWT token param in URL, check permission and add current user to groups
+     */
+    private function tryAddingGroupsToUser($token)
+    {
+        $module = Yii::$app->getModule('external-websites');
+
+        // If jwtKey property is defined in configuration
+        if (!empty($module->jwtKey)) {
+            try {
+                $validData = JWT::decode($token, $module->jwtKey, ['HS512']);
+
+                // If authentification successful
+                if (isset($validData->groupsId) && is_array($validData->groupsId)) {
+
+                    // Add current user to groups
+                    foreach(Group::findAll($validData->groupsId) as $group)
+                        if (!$group->isMember(Yii::$app->user->identity)) {
+                            $group->addUser(Yii::$app->user->identity);
+                        }
+                }
+            } catch (Exception $e) {
+                throw new HttpException(401, $e->getMessage());
+            }
+        }
+    }
+
+    /**
+     * @param $contentContainer
+     * If the current container is a space and this space has a setting to redirect contents URLs to an external website, do the redirection
+     */
+    private function tryRedirecting($contentContainer)
+    {
         if ($contentContainer === null || get_class($contentContainer) !== Space::class) {
             return;
         }
@@ -183,4 +249,5 @@ class Events
             'urlToRedirect' => $urlToRedirect,
         ]);
     }
+
 }

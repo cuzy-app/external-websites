@@ -40,7 +40,7 @@ return array (
   'Website edition' => 'Webbplatsutgåva',
   'Website first page URL' => 'Webbplatsens första sida URL',
   'Website updated' => 'Webbplats uppdaterad',
-  'Websites managment' => 'Hantering av webbplatser',
+  'Websites management' => 'Hantering av webbplatser',
   'Yes' => 'Ja',
   'website deleted' => 'webbplats borttagen',
   '{humhubUrl} will be replaced with the Humhub\'s source URL. E.g https://www.my-external-website.tdl?humhubUrl={humhubUrl} value will redirect https://wwww.my-humhub.tdl/s/space-name/xxx to https://www.my-external-website.tdl?humhubUrl=https://wwww.my-humhub.tdl/s/space-name/xxx' => '{humhubUrl} kommer att ersättas med Humhubs käll-URL. Exempelvis https: //www.my-external-website.tdl? HumhubUrl = {humhubUrl} värde omdirigerar https: //wwww.my-humhub.tdl/s/space-name/xxx till https: //www.my-external -webbplats.tdl? humhubUrl = https: //wwww.my-humhub.tdl/s/space-name/xxx',

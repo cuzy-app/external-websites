@@ -40,7 +40,7 @@ return array (
   'Website edition' => 'Edisi situs web',
   'Website first page URL' => 'URL halaman pertama situs web',
   'Website updated' => 'Situs web diperbarui',
-  'Websites managment' => 'Manajemen situs web',
+  'Websites management' => 'Manajemen situs web',
   'Yes' => 'Iya',
   'website deleted' => 'situs web dihapus',
   '{humhubUrl} will be replaced with the Humhub\'s source URL. E.g https://www.my-external-website.tdl?humhubUrl={humhubUrl} value will redirect https://wwww.my-humhub.tdl/s/space-name/xxx to https://www.my-external-website.tdl?humhubUrl=https://wwww.my-humhub.tdl/s/space-name/xxx' => '{humhubUrl} akan diganti dengan URL sumber Humhub. Misalnya https: //www.my-external-website.tdl? HumhubUrl = nilai {humhubUrl} akan mengalihkan https: //wwww.my-humhub.tdl/s/space-name/xxx ke https: //www.my-external -website.tdl? humhubUrl = https: //wwww.my-humhub.tdl/s/space-name/xxx',

@@ -32,7 +32,7 @@ class Module extends ContentContainerModule
 
     /**
      * @var string HS512 JWT secret key
-     * Optional, to check if the external website is autorized to embed Humhub in an iframe
+     * Optional, to enable possiblity to auto add groups to the users
      */
     public $jwtKey = '';
 

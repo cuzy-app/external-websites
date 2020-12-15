@@ -40,7 +40,7 @@ return array (
   'Website edition' => '网站版本',
   'Website first page URL' => '网站首页网址',
   'Website updated' => '网站更新',
-  'Websites managment' => '网站管理',
+  'Websites management' => '网站管理',
   'Yes' => '是',
   'website deleted' => '网站已删除',
   '{humhubUrl} will be replaced with the Humhub\'s source URL. E.g https://www.my-external-website.tdl?humhubUrl={humhubUrl} value will redirect https://wwww.my-humhub.tdl/s/space-name/xxx to https://www.my-external-website.tdl?humhubUrl=https://wwww.my-humhub.tdl/s/space-name/xxx' => '{humhubUrl}将替换为Humhub的源URL。例如https：//www.my-external-website.tdl？humhubUrl = {humhubUrl}值会将https：//wwww.my-humhub.tdl/s/space-name/xxx重定向到https：//www.my-external -website.tdl？humhubUrl = https：//wwww.my-humhub.tdl/s/space-name/xxx',

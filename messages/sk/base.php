@@ -40,7 +40,7 @@ return array (
   'Website edition' => 'Vydanie webovej stránky',
   'Website first page URL' => 'URL prvej stránky webových stránok',
   'Website updated' => 'Web bol aktualizovaný',
-  'Websites managment' => 'Správa webových stránok',
+  'Websites management' => 'Správa webových stránok',
   'Yes' => 'Áno',
   'website deleted' => 'webová stránka bola odstránená',
   '{humhubUrl} will be replaced with the Humhub\'s source URL. E.g https://www.my-external-website.tdl?humhubUrl={humhubUrl} value will redirect https://wwww.my-humhub.tdl/s/space-name/xxx to https://www.my-external-website.tdl?humhubUrl=https://wwww.my-humhub.tdl/s/space-name/xxx' => '{humhubUrl} bude nahradené URL zdroja Humhub. Napríklad https: //www.my-external-website.tdl? HumhubUrl = {humhubUrl} hodnota presmeruje https: //wwww.my-humhub.tdl/s/space-name/xxx na https: //www.my-external -website.tdl? humhubUrl = https: //wwww.my-humhub.tdl/s/space-name/xxx',

@@ -40,7 +40,7 @@ return array (
   'Website edition' => 'Website udgave',
   'Website first page URL' => 'Websteds URL til første side',
   'Website updated' => 'Hjemmeside opdateret',
-  'Websites managment' => 'Administration af websteder',
+  'Websites management' => 'Administration af websteder',
   'Yes' => 'Ja',
   'website deleted' => 'websted slettet',
   '{humhubUrl} will be replaced with the Humhub\'s source URL. E.g https://www.my-external-website.tdl?humhubUrl={humhubUrl} value will redirect https://wwww.my-humhub.tdl/s/space-name/xxx to https://www.my-external-website.tdl?humhubUrl=https://wwww.my-humhub.tdl/s/space-name/xxx' => '{humhubUrl} erstattes med Humhubs kilde-URL. F.eks. Https: //www.my-external-website.tdl? HumhubUrl = {humhubUrl} værdi omdirigerer https: //wwww.my-humhub.tdl/s/space-name/xxx til https: //www.my-external -website.tdl? humhubUrl = https: //wwww.my-humhub.tdl/s/space-name/xxx',

@@ -40,7 +40,7 @@ return array (
   'Website edition' => 'Izdaja spletnega mesta',
   'Website first page URL' => 'URL prve strani spletnega mesta',
   'Website updated' => 'Spletno mesto posodobljeno',
-  'Websites managment' => 'Upravljanje spletnih strani',
+  'Websites management' => 'Upravljanje spletnih strani',
   'Yes' => 'Da',
   'website deleted' => 'spletno mesto izbrisano',
   '{humhubUrl} will be replaced with the Humhub\'s source URL. E.g https://www.my-external-website.tdl?humhubUrl={humhubUrl} value will redirect https://wwww.my-humhub.tdl/s/space-name/xxx to https://www.my-external-website.tdl?humhubUrl=https://wwww.my-humhub.tdl/s/space-name/xxx' => '{humhubUrl} bo nadomeščen z izvornim URL-jem Humhub-a. Npr. Https: //www.my-external-website.tdl? HumhubUrl = {humhubUrl} bo vrednost https: //wwww.my-humhub.tdl/s/space-name/xxx preusmerila na https: //www.my-external -website.tdl? humhubUrl = https: //wwww.my-humhub.tdl/s/space-name/xxx',

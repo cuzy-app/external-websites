@@ -40,7 +40,7 @@ return array (
   'Website edition' => 'ฉบับเว็บไซต์',
   'Website first page URL' => 'URL หน้าแรกของเว็บไซต์',
   'Website updated' => 'อัปเดตเว็บไซต์แล้ว',
-  'Websites managment' => 'การจัดการเว็บไซต์',
+  'Websites management' => 'การจัดการเว็บไซต์',
   'Yes' => 'ใช่',
   'website deleted' => 'ลบเว็บไซต์แล้ว',
   '{humhubUrl} will be replaced with the Humhub\'s source URL. E.g https://www.my-external-website.tdl?humhubUrl={humhubUrl} value will redirect https://wwww.my-humhub.tdl/s/space-name/xxx to https://www.my-external-website.tdl?humhubUrl=https://wwww.my-humhub.tdl/s/space-name/xxx' => '{humhubUrl} จะถูกแทนที่ด้วย URL ต้นทางของ Humhub เช่น https: //www.my-external-website.tdl? humhubUrl = ค่า {humhubUrl} จะเปลี่ยนเส้นทาง https: //wwww.my-humhub.tdl/s/space-name/xxx เป็น https: //www.my-external -website.tdl? humhubUrl = https: //wwww.my-humhub.tdl/s/space-name/xxx',

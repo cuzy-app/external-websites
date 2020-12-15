@@ -40,7 +40,7 @@ return array (
   'Website edition' => 'نسخه وب سایت',
   'Website first page URL' => 'URL صفحه اول وب سایت',
   'Website updated' => 'وب سایت به روز شد',
-  'Websites managment' => 'مدیریت وب سایت ها',
+  'Websites management' => 'مدیریت وب سایت ها',
   'Yes' => 'آره',
   'website deleted' => 'وب سایت حذف شد',
   '{humhubUrl} will be replaced with the Humhub\'s source URL. E.g https://www.my-external-website.tdl?humhubUrl={humhubUrl} value will redirect https://wwww.my-humhub.tdl/s/space-name/xxx to https://www.my-external-website.tdl?humhubUrl=https://wwww.my-humhub.tdl/s/space-name/xxx' => '{humhubUrl} با منبع منبع Humhub جایگزین خواهد شد. به عنوان مثال https: //www.my-external-website.tdl؟ humhubUrl = مقدار {humhubUrl} به https: //wwww.my-humhub.tdl/s/space-name/xxx به https: //www.my-external هدایت می شود -website.tdl؟ humhubUrl = https: //wwww.my-humhub.tdl/s/space-name/xxx',
