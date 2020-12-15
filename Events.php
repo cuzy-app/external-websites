@@ -175,17 +175,20 @@ class Events
         }
     }
 
+    public static function onControllerInit($event)
+    {
+        // If JWT token in URL param, try adding groups to current user
+        $token = Yii::$app->request->get('token');
+        if (!Yii::$app->user->isGuest && !empty($token)) {
+            self::tryAddingGroupsToUser($token);
+        }
+    }
+
     public static function onControllerBeforeAction($event)
     {
         // If autologin in URL param, try auto login
         if (Yii::$app->user->isGuest && Yii::$app->request->get('autoLogin')) {
             self::tryAutoLogin();
-        }
-
-        // If JWT token in URL param, try adding groups to current user
-        $token = Yii::$app->request->get('token');
-        if (!Yii::$app->user->isGuest && !empty($token)) {
-            self::tryAddingGroupsToUser($token);
         }
     }
 
