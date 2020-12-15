@@ -166,15 +166,6 @@ class Events
         }
     }
 
-    public static function onContentContainerControllerBeforeAction($event)
-    {
-        // If the current container is a space, try redirecting space content
-        $contentContainer = $event->sender->contentContainer;
-        if ($contentContainer === null || get_class($contentContainer) !== Space::class) {
-            self::tryRedirectingSpaceContent($contentContainer);
-        }
-    }
-
     public static function onControllerInit($event)
     {
         // If JWT token in URL param, try adding groups to current user
@@ -192,8 +183,17 @@ class Events
         }
     }
 
+    public static function onContentContainerControllerBeforeAction($event)
+    {
+        // If the current container is a space, try redirecting space content
+        $contentContainer = $event->sender->contentContainer;
+        if ($contentContainer !== null && get_class($contentContainer) === Space::class) {
+            self::tryRedirectingSpaceContent($contentContainer);
+        }
+    }
 
-        /**
+
+    /**
      * @return mixed
      * If autoLogin param true in URL, try auto login
      */

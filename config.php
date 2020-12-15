@@ -47,11 +47,6 @@ return [
 			'callback' => [Events::class, 'onViewBeginBody']
 		],
 		[
-			'class' => ContentContainerController::class,
-			'event' => ContentContainerController::EVENT_BEFORE_ACTION,
-			'callback' => [Events::class, 'onContentContainerControllerBeforeAction']
-		],
-		[
 			'class' => Controller::class,
 			'event' => Controller::EVENT_INIT,
 			'callback' => [Events::class, 'onControllerInit']
@@ -60,6 +55,11 @@ return [
 			'class' => Controller::class,
 			'event' => Controller::EVENT_BEFORE_ACTION,
 			'callback' => [Events::class, 'onControllerBeforeAction']
+		],
+		[
+			'class' => ContentContainerController::class,
+			'event' => ContentContainerController::EVENT_BEFORE_ACTION,
+			'callback' => [Events::class, 'onContentContainerControllerBeforeAction']
 		],
 	]
 ];
