@@ -53,8 +53,8 @@ return [
 		],
 		[
 			'class' => Controller::class,
-			'event' => Controller::EVENT_INIT,
-			'callback' => [Events::class, 'onControllerInit']
+			'event' => Controller::EVENT_BEFORE_ACTION,
+			'callback' => [Events::class, 'onControllerBeforeAction']
 		],
 	]
 ];

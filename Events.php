@@ -175,7 +175,7 @@ class Events
         }
     }
 
-    public static function onControllerInit($event)
+    public static function onControllerBeforeAction($event)
     {
         // If autologin in URL param, try auto login
         if (Yii::$app->user->isGuest && Yii::$app->request->get('autoLogin')) {
