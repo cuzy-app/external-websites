@@ -167,16 +167,22 @@ class Events
 
     public static function onContentContainerControllerBeforeAction($event)
     {
+        // If autologin in URL param, try auto login
         if (Yii::$app->user->isGuest && Yii::$app->request->get('autoLogin')) {
-            $this->tryAutoLogin();
+            self::tryAutoLogin();
         }
 
+        // If JWT token in URL param, try adding groups to current user
         $token = Yii::$app->request->get('token');
         if(!Yii::$app->user->isGuest && !empty($token)) {
-            $this->tryAddingGroupsToUser($token);
+            self::tryAddingGroupsToUser($token);
         }
 
-        $this->tryRedirecting($event->sender->contentContainer);
+        // If the current container is a space, try redirecting space content
+        $contentContainer = $event->sender->contentContainer;
+        if ($contentContainer === null || get_class($contentContainer) !== Space::class) {
+            self::tryRedirectingSpaceContent($contentContainer);
+        }
     }
 
 
@@ -184,7 +190,7 @@ class Events
      * @return mixed
      * If autoLogin param true in URL, try auto login
      */
-    private function tryAutoLogin()
+    private static function tryAutoLogin()
     {
         // If an auth client has attribute autoLogin set to true, this module will auto log the user to the corresponding Identity provider (SSO)
         foreach (Yii::$app->authClientCollection->clients as $authclient) {
@@ -203,7 +209,7 @@ class Events
      * @throws HttpException
      * If logged in AND JWT token param in URL, check permission and add current user to groups
      */
-    private function tryAddingGroupsToUser($token)
+    private static function tryAddingGroupsToUser($token)
     {
         $module = Yii::$app->getModule('external-websites');
 
@@ -229,14 +235,10 @@ class Events
 
     /**
      * @param $contentContainer
-     * If the current container is a space and this space has a setting to redirect contents URLs to an external website, do the redirection
+     * If this space has a setting to redirect contents URLs to an external website, do the redirection
      */
-    private function tryRedirecting($contentContainer)
+    private static function tryRedirectingSpaceContent($contentContainer)
     {
-        if ($contentContainer === null || get_class($contentContainer) !== Space::class) {
-            return;
-        }
-
         $settings = Yii::$app->getModule('external-websites')->settings->space($contentContainer);
 
         $urlToRedirect = $settings->get('urlToRedirect');
