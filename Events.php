@@ -167,17 +167,6 @@ class Events
 
     public static function onContentContainerControllerBeforeAction($event)
     {
-        // If autologin in URL param, try auto login
-        if (Yii::$app->user->isGuest && Yii::$app->request->get('autoLogin')) {
-            self::tryAutoLogin();
-        }
-
-        // If JWT token in URL param, try adding groups to current user
-        $token = Yii::$app->request->get('token');
-        if(!Yii::$app->user->isGuest && !empty($token)) {
-            self::tryAddingGroupsToUser($token);
-        }
-
         // If the current container is a space, try redirecting space content
         $contentContainer = $event->sender->contentContainer;
         if ($contentContainer === null || get_class($contentContainer) !== Space::class) {
@@ -185,8 +174,22 @@ class Events
         }
     }
 
+    public static function onControllerInit($event)
+    {
+        // If autologin in URL param, try auto login
+        if (Yii::$app->user->isGuest && Yii::$app->request->get('autoLogin')) {
+            self::tryAutoLogin();
+        }
 
-    /**
+        // If JWT token in URL param, try adding groups to current user
+        $token = Yii::$app->request->get('token');
+        if (!Yii::$app->user->isGuest && !empty($token)) {
+            self::tryAddingGroupsToUser($token);
+        }
+    }
+
+
+        /**
      * @return mixed
      * If autoLogin param true in URL, try auto login
      */

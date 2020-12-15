@@ -14,6 +14,7 @@ use humhub\modules\space\widgets\HeaderControlsMenu;
 use humhub\modules\ui\menu\widgets\Menu as UiMenu;
 use humhub\modules\ui\view\components\View;
 use humhub\modules\content\components\ContentContainerController;
+use humhub\components\Controller;
 
 return [
     'id' => 'external-websites',
@@ -49,6 +50,11 @@ return [
 			'class' => ContentContainerController::class,
 			'event' => ContentContainerController::EVENT_BEFORE_ACTION,
 			'callback' => [Events::class, 'onContentContainerControllerBeforeAction']
+		],
+		[
+			'class' => Controller::class,
+			'event' => Controller::EVENT_INIT,
+			'callback' => [Events::class, 'onControllerInit']
 		],
 	]
 ];
