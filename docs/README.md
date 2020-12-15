@@ -125,10 +125,20 @@ E.g https://www.my-external-website.tdl?humhubUrl={humhubUrl} value will redirec
 
 If Humhub is embedded and the module `authclients-addon` is installed, this module can try to auto login with SSO (if user doesn't exists, the account is created automatically)
 
+I works only if, in the iframe `src`, the URL points on a space of Humhub, or any content in a space, or the user profile.
+
+If the iframe `src` attribute, you must add this param to the URL:
+```
+autoLogin=1
+```
+
+[See this code example](https://gitlab.com/funkycram/humhub-modules-external-websites/-/raw/master/docs/examples/external-website-page-embedding-full-humhub.php)
+
 
 ### Auto add groups to user
 
 If Humhub is embedded, it is possible to ask Humhub to add groups to the current user.
+
 I works only if, in the iframe `src`, the URL points on a space of Humhub, or any content in a space, or the user profile.
 
 In that case, you must add a HS512 secret key in `proteced/config/common.php` (any 84 characters string):
