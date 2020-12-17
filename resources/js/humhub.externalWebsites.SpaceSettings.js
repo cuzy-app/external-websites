@@ -12,7 +12,7 @@ humhub.module('externalWebsites.SpaceSettings', function (module, require, $) {
     // If Humhub is embedded in an iframe
     else {
         if (module.config.preventLeavingSpace) {
-            $('html').on('click', 'a[href^="/u/"]', function(e){
+            $('html').on('click', 'a[href*="/u/"], #activityContents a', function(e){
                 e.preventDefault();
             });
         }
