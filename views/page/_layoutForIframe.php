@@ -1,14 +1,18 @@
 <?php
-
 /**
  * @var \humhub\modules\ui\view\components\View $this
- * @var \humhub\modules\space\models\Space $space
+ * @var \humhub\modules\content\components\ContentContainerController $context
  * @var string $content
  */
 
-/** @var \humhub\modules\content\components\ContentContainerController $context */
 $context = $this->context;
 $space = $context->contentContainer;
 ?>
 
 <?= $content ?>
+
+<script type="application/javascript">
+    $('html.humhub-is-embedded').on('click', 'a[href^="/u/"]', function(e){
+        e.preventDefault();
+    });
+</script>

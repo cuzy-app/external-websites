@@ -1,6 +1,12 @@
 Changelog
 =========
 
+V0.21 (December, 17, 2020)
+--------------------
+- Enh: When Humhub space is embedded, added settings to prevent clicking on links making leave the curent space
+- Enh: When Humhub addons are embedded, prevent clicking on links making leave the curent space
+
+
 V0.20 (December, 15, 2020)
 --------------------
 - Chg: Module renamed (iframe -> external-websites)

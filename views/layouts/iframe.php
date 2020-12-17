@@ -11,7 +11,7 @@ AppAsset::register($this);
 
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="humhub-is-embedded">
 <head>
     <title><?= Html::encode($this->pageTitle); ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">

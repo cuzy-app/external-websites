@@ -15,7 +15,7 @@ use yii\bootstrap\ActiveForm;
 
 /**
  * @var $this \humhub\components\View
- * @var $spaceSettingsForm \humhub\modules\externalWebsites\models\forms\SpaceSettingsForm
+ * @var $model \humhub\modules\externalWebsites\models\forms\SpaceSettingsForm
  */
 ?>
 
@@ -26,7 +26,8 @@ use yii\bootstrap\ActiveForm;
 
         <?php $form = ActiveForm::begin(); ?>
 
-        <?= $form->field($spaceSettingsForm, 'urlToRedirect')->textInput(['placeholder' => 'https://www.my-external-website.tdl']) ?>
+        <?= $form->field($model, 'urlToRedirect')->textInput(['placeholder' => 'https://www.my-external-website.tdl']) ?>
+        <?= $form->field($model, 'preventLeavingSpace')->radioList($model->yesNoList) ?>
 
         <br>
         <div class="input-group-btn">

@@ -15,8 +15,9 @@ use humhub\modules\ui\menu\MenuLink;
 use humhub\modules\stream\widgets\WallStreamFilterNavigation;
 use humhub\modules\externalWebsites\models\Website;
 use humhub\modules\externalWebsites\models\filters\ExternalWebsitesSpaceStreamFilter;
+use humhub\modules\externalWebsites\models\forms\SpaceSettingsForm;
 use humhub\modules\externalWebsites\assets\EmbeddedAssets;
-use humhub\modules\externalWebsites\assets\RedirectionsAssets;
+use humhub\modules\externalWebsites\assets\SpaceSettingsAssets;
 use humhub\modules\externalWebsites\widgets\AddClassToHtmlTag;
 use humhub\modules\space\models\Space;
 use humhub\modules\user\models\Group;
@@ -249,14 +250,19 @@ class Events
         $settings = Yii::$app->getModule('external-websites')->settings->space($contentContainer);
 
         $urlToRedirect = $settings->get('urlToRedirect');
-        if (!empty($settings->get('urlToRedirect'))) {
+        if (!empty($urlToRedirect)) {
             $urlToRedirect = str_replace('{humhubUrl}', urlencode(\yii\helpers\Url::current([], true)), $urlToRedirect);
         }
 
-        RedirectionsAssets::register(Yii::$app->view);
-        Yii::$app->view->registerJsConfig('externalWebsites.Redirections', [
-            'urlToRedirect' => $urlToRedirect,
-        ]);
+        $preventLeavingSpace = $settings->get('preventLeavingSpace', (new SpaceSettingsForm)->preventLeavingSpace);
+
+        if (!empty($urlToRedirect) || $preventLeavingSpace) {
+            SpaceSettingsAssets::register(Yii::$app->view);
+            Yii::$app->view->registerJsConfig('externalWebsites.SpaceSettings', [
+                'urlToRedirect' => $urlToRedirect,
+                'preventLeavingSpace' => $preventLeavingSpace,
+            ]);
+        }
     }
 
 }

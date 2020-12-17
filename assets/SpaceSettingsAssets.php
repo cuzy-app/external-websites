@@ -15,7 +15,7 @@ use humhub\components\assets\AssetBundle;
  * @package humhub\modules\externalWebsites\assets
  * Assests to redirect URLs to an external website
  */
-class RedirectionsAssets extends AssetBundle
+class SpaceSettingsAssets extends AssetBundle
 {
     public $sourcePath = '@external-websites/resources';
 
@@ -27,6 +27,6 @@ class RedirectionsAssets extends AssetBundle
     ];
 
     public $js = [
-        'js/humhub.externalWebsites.Redirections.js',
+        'js/humhub.externalWebsites.SpaceSettings.js',
     ];
 }

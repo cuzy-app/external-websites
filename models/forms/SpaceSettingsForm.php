@@ -27,12 +27,18 @@ class SpaceSettingsForm extends \yii\base\Model
      */
     public $urlToRedirect;
 
+    /**
+     * @var bool
+     */
+    public $preventLeavingSpace = false;
+
 
     public function init()
     {
         $settings = Yii::$app->getModule('external-websites')->settings->space($this->contentContainer);
 
         $this->urlToRedirect = $settings->get('urlToRedirect');
+        $this->preventLeavingSpace = $settings->get('preventLeavingSpace', $this->preventLeavingSpace);
 
         return parent::init();
     }
@@ -44,6 +50,7 @@ class SpaceSettingsForm extends \yii\base\Model
     {
         return [
             [['urlToRedirect'], 'string'],
+            [['preventLeavingSpace'], 'boolean'],
         ];
     }
 
@@ -54,6 +61,7 @@ class SpaceSettingsForm extends \yii\base\Model
     {
         return [
             'urlToRedirect' => Yii::t('ExternalWebsitesModule.base', 'URL of the external website to redirect all URLs of this space (if URL empty or this space is not the first page opened in the browser: no redirection)'),
+            'preventLeavingSpace' => Yii::t('ExternalWebsitesModule.base', 'If Humhub is embedded, prevent leaving the space'),
         ];
     }
 
@@ -64,6 +72,7 @@ class SpaceSettingsForm extends \yii\base\Model
     {
         return [
             'urlToRedirect' => Yii::t('ExternalWebsitesModule.base', '{humhubUrl} will be replaced with the Humhub\'s source URL. E.g https://www.my-external-website.tdl?humhubUrl={humhubUrl} value will redirect https://wwww.my-humhub.tdl/s/space-name/xxx to https://www.my-external-website.tdl?humhubUrl=https://wwww.my-humhub.tdl/s/space-name/xxx'),
+            'preventLeavingSpace' => Yii::t('ExternalWebsitesModule.base', 'by Prevents clicking on links that will show an other page than the current space'),
         ];
     }
 
@@ -77,7 +86,16 @@ class SpaceSettingsForm extends \yii\base\Model
         $settings = Yii::$app->getModule('external-websites')->settings->space($this->contentContainer);
 
         $settings->set('urlToRedirect', $this->urlToRedirect);
+        $settings->set('preventLeavingSpace', $this->preventLeavingSpace);
 
         return true;
+    }
+
+    public function getYesNoList()
+    {
+        return [
+            1 => Yii::t('ExternalWebsitesModule.base', 'Yes'),
+            0 => Yii::t('ExternalWebsitesModule.base', 'No'),
+        ];
     }
 }

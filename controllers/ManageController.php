@@ -100,10 +100,10 @@ class ManageController extends ContentContainerController
 
 
     public function actionSpaceSettings() {
-        $spaceSettingsForm = new SpaceSettingsForm(['contentContainer' => $this->contentContainer]);
+        $model = new SpaceSettingsForm(['contentContainer' => $this->contentContainer]);
 
-        if ($spaceSettingsForm->load(Yii::$app->request->post())) {
-            if ($spaceSettingsForm->validate() && $spaceSettingsForm->save()) {
+        if ($model->load(Yii::$app->request->post())) {
+            if ($model->validate() && $model->save()) {
                 $this->view->saved();
             }
             else {
@@ -113,7 +113,7 @@ class ManageController extends ContentContainerController
         }
 
         return $this->renderAjax('spaceSettings', [
-            'spaceSettingsForm' => $spaceSettingsForm,
+            'model' => $model,
         ]);
     }
 }
