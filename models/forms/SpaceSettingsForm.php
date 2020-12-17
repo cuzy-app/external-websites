@@ -28,9 +28,9 @@ class SpaceSettingsForm extends \yii\base\Model
     public $urlToRedirect;
 
     /**
-     * @var bool
+     * @var bool (0 or 1)
      */
-    public $preventLeavingSpace = false;
+    public $preventLeavingSpace = 0;
 
 
     public function init()
