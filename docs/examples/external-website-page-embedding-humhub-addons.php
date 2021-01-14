@@ -39,7 +39,7 @@ $currentPageUrl = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "htt
 <h2>My page with Humhub addons</h2>
 
 <!-- Where you want to show the addons -->
-<iframe id="humhub-addons" src="<?= rtrim($humhubUrl, '/') ?>/s/<?= $spaceUrl ?>/external-websites/page?websiteId=<?= $humhubWebsiteId ?>&pageUrl=<?= urlencode($currentPageUrl) ?>&pageTitle=<?= urlencode($currentPageTitle) ?>&autoLogin=<?= $autoLogin ?>&token=<?= $token ?>" style="min-height: 700px;" onload="loadIFrameResize();></iframe>
+<iframe id="humhub-addons" src="<?= rtrim($humhubUrl, '/') ?>/s/<?= $spaceUrl ?>/external-websites/page?websiteId=<?= $humhubWebsiteId ?>&pageUrl=<?= urlencode($currentPageUrl) ?>&pageTitle=<?= urlencode($currentPageTitle) ?>&autoLogin=<?= $autoLogin ?>&token=<?= $token ?>" style="min-height: 700px;" onload="loadIFrameResize();"></iframe>
 
 <!-- Just before </body> -->
 <script type="text/javascript" src="js/iframeResizer.min.js"></script>

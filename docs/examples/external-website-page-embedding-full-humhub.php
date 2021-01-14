@@ -48,7 +48,7 @@ if (!empty($token)) {
 <h2>My page with Humhub embedded</h2>
 
 <!-- Where you want to show Humhub -->
-<iframe id="humhub" src="<?= $humhubUrl ?>" style="min-height: 700px;" onload="loadIFrameResize();></iframe>
+<iframe id="humhub" src="<?= $humhubUrl ?>" style="min-height: 700px;" onload="loadIFrameResize();"></iframe>
 
 <!-- Just before </body> -->
 <script type="text/javascript" src="js/iframeResizer.min.js"></script>
