@@ -48,20 +48,22 @@ if (!empty($token)) {
 <h2>My page with Humhub embedded</h2>
 
 <!-- Where you want to show Humhub -->
-<iframe id="humhub" src="<?= $humhubUrl ?>" style="min-height: 700px;"></iframe>
+<iframe id="humhub" src="<?= $humhubUrl ?>" style="min-height: 700px;" onload="loadIFrameResize();></iframe>
 
 <!-- Just before </body> -->
 <script type="text/javascript" src="js/iframeResizer.min.js"></script>
 <script type="text/javascript">
-    const iframes = iFrameResize({
-        log: false,
-        scrolling: true,
-        onInit: function() {
-            // Remove min-height if iframe resizer has loaded (e.g. after SSO login)
-            document.getElementById("humhub").style.minHeight="auto";
-            document.getElementById("humhub").scrolling="no";
-        }
-    }, '#humhub');
+    var loadIFrameResize = function() {
+        const iframes = iFrameResize({
+            log: false,
+            scrolling: true,
+            onInit: function () {
+                // Remove min-height if iframe resizer has loaded (e.g. after SSO login)
+                document.getElementById("humhub").style.minHeight = "auto";
+                document.getElementById("humhub").scrolling = "no";
+            }
+        }, '#humhub');
+    };
 </script>
 
 </body>

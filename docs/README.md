@@ -54,7 +54,7 @@ Edit `for-external-website-embedded-in-humhub.js` to customize the code to your 
 
 **Humhub is embedded, external website is host (parent). Humhub addons are in an iframe.**
 
-You must have something to auto log (and auto register if no account) the user.
+You must have something to auto log (and auto register if no account) the user (see below).
 
 Allow Humhub to be embedded in an iframe by adding `frame-ancestors` in the headers: edit `proteced/config/web.php` and in the `modules` section, add:
 ```
@@ -123,7 +123,7 @@ E.g https://www.my-external-website.tdl?humhubUrl={humhubUrl} value will redirec
 
 ### Auto login
 
-If Humhub is embedded and the module `authclients-addon` is installed, this module can try to auto login with SSO (if user doesn't exists, the account is created automatically)
+If Humhub is embedded and the module [Authclient Addon](https://gitlab.com/funkycram/humhub-modules-authclients-addon) is installed, this module can try to auto login with SSO (if user doesn't exists, the account is created automatically)
 
 In the iframe `src` attribute, you must add this param to the URL:
 ```
