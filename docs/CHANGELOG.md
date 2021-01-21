@@ -1,6 +1,11 @@
 Changelog
 =========
 
+V0.21.1 (January, 21, 2021)
+--------------------
+- Enh: Changed height calculation method with iframeResizer when Humhub addons are embedded in an external website
+
+
 V0.21 (December, 17, 2020)
 --------------------
 - Enh: When Humhub space is embedded, added settings to prevent clicking on links making leave the curent space

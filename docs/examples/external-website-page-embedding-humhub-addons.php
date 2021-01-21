@@ -48,6 +48,7 @@ $currentPageUrl = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "htt
         const iframes = iFrameResize({
             log: false,
             scrolling: true,
+            heightCalculationMethod: 'lowestElement', // For resizing on mentioning
             onInit: function () {
                 // Remove min-height if iframe resizer has loaded (e.g. after SSO login)
                 document.getElementById("humhub-addons").style.minHeight = "auto";
