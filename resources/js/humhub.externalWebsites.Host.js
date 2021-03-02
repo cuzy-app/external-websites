@@ -76,7 +76,10 @@ humhub.module('externalWebsites.Host', function (module, require, $) {
                         replace: false,
                         data: {
                             pageUrl: iframeMessage.pageUrl,
-                            pageTitle: iframeMessage.pageTitle
+                            pageTitle: iframeMessage.pageTitle,
+                            showComments: (iframeMessage.showComments ? 1 : 0),
+                            showLikes: (iframeMessage.showLikes ? 1 : 0),
+                            showPermalink: (iframeMessage.showPermalink ? 1 : 0)
                         }
                     });
                 },

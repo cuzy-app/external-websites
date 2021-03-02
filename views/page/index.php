@@ -19,7 +19,9 @@ use humhub\modules\externalWebsites\widgets\FirstCommentForm;
  * @var $pageUrl string page url
  * @var $title string page title
  * @var $permalink string
- * @var $showOnlyPermalink boolean
+ * @var $showComments boolean default true
+ * @var $showLikes boolean default true
+ * @var $showPermalink boolean default true
  * @var $humhubIsEmbedded integer (0 or 1)
  */
 
@@ -39,25 +41,31 @@ else {
 <div class="panel panel-default">
     <div class="panel-body">
         <div class="wall-entry-controls">
-            <?= Html::a(
-                ' '.Yii::t('ExternalWebsitesModule.base', 'Permalink'),
-                '#',
-                [
-                    'class' => 'permalink',
-                    'data' => [
-                        'action-click' => 'content.permalink',
-                        'content-permalink' => $permalink,
+            <?php if ($showPermalink) : ?>
+                <?= Html::a(
+                    ' '.Yii::t('ExternalWebsitesModule.base', 'Permalink'),
+                    '#',
+                    [
+                        'class' => 'permalink',
+                        'data' => [
+                            'action-click' => 'content.permalink',
+                            'content-permalink' => $permalink,
+                        ]
                     ]
-                ]
-            ) ?>
+                ) ?>
+            <?php endif; ?>
 
-            <?php if ($page !== null && !$showOnlyPermalink): ?>
-                &middot; <?= LikeLink::widget(['object' => $page]); ?>
-                &middot; <i class="fa fa-comment"></i> <?= CommentLink::widget(['object' => $page]); ?>
+            <?php if ($page !== null): ?>
+                <?php if ($showLikes) : ?>
+                    &middot; <?= LikeLink::widget(['object' => $page]); ?>
+                <?php endif; ?>
+                <?php if ($showComments) : ?>
+                    &middot; <i class="fa fa-comment"></i> <?= CommentLink::widget(['object' => $page]); ?>
+                <?php endif; ?>
             <?php endif ?>
         </div>
 
-        <?php if (!$showOnlyPermalink): ?>        
+        <?php if ($showComments): ?>
             <?php if ($page !== null): ?>
                 <?= Comments::widget(['object' => $page]) ?>
             <?php else: ?>
@@ -71,3 +79,12 @@ else {
         <?php endif ?>
     </div>
 </div>
+
+<?php if (!$showComments): ?>
+    <script type="text/javascript">
+        $(function(){
+            $('#ew-website > .panel-body > .row').css({'display': 'flex', 'flex-direction': 'column-reverse'});
+            $('#ew-page-addons > .panel').css({'box-shadow': 'none'});
+        });
+    </script>
+<?php endif ?>

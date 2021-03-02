@@ -17,8 +17,11 @@ function sendUrlToParentIframe() {
     if ('parentIFrame' in window) {
         document.getElementsByTagName("html")[0].classList.add("in-iframe");
         window.parentIFrame.sendMessage({
-            pageUrl: location.href.replace(location.hash,""),
-            pageTitle: document.getElementsByTagName("title")[0].innerText
+            pageUrl: window.location.href.replace(window.location.hash,""),
+            pageTitle: document.getElementsByTagName("title")[0].innerText,
+            showComments: !(document.getElementsByTagName('head')[0].dataset.externalComments == "0"),
+            showLikes: !(document.getElementsByTagName('head')[0].dataset.externalLikes == "0"),
+            showPermalink: !(document.getElementsByTagName('head')[0].dataset.externalPermalink == "0")
         });
     }
 }

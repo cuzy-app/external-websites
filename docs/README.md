@@ -166,6 +166,15 @@ token=your-encoded-token
 [See this code example](https://gitlab.com/funkycram/humhub-modules-external-websites/-/raw/master/docs/examples/external-website-page-embedding-full-humhub.php)
 
 
+### Hide some elements (if the external website is embedded)
+
+It is possible to hide some elements by adding data attributes in the `<head>` tag (of the external website page):
+- `data-external-comments="0"` will hide comments (in this case, the addons are shown above the external page instead of in the right panel)
+- `data-external-likes="0"` will hide likes possibility
+- `data-external-permalink="0"` will hide permalink
+
+E.g.: `<head data-external-likes="0">`
+
 ### Specific behaviors
 
 It is possible to have several websites of the same external website in the same space. In this case, Humhub addons are shared with the websites and the Humhub addons will be related to the website having the smaller `sort_order`.

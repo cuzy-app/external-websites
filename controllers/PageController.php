@@ -78,6 +78,11 @@ class PageController extends ContentContainerController
             $pageTitle = str_ireplace($website->remove_from_url_title, '', $pageTitle); // Remove unwanted text in title
             $title = BaseStringHelper::truncate($pageTitle, 100, '[...]');
 
+            // Get elements to show
+            $showComments = (bool)Yii::$app->request->post('showComments', true);
+            $showLikes = (bool)Yii::$app->request->post('showLikes', true);
+            $showPermalink = (bool)Yii::$app->request->post('showPermalink', true);
+
             // Get content (there can be only 1 unique URL per space, so we don't filter by website)
             $page = Page::find()
                 ->contentContainer($this->contentContainer) // restrict to current space
@@ -123,13 +128,13 @@ class PageController extends ContentContainerController
         }
 
         // If content archived and no comments, show only permalink
-        $showOnlyPermalink = false;
         if (
             $page !== null
             && $page->content->archived
             && Comment::GetCommentCount(Page::class, $page->id) == 0
         ) {
-            $showOnlyPermalink = true;
+            $showComments = false;
+            $showLikes = false;
         }
 
         // Create view params
@@ -140,7 +145,9 @@ class PageController extends ContentContainerController
             'pageUrl' => $pageUrl,
             'title' => $title,
             'permalink' => $permalink,
-            'showOnlyPermalink' => $showOnlyPermalink,
+            'showComments' => $showComments,
+            'showLikes' => $showLikes,
+            'showPermalink' => $showPermalink,
             'humhubIsEmbedded' => $website->humhub_is_embedded,
         ];
 

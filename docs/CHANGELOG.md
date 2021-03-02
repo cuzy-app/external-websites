@@ -1,6 +1,11 @@
 Changelog
 =========
 
+v0.22 (March, 2, 2021)
+--------------------
+- Enh: Added possibility to hide some elements (if the external website is embedded) by adding data attributes in the `<head>` tag. Elements that can be hidden are comments, likes or permalink
+
+
 V0.21.1 (January, 21, 2021)
 --------------------
 - Enh: Changed height calculation method with iframeResizer when Humhub addons are embedded in an external website
