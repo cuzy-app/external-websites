@@ -13,7 +13,7 @@ Uses [iFrame Resizer](https://github.com/davidjbradshaw/iframe-resizer).
 - Add Humhub addons to external website pages; 2 possibilities:
   - external website is embedded in Humhub
   - Humhub addons are embedded in external website 
-- Space's contents redirected to external website 
+- Space's contents URL redirected to external website 
 - Humhub embedded in an external website
 
 
@@ -107,7 +107,7 @@ wget https://gitlab.com/funkycram/humhub-modules-external-websites/-/raw/master/
 [See this code example for the external website to embed full Humhub](https://gitlab.com/funkycram/humhub-modules-external-websites/-/raw/master/docs/examples/external-website-page-embedding-full-humhub.php)
 
 
-### Space's contents redirected to external website
+### Space's contents URL redirected to external website
 
 In the space's module settings, it is possible to activate contents redirections to external website (see "Humhub embedded in an external website").
 

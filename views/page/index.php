@@ -7,7 +7,6 @@
  */
 
 use yii\helpers\Html;
-use yii\helpers\Url;
 use humhub\modules\like\widgets\LikeLink;
 use humhub\modules\comment\widgets\Comments;
 use humhub\modules\comment\widgets\CommentLink;

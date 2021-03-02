@@ -140,13 +140,14 @@ class Events
         try {
             /* @var $space \humhub\modules\space\models\Space */
             $space = $event->sender->space;
-            if ($space->isModuleEnabled('external-websites') && $space->isAdmin() && $space->isMember()) {
+            if ($space->isModuleEnabled('external-websites')) {
                 $event->sender->addItem([
                     'label' => Yii::t('ExternalWebsitesModule.base', 'Manage external websites & settings'),
                     'group' => 'admin',
                     'url' => $space->createUrl('/external-websites/manage/websites'),
                     'icon' => '<i class="fa fa-desktop"></i>',
                     'isActive' => MenuLink::isActiveState('external-websites', 'manage', 'websites'),
+                    'isVisible' => $space->isAdmin(),
                 ]);
             }
         } catch (\Throwable $e) {
