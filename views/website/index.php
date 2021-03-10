@@ -6,8 +6,7 @@
  * @author [Marc Farre](https://marc.fun)
  */
 
-use yii\helpers\Url;
-use yii\helpers\Html;
+use humhub\modules\externalWebsites\assets\HostAssets;
 
 /**
  * @var $contentContainer humhub\modules\space\models\Space
@@ -15,7 +14,7 @@ use yii\helpers\Html;
  * @var $website humhub\modules\externalWebsites\models\Website
  */
 
-humhub\modules\externalWebsites\assets\HostAssets::register($this);
+HostAssets::register($this);
 $this->registerJsConfig('externalWebsites.Host', [
     'pageActionUrl' => $contentContainer->createUrl('page/index', ['websiteId' => $website->id])
 ]);
@@ -25,10 +24,17 @@ $this->registerJsConfig('externalWebsites.Host', [
     <div class="panel-body">
         <div class="row">
             <div class="col-md-9 layout-content-container" id="ew-page-iframed">
-                <iframe id="ew-page-container" src="<?= $pageUrl ?>" onload="humhub.modules.externalWebsites.Host.loadIFrameResizer()" allowfullscreen></iframe>
             </div>
             <div class="col-md-3 layout-sidebar-container" id="ew-page-addons">
             </div>
         </div>
     </div>
 </div>
+
+<?php // set iframe tag after HostAssets is completely loaded as it calls loadIFrameResizer function after loading ?>
+<script type="text/javascript">
+    $(function(){
+        var pageUrl = <?= json_encode($pageUrl, JSON_HEX_TAG) ?>;
+        $('#ew-page-iframed').append('<iframe id="ew-page-container" src="'+pageUrl+'" onload="humhub.modules.externalWebsites.Host.loadIFrameResizer()" allowfullscreen></iframe>');
+    });
+</script>

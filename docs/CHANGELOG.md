@@ -1,6 +1,11 @@
 Changelog
 =========
 
+v0.23 (March, 11, 2021)
+--------------------
+- Fix: When a website is embeded in Humhub, in some cases (page refresh mainly) comments could not be loaded (`loadIFrameResizer()` could called before JS assets file was loaded)
+
+
 v0.22 (March, 2, 2021)
 --------------------
 - Enh: Added possibility to hide some elements (if the external website is embedded) by adding data attributes in the `<head>` tag. Elements that can be hidden are comments, likes or permalink

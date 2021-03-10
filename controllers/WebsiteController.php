@@ -8,16 +8,10 @@
 
 namespace humhub\modules\externalWebsites\controllers;
 
-use Yii;
-use yii\helpers\Url;
 use yii\web\HttpException;
-use yii\helpers\BaseStringHelper;
 use humhub\modules\content\components\ContentContainerController;
-use humhub\modules\stream\actions\ContentContainerStream;
 use humhub\modules\externalWebsites\models\Website;
 use humhub\modules\externalWebsites\models\Page;
-use humhub\modules\content\models\Content;
-use humhub\modules\user\models\Group;
 
 
 /**

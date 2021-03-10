@@ -11,6 +11,7 @@ use humhub\modules\like\widgets\LikeLink;
 use humhub\modules\comment\widgets\Comments;
 use humhub\modules\comment\widgets\CommentLink;
 use humhub\modules\externalWebsites\widgets\FirstCommentForm;
+use humhub\modules\externalWebsites\assets\EmbeddedAssets;
 
 /**
  * @var $contentContainer humhub\modules\space\models\Space
@@ -34,7 +35,7 @@ if (!$humhubIsEmbedded) {
 }
 // If Humhub is embedded
 else {
-    humhub\modules\externalWebsites\assets\EmbeddedAssets::register($this);
+    EmbeddedAssets::register($this);
 }
 ?>
 
@@ -80,11 +81,12 @@ else {
     </div>
 </div>
 
-<?php if (!$showComments): ?>
-    <script type="text/javascript">
-        $(function(){
-            $('#ew-website > .panel-body > .row').css({'display': 'flex', 'flex-direction': 'column-reverse'});
-            $('#ew-page-addons > .panel').css({'box-shadow': 'none'});
-        });
-    </script>
-<?php endif ?>
+<script type="text/javascript">
+    $(function(){
+        humhub.modules.externalWebsites.Host.updateBrowserUrlAndToggleSidebar();
+        <?php if (!$showComments): ?>
+        $('#ew-website > .panel-body > .row').css({'display': 'flex', 'flex-direction': 'column-reverse'});
+        $('#ew-page-addons > .panel').css({'box-shadow': 'none'});
+        <?php endif; ?>
+    });
+</script>

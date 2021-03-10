@@ -2,49 +2,43 @@
 humhub.module('externalWebsites.Host', function (module, require, $) {
     module.initOnPjaxLoad = true;
 
-    // set global vars
-    var iframeMessage;
+    var updateBrowserUrlAndToggleSidebar = function() {
+        // Update browser URL
+        window.history.replaceState({},'', module.config.permalink);
 
-    var init = function(isPjax) { 
+        // If theme body has a sidebar (Enterprise theme)
+        if ($('#wrapper').length) {
 
-        if (isPjax && $('#ew-website').length) {
-            // Update browser URL
-            window.history.replaceState({},'', module.config.permalink);
+            // If sidebar is toggled, resize iframe container
+            var observer = new MutationObserver(function(mutations) {
+                mutations.forEach(function(mutation) {
+                    if (mutation.attributeName === "class") {
+                        // var attributeValue = $(mutation.target).prop(mutation.attributeName);
 
-            $(function() {
-
-                // If theme body has a sidebar (Enterprise theme)
-                if ($('#wrapper').length) {
-
-                    // If sidebar is toggled, resize iframe container
-                    var observer = new MutationObserver(function(mutations) {
-                        mutations.forEach(function(mutation) {
-                            if (mutation.attributeName === "class") {
-                                // var attributeValue = $(mutation.target).prop(mutation.attributeName);
-
-                                // Resize after 1 seconds because of the 0.5 seconds transition CSS
-                                setTimeout(function(){
-                                    document.getElementById('ew-page-container').iFrameResizer.resize();
-                                },1000);
-                            }
-                        });
-                    });
-                    observer.observe($("#wrapper")[0], {
-                        attributes: true
-                    });
-
-                    // Hide sidebar if needed
-                    if (typeof module.config.hideSidebar !== 'undefined' && module.config.hideSidebar) {
-                        $('#wrapper').addClass('toggled');
-                        module.config.hideSidebar = false; // can be reactivated by `url-content.php`
+                        // Resize after 1 seconds because of the 0.5 seconds transition CSS
+                        setTimeout(function(){
+                            document.getElementById('ew-page-container').iFrameResizer.resize();
+                        },1000);
                     }
-                }
+                });
             });
+            observer.observe($("#wrapper")[0], {
+                attributes: true
+            });
+
+            // Hide sidebar if needed
+            if (typeof module.config.hideSidebar !== 'undefined' && module.config.hideSidebar) {
+                $('#wrapper').addClass('toggled');
+                module.config.hideSidebar = false; // can be reactivated by `url-content.php`
+            }
         }
     }
 
     // Executed by views/page/index.php in the iframe tag. See https://github.com/davidjbradshaw/iframe-resizer/issues/443#issuecomment-331721886
     var loadIFrameResizer = function () {
+        // set global vars
+        var iframeMessage;
+
         // When IframeResize plugin is loaded (in resources folder)
         iFrameResize(
             {
@@ -90,7 +84,7 @@ humhub.module('externalWebsites.Host', function (module, require, $) {
 
 
     module.export({
-        init: init,
+        updateBrowserUrlAndToggleSidebar: updateBrowserUrlAndToggleSidebar,
         loadIFrameResizer: loadIFrameResizer
     });
 });
