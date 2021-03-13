@@ -23,9 +23,10 @@ $this->registerJsConfig('externalWebsites.Host', [
 <div id="ew-website" class="panel panel-default">
     <div class="panel-body">
         <div class="row">
-            <div class="col-md-9 layout-content-container" id="ew-page-iframed">
+            <?php // `col-md-x` and `layout-sidebar-container` will be added by the view `page/index.php` in JS ?>
+            <div class="layout-content-container" id="ew-page-iframed">
             </div>
-            <div class="col-md-3 layout-sidebar-container" id="ew-page-addons">
+            <div id="ew-page-addons">
             </div>
         </div>
     </div>

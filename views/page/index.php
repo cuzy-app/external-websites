@@ -39,8 +39,10 @@ else {
 }
 ?>
 
+<?php if ($showComments): ?>
 <div class="panel panel-default">
     <div class="panel-body">
+<?php endif; ?>
         <div class="wall-entry-controls">
             <?php if ($showPermalink) : ?>
                 <?= Html::a(
@@ -78,19 +80,21 @@ else {
                 ]) ?>
             <?php endif ?>
         <?php endif ?>
+<?php if ($showComments): ?>
     </div>
 </div>
+<?php endif ?>
 
 <script type="text/javascript">
-    var originalPanelBoxShadowValue = $('#ew-page-addons > .panel').css('box-shadow');
+    <?php if (!$showComments): ?>
+    $('#ew-page-iframed').removeClass('col-md-9').addClass('col-md-12');
+    $('#ew-page-addons').removeClass('col-md-3', 'layout-sidebar-container').addClass('col-md-12', 'layout-content-container');
+    <?php else: ?>
+    $('#ew-page-iframed').removeClass('col-md-12').addClass('col-md-9');
+    $('#ew-page-addons').removeClass('col-md-12', 'layout-content-container').addClass('col-md-3', 'layout-sidebar-container');
+    <?php endif; ?>
+
     $(function(){
         humhub.modules.externalWebsites.Host.updateBrowserUrlAndToggleSidebar();
-        <?php if (!$showComments): ?>
-        $('#ew-website > .panel-body > .row').css({'display': 'flex', 'flex-direction': 'column-reverse'});
-        $('#ew-page-addons > .panel').css({'box-shadow': 'none'});
-        <?php else: ?>
-        $('#ew-website > .panel-body > .row').css({'display': 'block'});
-        $('#ew-page-addons > .panel').css({'box-shadow': originalPanelBoxShadowValue});
-        <?php endif; ?>
     });
 </script>
