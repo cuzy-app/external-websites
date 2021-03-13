@@ -82,11 +82,15 @@ else {
 </div>
 
 <script type="text/javascript">
+    var originalPanelBoxShadowValue = $('#ew-page-addons > .panel').css('box-shadow');
     $(function(){
         humhub.modules.externalWebsites.Host.updateBrowserUrlAndToggleSidebar();
         <?php if (!$showComments): ?>
         $('#ew-website > .panel-body > .row').css({'display': 'flex', 'flex-direction': 'column-reverse'});
         $('#ew-page-addons > .panel').css({'box-shadow': 'none'});
+        <?php else: ?>
+        $('#ew-website > .panel-body > .row').css({'display': 'block'});
+        $('#ew-page-addons > .panel').css({'box-shadow': originalPanelBoxShadowValue});
         <?php endif; ?>
     });
 </script>

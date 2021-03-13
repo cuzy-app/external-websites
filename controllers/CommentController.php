@@ -42,7 +42,9 @@ class CommentController extends ParentCommentController
         }
 
         // Get website
-        $website = Website::findOne($websiteId);
+        if (($website = Website::findOne($websiteId)) === null) {
+            throw new HttpException(400, 'Website not found!');
+        }
 
         // Get space
         $space = Space::findOne($website->space_id);
@@ -58,9 +60,9 @@ class CommentController extends ParentCommentController
             $page->website_id = $websiteId;
             $page->page_url = $pageUrl;
             $page->title = $title;
-            $page->content['visibility'] = $website->default_content_visibility;
-            $page->content['archived'] = $website->default_content_archived;
             $page->save();
+            $page->content->visibility = $website->default_content_visibility;
+            $page->content->archived = $website->default_content_archived;
         }
 
         $this->target = $page;

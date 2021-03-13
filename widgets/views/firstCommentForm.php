@@ -15,7 +15,7 @@ use humhub\modules\comment\models\Comment;
 /* @var $model Comment */
 /* @var $id string unique object id */
 /* @var $isNestedComment boolean */
-/** @var Module $contentModule */
+/* @var Module $contentModule */
 
 /**
  * This form is nearly identical to humhub\modules\comment\widgets\views\form.php
@@ -28,11 +28,11 @@ use humhub\modules\comment\models\Comment;
  * @var $this View
  * @var $this \humhub\modules\ui\view\components\View
  * @var $id string for tags attributes
- * @var $model Commen
+ * @var $model Comment
  * @var $websiteId int
  * @var $pageUrl string
  * @var $title string
- * @var Module $contentModule
+ * @var $contentModule Module
  */
 
 /** @var \humhub\modules\content\Module $contentModule */

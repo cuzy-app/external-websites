@@ -11,7 +11,6 @@ namespace humhub\modules\externalWebsites\controllers;
 use Yii;
 use yii\web\HttpException;
 use yii\helpers\BaseStringHelper;
-use Firebase\JWT\JWT;
 use humhub\modules\content\components\ContentContainerController;
 use humhub\modules\stream\actions\ContentContainerStream;
 use humhub\modules\externalWebsites\models\Website;
@@ -30,7 +29,6 @@ class PageController extends ContentContainerController
             'stream' => [
                 'class' => ContentContainerStream::class,
                 'includes' => Page::class,
-                'mode' => ContentContainerStream::MODE_NORMAL,
                 'contentContainer' => $this->contentContainer
             ],
         ];
@@ -51,8 +49,7 @@ class PageController extends ContentContainerController
     public function actionIndex ($id = null, $websiteId = null) {
 
         // If page exists AND called from URL
-        if ($id !== null) {
-            $page = Page::findOne($id);
+        if ($id !== null && ($page = Page::findOne($id))) {
             $website = $page->website;
             $title = $page->title;
             $pageUrl = $page->page_url;
@@ -160,40 +157,5 @@ class PageController extends ContentContainerController
         $this->layout = '@external-websites/views/layouts/iframe';
         $this->subLayout = '@external-websites/views/page/_layoutForIframe';
         return $this->render('index', $viewParams);
-    }
-
-
-    /**
-     * Check permission using JWT Bearer Header
-     *
-     * @return boolean
-     * @throws HttpException
-     */
-    private function checkPermissionWithJwt()
-    {
-        /** @var Module $module */
-        $module = Yii::$app->getModule('external-websites');
-
-        // If no JWT key in the configuration, do not check permission with JWT
-        if (empty($module->jwtKey)) {
-            return true;
-        }
-
-        $token = Yii::$app->request->get('token');
-
-        try {
-            $validData = JWT::decode($token, $module->jwtKey, ['HS512']);
-
-            if (!empty($validData->website_id)) {
-                if ($validData->website_id == $website->id) {
-                    return true;
-                }
-            }
-
-        } catch (Exception $e) {
-            throw new HttpException(401, $e->getMessage());
-        }
-
-        return false;
     }
 }

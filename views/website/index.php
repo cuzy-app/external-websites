@@ -31,7 +31,7 @@ $this->registerJsConfig('externalWebsites.Host', [
     </div>
 </div>
 
-<?php // set iframe tag after HostAssets is completely loaded as it calls loadIFrameResizer function after loading ?>
+<?php // Set iframe tag after HostAssets is completely loaded as it calls loadIFrameResizer function after loading ?>
 <script type="text/javascript">
     $(function(){
         var pageUrl = <?= json_encode($pageUrl, JSON_HEX_TAG) ?>;
