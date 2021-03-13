@@ -39,50 +39,46 @@ else {
 }
 ?>
 
-<?php if ($showComments): ?>
-<div class="panel panel-default">
-    <div class="panel-body">
+<?php if (!$showComments): ?>
+<br><hr>
 <?php endif; ?>
-        <div class="wall-entry-controls">
-            <?php if ($showPermalink) : ?>
-                <?= Html::a(
-                    ' '.Yii::t('ExternalWebsitesModule.base', 'Permalink'),
-                    '#',
-                    [
-                        'class' => 'permalink',
-                        'data' => [
-                            'action-click' => 'content.permalink',
-                            'content-permalink' => $permalink,
-                        ]
-                    ]
-                ) ?>
-            <?php endif; ?>
 
-            <?php if ($page !== null): ?>
-                <?php if ($showLikes) : ?>
-                    &middot; <?= LikeLink::widget(['object' => $page]); ?>
-                <?php endif; ?>
-                <?php if ($showComments) : ?>
-                    &middot; <i class="fa fa-comment"></i> <?= CommentLink::widget(['object' => $page]); ?>
-                <?php endif; ?>
-            <?php endif ?>
-        </div>
+<div class="wall-entry-controls">
+    <?php if ($showPermalink) : ?>
+        <?= Html::a(
+            ' '.Yii::t('ExternalWebsitesModule.base', 'Permalink'),
+            '#',
+            [
+                'class' => 'permalink',
+                'data' => [
+                    'action-click' => 'content.permalink',
+                    'content-permalink' => $permalink,
+                ]
+            ]
+        ) ?>
+    <?php endif; ?>
 
-        <?php if ($showComments): ?>
-            <?php if ($page !== null): ?>
-                <?= Comments::widget(['object' => $page]) ?>
-            <?php else: ?>
-                <?= FirstCommentForm::widget([
-                    'contentContainer' => $contentContainer,
-                    'websiteId' => $website->id,
-                    'title' => $title,
-                    'pageUrl' => $pageUrl,
-                ]) ?>
-            <?php endif ?>
-        <?php endif ?>
-<?php if ($showComments): ?>
-    </div>
+    <?php if ($page !== null): ?>
+        <?php if ($showLikes) : ?>
+            &middot; <?= LikeLink::widget(['object' => $page]); ?>
+        <?php endif; ?>
+        <?php if ($showComments) : ?>
+            &middot; <i class="fa fa-comment"></i> <?= CommentLink::widget(['object' => $page]); ?>
+        <?php endif; ?>
+    <?php endif ?>
 </div>
+
+<?php if ($showComments): ?>
+    <?php if ($page !== null): ?>
+        <?= Comments::widget(['object' => $page]) ?>
+    <?php else: ?>
+        <?= FirstCommentForm::widget([
+            'contentContainer' => $contentContainer,
+            'websiteId' => $website->id,
+            'title' => $title,
+            'pageUrl' => $pageUrl,
+        ]) ?>
+    <?php endif ?>
 <?php endif ?>
 
 <script type="text/javascript">
