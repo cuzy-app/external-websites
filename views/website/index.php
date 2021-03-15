@@ -24,6 +24,7 @@ $this->registerJsConfig('externalWebsites.Host', [
     <div class="panel-body">
         <div class="row">
             <div id="ew-page-iframed" class="col-md-12">
+                <br><br>
             </div>
             <div id="ew-page-addons" class="col-md-12">
             </div>
@@ -35,6 +36,6 @@ $this->registerJsConfig('externalWebsites.Host', [
 <script type="text/javascript">
     $(function(){
         var pageUrl = <?= json_encode($pageUrl, JSON_HEX_TAG) ?>;
-        $('#ew-page-iframed').append('<iframe id="ew-page-container" src="'+pageUrl+'" onload="humhub.modules.externalWebsites.Host.loadIFrameResizer()" allowfullscreen></iframe>');
+        $('#ew-page-iframed').prepend('<iframe id="ew-page-container" src="'+pageUrl+'" onload="humhub.modules.externalWebsites.Host.loadIFrameResizer()" allowfullscreen></iframe>');
     });
 </script>

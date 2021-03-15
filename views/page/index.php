@@ -39,10 +39,6 @@ else {
 }
 ?>
 
-<?php if (!$showComments): ?>
-<br>
-<?php endif; ?>
-
 <div class="wall-entry-controls">
     <?php if ($showPermalink) : ?>
         <?= Html::a(
