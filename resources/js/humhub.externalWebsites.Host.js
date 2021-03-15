@@ -28,7 +28,12 @@ humhub.module('externalWebsites.Host', function (module, require, $) {
 
             // Hide sidebar if needed
             if (typeof module.config.hideSidebar !== 'undefined' && module.config.hideSidebar) {
-                $('#wrapper').addClass('toggled');
+                if ($(window).width() < 768) {
+                    $('#wrapper').removeClass('toggled');
+                }
+                else {
+                    $('#wrapper').addClass('toggled');
+                }
                 module.config.hideSidebar = false; // to avoid being reactivated by the view page/index
             }
         }
