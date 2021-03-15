@@ -40,7 +40,7 @@ else {
 ?>
 
 <?php if (!$showComments): ?>
-<br><hr>
+<br>
 <?php endif; ?>
 
 <div class="wall-entry-controls">
@@ -84,10 +84,10 @@ else {
 <script type="text/javascript">
     <?php if (!$showComments): ?>
     $('#ew-page-iframed').removeClass('col-md-9').addClass('col-md-12');
-    $('#ew-page-addons').removeClass('col-md-3', 'layout-sidebar-container').addClass('col-md-12', 'layout-content-container');
+    $('#ew-page-addons').removeClass('col-md-3', 'layout-sidebar-container').addClass('col-md-12');
     <?php else: ?>
     $('#ew-page-iframed').removeClass('col-md-12').addClass('col-md-9');
-    $('#ew-page-addons').removeClass('col-md-12', 'layout-content-container').addClass('col-md-3', 'layout-sidebar-container');
+    $('#ew-page-addons').removeClass('col-md-12').addClass('col-md-3', 'layout-sidebar-container');
     <?php endif; ?>
 
     $(function(){
