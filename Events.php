@@ -32,7 +32,7 @@ class Events
     public static function onSpaceMenuInit($event)
     {
         // Get current page URL if exists
-        $currentTitle = Yii::$app->request->get('title');
+        $currentId = Yii::$app->request->get('id');
 
         $space = $event->sender->space;
 
@@ -53,8 +53,8 @@ class Events
                     'icon' => '<i class="fa '.$website->icon.'"></i>',
                     'isActive' => (
                         MenuLink::isActiveState('external-websites', 'website', 'index')
-                        && $currentTitle !== null
-                        && $currentTitle == $website->title
+                        && $currentId
+                        && $currentId == $website->id
                     ),
                     'htmlOptions' => $website->humhub_is_embedded ? ['target' => '_blank'] : [],
                 ]);

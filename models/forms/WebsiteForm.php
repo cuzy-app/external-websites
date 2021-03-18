@@ -59,7 +59,7 @@ class WebsiteForm extends \yii\base\Model
     public function rules()
     {
        return [
-           [['title', 'icon', 'first_page_url'], 'required'],
+           [['title', 'icon', 'first_page_url', 'humhub_is_embedded'], 'required'],
            [['title', 'icon', 'first_page_url', 'remove_from_url_title'], 'string'],
            [['sort_order', 'default_content_visibility', 'default_content_archived'], 'integer'],
            [['humhub_is_embedded', 'show_in_menu', 'hide_sidebar'], 'boolean'],

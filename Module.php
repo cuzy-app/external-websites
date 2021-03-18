@@ -12,7 +12,6 @@ use Yii;
 use humhub\modules\content\components\ContentContainerModule;
 use humhub\modules\content\components\ContentContainerActiveRecord;
 use humhub\modules\space\models\Space;
-use humhub\modules\user\models\User;
 use humhub\modules\externalWebsites\models\Website;
 use humhub\modules\externalWebsites\models\Page;
 
@@ -106,10 +105,6 @@ class Module extends ContentContainerModule
     public function disableContentContainer(ContentContainerActiveRecord $container)
     {
         parent::disableContentContainer($container);
-
-        foreach (Page::find()->contentContainer($container)->all() as $page) {
-            $page->delete();
-        }
 
         foreach (Website::findAll(['space_id' => $container->id]) as $website)
         {
