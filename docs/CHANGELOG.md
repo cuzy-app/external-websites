@@ -1,6 +1,11 @@
 Changelog
 =========
 
+v0.24 (March, 18, 2021)
+--------------------
+- Fix: Various fix for websites embeded
+
+
 v0.23 (March, 11, 2021)
 --------------------
 - Fix: When a website is embeded in Humhub, in some cases (page refresh mainly) comments could not be loaded (`loadIFrameResizer()` could called before JS assets file was loaded)
