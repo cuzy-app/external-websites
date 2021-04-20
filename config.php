@@ -11,7 +11,6 @@ use humhub\modules\space\widgets\Menu as SpaceMenu;
 use humhub\modules\stream\widgets\WallStreamFilterNavigation;
 use humhub\modules\stream\models\WallStreamQuery;
 use humhub\modules\space\widgets\HeaderControlsMenu;
-use humhub\modules\ui\menu\widgets\Menu as UiMenu;
 use humhub\modules\ui\view\components\View;
 use humhub\modules\content\components\ContentContainerController;
 use humhub\components\Controller;
@@ -38,7 +37,7 @@ return [
 		],
         [
             'class' => HeaderControlsMenu::class,
-            'event' => UiMenu::EVENT_INIT,
+            'event' => HeaderControlsMenu::EVENT_INIT,
             'callback' => [Events::class, 'onSpaceAdminMenuInit']
 		],
 		[

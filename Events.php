@@ -137,21 +137,21 @@ class Events
 
     public static function onSpaceAdminMenuInit($event)
     {
-        try {
-            /* @var $space \humhub\modules\space\models\Space */
-            $space = $event->sender->space;
-            if ($space->isModuleEnabled('external-websites')) {
-                $event->sender->addItem([
-                    'label' => Yii::t('ExternalWebsitesModule.base', 'Manage external websites & settings'),
-                    'group' => 'admin',
-                    'url' => $space->createUrl('/external-websites/manage/websites'),
-                    'icon' => '<i class="fa fa-desktop"></i>',
-                    'isActive' => MenuLink::isActiveState('external-websites', 'manage', 'websites'),
-                    'isVisible' => $space->isAdmin(),
-                ]);
-            }
-        } catch (\Throwable $e) {
-            Yii::error($e);
+        /** @var humhub\modules\space\widgets\HeaderControlsMenu $headerMenu */
+        $headerMenu = $event->sender;
+
+        /* @var $space \humhub\modules\space\models\Space */
+        $space = $headerMenu->space;
+
+        if ($space->isModuleEnabled('external-websites')) {
+            $event->sender->addItem([
+                'label' => Yii::t('ExternalWebsitesModule.base', 'Manage external websites & settings'),
+                'group' => 'admin',
+                'url' => $space->createUrl('/external-websites/manage/websites'),
+                'icon' => '<i class="fa fa-desktop"></i>',
+                'isActive' => MenuLink::isActiveState('external-websites', 'manage', 'websites'),
+                'isVisible' => $space->isAdmin(),
+            ]);
         }
     }
 
@@ -170,17 +170,23 @@ class Events
 
     public static function onControllerInit($event)
     {
+        if (Yii::$app->user->isGuest || !method_exists(Yii::$app->request, 'get')) {
+            return;
+        }
         // If JWT token in URL param, try adding groups to current user
         $token = Yii::$app->request->get('token');
-        if (!Yii::$app->user->isGuest && !empty($token)) {
+        if ($token = Yii::$app->request->get('token')) {
             self::tryAddingGroupsToUser($token);
         }
     }
 
     public static function onControllerBeforeAction($event)
     {
+        if (!Yii::$app->user->isGuest || !method_exists(Yii::$app->request, 'get')) {
+            return;
+        }
         // If autologin in URL param, try auto login
-        if (Yii::$app->user->isGuest && Yii::$app->request->get('autoLogin')) {
+        if (Yii::$app->request->get('autoLogin')) {
             self::tryAutoLogin();
         }
     }
@@ -231,10 +237,11 @@ class Events
                 if (isset($validData->groupsId) && is_array($validData->groupsId)) {
 
                     // Add current user to groups
-                    foreach(Group::findAll($validData->groupsId) as $group)
+                    foreach(Group::findAll($validData->groupsId) as $group) {
                         if (!$group->isMember(Yii::$app->user->identity)) {
                             $group->addUser(Yii::$app->user->identity);
                         }
+                    }
                 }
             } catch (Exception $e) {
                 throw new HttpException(401, $e->getMessage());

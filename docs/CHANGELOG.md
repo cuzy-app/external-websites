@@ -1,6 +1,10 @@
 Changelog
 =========
 
+v0.25 (April, 20, 2021)
+--------------------
+- Fix: Events could make console commands crash
+
 v0.24 (March, 18, 2021)
 --------------------
 - Fix: Various fix for websites embeded
