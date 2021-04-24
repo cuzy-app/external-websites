@@ -31,6 +31,8 @@ class Events
 
     public static function onSpaceMenuInit($event)
     {
+        $menu = $event->sender;
+
         // Get current page URL if exists
         $currentId = Yii::$app->request->get('id');
 
@@ -46,18 +48,17 @@ class Events
                 ->all();
 
             foreach ($websites as $website) {
-                $event->sender->addItem([
+                $menu->addEntry(new MenuLink([
                     'label' => $website->title,
-                    'group' => 'modules',
                     'url' => $website->url,
-                    'icon' => '<i class="fa '.$website->icon.'"></i>',
+                    'icon' => $website->icon,
                     'isActive' => (
                         MenuLink::isActiveState('external-websites', 'website', 'index')
                         && $currentId
                         && $currentId == $website->id
                     ),
                     'htmlOptions' => $website->humhub_is_embedded ? ['target' => '_blank'] : [],
-                ]);
+                ]));
             }
         }
     }
@@ -137,27 +138,26 @@ class Events
 
     public static function onSpaceAdminMenuInit($event)
     {
-        /** @var humhub\modules\space\widgets\HeaderControlsMenu $headerMenu */
+        /** @var \humhub\modules\space\widgets\HeaderControlsMenu $headerMenu */
         $headerMenu = $event->sender;
 
         /* @var $space \humhub\modules\space\models\Space */
         $space = $headerMenu->space;
 
         if ($space->isModuleEnabled('external-websites')) {
-            $event->sender->addItem([
+            $headerMenu->addEntry(new MenuLink([
                 'label' => Yii::t('ExternalWebsitesModule.base', 'Manage external websites & settings'),
-                'group' => 'admin',
                 'url' => $space->createUrl('/external-websites/manage/websites'),
-                'icon' => '<i class="fa fa-desktop"></i>',
+                'icon' => 'desktop',
                 'isActive' => MenuLink::isActiveState('external-websites', 'manage', 'websites'),
                 'isVisible' => $space->isAdmin(),
-            ]);
+            ]));
         }
     }
 
     public static function onViewBeginBody($event)
     {
-        /** @var LayoutAddons $layoutAddons */
+        /** @var \humhub\widgets\LayoutAddons $layoutAddons */
         $view = $event->sender;
 
         $module = Yii::$app->getModule('external-websites');
