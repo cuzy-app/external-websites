@@ -14,7 +14,7 @@ use humhub\modules\externalWebsites\models\forms\WebsiteForm;
 /**
  * @var $this \humhub\components\View
  * @var $contentContainer \humhub\modules\space\models\Space
- * @var $searchModel \humhub\modules\calendarEventsExtension\models\EventSearch
+ * @var $searchModel \humhub\modules\externalWebsites\models\WebsiteSearch
  * @var $dataProvider \yii\data\ActiveDataProvider
  */
 

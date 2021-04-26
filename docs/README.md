@@ -177,6 +177,14 @@ E.g.: `<head data-external-likes="0">`
 
 ### Specific behaviors
 
+#### If multiple websites in the same space
+
 It is possible to have several websites of the same external website in the same space. In this case, Humhub addons are shared with the websites and the Humhub addons will be related to the website having the smaller `sort_order`.
 
+#### Archiving contents
+
 If the content related to a page is archived and all comments have been removed, only the permalink will be shown
+
+#### Notifications (following)
+For Humhub addons, each content created (if new comment about a website's page) has for creator the website creator. This creator will not follow the content by default.
+But all users that have chosen to receive a notification for all new content will follow these contents.

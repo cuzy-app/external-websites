@@ -1,6 +1,10 @@
 Changelog
 =========
 
+v0.26 (April, 26, 2021)
+--------------------
+- Enh: Prevent pages author from following the new pages
+
 v0.25 (April, 20, 2021)
 --------------------
 - Fix: Events could make console commands crash

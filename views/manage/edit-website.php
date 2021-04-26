@@ -15,7 +15,7 @@ use humhub\modules\externalWebsites\widgets\IconSelect;
 
 /**
  * @var $this \humhub\components\View
- * @var $model \humhub\modules\calendarEventsExtension\models\forms\EventForm
+ * @var $model \humhub\modules\externalWebsites\models\forms\WebsiteForm
  */
 ?>
 

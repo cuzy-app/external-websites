@@ -168,12 +168,14 @@ class Page extends ContentActiveRecord implements Searchable
 
     /**
      * @inheritdoc
-     * Set created_by to external_websites_website creator
      */
     public function beforeSave($insert)
     {
-        $this->created_by = $this->website->created_by;
-        $this->content->created_by = $this->created_by;
+        if ($insert) {
+            // Set created_by to external_websites_website creator
+            $this->created_by = $this->website->created_by;
+            $this->content->created_by = $this->created_by;
+        }
 
         return parent::beforeSave($insert);
     }
@@ -181,20 +183,25 @@ class Page extends ContentActiveRecord implements Searchable
 
     /**
      * @inheritdoc
-     * For all users that receive notifications for new content, make them follow the content to sent notifications if new comments, as this module doesn't send notification for each new content ($this->silentContentCreation value is true)
      */
     public function afterSave($insert, $changedAttributes)
     {
+        parent::afterSave($insert, $changedAttributes);
+
         if ($insert) {
-            $space = $this->content->container;
-            foreach ($space->memberships as $membership) {
+            $obj = $this->content->getPolymorphicRelation();
+
+            // Turn off notifications for creator
+            $obj->follow($this->content->created_by, false);
+
+            // For all users that receive notifications for new content, make them follow the content to sent notifications if new comments, as this module doesn't send notification for each new content ($this->silentContentCreation value is true)
+            $currentSpace = $this->content->container;
+            foreach ($currentSpace->memberships as $membership) {
                 if ($membership->send_notifications) {
-                    $this->follow($membership->user_id, true);
+                    $obj->follow($membership->user_id, true);
                 }
             }
         }
-
-        return parent::afterSave($insert, $changedAttributes);
     }
 
 }
