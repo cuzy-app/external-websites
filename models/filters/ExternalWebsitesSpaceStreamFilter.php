@@ -3,7 +3,7 @@
  * External Websites
  * @link https://gitlab.com/funkycram/humhub-modules-external-websites
  * @license https://gitlab.com/funkycram/humhub-modules-external-websites/-/raw/master/docs/LICENCE.md
- * @author [Marc Farre](https://marc.fun)
+ * @author [Marc FARRE](https://marc.fun)
  */
 
 namespace humhub\modules\externalWebsites\models\filters;

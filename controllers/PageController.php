@@ -3,7 +3,7 @@
  * External Websites
  * @link https://gitlab.com/funkycram/humhub-modules-external-websites
  * @license https://gitlab.com/funkycram/humhub-modules-external-websites/-/raw/master/docs/LICENCE.md
- * @author [Marc Farre](https://marc.fun)
+ * @author [Marc FARRE](https://marc.fun)
  */
 
 namespace humhub\modules\externalWebsites\controllers;
@@ -73,7 +73,7 @@ class PageController extends ContentContainerController
             // Get title
             $pageTitle = Yii::$app->request->post('pageTitle', Yii::$app->request->get('pageTitle', ''));
             $pageTitle = str_ireplace($website->remove_from_url_title, '', $pageTitle); // Remove unwanted text in title
-            $title = BaseStringHelper::truncate($pageTitle, 100, '[...]');
+            $title = BaseStringHelper::truncate($pageTitle, 95, '[...]');
 
             // Get elements to show
             $showComments = (bool)Yii::$app->request->post('showComments', true);
