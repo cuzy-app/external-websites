@@ -40,7 +40,7 @@ class SpaceSettingsForm extends \yii\base\Model
         $this->urlToRedirect = $settings->get('urlToRedirect');
         $this->preventLeavingSpace = $settings->get('preventLeavingSpace', $this->preventLeavingSpace);
 
-        return parent::init();
+        parent::init();
     }
 
     /**

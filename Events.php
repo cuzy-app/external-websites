@@ -9,6 +9,7 @@
 namespace humhub\modules\externalWebsites;
 
 use Firebase\JWT\JWT;
+use humhub\modules\stream\models\WallStreamQuery;
 use Yii;
 use yii\web\HttpException;
 use humhub\modules\ui\menu\MenuLink;
@@ -97,7 +98,7 @@ class Events
                 // Add a filters to the new filter block
                 $wallFilterNavigation->addFilter(
                     [
-                        'id' => 'website_id_'.$website->id,
+                        'id' => ExternalWebsitesSpaceStreamFilter::FILTER_SURVEY_STATE_PREFIX.$website->id,
                         'title' => Yii::t(
                             'ExternalWebsitesModule.base',
                             '{title}: show comments',
@@ -128,7 +129,7 @@ class Events
         // If in a space
         if (isset(Yii::$app->controller->contentContainer)) {
             $space = Yii::$app->controller->contentContainer;
-            if ($space !== null && $space->isModuleEnabled('external-websites')) {
+            if ($space instanceof Space  && $space->isModuleEnabled('external-websites')) {
                 // Add a new filterHandler to WallStreamQuery
                 $streamQuery->filterHandlers[] = ExternalWebsitesSpaceStreamFilter::class;
             }
@@ -272,5 +273,4 @@ class Events
             ]);
         }
     }
-
 }

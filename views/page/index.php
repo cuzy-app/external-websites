@@ -40,7 +40,7 @@ else {
 ?>
 
 <div class="wall-entry-controls">
-    <?php if ($showPermalink) : ?>
+    <?php if ($showPermalink): ?>
         <?= Html::a(
             ' '.Yii::t('ExternalWebsitesModule.base', 'Permalink'),
             '#',
@@ -55,13 +55,13 @@ else {
     <?php endif; ?>
 
     <?php if ($page !== null): ?>
-        <?php if ($showLikes) : ?>
+        <?php if ($showLikes): ?>
             &middot; <?= LikeLink::widget(['object' => $page]); ?>
         <?php endif; ?>
-        <?php if ($showComments) : ?>
+        <?php if ($showComments): ?>
             &middot; <i class="fa fa-comment"></i> <?= CommentLink::widget(['object' => $page]); ?>
         <?php endif; ?>
-    <?php endif ?>
+    <?php endif; ?>
 </div>
 
 <?php if ($showComments): ?>
@@ -74,8 +74,8 @@ else {
             'title' => $title,
             'pageUrl' => $pageUrl,
         ]) ?>
-    <?php endif ?>
-<?php endif ?>
+    <?php endif; ?>
+<?php endif; ?>
 
 <script type="text/javascript">
     <?php if (!$showComments): ?>

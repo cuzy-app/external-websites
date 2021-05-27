@@ -29,7 +29,7 @@ use humhub\modules\externalWebsites\widgets\IconSelect;
             <?= $form->field($model, 'humhub_is_embedded')->radioList($model->yesNoList) ?>
             <?= $form->field($model, 'first_page_url')->textInput() ?>
             <?= $form->field($model, 'show_in_menu')->radioList($model->yesNoList) ?>
-            <?= $form->field($model, 'sort_order')->textInput() ?>
+            <?= $form->field($model, 'sort_order')->textInput(['type' => 'number']) ?>
             <?= $form->field($model, 'remove_from_url_title')->textInput() ?>
             <?= $form->field($model, 'hide_sidebar')->radioList($model->yesNoList) ?>
             <?= $form->field($model, 'default_content_visibility')->dropDownList($model->contentVisibilityList) ?>

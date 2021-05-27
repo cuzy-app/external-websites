@@ -86,7 +86,7 @@ class Module extends ContentContainerModule
             $website->delete();
         }
 
-        return parent::disable();
+        parent::disable();
     }
 
 

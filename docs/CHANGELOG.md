@@ -1,41 +1,41 @@
 Changelog
 =========
 
-v0.26 (April, 26, 2021)
+0.26 (April, 26, 2021)
 --------------------
 - Enh: Prevent pages author from following the new pages
 
-v0.25 (April, 20, 2021)
+0.25 (April, 20, 2021)
 --------------------
 - Fix: Events could make console commands crash
 
-v0.24 (March, 18, 2021)
+0.24 (March, 18, 2021)
 --------------------
 - Fix: Various fix for websites embeded
 
 
-v0.23 (March, 11, 2021)
+0.23 (March, 11, 2021)
 --------------------
 - Fix: When a website is embeded in Humhub, in some cases (page refresh mainly) comments could not be loaded (`loadIFrameResizer()` could called before JS assets file was loaded)
 
 
-v0.22 (March, 2, 2021)
+0.22 (March, 2, 2021)
 --------------------
 - Enh: Added possibility to hide some elements (if the external website is embedded) by adding data attributes in the `<head>` tag. Elements that can be hidden are comments, likes or permalink
 
 
-V0.21.1 (January, 21, 2021)
+0.21.1 (January, 21, 2021)
 --------------------
 - Enh: Changed height calculation method with iframeResizer when Humhub addons are embedded in an external website
 
 
-V0.21 (December, 17, 2020)
+0.21 (December, 17, 2020)
 --------------------
 - Enh: When Humhub space is embedded, added settings to prevent clicking on links making leave the curent space
 - Enh: When Humhub addons are embedded, prevent clicking on links making leave the curent space
 
 
-V0.20 (December, 15, 2020)
+0.20 (December, 15, 2020)
 --------------------
 - Chg: Module renamed (iframe -> external-websites)
 - Enh: Added websites management interface (add, edit, delete)
@@ -52,7 +52,7 @@ V0.20 (December, 15, 2020)
 - Chg: Changed `FirstCommentForm` widget to new Hummhub 1.7 specifications
 
 
-V0.15 (November, 23, 2020)
+0.15 (November, 23, 2020)
 --------------------
 - Enh: Moving files to recommanded Humhub module structure: https://docs.humhub.org/docs/develop/modules/
 

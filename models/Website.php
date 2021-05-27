@@ -94,12 +94,12 @@ class Website extends \humhub\components\ActiveRecord
     }
 
 
-    public function beforeDelete()
+    public function afterDelete()
     {
         foreach (Page::find()->contentContainer($this->space)->all() as $page) {
             $page->delete();
         }
 
-        return parent::beforeDelete();
+        parent::afterDelete();
     }
 }

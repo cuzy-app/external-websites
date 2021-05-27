@@ -50,7 +50,7 @@ class WebsiteForm extends \yii\base\Model
             $this->default_content_archived = $website->default_content_archived;
         }
 
-        return parent::init();
+        parent::init();
     }
 
     /**

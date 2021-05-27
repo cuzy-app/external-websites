@@ -21,15 +21,6 @@ class WebsiteSearch extends Website
 
     /**
      * @inheritdoc
-     */
-    public function attributes()
-    {
-        // add related fields to searchable attributes
-        return parent::attributes();
-    }
-
-    /**
-     * @inheritdoc
      * List of fields that can be filtered
      */
     public function rules()
