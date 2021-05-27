@@ -67,48 +67,50 @@ class Events
 
     public static function onStreamFilterBeforeRun ($event)
     {
-        if (!isset(Yii::$app->controller->contentContainer)) {
+        if (
+            !isset(Yii::$app->controller->contentContainer)
+            || Yii::$app->controller->module->id !== 'space'
+            || ($space = Yii::$app->controller->contentContainer) === null
+            || !$space->isModuleEnabled('external-websites')
+        ) {
             return;
         }
-        $space = Yii::$app->controller->contentContainer;
-        if ($space !== null && $space->isModuleEnabled('external-websites')) {
 
-            /** @var $wallFilterNavigation WallStreamFilterNavigation */
-            $wallFilterNavigation = $event->sender;
-        
-            // Add a new filter block to the last filter panel
-            $wallFilterNavigation->addFilterBlock(
-                static::FILTER_BLOCK_EXTERNAL_WEBSITE, [
-                    'title' => Yii::t('ExternalWebsitesModule.base', 'Filter'),
-                    'sortOrder' => 300
+        /** @var $wallFilterNavigation WallStreamFilterNavigation */
+        $wallFilterNavigation = $event->sender;
+
+        // Add a new filter block to the last filter panel
+        $wallFilterNavigation->addFilterBlock(
+            static::FILTER_BLOCK_EXTERNAL_WEBSITE, [
+                'title' => Yii::t('ExternalWebsitesModule.base', 'Filter'),
+                'sortOrder' => 300
+            ],
+            WallStreamFilterNavigation::PANEL_POSITION_CENTER
+        );
+
+        // Get pages
+        $websites = Website::find()
+            ->where(['space_id' => $space->id])
+            ->orderBy(['sort_order' => SORT_ASC])
+            ->all();
+
+        $sortOrder = 0;
+        foreach ($websites as $website) {
+            $sortOrder++;
+
+            // Add a filters to the new filter block
+            $wallFilterNavigation->addFilter(
+                [
+                    'id' => ExternalWebsitesSpaceStreamFilter::FILTER_SURVEY_STATE_PREFIX.$website->id,
+                    'title' => Yii::t(
+                        'ExternalWebsitesModule.base',
+                        '{title}: show comments',
+                        ['{title}' => $website->title]
+                    ),
+                    'sortOrder' => $sortOrder,
                 ],
-                WallStreamFilterNavigation::PANEL_POSITION_CENTER
+                static::FILTER_BLOCK_EXTERNAL_WEBSITE
             );
-        
-            // Get pages
-            $websites = Website::find()
-                ->where(['space_id' => $space->id])
-                ->orderBy(['sort_order' => SORT_ASC])
-                ->all();
-
-            $sortOrder = 0;
-            foreach ($websites as $website) {
-                $sortOrder++;
-
-                // Add a filters to the new filter block
-                $wallFilterNavigation->addFilter(
-                    [
-                        'id' => ExternalWebsitesSpaceStreamFilter::FILTER_SURVEY_STATE_PREFIX.$website->id,
-                        'title' => Yii::t(
-                            'ExternalWebsitesModule.base',
-                            '{title}: show comments',
-                            ['{title}' => $website->title]
-                        ),
-                        'sortOrder' => $sortOrder,
-                    ],
-                    static::FILTER_BLOCK_EXTERNAL_WEBSITE
-                );
-            }
         }
     }
 
