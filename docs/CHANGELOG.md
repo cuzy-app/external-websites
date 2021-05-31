@@ -1,6 +1,10 @@
 Changelog
 =========
 
+0.27 (May, 31, 2021)
+--------------------
+- Enh: To show a website embedded in Humhub, it is now possible to specify in the URL the title of the website instead of the ID (e.g. `/s/space-name/external-websites/website?title=title%20of%20the%20webiste&pageId=1`)
+
 0.26 (April, 26, 2021)
 --------------------
 - Enh: Prevent pages author from following the new pages

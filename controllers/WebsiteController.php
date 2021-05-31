@@ -18,17 +18,24 @@ use humhub\modules\externalWebsites\models\Page;
  * When Humhub is host (if embedded, redirects to external website)
  * Show external website pages in an iframe and pages contents addons beside
  * @param $id Website ID
+ * @param $title Website title
  * @param $pageId Page ID
  * @param $pageUrl string Page URL
  */
 class WebsiteController extends ContentContainerController
 {
-    public function actionIndex ($id, $pageId = null, $pageUrl = null)
+    public function actionIndex ($id = null, $title = null, $pageId = null, $pageUrl = null)
     {
         // Get website
-        $website = Website::findOne($id);
-        if ($website === null) {
-            throw new HttpException(404);
+        if ($id !== null) {
+            $website = Website::findOne($id);
+        }
+        // Try to get website from site title
+        elseif ($title !== null) {
+            $website = Website::findOne(['title' => $title]);
+        }
+        if (empty($website)) {
+            throw new HttpException(404, 'Website not found');
         }
 
         // If $pageId not null and Page exists, set pageUrl from page
