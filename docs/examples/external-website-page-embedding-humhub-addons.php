@@ -10,7 +10,7 @@ $spaceUrl = 'my-space';
 $humhubWebsiteId = 1;
 // String - This page title (usually the value in the <title> tag)
 $currentPageTitle = 'Page title';
-// Boolean (1 or 0) - Auto login (available if the module `authclients-addon` is installed and SSO is configured)
+// Boolean (1 or 0) - Auto login (available if the module `auth-keycloak` is installed and SSO is configured)
 $autoLogin = 1;
 // JWT token (optional, see docs/README.md "Auto add groups to user")
 $token = '';

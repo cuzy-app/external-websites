@@ -123,7 +123,7 @@ E.g https://www.my-external-website.tdl?humhubUrl={humhubUrl} value will redirec
 
 ### Auto login
 
-If Humhub is embedded and the module [Authclient Addon](https://gitlab.com/funkycram/humhub-modules-authclients-addon) is installed, this module can try to auto login with SSO (if user doesn't exists, the account is created automatically)
+If Humhub is embedded and the module [Keycloak Sign-In](https://github.com/cuzy-app/humhub-modules-auth-keycloak) is installed, this module can try to auto login with SSO (if user doesn't exists, the account is created automatically)
 
 In the iframe `src` attribute, you must add this param to the URL:
 ```
