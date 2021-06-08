@@ -159,7 +159,7 @@ class Page extends ContentActiveRecord implements Searchable
 
     public function getIcon()
     {
-        if (!empty($this->website->icon)) {
+        if ($this->website && $this->website->icon) {
             return $this->website->icon;
         }
         return 'desktop';
