@@ -3,7 +3,7 @@ Changelog
 
 0.28 (June 8, 2021)
 --------------------
-- Enh: The icon selector widget has been replaced with the Humhub's native one
+- Enh: The icon selector widget has been replaced with the Humhub's native one (requires a database migration)
 
 0.27 (May, 31, 2021)
 --------------------
