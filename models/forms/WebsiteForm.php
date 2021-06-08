@@ -20,7 +20,7 @@ class WebsiteForm extends \yii\base\Model
     public $id;
     public $space_id;
     public $title;
-    public $icon = 'fa-desktop';
+    public $icon = 'desktop';
     public $humhub_is_embedded = false;
     public $first_page_url;
     public $show_in_menu = 1;

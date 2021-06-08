@@ -6,12 +6,11 @@
  * @author [Marc FARRE](https://marc.fun)
  */
 
+use humhub\modules\ui\form\widgets\IconPicker;
 use yii\helpers\Html;
-use yii\helpers\Url;
 use yii\bootstrap\ActiveForm;
 use humhub\widgets\ModalDialog;
 use humhub\widgets\ModalButton;
-use humhub\modules\externalWebsites\widgets\IconSelect;
 
 /**
  * @var $this \humhub\components\View
@@ -25,7 +24,7 @@ use humhub\modules\externalWebsites\widgets\IconSelect;
 	<div class="modal-body">
         <?php $form = ActiveForm::begin(); ?>
             <?= $form->field($model, 'title')->textInput() ?>
-            <?= IconSelect::widget(['model' => $model]) ?>
+            <?= $form->field($model, 'icon')->widget(IconPicker::class) ?>
             <?= $form->field($model, 'humhub_is_embedded')->radioList($model->yesNoList) ?>
             <?= $form->field($model, 'first_page_url')->textInput() ?>
             <?= $form->field($model, 'show_in_menu')->radioList($model->yesNoList) ?>

@@ -6,6 +6,7 @@
  * @author [Marc FARRE](https://marc.fun)
  */
 
+use humhub\modules\ui\icon\widgets\Icon;
 use yii\helpers\Url;
 use yii\helpers\Html;
 use humhub\widgets\GridView;
@@ -58,7 +59,7 @@ $websiteForm = new WebsiteForm;
                 'attribute' => 'icon',
                 'format' => 'raw',
                 'value' => function ($model) {
-                    return '<i class="fa '.$model->icon.'"></i>';
+                    return Icon::get($model->icon);
                 }
             ],
             [

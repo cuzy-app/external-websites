@@ -6,6 +6,7 @@
  * @author [Marc FARRE](https://marc.fun)
  */
 
+use humhub\modules\ui\icon\widgets\Icon;
 use yii\helpers\Html;
 use humhub\modules\like\widgets\LikeLink;
 use humhub\modules\comment\widgets\Comments;
@@ -59,7 +60,7 @@ else {
             &middot; <?= LikeLink::widget(['object' => $page]); ?>
         <?php endif; ?>
         <?php if ($showComments): ?>
-            &middot; <i class="fa fa-comment"></i> <?= CommentLink::widget(['object' => $page]); ?>
+            &middot; <?= Icon::get('comment') ?> <?= CommentLink::widget(['object' => $page]); ?>
         <?php endif; ?>
     <?php endif; ?>
 </div>

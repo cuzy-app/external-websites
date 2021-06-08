@@ -22,7 +22,7 @@ class Module extends ContentContainerModule
     /**
      * @var string defines the icon
      */
-    public $icon = 'fa-desktop';
+    public $icon = 'desktop';
 
     /**
      * @var string defines path for resources, including the screenshots path for the marketplace

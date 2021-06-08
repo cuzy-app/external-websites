@@ -12,7 +12,7 @@ class m200212_175551_initial extends Migration
      */
     public function safeUp()
     {
-        $this->createTable('external_websites_website', array(
+        $this->createTable('external_websites_website', [
             'id' => $this->primaryKey(),
             'space_id' => $this->integer(11)->notNull(),
             'title' => $this->string(255),
@@ -29,8 +29,8 @@ class m200212_175551_initial extends Migration
             'created_by' => $this->integer(11),
             'updated_at' => $this->dateTime(),
             'updated_by' => $this->integer(11),
-        ), '');
-        $this->createTable('external_websites_website_page', array(
+        ], '');
+        $this->createTable('external_websites_website_page', [
             'id' => $this->primaryKey(),
             'title' => $this->string(255),
             'page_url' => $this->text(),
@@ -39,7 +39,7 @@ class m200212_175551_initial extends Migration
             'created_by' => $this->integer(11),
             'updated_at' => $this->dateTime(),
             'updated_by' => $this->integer(11),
-        ), '');
+        ], '');
     }
 
     /**

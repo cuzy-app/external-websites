@@ -1,6 +1,10 @@
 Changelog
 =========
 
+0.28 (June 8, 2021)
+--------------------
+- Enh: The icon selector widget has been replaced with the Humhub's native one
+
 0.27 (May, 31, 2021)
 --------------------
 - Enh: To show a website embedded in Humhub, it is now possible to specify in the URL the title of the website instead of the ID (e.g. `/s/space-name/external-websites/website?title=title%20of%20the%20webiste&pageId=1`)
