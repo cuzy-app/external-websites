@@ -419,7 +419,7 @@ wget https://gitlab.com/funkycram/humhub-modules-external-websites/-/raw/master/
 ```
 
 * modifier le fichier fiche-1201.tpl.html en exécutant `vi ~/mooc.hameaux-legers.org/tools/lms/templates/bazar/fiche-1201.tpl.html` :
-    * modifier la valeur de la variable $humhubUrl (ligne 82) et mettre : 'https://communaute.hameaux-legers.org]'
+    * modifier la valeur de la variable $humhubUrl (ligne 82) et mettre : 'https://communaute.hameaux-legers.org'
     * modifier la valeur de la variable $spaceUrl (ligne 84) et mettre : 'mooc-habitat-reversible' (l'id est normalement à 1, sinon sinon récupérer son Id dans le menu roue crantée / Gérer les sites web externes)
     * modifier la valeur de la variable $humhubWebsiteId (ligne 86) et mettre : 1
     * modifier la valeur de la variable $autoLogin (ligne 90) et mettre : 1
