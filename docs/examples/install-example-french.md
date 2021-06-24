@@ -151,7 +151,7 @@ Attention à bien remplacer SMTP_PASSWORD et SSO_SECRET avec les bonnes valeurs.
 * se connecter en ssh : `ssh [web@hameaux-legers.org](mailto:web@hameaux-legers.org)` (mettre le mot de passe) et exécuter les lignes suivantes :
     * `rm ~/communaute.hameaux-legers.org/index.html`
     * `cd /tmp`
-    * `wget <[https://www.humhub.com/download/package/humhub-1.8.2.tar.gz](https://www.humhub.com/download/package/humhub-1.8.2.tar.gz)`> (vous pouvez installer une version plus récente en regardant la dernière version stable sur [https://www.humhub.com/en/download](https://www.humhub.com/en/download))
+    * `wget [https://www.humhub.com/download/package/humhub-1.8.2.tar.gz](https://www.humhub.com/download/package/humhub-1.8.2.tar.gz)` (vous pouvez installer une version plus récente en regardant la dernière version stable sur [https://www.humhub.com/en/download](https://www.humhub.com/en/download))
     * `tar xvzf humhub-1.8.2.tar.gz`
     * `cd humhub-1.8.2/`
     * `mv * ~/communaute.hameaux-legers.org/`
