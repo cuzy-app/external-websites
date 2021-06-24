@@ -14,7 +14,7 @@
 
 ## Pour YesWiki
 
-* aller à l'adresse [https://login.lescommuns.org/auth/admin](https://login.lescommuns.org/auth/admin) avec un navigateur
+* aller à l'adresse https://login.lescommuns.org/auth/admin avec un navigateur
     * cliquer sur le menu Clients puis sur le bouton Create
     * mettre pour Client ID : mooc.hameaux-legers.org
     * selectionner pour Client Protocol : openid-connect
@@ -31,7 +31,7 @@
 
 * aller à l'adresse https://login.lescommuns.org/auth/admin avec un navigateur
 * cliquer sur le menu Clients puis sur le bouton Create
-* mettre pour Client ID : http://communaute.hameaux-legers.org
+* mettre pour Client ID : communaute.hameaux-legers.org
 * selectionner pour Client Protocol : openid-connect
 * mettre pour Root URL : https://communaute.hameaux-legers.org et valider
 * dans l'onglet Settings :
@@ -56,7 +56,7 @@
 * se connecter en ssh : `ssh web@hameaux-legers.org` (mettre le mot de passe)
 * préparer une version de yeswiki avec l'ensemble des extensions installées et les personnalisations qui permettent que yeswiki intéragissent avec humhub. Les modules **lms**, **login-sso** doivent être installées. Le module LMS ne prend pas encore en compte l'intégration des commentaires humhub, ainsi il faut avoir une version personnalisée. De même, la subscrition à des évènements est une partie personnalisée (cf le répertoire custom).
 * copier cette version de yeswiki dans le répertoire `~/mooc.hameaux-legers.org/` de l'utilisateur web `rsync -av --itemize-changes * web@hameaux-legers.org:~/mooc.hameaux-legers.org/`
-* lancer la page [https://mooc.hameaux-legers.org](https://mooc.hameaux-legers.org) dans un navigateur
+* lancer la page https://mooc.hameaux-legers.org dans un navigateur
     * renseigner les champs Nom de votre site et Description
     * mettre dans Machine MySQL : localhost
     * mettre dans Base de données MySQL : yeswiki
@@ -303,7 +303,7 @@ Penser à modifier SSO_SECRET avec les bonnes valeurs.
 
 permet d'intégrer les commmentaires humhub dans yeswiki et inversement (possibilité aussi d'intégrer yeswiki dans humhub)
 
-* se connecter en ssh : ssh [web@hameaux-legers.org](mailto:web@hameaux-legers.org) (mettre le mot de passe)
+* se connecter en ssh : `ssh web@hameaux-legers.org` (mettre le mot de passe)
     * installer le module en tapant en ligne de commande :
 
   ```
