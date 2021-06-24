@@ -1,9 +1,9 @@
 # Organisation globale
 
 * depuis Plesk, dans website on voit le domaine principal [hameaux-legers.org](http://hameaux-legers.org/) puis les deux sous-domaines [communaute.hameaux-legers.org](http://communaute.hameaux-legers.org/) et [mooc.hameaux-legers.org](http://mooc.hameaux-legers.org/)
-* on accède à chacune des bases de données en cliquant sur le bouton Databases, et on peut s&#039;y connecter avec PhpMyAdmin avec le bouton du même nom
+* on accède à chacune des bases de données en cliquant sur le bouton Databases, et on peut s'y connecter avec PhpMyAdmin avec le bouton du même nom
 * pour se connecter en ssh, le même utilisateur peut accéder au domaine et aux sous-domaines. Lancer dans un terminal : `ssh [web@hameaux-legers.org](mailto:web@hameaux-legers.org)` et taper le mot de passe
-* au niveau de l&#039;aborescence de fichier, on retrouve :
+* au niveau de l'aborescence de fichier, on retrouve :
     * le site vitrine (domaine principale) dans `~/httpdocs/`
     * le site yeswiki (sous domaine mooc) dans `~/mooc.hameaux-legers.org/`
     * le site humhub (sous domaine communaute) dans `~/communaute.hameaux-legers.org/`
@@ -12,34 +12,34 @@
 
 ## Pour YesWiki
 
-* aller à l&#039;adresse [https://login.lescommuns.org/auth/admin](https://login.lescommuns.org/auth/admin) avec un navigateur
+* aller à l'adresse [https://login.lescommuns.org/auth/admin](https://login.lescommuns.org/auth/admin) avec un navigateur
     * cliquer sur le menu Clients puis sur le bouton Create
     * mettre pour Client ID : [mooc.hameaux-legers.org](http://mooc.hameaux-legers.org/)
     * selectionner pour Client Protocol : openid-connect
     * mettre pour Root URL : [https://mooc.hameaux-legers.org](https://mooc.hameaux-legers.org) et valider
-    * dans l&#039;onglet Settings :
+    * dans l'onglet Settings :
         * sélectionner pour Access Type : confidential et cliquer sur Save
-    * cliquer sur l&#039;onglet Credentials :
+    * cliquer sur l'onglet Credentials :
         * retenir comment revenir à cet onglet pour récupérer la clé
-    * cliquer sur l&#039;onglet Mappers :
+    * cliquer sur l'onglet Mappers :
         * cliquer sur le bouton Add Builtin
-        * sélectionner les champs &#039;family name&#039;, &#039;email&#039;, &#039;given name&#039;, &#039;full name&#039;, &#039;username&#039;, et cliquer sur le bouton Add selected
+        * sélectionner les champs 'family name', 'email', 'given name', 'full name', 'username', et cliquer sur le bouton Add selected
 
 ## Pour HumHub
 
-* aller à l&#039;adresse [https://login.lescommuns.org/auth/admin](https://login.lescommuns.org/auth/admin) avec un navigateur
+* aller à l'adresse [https://login.lescommuns.org/auth/admin](https://login.lescommuns.org/auth/admin) avec un navigateur
 * cliquer sur le menu Clients puis sur le bouton Create
 * mettre pour Client ID : [communaute.hameaux-legers.org](http://communaute.hameaux-legers.org/)
 * selectionner pour Client Protocol : openid-connect
 * mettre pour Root URL : [https://communaute.hameaux-legers.org](https://communaute.hameaux-legers.org) et valider
-* dans l&#039;onglet Settings :
+* dans l'onglet Settings :
     * sélectionner pour Access Type : confidential et cliquer sur Save
-* cliquer sur l&#039;onglet Credentials :
+* cliquer sur l'onglet Credentials :
     * retenir comment revenir à cet onglet pour récupérer la clé
-* cliquer sur l&#039;onglet Mappers :
+* cliquer sur l'onglet Mappers :
     * cliquer sur le bouton Add Builtin
-    * sélectionner les champs &#039;family name&#039;, &#039;email&#039;, &#039;given name&#039;, &#039;username&#039;, et cliquer sur le bouton Add selected
-    * cliquer sur le bouton Edit à la ligne &#039;username&#039;, remplacer prefered_username par id et clique sur le bouton Save
+    * sélectionner les champs 'family name', 'email', 'given name', 'username', et cliquer sur le bouton Add selected
+    * cliquer sur le bouton Edit à la ligne 'username', remplacer prefered_username par id et clique sur le bouton Save
 
 # Installation de YesWiki
 
@@ -52,85 +52,85 @@
         * sélectionner pour Access control : Allow remote connections from any host
     * aller dans Websites &amp; Domains, cliquer sur le bouton File Manager et supprimer le fichier index.html
 * se connecter en ssh : `ssh [web@hameaux-legers.org](mailto:web@hameaux-legers.org)` (mettre le mot de passe)
-* préparer une version de yeswiki avec l&#039;ensemble des extensions installées et les personnalisations qui permettent que yeswiki intéragissent avec humhub. Les modules **lms**, **login-sso** doivent être installées. Le module LMS ne prend pas encore en compte l&#039;intégration des commentaires humhub, ainsi il faut avoir une version personnalisée. De même, la subscrition à des évènements est une partie personnalisée (cf le répertoire custom).
-* copier cette version de yeswiki dans le répertoire `~/mooc.hameaux-legers.org/` de l&#039;utilisateur web `rsync -av --itemize-changes * [web@hameaux-legers.org](mailto:web@hameaux-legers.org):~/mooc.hameaux-legers.org/`
+* préparer une version de yeswiki avec l'ensemble des extensions installées et les personnalisations qui permettent que yeswiki intéragissent avec humhub. Les modules **lms**, **login-sso** doivent être installées. Le module LMS ne prend pas encore en compte l'intégration des commentaires humhub, ainsi il faut avoir une version personnalisée. De même, la subscrition à des évènements est une partie personnalisée (cf le répertoire custom).
+* copier cette version de yeswiki dans le répertoire `~/mooc.hameaux-legers.org/` de l'utilisateur web `rsync -av --itemize-changes * [web@hameaux-legers.org](mailto:web@hameaux-legers.org):~/mooc.hameaux-legers.org/`
 * lancer la page [https://mooc.hameaux-legers.org](https://mooc.hameaux-legers.org) dans un navigateur
     * renseigner les champs Nom de votre site et Description
     * mettre dans Machine MySQL : localhost
     * mettre dans Base de données MySQL : yeswiki
-    * mettre dans Nom de l&#039;utilisateur MySQL : yeswiki
-    * mettre dans Mot de passe MySQL : le mot de passe rentré lors de la création de l&#039;utilisateur (cf plus haut)
+    * mettre dans Nom de l'utilisateur MySQL : yeswiki
+    * mettre dans Mot de passe MySQL : le mot de passe rentré lors de la création de l'utilisateur (cf plus haut)
     * mettre dans Préfixe des tables : yeswiki_mooc__
     * mettre dans Mot de passe et Confirmation du mot de passe en dessous de Administrateur : un mot de passe sécurisé
     * mettre dans Adresse e-mail : [support@hameaux-legers.org](mailto:support@hameaux-legers.org) et valider
 * modifier le fichier de configuration
-    * remplacer : `&#039;default_write_acl&#039; =&gt; &#039;*&#039;,* &#039;default_read_acl&#039; =&gt; &#039;&#039;,` par : `&#039;default_write_acl&#039; =&gt; &#039;%&#039;, &#039;default_read_acl&#039; =&gt; &#039;+&#039;,`
+    * remplacer : `'default_write_acl' =&gt; '*',* 'default_read_acl' =&gt; '',` par : `'default_write_acl' =&gt; '%', 'default_read_acl' =&gt; '+',`
     * puis rajouter à la fin du tableau :
 
 ```
-      &#039;contact_mail_func&#039; =&gt; &#039;smtp&#039;,
-      &#039;contact_mail_func&#039; =&gt; &#039;smtp&#039;,
-      &#039;contact_smtp_host&#039; =&gt; &#039;ssl0.ovh.net&#039;,
-      &#039;contact_smtp_port&#039; =&gt; &#039;465&#039;,
-      &#039;contact_smtp_user&#039; =&gt; &#039;support@hameaux-legers.org&#039;,
-      &#039;contact_smtp_pass&#039; =&gt; &#039;SMTP_PASSWORD&#039;,
-      &#039;contact_from&#039; =&gt; &#039;support@hameaux-legers.org&#039;,
-      &#039;BAZ_ADRESSE_MAIL_ADMIN&#039; =&gt; &#039;support@hameaux-legers.org&#039;,
-      &#039;disable_wiki_links&#039; =&gt; true,
-      &#039;sso_config&#039; =&gt; [
+      'contact_mail_func' =&gt; 'smtp',
+      'contact_mail_func' =&gt; 'smtp',
+      'contact_smtp_host' =&gt; 'ssl0.ovh.net',
+      'contact_smtp_port' =&gt; '465',
+      'contact_smtp_user' =&gt; 'support@hameaux-legers.org',
+      'contact_smtp_pass' =&gt; 'SMTP_PASSWORD',
+      'contact_from' =&gt; 'support@hameaux-legers.org',
+      'BAZ_ADRESSE_MAIL_ADMIN' =&gt; 'support@hameaux-legers.org',
+      'disable_wiki_links' =&gt; true,
+      'sso_config' =&gt; [
           // the form id for the bazar entry corresponding to the connected user
           // if defined, link will propose to show him his user information (profile)
-          // don&#039;t declare it, if you don&#039;t need to have bazar entries related to users
-          &#039;bazar_user_entry_id&#039; =&gt; &#039;1000&#039;,
-          &#039;providers&#039; =&gt; [
+          // don't declare it, if you don't need to have bazar entries related to users
+          'bazar_user_entry_id' =&gt; '1000',
+          'providers' =&gt; [
               // each entry here is an array corresponding to a SSO provider
               [
-                  // the authentification auth type, two protocols are supported : &#039;oauth2&#039; and &#039;cas&#039;
-                  &#039;auth_type&#039; =&gt; &#039;oauth2&#039;,
-                  &#039;auth_options&#039; =&gt; [
-                      &#039;clientId&#039; =&gt; &#039;mooc.hameaux-legers.org&#039;,
+                  // the authentification auth type, two protocols are supported : 'oauth2' and 'cas'
+                  'auth_type' =&gt; 'oauth2',
+                  'auth_options' =&gt; [
+                      'clientId' =&gt; 'mooc.hameaux-legers.org',
                       // The client ID assigned to you by the provider
-                      &#039;clientSecret&#039; =&gt; &#039;SSO_SECRET&#039;,
+                      'clientSecret' =&gt; 'SSO_SECRET',
                       // The client secret assigned to you by the provider
-                      &#039;urlAuthorize&#039; =&gt; &#039;https://login.hameaux-legers.org/auth/realms/master/protocol/openid-connect/auth&#039;,
-                      &#039;urlAccessToken&#039; =&gt; &#039;https://login.hameaux-legers.org/auth/realms/master/protocol/openid-connect/token&#039;,
-                      &#039;urlResourceOwnerDetails&#039; =&gt; &#039;https://login.hameaux-legers.org/auth/realms/master/protocol/openid-connect/userinfo&#039;,
+                      'urlAuthorize' =&gt; 'https://login.hameaux-legers.org/auth/realms/master/protocol/openid-connect/auth',
+                      'urlAccessToken' =&gt; 'https://login.hameaux-legers.org/auth/realms/master/protocol/openid-connect/token',
+                      'urlResourceOwnerDetails' =&gt; 'https://login.hameaux-legers.org/auth/realms/master/protocol/openid-connect/userinfo',
                   ],
                   // sso server fieldname used for the user email, this email links an SSO user to a yeswiki user
-                  &#039;email_sso_field&#039; =&gt; &#039;email&#039;,
-                  &#039;create_user_from&#039; =&gt; &#039;#[given_name] #[family_name]&#039;,
+                  'email_sso_field' =&gt; 'email',
+                  'create_user_from' =&gt; '#[given_name] #[family_name]',
                   // if create_user_from is defined, an yeswiki user with a name and an email is created.
                   // the username is an unique word (ID) generated from the format create_user_form by specifying #[field_name] to referring to a sso field
                   // if not defined, the authentification module accepts only sso users which have an yeswiki user corresponding to this email
-                  &#039;button_style&#039; =&gt; [
+                  'button_style' =&gt; [
                       // name used for the login button
-                      &#039;button_label&#039; =&gt; &#039;Les communs&#039;,
+                      'button_label' =&gt; 'Les communs',
                       // class of this button
-                      &#039;button_class&#039; =&gt; &#039;btn btn-default btn-lescommuns&#039;,
+                      'button_class' =&gt; 'btn btn-default btn-lescommuns',
                       // icon used for this button (class of the &lt;i&gt;)
-                      &#039;button_icon&#039; =&gt; &#039;glyphicon glyphicon-log-in&#039;
-                      // you can also write a wiki page named &#039;ConnectionDetails&#039; to inform the user before the buttons are displayed
+                      'button_icon' =&gt; 'glyphicon glyphicon-log-in'
+                      // you can also write a wiki page named 'ConnectionDetails' to inform the user before the buttons are displayed
                   ],
-                  &#039;bazar_mapping&#039; =&gt; [
-                      &#039;fields&#039; =&gt; [
-                          &#039;bf_nom&#039; =&gt; &#039;family_name&#039;,
-                          &#039;bf_prenom&#039; =&gt; &#039;given_name&#039;,
-                          &#039;bf_mail&#039; =&gt; &#039;email&#039;
+                  'bazar_mapping' =&gt; [
+                      'fields' =&gt; [
+                          'bf_nom' =&gt; 'family_name',
+                          'bf_prenom' =&gt; 'given_name',
+                          'bf_mail' =&gt; 'email'
                       ],
-                      &#039;read_access_entry&#039; =&gt; &#039;+&#039;,
-                      &#039;write_access_entry&#039;=&gt; &#039;%&#039;,
-                      &#039;entry_creation_information&#039; =&gt; &quot;&lt;p&gt;C&#039;est votre première connexion avec ce compte. Une fiche avec vos informations personnelles va être créée dans le but de faciliter la mise en lien entre les utilisateurs. Les données suivantes - Prénom, Nom, E-mail - vont êtres récupérées directement depuis le serveur d&#039;authentification et pourront être modifiées ou supprimées plus tard à votre convenance dans &#039;Mes fiches&#039;.&lt;/p&gt;&quot;,
+                      'read_access_entry' =&gt; '+',
+                      'write_access_entry'=&gt; '%',
+                      'entry_creation_information' =&gt; &quot;&lt;p&gt;C'est votre première connexion avec ce compte. Une fiche avec vos informations personnelles va être créée dans le but de faciliter la mise en lien entre les utilisateurs. Les données suivantes - Prénom, Nom, E-mail - vont êtres récupérées directement depuis le serveur d'authentification et pourront être modifiées ou supprimées plus tard à votre convenance dans 'Mes fiches'.&lt;/p&gt;&quot;,
                   ]
               ]
           ]
       ],
 ```
 
-Attention à bien remplacer SMTP_PASSWORD et SSO_SECRET avec les bonnes valeurs. Vous pouvez également adapter &#039;entry_creation_information&#039; qui est le message qui sera affichée à la première connexion d&#039;un utilisateur lorsque son compte est créé.
+Attention à bien remplacer SMTP_PASSWORD et SSO_SECRET avec les bonnes valeurs. Vous pouvez également adapter 'entry_creation_information' qui est le message qui sera affichée à la première connexion d'un utilisateur lorsque son compte est créé.
 
 * Accéder à la base de donner en cliquant sur Databases, [mooc.hameaux-legers.org](http://mooc.hameaux-legers.org/) puis sur le bouton phpMyAdmin
-    * définir les administrateurs en allant dans la table yeswiki_mooc__triples, et en modifiant la ligne d&#039;id 1 à la colonne value : laisser WikiAdmin mais rajouter les NomWiki des utilisateurs qu&#039;on veut passer administrateur séparer par des espaces ou des retours à la ligne.
-    * ajouter un formulaire à yeswiki pour les profils des utilisateurs et avec les champs minimum bf_titre, bf_nom, bf_prenom et bf_email. Puis modifier directement dans la base de données à la table yeswiki_mooc__nature la valeur bn_id_nature de ce formulaire pour qu&#039;elle soit à 1000.
+    * définir les administrateurs en allant dans la table yeswiki_mooc__triples, et en modifiant la ligne d'id 1 à la colonne value : laisser WikiAdmin mais rajouter les NomWiki des utilisateurs qu'on veut passer administrateur séparer par des espaces ou des retours à la ligne.
+    * ajouter un formulaire à yeswiki pour les profils des utilisateurs et avec les champs minimum bf_titre, bf_nom, bf_prenom et bf_email. Puis modifier directement dans la base de données à la table yeswiki_mooc__nature la valeur bn_id_nature de ce formulaire pour qu'elle soit à 1000.
 * lancer [https://mooc.hameaux-legers.org/?PagePrincipale/update](https://mooc.hameaux-legers.org/?PagePrincipale/update) dans un navigateur pour rajouter les pages et formulaires utiles au LMS
 
 # Installation de HumHub
@@ -163,31 +163,31 @@ Attention à bien remplacer SMTP_PASSWORD et SSO_SECRET avec les bonnes valeurs.
         * sélectionner pour Webspace : [hameaux-legers.org](http://hameaux-legers.org/)
         * mettre pour Command : `/opt/plesk/php/7.4/bin/php /var/www/vhosts/hameaux-legers.org/communaute.hameaux-legers.org/protected/yii queue/run &gt;/dev/null 2&gt;&amp;1`
         * sélectionner Cron style pour Run puis mettre : \* \* \* \* \*
-        * mettre pour Description : pour les traitements longs d&#039;Humhub (script lancé toutes les minutes)
+        * mettre pour Description : pour les traitements longs d'Humhub (script lancé toutes les minutes)
         * sélectionner pour Notify : Do not notify et Valider
     * puis créer une 2ème Task avec les mêmes champs excepté :
         * mettre pour Command : `/opt/plesk/php/7.4/bin/php /var/www/vhosts/hameaux-legers.org/communaute.hameaux-legers.org/protected/yii cron/run &gt;/dev/null 2&gt;&amp;1`
-    * aller sur le site [https://communaute.hameaux-legers.org/](https://communaute.hameaux-legers.org/) pour terminer l&#039;install
+    * aller sur le site [https://communaute.hameaux-legers.org/](https://communaute.hameaux-legers.org/) pour terminer l'install
         * cliquer sur Suivant
         * voir que les prérequis systèmes sont OK et cliquer sur Suivant
         * pour la configuration de la base de données :
-            * mettre pour Nom d&#039;hôte : localhost
-            * mettre pour Nom d&#039;utilisateur : humhub
-            * mettre pour Mot de passe : le mot de passe rentré lors de la création de l&#039;utilisateur (cf plus haut)
+            * mettre pour Nom d'hôte : localhost
+            * mettre pour Nom d'utilisateur : humhub
+            * mettre pour Mot de passe : le mot de passe rentré lors de la création de l'utilisateur (cf plus haut)
             * mettre pour Nom de la base de données : humhub et cliquer sur Suivant
         * mettre pour Nom de votre réseau : Hameaux Légers et cliquer sur Suivant
         * sélectionner pour Je veux utiliser Humhub pour : Ma communauté
         * pour les paramètres de sécurité :
-            * cocher : Les utilisateurs externes peuvent s&#039;inscrire
+            * cocher : Les utilisateurs externes peuvent s'inscrire
             * décocher : Les nouveaux utilisateurs inscrits doivent être préalablement activés par un administrateur
-            * décocher : Autoriser l&#039;accès aux contenus publics pour les utilisateurs non inscrits
+            * décocher : Autoriser l'accès aux contenus publics pour les utilisateurs non inscrits
             * décocher : Les membres inscrits peuvent inviter des personnes par e-mail
-            * décocher : Autoriser le système d&#039;amitié entre les utilisateurs
+            * décocher : Autoriser le système d'amitié entre les utilisateurs
         * pour les Modules recommandés, cocher tous les modules
         * pour la configuration du compte administrateur :
             * mettre pour identifiant : admin
             * mettre pour E-mail : [support@hameaux-legers.org](mailto:support@hameaux-legers.org)
-            * mettre pour Nouveau mot de passe et Confirmer le nouveau mot de passe : définir un mot de passe au hazard (l&#039;utilisateur sera ensuite supprimé)
+            * mettre pour Nouveau mot de passe et Confirmer le nouveau mot de passe : définir un mot de passe au hazard (l'utilisateur sera ensuite supprimé)
             * mettre pour Prénom : admin
             * mettre pour Nom : admin et cliquer sur Créer un compte administrateur
         * pour Exemples de contenu, décocher Installer des exemples de contenu
@@ -198,7 +198,7 @@ Attention à bien remplacer SMTP_PASSWORD et SSO_SECRET avec les bonnes valeurs.
 Rend les urls plus « user friendly », et nécessaire pour les modules ci-dessous
 
 * aller dans Plesk :
-    * cliquer sur Websites &amp; Domains et cliquer sur l&#039;onglet Hosting &amp; DNS du site [communaute.hameaux-legers.org](http://communaute.hameaux-legers.org/)
+    * cliquer sur Websites &amp; Domains et cliquer sur l'onglet Hosting &amp; DNS du site [communaute.hameaux-legers.org](http://communaute.hameaux-legers.org/)
     * cliquer sur Apache &amp; nginx Settings
     * décocher Restrict the ability to follow symbolic links
     * se connecter en ssh : `ssh [web@hameaux-legers.org](mailto:web@hameaux-legers.org)` (mettre le mot de passe)
@@ -206,16 +206,16 @@ Rend les urls plus « user friendly », et nécessaire pour les modules ci-desso
 
       ```
       return [
-          &#039;components&#039; =&gt; [
-              &#039;urlManager&#039; =&gt; [
-                  &#039;showScriptName&#039; =&gt; false,
-                  &#039;enablePrettyUrl&#039; =&gt; true,
+          'components' =&gt; [
+              'urlManager' =&gt; [
+                  'showScriptName' =&gt; false,
+                  'enablePrettyUrl' =&gt; true,
               ],
           ]
       ];
       ```
 * activer les redirections apache en tapant : `mv ~/communaute.hameaux-legers.org/.htaccess.dist ~/communaute.hameaux-legers.org/.htaccess`
-* naviguer sur humhub et vérifier que vous avez bien l&#039;url de type [https://communaute.hameaux-legers.org/s/espace-de-bienvenue/](https://communaute.hameaux-legers.org/s/espace-de-bienvenue/) quand vous allez sur l&#039;espace de bienvenue
+* naviguer sur humhub et vérifier que vous avez bien l'url de type [https://communaute.hameaux-legers.org/s/espace-de-bienvenue/](https://communaute.hameaux-legers.org/s/espace-de-bienvenue/) quand vous allez sur l'espace de bienvenue
 
 ## Derniers paramétrages post-install
 
@@ -226,19 +226,19 @@ Rend les urls plus « user friendly », et nécessaire pour les modules ci-desso
 
       ```
       // comment out the following two lines when deployed to production
-      //defined(&#039;YII_DEBUG&#039;) or define(&#039;YII_DEBUG&#039;, true);
-      //defined(&#039;YII_ENV&#039;) or define(&#039;YII_ENV&#039;, &#039;dev&#039;);
+      //defined('YII_DEBUG') or define('YII_DEBUG', true);
+      //defined('YII_ENV') or define('YII_ENV', 'dev');
       ```
-* configurer l&#039;envoi de mail en allant à image de profil en haut à droite / Administration / Paramètre, onglet Avancé puis sous-onglet E-mail :
+* configurer l'envoi de mail en allant à image de profil en haut à droite / Administration / Paramètre, onglet Avancé puis sous-onglet E-mail :
 * mettre pour Adresse expéditeur des e-mails : [support@hameaux-legers.org](mailto:support@hameaux-legers.org)
-* mettre pour Nom de l&#039;expéditeur des e-mails : Hameaux Légers
+* mettre pour Nom de l'expéditeur des e-mails : Hameaux Légers
 * sélectionner pour Type de transport des e-mails : SMTP
 * mettre pour Hostname : [ssl0.ovh.net](http://ssl0.ovh.net/)
 * mettre pour Identifiant : [support@hameaux-legers.org](mailto:support@hameaux-legers.org)
 * mettre pour Mot de passe : le mot de passe de la messagerie de [support@hameaux-legers.org](mailto:support@hameaux-legers.org)
 * mettre pour Port : 465
 * mettre pour Chiffrement : SSL
-* suite à cette configuration, un mail de test est envoyé à l&#039;administrateur qui a fait le paramétrage
+* suite à cette configuration, un mail de test est envoyé à l'administrateur qui a fait le paramétrage
 
 ## Install du module auth-keycloak
 
@@ -258,31 +258,31 @@ cd auth-keycloak
 
 ```
 return [
-  &#039;components&#039; =&gt; [
-        &#039;urlManager&#039; =&gt; [
-            &#039;showScriptName&#039; =&gt; false,
-            &#039;enablePrettyUrl&#039; =&gt; true,
+  'components' =&gt; [
+        'urlManager' =&gt; [
+            'showScriptName' =&gt; false,
+            'enablePrettyUrl' =&gt; true,
         ],
-    &#039;authClientCollection&#039; =&gt; [ 
-      &#039;clients&#039; =&gt; [ 
-        &#039;Keycloak&#039; =&gt; [ 
-          &#039;class&#039; =&gt; &#039;humhub\modules\authKeycloak\authclient\Keycloak&#039;, 
-          &#039;authUrl&#039; =&gt; &#039;https://login.hameaux-legers.org/auth/realms/master/protocol/openid-connect/auth&#039;, 
-          &#039;tokenUrl&#039; =&gt; &#039;https://login.hameaux-legers.org/auth/realms/master/protocol/openid-connect/token&#039;, 
-          &#039;apiBaseUrl&#039; =&gt; &#039;https://login.hameaux-legers.org/auth/realms/master/protocol/openid-connect&#039;,
-          &#039;clientId&#039; =&gt; &#039;communaute.hameaux-legers.org&#039;,
+    'authClientCollection' =&gt; [ 
+      'clients' =&gt; [ 
+        'Keycloak' =&gt; [ 
+          'class' =&gt; 'humhub\modules\authKeycloak\authclient\Keycloak', 
+          'authUrl' =&gt; 'https://login.hameaux-legers.org/auth/realms/master/protocol/openid-connect/auth', 
+          'tokenUrl' =&gt; 'https://login.hameaux-legers.org/auth/realms/master/protocol/openid-connect/token', 
+          'apiBaseUrl' =&gt; 'https://login.hameaux-legers.org/auth/realms/master/protocol/openid-connect',
+          'clientId' =&gt; 'communaute.hameaux-legers.org',
           // Client secret is in the &quot;Credentials&quot; tab (if in the settings &quot;Access Type&quot; is set to &quot;confidential&quot;)
-          &#039;clientSecret&#039; =&gt; &#039;SSO_SECRET&#039;,
+          'clientSecret' =&gt; 'SSO_SECRET',
           // String attribute to match user tables with email or id
-          &#039;idAttribute&#039; =&gt; &#039;id&#039;,
-          // Keycloak mapper for username: &#039;preferred_username&#039;, &#039;sub&#039; (to use Keycloak ID) or other custom Token Claim Name
-          &#039;usernameMapper&#039; =&gt; &#039;sub&#039;,
+          'idAttribute' =&gt; 'id',
+          // Keycloak mapper for username: 'preferred_username', 'sub' (to use Keycloak ID) or other custom Token Claim Name
+          'usernameMapper' =&gt; 'sub',
           // Title of the button (if autoLogin is disabled)
-          &#039;title&#039; =&gt; &#039;Connexion via les Communs&#039;,
+          'title' =&gt; 'Connexion via les Communs',
           // Automatic login
-          &#039;autoLogin&#039; =&gt; true,
+          'autoLogin' =&gt; true,
           // Hide username field in registration form
-          &#039;hideRegistrationUsernameField&#039; =&gt; true,
+          'hideRegistrationUsernameField' =&gt; true,
         ],
       ],
     ],
@@ -292,14 +292,14 @@ return [
 
 Penser à modifier SSO_SECRET avec les bonnes valeurs.
 
-* retourner sur Humhub avec le compte admin temporaire puis cliquer sur l&#039;image de profil en haut à droite / Administration / Modules
+* retourner sur Humhub avec le compte admin temporaire puis cliquer sur l'image de profil en haut à droite / Administration / Modules
 * cliquer sur le lien Activer au niveau du module Keycload Sign-In
 
 *Tips* : en cas de mauvaise manip, désactiver le module avec la commande `/opt/plesk/php/7.4/bin/php /var/www/vhosts/hameaux-legers.org/communaute.hameaux-legers.org/protected/yii module/disable auth-keycloak` (remplacer auth-keycload par le module voulu)
 
 ## Install du module external-websites
 
-permet d&#039;intégrer les commmentaires humhub dans yeswiki et inversement (possibilité aussi d&#039;intégrer yeswiki dans humhub)
+permet d'intégrer les commmentaires humhub dans yeswiki et inversement (possibilité aussi d'intégrer yeswiki dans humhub)
 
 * se connecter en ssh : ssh [web@hameaux-legers.org](mailto:web@hameaux-legers.org) (mettre le mot de passe)
     * installer le module en tapant en ligne de commande :
@@ -312,10 +312,10 @@ permet d&#039;intégrer les commmentaires humhub dans yeswiki et inversement (po
 
   ```
   return [
-    &#039;web&#039; =&gt; [
-      &#039;security&#039; =&gt;  [
+    'web' =&gt; [
+      'security' =&gt;  [
         &quot;headers&quot; =&gt; [
-          &quot;Content-Security-Policy&quot; =&gt; &quot;default-src *; connect-src  *; font-src &#039;self&#039;; frame-src https://* http://* *; img-src https://* http://* * data:; object-src &#039;self&#039;; script-src &#039;self&#039; https://* http://* * &#039;unsafe-inline&#039; &#039;report-sample&#039;; style-src * https://* http://* * &#039;unsafe-inline&#039;; frame-ancestors &#039;self&#039; https://mooc.hameaux-legers.org;&quot;
+          &quot;Content-Security-Policy&quot; =&gt; &quot;default-src *; connect-src  *; font-src 'self'; frame-src https://* http://* *; img-src https://* http://* * data:; object-src 'self'; script-src 'self' https://* http://* * 'unsafe-inline' 'report-sample'; style-src * https://* http://* * 'unsafe-inline'; frame-ancestors 'self' https://mooc.hameaux-legers.org;&quot;
         ]
           ],
       ],
@@ -324,82 +324,82 @@ permet d&#039;intégrer les commmentaires humhub dans yeswiki et inversement (po
 * dans HumHub
     * aller dans image de profil en haut à droite / Administration / Modules et activer &quot;External Websites&quot;
     * puis dans image de profil en haut à droite / Administration / Espaces et cliquer sur le bouton Ajouter un espace :
-        * mettre pour Nom : &quot;S&#039;installer en habitat réversible&quot;
-        * mettre pour Description : &quot;Espace d&#039;échange pour les participants au MOOC « S&#039;installer en habitat réversible »&quot;
-        * cliquer sur Paramètres d&#039;accès avancées et sélectionner :
+        * mettre pour Nom : &quot;S'installer en habitat réversible&quot;
+        * mettre pour Description : &quot;Espace d'échange pour les participants au MOOC « S'installer en habitat réversible »&quot;
+        * cliquer sur Paramètres d'accès avancées et sélectionner :
             * Public (utilisateurs enregistrés uniquement)
             * Sur invitation uniquement
         * sur la page suivante, cliquer sur Activer pour le module External Websites
-        * aller dans roue crantée / Réglages puis l&#039;onglet avancée, mettre pour Url : mooc-habitat-reversible et cliquer sur Enregistrer
-    * dans l&#039;espace du MOOC, cliquer sur roue crantée / Sécurité puis l&#039;onglet Permissions. Au niveau de la ligne Inviter des utilisateurs, sélectionner Interdire
+        * aller dans roue crantée / Réglages puis l'onglet avancée, mettre pour Url : mooc-habitat-reversible et cliquer sur Enregistrer
+    * dans l'espace du MOOC, cliquer sur roue crantée / Sécurité puis l'onglet Permissions. Au niveau de la ligne Inviter des utilisateurs, sélectionner Interdire
     * aller dans roue crantée / Gérer les sites web externes et les paramètres et cliquer sur Ajouter un site web
         * mettre dans Titre : MOOC
         * sélectionner pour Humhub est intégré : Oui
         * mettre dans URL de la première page du site Web : [https://mooc.hameaux-legers.org](https://mooc.hameaux-legers.org)
-        * mettre dans Afficher dans le menu de l&#039;espace : Oui
+        * mettre dans Afficher dans le menu de l'espace : Oui
         * et cliquer sur Ajouter ce site web
 * créer un groupe pour les utilisateurs du MOOC :
     * aller dans image de profil en haut à droite / Administration / Utilisateurs, onglet Groupes et cliquer sur Ajouter un groupe
         * mettre pour Nom : Participants MOOC
-        * mettre pour Description : Groupe des participants au MOOC « S&#039;installer en habitat réversible »
-        * ajouter pour Default Space(s) : S&#039;installer en habitat réversible
+        * mettre pour Description : Groupe des participants au MOOC « S'installer en habitat réversible »
+        * ajouter pour Default Space(s) : S'installer en habitat réversible
         * cliquer sur Enregistrer
 * se connecter en ssh : `ssh [web@hameaux-legers.org](mailto:web@hameaux-legers.org)` (mettre le mot de passe)
     * `vi ~/communaute.hameaux-legers.org/protected/config/common.php`
     * intégrer les lignes suivantes en dernier élément du tableau principal (modifier API_SECRET_KEY) :
 
       ```
-      &#039;modules&#039; =&gt; [
-        &#039;external-websites&#039; =&gt; [
-          &#039;registerAssetsIfHumhubIsEmbedded&#039; =&gt; true,
-          &#039;jwtKey&#039; =&gt; &#039;API_SECRET_KEY&#039;,
+      'modules' =&gt; [
+        'external-websites' =&gt; [
+          'registerAssetsIfHumhubIsEmbedded' =&gt; true,
+          'jwtKey' =&gt; 'API_SECRET_KEY',
         ],
       ],
       ```
 
-      Au final, voici le tableau qu&#039;on obtient (penser à modifier SSO_SECRET et API_SECRET_KEY avec les bonnes valeurs)
+      Au final, voici le tableau qu'on obtient (penser à modifier SSO_SECRET et API_SECRET_KEY avec les bonnes valeurs)
 
 ```
 return [
-  &#039;components&#039; =&gt; [
-    &#039;urlManager&#039; =&gt; [
-        &#039;showScriptName&#039; =&gt; false,
-        &#039;enablePrettyUrl&#039; =&gt; true,
+  'components' =&gt; [
+    'urlManager' =&gt; [
+        'showScriptName' =&gt; false,
+        'enablePrettyUrl' =&gt; true,
     ],
-    &#039;authClientCollection&#039; =&gt; [ 
-      &#039;clients&#039; =&gt; [ 
-        &#039;Keycloak&#039; =&gt; [ 
-          &#039;class&#039; =&gt; &#039;humhub\modules\authKeycloak\authclient\Keycloak&#039;, 
-          &#039;authUrl&#039; =&gt; &#039;https://login.hameaux-legers.org/auth/realms/master/protocol/openid-connect/auth&#039;, 
-          &#039;tokenUrl&#039; =&gt; &#039;https://login.hameaux-legers.org/auth/realms/master/protocol/openid-connect/token&#039;, 
-          &#039;apiBaseUrl&#039; =&gt; &#039;https://login.hameaux-legers.org/auth/realms/master/protocol/openid-connect&#039;,
-          &#039;clientId&#039; =&gt; &#039;communaute.hameaux-legers.org&#039;,
+    'authClientCollection' =&gt; [ 
+      'clients' =&gt; [ 
+        'Keycloak' =&gt; [ 
+          'class' =&gt; 'humhub\modules\authKeycloak\authclient\Keycloak', 
+          'authUrl' =&gt; 'https://login.hameaux-legers.org/auth/realms/master/protocol/openid-connect/auth', 
+          'tokenUrl' =&gt; 'https://login.hameaux-legers.org/auth/realms/master/protocol/openid-connect/token', 
+          'apiBaseUrl' =&gt; 'https://login.hameaux-legers.org/auth/realms/master/protocol/openid-connect',
+          'clientId' =&gt; 'communaute.hameaux-legers.org',
           // Client secret is in the &quot;Credentials&quot; tab (if in the settings &quot;Access Type&quot; is set to &quot;confidential&quot;)
-          &#039;clientSecret&#039; =&gt; &#039;SSO_SECRET&#039;,
+          'clientSecret' =&gt; 'SSO_SECRET',
           // String attribute to match user tables with email or id
-          &#039;idAttribute&#039; =&gt; &#039;id&#039;,
-          // Keycloak mapper for username: &#039;preferred_username&#039;, &#039;sub&#039; (to use Keycloak ID) or other custom Token Claim Name
-          &#039;usernameMapper&#039; =&gt; &#039;sub&#039;,
+          'idAttribute' =&gt; 'id',
+          // Keycloak mapper for username: 'preferred_username', 'sub' (to use Keycloak ID) or other custom Token Claim Name
+          'usernameMapper' =&gt; 'sub',
           // Title of the button (if autoLogin is disabled)
-          &#039;title&#039; =&gt; &#039;Connexion via les Communs&#039;,
+          'title' =&gt; 'Connexion via les Communs',
           // Automatic login
-          &#039;autoLogin&#039; =&gt; true,
+          'autoLogin' =&gt; true,
           // Hide username field in registration form
-          &#039;hideRegistrationUsernameField&#039; =&gt; true,
+          'hideRegistrationUsernameField' =&gt; true,
         ],
       ],
     ],
   ],
-  &#039;modules&#039; =&gt; [
-    &#039;registerAssetsIfHumhubIsEmbedded&#039; =&gt; true,
-      &#039;external-websites&#039; =&gt; [
-          &#039;jwtKey&#039; =&gt; &#039;API_SECRET_KEY&#039;,
+  'modules' =&gt; [
+    'registerAssetsIfHumhubIsEmbedded' =&gt; true,
+      'external-websites' =&gt; [
+          'jwtKey' =&gt; 'API_SECRET_KEY',
       ],
   ],
 ];
 ```
 
-Pour info, voici le payload associé à cette jwtKey afin que qu&#039;un nouvel utilisateur soit automatiquement ajouté aux groupes d&#039;ID 1 et 2 (cf [doc de l&#039;extension external-website](https://gitlab.com/cuzy/humhub-modules-external-websites/-/tree/master/docs)) :
+Pour info, voici le payload associé à cette jwtKey afin que qu'un nouvel utilisateur soit automatiquement ajouté aux groupes d'ID 1 et 2 (cf [doc de l'extension external-website](https://gitlab.com/cuzy/humhub-modules-external-websites/-/tree/master/docs)) :
 
 ```
 {
@@ -409,7 +409,7 @@ Pour info, voici le payload associé à cette jwtKey afin que qu&#039;un nouvel 
 
 ## Paramétrage du module « external websites » dans YesWiki
 
-* rajouter la librairie contenante de iframe-resizer (si elle n&#039;existe pas déjà) en exécutant :
+* rajouter la librairie contenante de iframe-resizer (si elle n'existe pas déjà) en exécutant :
 
 ```
 cd ~/mooc.hameaux-legers.org/custom/javascripts/
@@ -417,17 +417,17 @@ wget https://gitlab.com/funkycram/humhub-modules-external-websites/-/raw/master/
 ```
 
 * modifier le fichier fiche-1201.tpl.html en exécutant `vi ~/mooc.hameaux-legers.org/tools/lms/templates/bazar/fiche-1201.tpl.html` :
-    * modifier la valeur de la variable $humhubUrl (ligne 82) et mettre : &#039;[https://communaute.hameaux-legers.org](https://communaute.hameaux-legers.org)&#039;
-    * modifier la valeur de la variable $spaceUrl (ligne 84) et mettre : &#039;mooc-habitat-reversible&#039; (l&#039;id est normalement à 1, sinon sinon récupérer son Id dans le menu roue crantée / Gérer les sites web externes)
+    * modifier la valeur de la variable $humhubUrl (ligne 82) et mettre : '[https://communaute.hameaux-legers.org](https://communaute.hameaux-legers.org)'
+    * modifier la valeur de la variable $spaceUrl (ligne 84) et mettre : 'mooc-habitat-reversible' (l'id est normalement à 1, sinon sinon récupérer son Id dans le menu roue crantée / Gérer les sites web externes)
     * modifier la valeur de la variable $humhubWebsiteId (ligne 86) et mettre : 1
     * modifier la valeur de la variable $autoLogin (ligne 90) et mettre : 1
     * modifier la valeur de la variable $token (ligne 92) et mettre :
-    * modifier la valeur de la variable $humhubUrl et mettre : le TOKEN calculé à partir du payload et de API_SECRET_KEY en suivant la procédure décrite dans la [doc de l&#039;extension external-website](https://gitlab.com/cuzy/humhub-modules-external-websites/-/tree/master/docs)
+    * modifier la valeur de la variable $humhubUrl et mettre : le TOKEN calculé à partir du payload et de API_SECRET_KEY en suivant la procédure décrite dans la [doc de l'extension external-website](https://gitlab.com/cuzy/humhub-modules-external-websites/-/tree/master/docs)
 
 # Resssouces
 
 * [installation classique de YesWiki](https://yeswiki.net/?DocumentationInstallation)
 * [préparation du serveur pour HumHub](https://docs.humhub.org/docs/admin/server-setup/)
 * [installation de HumHub](https://docs.humhub.org/docs/admin/installation/)
-* [doc de l&#039;extension auth-keycloak (HumHub)](https://github.com/cuzy-app/humhub-modules-auth-keycloak)
-* [doc de l&#039;extension external-website (HumHub)](https://gitlab.com/cuzy/humhub-modules-external-websites/-/tree/master/docs)
+* [doc de l'extension auth-keycloak (HumHub)](https://github.com/cuzy-app/humhub-modules-auth-keycloak)
+* [doc de l'extension external-website (HumHub)](https://gitlab.com/cuzy/humhub-modules-external-websites/-/tree/master/docs)
