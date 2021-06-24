@@ -19,10 +19,6 @@ class HostAssets extends AssetBundle
 {
     public $sourcePath = '@external-websites/resources';
 
-    public $publishOptions = [
-        'forceCopy' => false,
-    ];
-
     public $css = [
         'css/humhub.externalWebsites.Host.css',
     ];

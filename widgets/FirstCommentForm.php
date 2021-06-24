@@ -51,7 +51,7 @@ class FirstCommentForm extends \humhub\modules\comment\widgets\Form
         }
 
         // As content is not yet created, check permission with space (future content container)
-        if (!$this->contentContainer->permissionManager->can(new CreateComment)) {
+        if (!$this->contentContainer->permissionManager->can(CreateComment::class)) {
             return '';
         }
 

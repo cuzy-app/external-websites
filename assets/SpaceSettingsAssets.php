@@ -21,8 +21,6 @@ class SpaceSettingsAssets extends AssetBundle
 
     public $jsOptions = ['position' => \yii\web\View::POS_HEAD];
 
-    public $publishOptions = ['forceCopy' => false];
-
     public $css = [
     ];
 

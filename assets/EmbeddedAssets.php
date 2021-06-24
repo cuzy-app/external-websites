@@ -21,8 +21,6 @@ class EmbeddedAssets extends AssetBundle
 
     public $jsOptions = ['position' => \yii\web\View::POS_END];
 
-    public $publishOptions = ['forceCopy' => false];
-
     public $css = [
     ];
     

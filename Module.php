@@ -66,15 +66,6 @@ class Module extends ContentContainerModule
     /**
      * @inheritdoc
      */
-    public function enable()
-    {
-        return parent::enable();
-    }
-
-
-    /**
-     * @inheritdoc
-     */
     public function disable()
     {
         foreach (Page::find()->all() as $page) {
