@@ -1,8 +1,10 @@
+> Cette doc a été faite pour l’association Hameaux Légers. Les adresses utilisées sont ainsi spécifiques à leur serveur et il y a une partie de la configuration système qui repose sur l’interface de gestion système Plesk.
+
 # Organisation globale
 
-* depuis Plesk, dans website on voit le domaine principal [hameaux-legers.org](http://hameaux-legers.org/) puis les deux sous-domaines [communaute.hameaux-legers.org](http://communaute.hameaux-legers.org/) et [mooc.hameaux-legers.org](http://mooc.hameaux-legers.org/)
+* depuis Plesk, dans website on voit le domaine principal `hameaux-legers.org` puis les deux sous-domaines communaute.hameaux-legers.org et mooc.hameaux-legers.org
 * on accède à chacune des bases de données en cliquant sur le bouton Databases, et on peut s'y connecter avec PhpMyAdmin avec le bouton du même nom
-* pour se connecter en ssh, le même utilisateur peut accéder au domaine et aux sous-domaines. Lancer dans un terminal : `ssh [web@hameaux-legers.org](mailto:web@hameaux-legers.org)` et taper le mot de passe
+* pour se connecter en ssh, le même utilisateur peut accéder au domaine et aux sous-domaines. Lancer dans un terminal : `ssh web@hameaux-legers.org` et taper le mot de passe
 * au niveau de l'aborescence de fichier, on retrouve :
     * le site vitrine (domaine principale) dans `~/httpdocs/`
     * le site yeswiki (sous domaine mooc) dans `~/mooc.hameaux-legers.org/`
@@ -14,9 +16,9 @@
 
 * aller à l'adresse [https://login.lescommuns.org/auth/admin](https://login.lescommuns.org/auth/admin) avec un navigateur
     * cliquer sur le menu Clients puis sur le bouton Create
-    * mettre pour Client ID : [mooc.hameaux-legers.org](http://mooc.hameaux-legers.org/)
+    * mettre pour Client ID : mooc.hameaux-legers.org
     * selectionner pour Client Protocol : openid-connect
-    * mettre pour Root URL : [https://mooc.hameaux-legers.org](https://mooc.hameaux-legers.org) et valider
+    * mettre pour Root URL : https://mooc.hameaux-legers.org et valider
     * dans l'onglet Settings :
         * sélectionner pour Access Type : confidential et cliquer sur Save
     * cliquer sur l'onglet Credentials :
@@ -27,11 +29,11 @@
 
 ## Pour HumHub
 
-* aller à l'adresse [https://login.lescommuns.org/auth/admin](https://login.lescommuns.org/auth/admin) avec un navigateur
+* aller à l'adresse https://login.lescommuns.org/auth/admin avec un navigateur
 * cliquer sur le menu Clients puis sur le bouton Create
-* mettre pour Client ID : [communaute.hameaux-legers.org](http://communaute.hameaux-legers.org/)
+* mettre pour Client ID : http://communaute.hameaux-legers.org
 * selectionner pour Client Protocol : openid-connect
-* mettre pour Root URL : [https://communaute.hameaux-legers.org](https://communaute.hameaux-legers.org) et valider
+* mettre pour Root URL : https://communaute.hameaux-legers.org et valider
 * dans l'onglet Settings :
     * sélectionner pour Access Type : confidential et cliquer sur Save
 * cliquer sur l'onglet Credentials :
@@ -43,17 +45,17 @@
 
 # Installation de YesWiki
 
-* dans Plesk, cliquer sur le menu Databases puis sur le sous-domaine [mooc.hameaux-legers.org](http://mooc.hameaux-legers.org/)
+* dans Plesk, cliquer sur le menu Databases puis sur le sous-domaine `mooc.hameaux-legers.org`
     * ajouter une base de donnée et un utilisateur en cliquant sur Add a Dababase
         * mettre pour Database name : yeswiki
-        * selectionner pour Related site : [mooc.hameaux-legers.org](http://mooc.hameaux-legers.org/)
+        * selectionner pour Related site : mooc.hameaux-legers.org
         * mettre pour Database user name : yeswiki
         * cliquer sur Generate pour créer un password sécurisé
         * sélectionner pour Access control : Allow remote connections from any host
     * aller dans Websites & Domains, cliquer sur le bouton File Manager et supprimer le fichier index.html
-* se connecter en ssh : `ssh [web@hameaux-legers.org](mailto:web@hameaux-legers.org)` (mettre le mot de passe)
+* se connecter en ssh : `ssh web@hameaux-legers.org` (mettre le mot de passe)
 * préparer une version de yeswiki avec l'ensemble des extensions installées et les personnalisations qui permettent que yeswiki intéragissent avec humhub. Les modules **lms**, **login-sso** doivent être installées. Le module LMS ne prend pas encore en compte l'intégration des commentaires humhub, ainsi il faut avoir une version personnalisée. De même, la subscrition à des évènements est une partie personnalisée (cf le répertoire custom).
-* copier cette version de yeswiki dans le répertoire `~/mooc.hameaux-legers.org/` de l'utilisateur web `rsync -av --itemize-changes * [web@hameaux-legers.org](mailto:web@hameaux-legers.org):~/mooc.hameaux-legers.org/`
+* copier cette version de yeswiki dans le répertoire `~/mooc.hameaux-legers.org/` de l'utilisateur web `rsync -av --itemize-changes * web@hameaux-legers.org:~/mooc.hameaux-legers.org/`
 * lancer la page [https://mooc.hameaux-legers.org](https://mooc.hameaux-legers.org) dans un navigateur
     * renseigner les champs Nom de votre site et Description
     * mettre dans Machine MySQL : localhost
@@ -62,7 +64,7 @@
     * mettre dans Mot de passe MySQL : le mot de passe rentré lors de la création de l'utilisateur (cf plus haut)
     * mettre dans Préfixe des tables : yeswiki_mooc__
     * mettre dans Mot de passe et Confirmation du mot de passe en dessous de Administrateur : un mot de passe sécurisé
-    * mettre dans Adresse e-mail : [support@hameaux-legers.org](mailto:support@hameaux-legers.org) et valider
+    * mettre dans Adresse e-mail : support@hameaux-legers.org et valider
 * modifier le fichier de configuration
     * remplacer : `'default_write_acl' => '*',* 'default_read_acl' => '',` par : `'default_write_acl' => '%', 'default_read_acl' => '+',`
     * puis rajouter à la fin du tableau :
@@ -128,19 +130,19 @@
 
 Attention à bien remplacer SMTP_PASSWORD et SSO_SECRET avec les bonnes valeurs. Vous pouvez également adapter 'entry_creation_information' qui est le message qui sera affichée à la première connexion d'un utilisateur lorsque son compte est créé.
 
-* Accéder à la base de donner en cliquant sur Databases, [mooc.hameaux-legers.org](http://mooc.hameaux-legers.org/) puis sur le bouton phpMyAdmin
+* Accéder à la base de donner en cliquant sur Databases, `mooc.hameaux-legers.org` puis sur le bouton phpMyAdmin
     * définir les administrateurs en allant dans la table yeswiki_mooc__triples, et en modifiant la ligne d'id 1 à la colonne value : laisser WikiAdmin mais rajouter les NomWiki des utilisateurs qu'on veut passer administrateur séparer par des espaces ou des retours à la ligne.
     * ajouter un formulaire à yeswiki pour les profils des utilisateurs et avec les champs minimum bf_titre, bf_nom, bf_prenom et bf_email. Puis modifier directement dans la base de données à la table yeswiki_mooc__nature la valeur bn_id_nature de ce formulaire pour qu'elle soit à 1000.
-* lancer [https://mooc.hameaux-legers.org/?PagePrincipale/update](https://mooc.hameaux-legers.org/?PagePrincipale/update) dans un navigateur pour rajouter les pages et formulaires utiles au LMS
+* lancer https://mooc.hameaux-legers.org/?PagePrincipale/update dans un navigateur pour rajouter les pages et formulaires utiles au LMS
 
 # Installation de HumHub
 
 ## Installation basique
 
-* dans Plesk, cliquer sur le menu Databases puis sur le sous-domaine [communaute.hameaux-legers.org](http://communaute.hameaux-legers.org/)
+* dans Plesk, cliquer sur le menu Databases puis sur le sous-domaine communaute.hameaux-legers.org
     * ajouter une base de donnée et un utilisateur en cliquant sur Add a Dababase
         * mettre pour Database name : humhub
-        * sélectionner pour Related site : [communaute.hameaux-legers.org](http://communaute.hameaux-legers.org/)
+        * sélectionner pour Related site : communaute.hameaux-legers.org
         * mettre pour Database user name : humhub
         * cliquer sur Generate pour créer un mot de passe sécurisé
         * sélectionner pour Access control : Allow remote connections from any host
@@ -148,10 +150,10 @@ Attention à bien remplacer SMTP_PASSWORD et SSO_SECRET avec les bonnes valeurs.
     * max_execution_time à 120
     * post_max_size à 16M
     * upload_max_filesize à 16M
-* se connecter en ssh : `ssh [web@hameaux-legers.org](mailto:web@hameaux-legers.org)` (mettre le mot de passe) et exécuter les lignes suivantes :
+* se connecter en ssh : `ssh web@hameaux-legers.org` (mettre le mot de passe) et exécuter les lignes suivantes :
     * `rm ~/communaute.hameaux-legers.org/index.html`
     * `cd /tmp`
-    * `wget [https://www.humhub.com/download/package/humhub-1.8.2.tar.gz](https://www.humhub.com/download/package/humhub-1.8.2.tar.gz)` (vous pouvez installer une version plus récente en regardant la dernière version stable sur [https://www.humhub.com/en/download](https://www.humhub.com/en/download))
+    * `wget https://www.humhub.com/download/package/humhub-1.8.2.tar.gz` (vous pouvez installer une version plus récente en regardant la dernière version stable sur [https://www.humhub.com/en/download](https://www.humhub.com/en/download))
     * `tar xvzf humhub-1.8.2.tar.gz`
     * `cd humhub-1.8.2/`
     * `mv * ~/communaute.hameaux-legers.org/`
@@ -160,14 +162,14 @@ Attention à bien remplacer SMTP_PASSWORD et SSO_SECRET avec les bonnes valeurs.
 * dans Plesk :
     * aller dans Websites & Domains et cliquer sur le bouton Scheduled Tasks (panneau de droite) :
         * cliquer sur Add Task
-        * sélectionner pour Webspace : [hameaux-legers.org](http://hameaux-legers.org/)
+        * sélectionner pour Webspace : hameaux-legers.org
         * mettre pour Command : `/opt/plesk/php/7.4/bin/php /var/www/vhosts/hameaux-legers.org/communaute.hameaux-legers.org/protected/yii queue/run >/dev/null 2>&1`
         * sélectionner Cron style pour Run puis mettre : \* \* \* \* \*
         * mettre pour Description : pour les traitements longs d'Humhub (script lancé toutes les minutes)
         * sélectionner pour Notify : Do not notify et Valider
     * puis créer une 2ème Task avec les mêmes champs excepté :
         * mettre pour Command : `/opt/plesk/php/7.4/bin/php /var/www/vhosts/hameaux-legers.org/communaute.hameaux-legers.org/protected/yii cron/run >/dev/null 2>&1`
-    * aller sur le site [https://communaute.hameaux-legers.org/](https://communaute.hameaux-legers.org/) pour terminer l'install
+    * aller sur le site https://communaute.hameaux-legers.org/ pour terminer l'install
         * cliquer sur Suivant
         * voir que les prérequis systèmes sont OK et cliquer sur Suivant
         * pour la configuration de la base de données :
@@ -198,10 +200,10 @@ Attention à bien remplacer SMTP_PASSWORD et SSO_SECRET avec les bonnes valeurs.
 Rend les urls plus « user friendly », et nécessaire pour les modules ci-dessous
 
 * aller dans Plesk :
-    * cliquer sur Websites & Domains et cliquer sur l'onglet Hosting & DNS du site [communaute.hameaux-legers.org](http://communaute.hameaux-legers.org/)
+    * cliquer sur Websites & Domains et cliquer sur l'onglet Hosting & DNS du site http://communaute.hameaux-legers.org/
     * cliquer sur Apache & nginx Settings
     * décocher Restrict the ability to follow symbolic links
-    * se connecter en ssh : `ssh [web@hameaux-legers.org](mailto:web@hameaux-legers.org)` (mettre le mot de passe)
+    * se connecter en ssh : `ssh web@hameaux-legers.org` (mettre le mot de passe)
     * modifier le fichier de conf de humhub en tapant `vi ~/communaute.hameaux-legers.org/protected/config/common.php` et modifier le tableau pour retourner :
 
       ```
@@ -215,12 +217,12 @@ Rend les urls plus « user friendly », et nécessaire pour les modules ci-desso
       ];
       ```
 * activer les redirections apache en tapant : `mv ~/communaute.hameaux-legers.org/.htaccess.dist ~/communaute.hameaux-legers.org/.htaccess`
-* naviguer sur humhub et vérifier que vous avez bien l'url de type [https://communaute.hameaux-legers.org/s/espace-de-bienvenue/](https://communaute.hameaux-legers.org/s/espace-de-bienvenue/) quand vous allez sur l'espace de bienvenue
+* naviguer sur humhub et vérifier que vous avez bien l'url de type https://communaute.hameaux-legers.org/s/espace-de-bienvenue/ quand vous allez sur l'espace de bienvenue
 
 ## Derniers paramétrages post-install
 
 * activer le mode « production » :
-    * se connecter en ssh : `ssh [web@hameaux-legers.org](mailto:web@hameaux-legers.org)` (mettre le mot de passe)
+    * se connecter en ssh : `ssh web@hameaux-legers.org` (mettre le mot de passe)
     * éditer le fichier index.php via la commande `vi ~/communaute.hameaux-legers.org/index.php`
     * commenter ces deux définition de variables YII_DEBUG et YII_ENV de la manière suivante :
 
@@ -230,12 +232,12 @@ Rend les urls plus « user friendly », et nécessaire pour les modules ci-desso
       //defined('YII_ENV') or define('YII_ENV', 'dev');
       ```
 * configurer l'envoi de mail en allant à image de profil en haut à droite / Administration / Paramètre, onglet Avancé puis sous-onglet E-mail :
-* mettre pour Adresse expéditeur des e-mails : [support@hameaux-legers.org](mailto:support@hameaux-legers.org)
+* mettre pour Adresse expéditeur des e-mails : support@hameaux-legers.org
 * mettre pour Nom de l'expéditeur des e-mails : Hameaux Légers
 * sélectionner pour Type de transport des e-mails : SMTP
-* mettre pour Hostname : [ssl0.ovh.net](http://ssl0.ovh.net/)
-* mettre pour Identifiant : [support@hameaux-legers.org](mailto:support@hameaux-legers.org)
-* mettre pour Mot de passe : le mot de passe de la messagerie de [support@hameaux-legers.org](mailto:support@hameaux-legers.org)
+* mettre pour Hostname : ssl0.ovh.net
+* mettre pour Identifiant : support@hameaux-legers.org
+* mettre pour Mot de passe : le mot de passe de la messagerie de support@hameaux-legers.org
 * mettre pour Port : 465
 * mettre pour Chiffrement : SSL
 * suite à cette configuration, un mail de test est envoyé à l'administrateur qui a fait le paramétrage
@@ -244,7 +246,7 @@ Rend les urls plus « user friendly », et nécessaire pour les modules ci-desso
 
 permet de se connecter au serveur SSO des Communs
 
-* se connecter en ssh : `ssh [web@hameaux-legers.org](mailto:web@hameaux-legers.org)` (mettre le mot de passe)
+* se connecter en ssh : `ssh web@hameaux-legers.org` (mettre le mot de passe)
     * installer le module en tapant en ligne de commande :
 
 ```
@@ -335,7 +337,7 @@ permet d'intégrer les commmentaires humhub dans yeswiki et inversement (possibi
     * aller dans roue crantée / Gérer les sites web externes et les paramètres et cliquer sur Ajouter un site web
         * mettre dans Titre : MOOC
         * sélectionner pour Humhub est intégré : Oui
-        * mettre dans URL de la première page du site Web : [https://mooc.hameaux-legers.org](https://mooc.hameaux-legers.org)
+        * mettre dans URL de la première page du site Web : https://mooc.hameaux-legers.org
         * mettre dans Afficher dans le menu de l'espace : Oui
         * et cliquer sur Ajouter ce site web
 * créer un groupe pour les utilisateurs du MOOC :
@@ -344,7 +346,7 @@ permet d'intégrer les commmentaires humhub dans yeswiki et inversement (possibi
         * mettre pour Description : Groupe des participants au MOOC « S'installer en habitat réversible »
         * ajouter pour Default Space(s) : S'installer en habitat réversible
         * cliquer sur Enregistrer
-* se connecter en ssh : `ssh [web@hameaux-legers.org](mailto:web@hameaux-legers.org)` (mettre le mot de passe)
+* se connecter en ssh : `ssh web@hameaux-legers.org` (mettre le mot de passe)
     * `vi ~/communaute.hameaux-legers.org/protected/config/common.php`
     * intégrer les lignes suivantes en dernier élément du tableau principal (modifier API_SECRET_KEY) :
 
@@ -417,7 +419,7 @@ wget https://gitlab.com/funkycram/humhub-modules-external-websites/-/raw/master/
 ```
 
 * modifier le fichier fiche-1201.tpl.html en exécutant `vi ~/mooc.hameaux-legers.org/tools/lms/templates/bazar/fiche-1201.tpl.html` :
-    * modifier la valeur de la variable $humhubUrl (ligne 82) et mettre : '[https://communaute.hameaux-legers.org](https://communaute.hameaux-legers.org)'
+    * modifier la valeur de la variable $humhubUrl (ligne 82) et mettre : 'https://communaute.hameaux-legers.org]'
     * modifier la valeur de la variable $spaceUrl (ligne 84) et mettre : 'mooc-habitat-reversible' (l'id est normalement à 1, sinon sinon récupérer son Id dans le menu roue crantée / Gérer les sites web externes)
     * modifier la valeur de la variable $humhubWebsiteId (ligne 86) et mettre : 1
     * modifier la valeur de la variable $autoLogin (ligne 90) et mettre : 1
