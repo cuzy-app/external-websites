@@ -1,6 +1,10 @@
 Changelog
 =========
 
+0.29 (August 17, 2021)
+--------------------
+- Enh: If Humhub is embedded, possibility to hide some elements
+
 0.28 (June 8, 2021)
 --------------------
 - Enh: The icon selector widget has been replaced with the Humhub's native one (requires a database migration)

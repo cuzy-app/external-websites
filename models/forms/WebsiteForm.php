@@ -71,7 +71,7 @@ class WebsiteForm extends \yii\base\Model
      */
     public function attributeLabels()
     {
-        return Website::attributeLabels();
+        return (new Website())->attributeLabels();
     }
 
     /**

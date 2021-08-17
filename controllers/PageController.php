@@ -76,9 +76,9 @@ class PageController extends ContentContainerController
             $title = BaseStringHelper::truncate($pageTitle, 95, '[...]');
 
             // Get elements to show
-            $showComments = (bool)Yii::$app->request->post('showComments', true);
-            $showLikes = (bool)Yii::$app->request->post('showLikes', true);
-            $showPermalink = (bool)Yii::$app->request->post('showPermalink', true);
+            $showComments = (bool)Yii::$app->request->post('showComments', Yii::$app->request->get('showComments', true));
+            $showLikes = (bool)Yii::$app->request->post('showLikes', Yii::$app->request->get('showLikes', true));
+            $showPermalink = (bool)Yii::$app->request->post('showPermalink', Yii::$app->request->get('showPermalink', true));
 
             // Get content (there can be only 1 unique URL per space, so we don't filter by website)
             $page = Page::find()

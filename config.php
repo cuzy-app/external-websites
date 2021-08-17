@@ -15,6 +15,7 @@ use humhub\modules\ui\view\components\View;
 use humhub\modules\content\components\ContentContainerController;
 use humhub\components\Controller;
 
+/** @noinspection MissedFieldInspection */
 return [
     'id' => 'external-websites',
     'class' => 'humhub\modules\externalWebsites\Module',

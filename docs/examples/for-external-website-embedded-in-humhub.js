@@ -8,10 +8,12 @@ var iFrameResizer = {
         }
     }
 };
+
 // If URL changes without reloading page (ajax)
 window.addEventListener('locationchange', function() {
     sendUrlToParentIframe();
 });
+
 // Send new URL to parent iframe
 function sendUrlToParentIframe() {
     if ('parentIFrame' in window) {

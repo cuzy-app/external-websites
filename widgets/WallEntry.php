@@ -20,7 +20,6 @@ class WallEntry extends WallStreamModuleEntryWidget
     {
         return $this->render('wallEntry', [
             'page' => $this->model,
-            'space' => $this->model->content->container
         ]);
     }
 
