@@ -124,11 +124,14 @@ class PageController extends ContentContainerController
             $permalink = $pageUrl;
         }
 
-        // If content archived and no comments, show only permalink
+        // If cannot view content or content archived and no comments, show only permalink
         if (
-            $page !== null
-            && $page->content->archived
-            && Comment::GetCommentCount(Page::class, $page->id) == 0
+            !$page->content->canView()
+            || (
+                $page !== null
+                && $page->content->archived
+                && Comment::GetCommentCount(Page::class, $page->id) == 0
+            )
         ) {
             $showComments = false;
             $showLikes = false;
