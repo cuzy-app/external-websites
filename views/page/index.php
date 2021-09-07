@@ -55,7 +55,7 @@ else {
         ) ?>
     <?php endif; ?>
 
-    <?php if ($page !== null): ?>
+    <?php if ($page !== null && $page->content->canView()): ?>
         <?php if ($showLikes): ?>
             &middot; <?= LikeLink::widget(['object' => $page]); ?>
         <?php endif; ?>
