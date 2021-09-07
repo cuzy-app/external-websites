@@ -34,7 +34,7 @@ class WebsiteController extends ContentContainerController
         elseif ($title !== null) {
             $website = Website::findOne(['title' => $title]);
         }
-        if (empty($website)) {
+        if ($website === null) {
             throw new HttpException(404, 'Website not found');
         }
 
@@ -46,7 +46,7 @@ class WebsiteController extends ContentContainerController
             }
         }
         // If pageUrl is null
-        elseif (empty($pageUrl)) {
+        elseif (! $pageUrl) {
             // Set first page URL
             $pageUrl = $website->first_page_url;
         }

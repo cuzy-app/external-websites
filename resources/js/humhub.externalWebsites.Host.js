@@ -87,7 +87,6 @@ humhub.module('externalWebsites.Host', function (module, require, $) {
         );
     };
 
-
     module.export({
         updateBrowserUrlAndToggleSidebar: updateBrowserUrlAndToggleSidebar,
         loadIFrameResizer: loadIFrameResizer
