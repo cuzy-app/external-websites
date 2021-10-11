@@ -7,6 +7,7 @@
  */
 
 use humhub\modules\ui\form\widgets\IconPicker;
+use humhub\modules\ui\icon\widgets\Icon;
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 use humhub\widgets\ModalDialog;
@@ -34,7 +35,7 @@ use humhub\widgets\ModalButton;
             <?= $form->field($model, 'default_content_visibility')->dropDownList($model->contentVisibilityList) ?>
             <?= $form->field($model, 'default_content_archived')->checkbox() ?>
             <?= Html::submitButton(
-                '<i class="fa fa-plus"></i> '.Yii::t('ExternalWebsitesModule.base', 'Add this website'),
+                Icon::get('plus').' '.Yii::t('ExternalWebsitesModule.base', 'Add this website'),
                 [
                     'class' => 'btn btn-primary',
                 ]

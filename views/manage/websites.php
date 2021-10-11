@@ -7,7 +7,7 @@
  */
 
 use humhub\modules\ui\icon\widgets\Icon;
-use yii\helpers\Url;
+use humhub\widgets\Button;
 use yii\helpers\Html;
 use humhub\widgets\GridView;
 use humhub\modules\externalWebsites\models\forms\WebsiteForm;
@@ -29,7 +29,7 @@ $websiteForm = new WebsiteForm;
 
     <div class="panel-body">
         <?= Html::a(
-            '<i class="fa fa-plus"></i> '.Yii::t('ExternalWebsitesModule.base', 'Add a website'),
+            Icon::get('plus').' '.Yii::t('ExternalWebsitesModule.base', 'Add a website'),
             $contentContainer->createUrl('/external-websites/manage/add-website'),
             [
                 'class' => 'btn btn-primary',
@@ -38,7 +38,7 @@ $websiteForm = new WebsiteForm;
         ) ?>
 
         <?= Html::a(
-            '<i class="fa fa-cogs"></i> '.Yii::t('ExternalWebsitesModule.base', 'Settings'),
+            Icon::get('cogs').' '.Yii::t('ExternalWebsitesModule.base', 'Settings'),
             $contentContainer->createUrl('/external-websites/manage/space-settings'),
             [
                 'class' => 'btn btn-default pull-right',
@@ -110,26 +110,19 @@ $websiteForm = new WebsiteForm;
                 'header' => '',
                 'format' => 'raw',
                 'value' => function ($model) use ($contentContainer) {
-                    return 
-                        Html::a(
-                            '<i class="fa fa-pencil"></i>',
-                            $contentContainer->createUrl('/external-websites/manage/edit-website', ['websiteId' => $model->id]),
-                            [
-                                'class' => 'btn btn-primary tt',
-                                'title' => Yii::t('ExternalWebsitesModule.base', 'Edit this website'),
-                                'data-target' => '#globalModal',
-                            ]
-                        ).
+                    return
+                        Button::primary()
+                            ->icon('pencil')
+                            ->link($contentContainer->createUrl('/external-websites/manage/edit-website', ['websiteId' => $model->id]))
+                            ->action('ui.modal.load')
+                            ->tooltip(Yii::t('ExternalWebsitesModule.base', 'Edit this website')).
                         '<br><br>'.
-                        Html::a(
-                            '<i class="fa fa-trash"></i>',
-                            $contentContainer->createUrl('/external-websites/manage/delete-website', ['websiteId' => $model->id]),
-                            [
-                                'class' => 'btn btn-danger tt',
-                                'title' => Yii::t('ExternalWebsitesModule.base', 'Delete this website'),
-                                'data-action-confirm' => Yii::t('ExternalWebsitesModule.base', 'Are you sure you want to delete this website?'),
-                            ]
-                        );
+                        Button::danger()
+                            ->icon('trash')
+                            ->link($contentContainer->createUrl('/external-websites/manage/delete-website', ['websiteId' => $model->id]))
+                            ->action('ui.modal.load')
+                            ->tooltip(Yii::t('ExternalWebsitesModule.base', 'Delete this website'))
+                            ->confirm(Yii::t('ExternalWebsitesModule.base', 'Are you sure you want to delete this website?'));
                 }
             ],
         ]; ?>
