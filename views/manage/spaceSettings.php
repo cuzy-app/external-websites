@@ -20,7 +20,7 @@ use yii\bootstrap\ActiveForm;
 ?>
 
 <?php ModalDialog::begin([
-    'header' => Yii::t('ExternalWebsitesModule.base', 'Space settings'),
+    'header' => Yii::t('ExternalWebsitesModule.base', 'Settings'),
 ]) ?>
     <div class="modal-body">
 

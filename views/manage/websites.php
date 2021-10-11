@@ -38,7 +38,7 @@ $websiteForm = new WebsiteForm;
         ) ?>
 
         <?= Html::a(
-            '<i class="fa fa-cogs"></i> '.Yii::t('ExternalWebsitesModule.base', 'Space settings'),
+            '<i class="fa fa-cogs"></i> '.Yii::t('ExternalWebsitesModule.base', 'Settings'),
             $contentContainer->createUrl('/external-websites/manage/space-settings'),
             [
                 'class' => 'btn btn-default pull-right',
