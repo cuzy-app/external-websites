@@ -24,6 +24,12 @@ use humhub\modules\externalWebsites\widgets\WallEntry;
  * @property integer $title
  * @property string $page_url
  * @property integer $website_id
+ * @property string $created_at
+ * @property integer $created_by
+ * @property string $updated_at
+ * @property integer $updated_by
+ *
+ * @property Website $website
  */
 
 class Page extends ContentActiveRecord implements Searchable
