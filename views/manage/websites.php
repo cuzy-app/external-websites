@@ -65,8 +65,8 @@ $websiteForm = new WebsiteForm;
             [
                 'attribute' => 'humhub_is_embedded',
                 'format' => 'raw',
-                'value' => function ($model) use ($websiteForm) {
-                    return $websiteForm->yesNoList[$model->humhub_is_embedded];
+                'value' => function ($model) {
+                    return $model->humhub_is_embedded ? Icon::get('check') : '';
                 }
             ],
             [
@@ -75,8 +75,8 @@ $websiteForm = new WebsiteForm;
             [
                 'attribute' => 'show_in_menu',
                 'format' => 'raw',
-                'value' => function ($model) use ($websiteForm) {
-                    return $websiteForm->yesNoList[$model->show_in_menu];
+                'value' => function ($model) {
+                    return $model->show_in_menu ? Icon::get('check') : '';
                 }
             ],
             [
@@ -88,8 +88,8 @@ $websiteForm = new WebsiteForm;
             [
                 'attribute' => 'hide_sidebar',
                 'format' => 'raw',
-                'value' => function ($model) use ($websiteForm) {
-                    return $websiteForm->yesNoList[$model->hide_sidebar];
+                'value' => function ($model) {
+                    return $model->hide_sidebar ? Icon::get('check') : '';
                 }
             ],
             [
@@ -102,8 +102,8 @@ $websiteForm = new WebsiteForm;
             [
                 'attribute' => 'default_content_archived',
                 'format' => 'raw',
-                'value' => function ($model) use ($websiteForm) {
-                    return $websiteForm->yesNoList[$model->default_content_archived];
+                'value' => function ($model) {
+                    return $model->default_content_archived ? Icon::get('check') : '';
                 }
             ],
             [

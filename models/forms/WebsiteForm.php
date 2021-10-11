@@ -22,12 +22,12 @@ class WebsiteForm extends Model
     public $icon = 'desktop';
     public $humhub_is_embedded = false;
     public $first_page_url;
-    public $show_in_menu = 1;
+    public $show_in_menu = true;
     public $sort_order = 100;
     public $remove_from_url_title = '';
-    public $hide_sidebar = 0;
+    public $hide_sidebar = false;
     public $default_content_visibility = null;
-    public $default_content_archived = 0;
+    public $default_content_archived = false;
 
 
     public function init()
@@ -39,14 +39,14 @@ class WebsiteForm extends Model
         ) {
             $this->title = $website->title;
             $this->icon = $website->icon;
-            $this->humhub_is_embedded = $website->humhub_is_embedded;
+            $this->humhub_is_embedded = (bool)$website->humhub_is_embedded;
             $this->first_page_url = $website->first_page_url;
-            $this->show_in_menu = $website->show_in_menu;
-            $this->sort_order = $website->sort_order;
+            $this->show_in_menu = (bool)$website->show_in_menu;
+            $this->sort_order = (int)$website->sort_order;
             $this->remove_from_url_title = $website->remove_from_url_title;
-            $this->hide_sidebar = $website->hide_sidebar;
-            $this->default_content_visibility = $website->default_content_visibility;
-            $this->default_content_archived = $website->default_content_archived;
+            $this->hide_sidebar = (bool)$website->hide_sidebar;
+            $this->default_content_visibility = (int)$website->default_content_visibility;
+            $this->default_content_archived = (bool)$website->default_content_archived;
         }
 
         parent::init();
@@ -118,15 +118,9 @@ class WebsiteForm extends Model
     }
 
 
-    public function getYesNoList()
-    {
-        return [
-            1 => Yii::t('ExternalWebsitesModule.base', 'Yes'),
-            0 => Yii::t('ExternalWebsitesModule.base', 'No'),
-        ];
-    }
-
-
+    /**
+     * @return array
+     */
     public function getContentVisibilityList()
     {
         return [

@@ -9,13 +9,10 @@
 namespace humhub\modules\externalWebsites\models\forms;
 
 use Yii;
-use yii\helpers\Html;
-use yii\helpers\Url;
-use humhub\modules\externalWebsites\models\Website;
-use humhub\modules\content\models\Content;
+use yii\base\Model;
 
 
-class SpaceSettingsForm extends \yii\base\Model
+class SpaceSettingsForm extends Model
 {
     /**
      * @var \humhub\modules\space\models\Space
@@ -28,9 +25,9 @@ class SpaceSettingsForm extends \yii\base\Model
     public $urlToRedirect;
 
     /**
-     * @var bool (0 or 1)
+     * @var bool
      */
-    public $preventLeavingSpace = 0;
+    public $preventLeavingSpace = false;
 
 
     public function init()
@@ -89,13 +86,5 @@ class SpaceSettingsForm extends \yii\base\Model
         $settings->set('preventLeavingSpace', $this->preventLeavingSpace);
 
         return true;
-    }
-
-    public function getYesNoList()
-    {
-        return [
-            1 => Yii::t('ExternalWebsitesModule.base', 'Yes'),
-            0 => Yii::t('ExternalWebsitesModule.base', 'No'),
-        ];
     }
 }
