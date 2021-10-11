@@ -196,3 +196,14 @@ If the content related to a page is archived and all comments have been removed,
 #### Notifications (following)
 For Humhub addons, each content created (if new comment about a website's page) has for creator the website creator. This creator will not follow the content by default.
 But all users that have chosen to receive a notification for all new content will follow these contents.
+
+
+## Troubleshooting
+
+### The external website doesn't appear
+
+If in the browser's developer console you have the message: `Failed to execute 'postMessage' on 'DOMWindow': The target origin provided ('http://my-external.website') does not match the recipient window's origin ('null').`
+
+2 possibilities :
+- The URL external website must starts with `https` (and not `http`).
+- The `x-Frame-Options` value is set to `Deny` or `Sameorigin` on the external website's header
