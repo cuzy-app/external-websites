@@ -28,23 +28,16 @@ $websiteForm = new WebsiteForm;
     </div>
 
     <div class="panel-body">
-        <?= Html::a(
-            Icon::get('plus').' '.Yii::t('ExternalWebsitesModule.base', 'Add a website'),
-            $contentContainer->createUrl('/external-websites/manage/add-website'),
-            [
-                'class' => 'btn btn-primary',
-                'data-target' => '#globalModal',
-            ]
-        ) ?>
+        <?= Button::success(Yii::t('ExternalWebsitesModule.base', 'Add a website'))
+            ->icon('plus')
+            ->link($contentContainer->createUrl('/external-websites/manage/add-website'))
+            ->action('ui.modal.load') ?>
 
-        <?= Html::a(
-            Icon::get('cogs').' '.Yii::t('ExternalWebsitesModule.base', 'Settings'),
-            $contentContainer->createUrl('/external-websites/manage/space-settings'),
-            [
-                'class' => 'btn btn-default pull-right',
-                'data-target' => '#globalModal',
-            ]
-        ) ?>
+        <?= Button::defaultType(Yii::t('ExternalWebsitesModule.base', 'Settings'))
+            ->icon('cogs')
+            ->link($contentContainer->createUrl('/external-websites/manage/space-settings'))
+            ->action('ui.modal.load')
+            ->right() ?>
 
         <?php $columns = [
             [
