@@ -9,13 +9,12 @@
 namespace humhub\modules\externalWebsites\models\forms;
 
 use Yii;
-use yii\helpers\Html;
-use yii\helpers\Url;
 use humhub\modules\externalWebsites\models\Website;
 use humhub\modules\content\models\Content;
+use yii\base\Model;
 
 
-class WebsiteForm extends \yii\base\Model
+class WebsiteForm extends Model
 {
     public $id;
     public $space_id;

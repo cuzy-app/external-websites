@@ -3,7 +3,7 @@
 use humhub\assets\AppAsset;
 use yii\helpers\Html;
 
-/* @var $this \yii\web\View */
+/* @var $this \humhub\modules\ui\view\components\View */
 /* @var $content string */
 
 AppAsset::register($this);
@@ -11,7 +11,7 @@ AppAsset::register($this);
 
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
-<html lang="en" class="humhub-is-embedded">
+<html lang="<?= Yii::$app->language ?>" class="humhub-is-embedded">
 <head>
     <title><?= Html::encode($this->pageTitle); ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">

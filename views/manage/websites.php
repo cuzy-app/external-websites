@@ -13,7 +13,7 @@ use humhub\widgets\GridView;
 use humhub\modules\externalWebsites\models\forms\WebsiteForm;
 
 /**
- * @var $this \humhub\components\View
+ * @var $this \humhub\modules\ui\view\components\View
  * @var $contentContainer \humhub\modules\space\models\Space
  * @var $searchModel \humhub\modules\externalWebsites\models\WebsiteSearch
  * @var $dataProvider \yii\data\ActiveDataProvider
@@ -127,7 +127,7 @@ $websiteForm = new WebsiteForm;
                             [
                                 'class' => 'btn btn-danger tt',
                                 'title' => Yii::t('ExternalWebsitesModule.base', 'Delete this website'),
-                                'data-confirm' => Yii::t('ExternalWebsitesModule.base', 'Are you sure you want to delete this website?'),
+                                'data-action-confirm' => Yii::t('ExternalWebsitesModule.base', 'Are you sure you want to delete this website?'),
                             ]
                         );
                 }

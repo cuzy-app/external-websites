@@ -43,7 +43,7 @@ else {
 <div class="wall-entry-controls">
     <?php if ($showPermalink): ?>
         <?= Html::a(
-            ' '.Yii::t('ExternalWebsitesModule.base', 'Permalink'),
+            ' '.Yii::t('ContentModule.base', 'Permalink'),
             '#',
             [
                 'class' => 'permalink',

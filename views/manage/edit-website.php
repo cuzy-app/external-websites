@@ -13,7 +13,7 @@ use humhub\widgets\ModalButton;
 use yii\bootstrap\ActiveForm;
 
 /**
- * @var $this \humhub\components\View
+ * @var $this \humhub\modules\ui\view\components\View
  * @var $model \humhub\modules\externalWebsites\models\forms\WebsiteForm
  */
 ?>

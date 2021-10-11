@@ -3,8 +3,8 @@
 return [
     'Add a website' => '',
     'Add this website' => '',
+    'Archive contents when they are created' => '',
     'Are you sure you want to delete this website?' => '',
-    'Content archived default value' => '',
     'Content visibility default value' => '',
     'Creates a content for each external website page, enabling to have Humhub addons (comments, like, files, etc.) in theses pages.' => '',
     'Delete this website' => '',
@@ -24,7 +24,6 @@ return [
     'Owner' => '',
     'Page' => '',
     'Page URL' => '',
-    'Permalink' => '',
     'Private' => '',
     'Public' => '',
     'Show in space menu' => '',

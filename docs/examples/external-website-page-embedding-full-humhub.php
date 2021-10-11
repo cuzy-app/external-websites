@@ -37,7 +37,7 @@ if (!empty($token)) {
     <meta charset="UTF-8">
     <title>My title</title>
 
-    <style type="text/css">
+    <style>
         iframe#humhub {
             width: 100%;
         }

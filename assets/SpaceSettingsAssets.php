@@ -11,8 +11,6 @@ namespace humhub\modules\externalWebsites\assets;
 use humhub\components\assets\AssetBundle;
 
 /**
- * Class EmbeddedAssets
- * @package humhub\modules\externalWebsites\assets
  * Assests to redirect URLs to an external website
  */
 class SpaceSettingsAssets extends AssetBundle
