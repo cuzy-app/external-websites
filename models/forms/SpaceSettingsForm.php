@@ -58,7 +58,7 @@ class SpaceSettingsForm extends Model
     {
         return [
             'urlToRedirect' => Yii::t('ExternalWebsitesModule.base', 'URL of the external website to redirect all URLs of this space (if URL empty or this space is not the first page opened in the browser: no redirection)'),
-            'preventLeavingSpace' => Yii::t('ExternalWebsitesModule.base', 'If Humhub is embedded, prevent leaving the space'),
+            'preventLeavingSpace' => Yii::t('ExternalWebsitesModule.base', 'If Humhub is embedded, prevent browsing outside of space'),
         ];
     }
 
@@ -69,7 +69,7 @@ class SpaceSettingsForm extends Model
     {
         return [
             'urlToRedirect' => Yii::t('ExternalWebsitesModule.base', '{humhubUrl} will be replaced with the Humhub\'s source URL. E.g https://www.my-external-website.tdl?humhubUrl={humhubUrl} value will redirect https://wwww.my-humhub.tdl/s/space-name/xxx to https://www.my-external-website.tdl?humhubUrl=https://wwww.my-humhub.tdl/s/space-name/xxx'),
-            'preventLeavingSpace' => Yii::t('ExternalWebsitesModule.base', 'by Prevents clicking on links that will show an other page than the current space'),
+            'preventLeavingSpace' => Yii::t('ExternalWebsitesModule.base', 'Prevents clicking on links that will show an other page than the current space'),
         ];
     }
 
