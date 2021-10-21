@@ -195,7 +195,7 @@ class Page extends ContentActiveRecord implements Searchable
         parent::afterSave($insert, $changedAttributes);
 
         if ($insert) {
-            $obj = $this->content->getPolymorphicRelation();
+            $obj = $this->content->getModel();
 
             // Turn off notifications for creator
             $obj->follow($this->content->created_by, false);

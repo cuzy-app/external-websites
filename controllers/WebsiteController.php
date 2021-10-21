@@ -24,9 +24,18 @@ use humhub\modules\externalWebsites\models\Page;
  */
 class WebsiteController extends ContentContainerController
 {
+    /**
+     * @param null $id
+     * @param null $title
+     * @param null $pageId
+     * @param null $pageUrl
+     * @return string|\yii\console\Response|\yii\web\Response
+     * @throws HttpException
+     */
     public function actionIndex ($id = null, $title = null, $pageId = null, $pageUrl = null)
     {
         // Get website
+        $website = null;
         if ($id !== null) {
             $website = Website::findOne($id);
         }
