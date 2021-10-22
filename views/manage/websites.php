@@ -7,6 +7,7 @@
  */
 
 use humhub\modules\ui\icon\widgets\Icon;
+use humhub\modules\user\widgets\UserPickerField;
 use humhub\widgets\Button;
 use yii\helpers\Html;
 use humhub\widgets\GridView;
@@ -97,6 +98,29 @@ $websiteForm = new WebsiteForm;
                 'format' => 'raw',
                 'value' => function ($model) {
                     return $model->default_content_archived ? Icon::get('check') : '';
+                }
+            ],
+            [
+                'attribute' => 'created_by',
+                'format' => 'raw',
+                'value' => function ($model) use ($contentContainer) {
+                    return
+                        Html::beginForm($contentContainer->createUrl('/external-websites/manage/change-owner', ['id' => $model->id])).
+                        UserPickerField::widget([
+                            'id' => 'website-owner-picker-'.$model->id,
+                            'model' => $model,
+                            'attribute' => 'created_by',
+                            'maxSelection' => 1,
+                            'itemKey' => 'id',
+                            'placeholder' => Yii::t('ExternalWebsitesModule.base', 'Website owner (related contents for comments will be created with this user)'),
+                        ]).
+                        Html::submitButton(
+                            Icon::get('check'),
+                            [
+                                'class' => 'btn btn-primary pull-right',
+                            ]
+                        ).
+                        Html::endForm();
                 }
             ],
             [

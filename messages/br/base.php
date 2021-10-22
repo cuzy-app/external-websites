@@ -40,6 +40,7 @@ return [
     'Website added' => '',
     'Website edition' => '',
     'Website first page URL' => '',
+    'Website owner (related contents for comments will be created with this user)' => '',
     'Website updated' => '',
     'Websites management' => '',
     'website deleted' => '',

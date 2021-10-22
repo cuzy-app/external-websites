@@ -39,6 +39,7 @@ return array (
   'Website added' => 'Tīmekļa vietne ir pievienota',
   'Website edition' => 'Vietnes izdevums',
   'Website first page URL' => 'Vietnes pirmās lapas URL',
+  'Website owner (related contents for comments will be created with this user)' => 'Vietnes īpašnieks (saistītais komentāru saturs tiks izveidots kopā ar šo lietotāju)',
   'Website updated' => 'Vietne atjaunināta',
   'Websites management' => 'Vietņu pārvaldība',
   'website deleted' => 'vietne ir izdzēsta',

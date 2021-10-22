@@ -39,6 +39,7 @@ return array (
   'Website added' => 'Nettstedet lagt til',
   'Website edition' => 'Nettstedutgave',
   'Website first page URL' => 'Nettsteds første URL',
+  'Website owner (related contents for comments will be created with this user)' => 'Nettstedseier (relatert innhold for kommentarer vil bli opprettet med denne brukeren)',
   'Website updated' => 'Nettstedet er oppdatert',
   'Websites management' => 'Administrasjon av nettsteder',
   'website deleted' => 'nettstedet er slettet',

@@ -39,6 +39,7 @@ return array (
   'Website added' => 'Svetainė pridėta',
   'Website edition' => 'Svetainės leidimas',
   'Website first page URL' => 'Svetainės pirmojo puslapio URL',
+  'Website owner (related contents for comments will be created with this user)' => 'Svetainės savininkas (susijęs turinys komentarams bus sukurtas su šiuo vartotoju)',
   'Website updated' => 'Svetainė atnaujinta',
   'Websites management' => 'Tinklalapių valdymas',
   'website deleted' => 'svetainė ištrinta',

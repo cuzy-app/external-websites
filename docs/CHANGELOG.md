@@ -1,6 +1,10 @@
 Changelog
 =========
 
+0.31 (October 22, 2021)
+--------------------
+- Enh: Websites owner selector
+
 0.30 (September 7, 2021)
 --------------------
 - Fix: if a user cannot view the page's comments or likes (e.g. the page's content is private and the user is not a member of the space), do not show them to him.

@@ -39,6 +39,7 @@ return array (
   'Website added' => 'Site-ul a fost adăugat',
   'Website edition' => 'Ediția site-ului web',
   'Website first page URL' => 'Adresa URL a primei pagini web',
+  'Website owner (related contents for comments will be created with this user)' => 'Proprietarul site-ului web (conținutul aferent comentariilor va fi creat cu acest utilizator)',
   'Website updated' => 'Site web actualizat',
   'Websites management' => 'Gestionarea site-urilor web',
   'website deleted' => 'site web șters',

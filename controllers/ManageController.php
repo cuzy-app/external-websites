@@ -8,6 +8,7 @@
 
 namespace humhub\modules\externalWebsites\controllers;
 
+use humhub\modules\user\models\User;
 use Yii;
 use humhub\modules\space\models\Space;
 use humhub\modules\content\components\ContentContainerController;
@@ -42,6 +43,28 @@ class ManageController extends ContentContainerController
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
+    }
+
+
+    /**
+     * @param int $id owner ID
+     */
+    public function actionChangeOwner($id)
+    {
+        $website = Website::findOne($id);
+        if (
+            $website !== null &&
+            ($form = Yii::$app->request->post('Website')) !== null &&
+            isset($form['created_by']) &&
+            is_array($form['created_by']) &&
+            count($form['created_by']) > 0
+        ) {
+            $userGuid = reset($form['created_by']);
+            $website->created_by = User::findOne(['guid' => $userGuid])->id;
+            $website->save();
+            $this->view->saved();
+        }
+        $this->redirect('websites');
     }
 
 

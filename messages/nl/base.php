@@ -39,6 +39,7 @@ return array (
   'Website added' => 'Website toegevoegd',
   'Website edition' => 'Website editie',
   'Website first page URL' => 'URL van eerste pagina van website',
+  'Website owner (related contents for comments will be created with this user)' => 'Website-eigenaar (gerelateerde inhoud voor opmerkingen wordt met deze gebruiker gemaakt)',
   'Website updated' => 'Website bijgewerkt',
   'Websites management' => 'Beheer van websites',
   'website deleted' => 'website verwijderd',

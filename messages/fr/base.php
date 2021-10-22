@@ -39,6 +39,7 @@ return array (
   'Website added' => 'Site Web ajouté',
   'Website edition' => 'Édition du site Web',
   'Website first page URL' => 'URL de la première page du site Web',
+  'Website owner (related contents for comments will be created with this user)' => 'Propriétaire du site Web (le contenu associé pour les commentaires sera créé avec cet utilisateur)',
   'Website updated' => 'Site Web mis à jour',
   'Websites management' => 'Gestion de sites Web',
   'website deleted' => 'site Web supprimé',

@@ -39,6 +39,7 @@ return array (
   'Website added' => 'ウェブサイトを追加',
   'Website edition' => 'ウェブサイト版',
   'Website first page URL' => 'ウェブサイトの最初のページのURL',
+  'Website owner (related contents for comments will be created with this user)' => 'ウェブサイトの所有者（コメントの関連コンテンツはこのユーザーで作成されます）',
   'Website updated' => 'ウェブサイトを更新',
   'Websites management' => 'ウェブサイト管理',
   'website deleted' => 'ウェブサイトを削除',

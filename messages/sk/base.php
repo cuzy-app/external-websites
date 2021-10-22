@@ -39,6 +39,7 @@ return array (
   'Website added' => 'Web bol pridaný',
   'Website edition' => 'Vydanie webovej stránky',
   'Website first page URL' => 'URL prvej stránky webových stránok',
+  'Website owner (related contents for comments will be created with this user)' => 'Vlastník webových stránok (s týmto používateľom bude vytvorený súvisiaci obsah pre komentáre)',
   'Website updated' => 'Web bol aktualizovaný',
   'Websites management' => 'Správa webových stránok',
   'website deleted' => 'webová stránka bola odstránená',

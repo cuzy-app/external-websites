@@ -39,6 +39,7 @@ return array (
   'Website added' => '웹 사이트 추가',
   'Website edition' => '웹 사이트 에디션',
   'Website first page URL' => '웹 사이트 첫 페이지 URL',
+  'Website owner (related contents for comments will be created with this user)' => '웹사이트 소유자(댓글 관련 콘텐츠는 이 사용자와 함께 생성됩니다)',
   'Website updated' => '웹 사이트 업데이트',
   'Websites management' => '웹 사이트 관리',
   'website deleted' => '웹 사이트가 삭제되었습니다.',

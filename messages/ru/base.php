@@ -39,6 +39,7 @@ return array (
   'Website added' => 'Сайт добавлен',
   'Website edition' => 'Редакция сайта',
   'Website first page URL' => 'URL первой страницы веб-сайта',
+  'Website owner (related contents for comments will be created with this user)' => 'Владелец веб-сайта (связанный контент для комментариев будет создан с этим пользователем)',
   'Website updated' => 'Сайт обновлен',
   'Websites management' => 'Управление сайтами',
   'website deleted' => 'сайт удален',

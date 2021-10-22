@@ -39,6 +39,7 @@ return array (
   'Website added' => 'Hjemmeside tilføjet',
   'Website edition' => 'Website udgave',
   'Website first page URL' => 'Websteds URL til første side',
+  'Website owner (related contents for comments will be created with this user)' => 'Webstedsejer (relateret indhold til kommentarer vil blive oprettet med denne bruger)',
   'Website updated' => 'Hjemmeside opdateret',
   'Websites management' => 'Administration af websteder',
   'website deleted' => 'websted slettet',

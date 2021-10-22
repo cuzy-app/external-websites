@@ -39,6 +39,7 @@ return array (
   'Website added' => 'Lloc web afegit',
   'Website edition' => 'Edició del lloc web',
   'Website first page URL' => 'URL de la primera pàgina del lloc web',
+  'Website owner (related contents for comments will be created with this user)' => 'Propietari del lloc web (es crearan continguts relacionats amb els comentaris amb aquest usuari)',
   'Website updated' => 'Lloc web actualitzat',
   'Websites management' => 'Gestió de llocs web',
   'website deleted' => 'lloc web suprimit',

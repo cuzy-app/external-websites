@@ -39,6 +39,7 @@ return array (
   'Website added' => '网站添加',
   'Website edition' => '网站版本',
   'Website first page URL' => '网站首页网址',
+  'Website owner (related contents for comments will be created with this user)' => '网站所有者（评论相关内容将与该用户一起创建）',
   'Website updated' => '网站更新',
   'Websites management' => '网站管理',
   'website deleted' => '网站已删除',

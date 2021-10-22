@@ -39,6 +39,7 @@ return array (
   'Website added' => 'Web sitesi eklendi',
   'Website edition' => 'Web sitesi sürümü',
   'Website first page URL' => 'Web sitesi ilk sayfa URL\'si',
+  'Website owner (related contents for comments will be created with this user)' => 'Web sitesi sahibi (bu kullanıcı ile ilgili yorumlar için içerik oluşturulacaktır)',
   'Website updated' => 'Web sitesi güncellendi',
   'Websites management' => 'Web siteleri yönetimi',
   'website deleted' => 'web sitesi silindi',

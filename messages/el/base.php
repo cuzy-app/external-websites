@@ -39,6 +39,7 @@ return array (
   'Website added' => 'Προστέθηκε ιστότοπος',
   'Website edition' => 'Έκδοση ιστότοπου',
   'Website first page URL' => 'URL πρώτης σελίδας ιστότοπου',
+  'Website owner (related contents for comments will be created with this user)' => 'Κάτοχος ιστότοπου (σχετικό περιεχόμενο για σχόλια θα δημιουργηθεί με αυτόν τον χρήστη)',
   'Website updated' => 'Ο ιστότοπος ενημερώθηκε',
   'Websites management' => 'Διαχείριση ιστότοπων',
   'website deleted' => 'ο ιστότοπος διαγράφηκε',

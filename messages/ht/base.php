@@ -39,6 +39,7 @@ return array (
   'Website added' => 'Sit wèb te ajoute',
   'Website edition' => 'Sit wèb edisyon',
   'Website first page URL' => 'Sit entènèt premye paj URL',
+  'Website owner (related contents for comments will be created with this user)' => 'Pwopriyetè sit entènèt (sa ki gen rapò ak kòmantè yo pral kreye avèk itilizatè sa a)',
   'Website updated' => 'Sit wèb mete ajou',
   'Websites management' => 'Sit wèb jesyon',
   'website deleted' => 'sit entènèt efase',

@@ -39,6 +39,7 @@ return array (
   'Website added' => 'Verkkosivusto lisätty',
   'Website edition' => 'Verkkosivustopainos',
   'Website first page URL' => 'Sivuston ensimmäisen sivun URL-osoite',
+  'Website owner (related contents for comments will be created with this user)' => 'Verkkosivuston omistaja (kommentteihin liittyvää sisältöä luodaan tämän käyttäjän kanssa)',
   'Website updated' => 'Verkkosivusto päivitetty',
   'Websites management' => 'Verkkosivustojen hallinta',
   'website deleted' => 'verkkosivusto poistettu',

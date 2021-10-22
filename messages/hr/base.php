@@ -39,6 +39,7 @@ return array (
   'Website added' => 'Dodana web stranica',
   'Website edition' => 'Izdanje web stranice',
   'Website first page URL' => 'URL prve stranice web stranice',
+  'Website owner (related contents for comments will be created with this user)' => 'Vlasnik web stranice (povezani sadržaj za komentare bit će izrađen s ovim korisnikom)',
   'Website updated' => 'Web stranica ažurirana',
   'Websites management' => 'Upravljanje web stranicama',
   'website deleted' => 'web stranica izbrisana',

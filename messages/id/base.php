@@ -39,6 +39,7 @@ return array (
   'Website added' => 'Situs web ditambahkan',
   'Website edition' => 'Edisi situs web',
   'Website first page URL' => 'URL halaman pertama situs web',
+  'Website owner (related contents for comments will be created with this user)' => 'Pemilik situs web (konten terkait untuk komentar akan dibuat dengan pengguna ini)',
   'Website updated' => 'Situs web diperbarui',
   'Websites management' => 'Manajemen situs web',
   'website deleted' => 'situs web dihapus',

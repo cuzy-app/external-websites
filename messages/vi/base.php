@@ -39,6 +39,7 @@ return array (
   'Website added' => 'Đã thêm trang web',
   'Website edition' => 'Ấn bản trang web',
   'Website first page URL' => 'URL trang đầu tiên của trang web',
+  'Website owner (related contents for comments will be created with this user)' => 'Chủ sở hữu trang web (nội dung liên quan cho nhận xét sẽ được tạo với người dùng này)',
   'Website updated' => 'Đã cập nhật trang web',
   'Websites management' => 'Quản lý trang web',
   'website deleted' => 'trang web đã bị xóa',

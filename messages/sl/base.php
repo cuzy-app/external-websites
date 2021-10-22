@@ -39,6 +39,7 @@ return array (
   'Website added' => 'Spletno mesto dodano',
   'Website edition' => 'Izdaja spletnega mesta',
   'Website first page URL' => 'URL prve strani spletnega mesta',
+  'Website owner (related contents for comments will be created with this user)' => 'Lastnik spletnega mesta (s tem uporabnikom bo ustvarjena povezana vsebina za komentarje)',
   'Website updated' => 'Spletno mesto posodobljeno',
   'Websites management' => 'Upravljanje spletnih strani',
   'website deleted' => 'spletno mesto izbrisano',

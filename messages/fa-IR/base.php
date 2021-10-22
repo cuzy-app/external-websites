@@ -39,6 +39,7 @@ return array (
   'Website added' => 'وب سایت اضافه شد',
   'Website edition' => 'نسخه وب سایت',
   'Website first page URL' => 'URL صفحه اول وب سایت',
+  'Website owner (related contents for comments will be created with this user)' => 'مالک وب سایت (مطالب مرتبط برای نظرات با این کاربر ایجاد می شود)',
   'Website updated' => 'وب سایت به روز شد',
   'Websites management' => 'مدیریت وب سایت ها',
   'website deleted' => 'وب سایت حذف شد',

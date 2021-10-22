@@ -39,6 +39,7 @@ return array (
   'Website added' => 'تمت إضافة الموقع',
   'Website edition' => 'طبعة الموقع',
   'Website first page URL' => 'عنوان URL للصفحة الأولى لموقع الويب',
+  'Website owner (related contents for comments will be created with this user)' => 'مالك موقع الويب (سيتم إنشاء المحتويات ذات الصلة للتعليقات مع هذا المستخدم)',
   'Website updated' => 'تم تحديث الموقع',
   'Websites management' => 'إدارة المواقع الإلكترونية',
   'website deleted' => 'تم حذف الموقع',

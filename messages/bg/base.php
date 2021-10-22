@@ -39,6 +39,7 @@ return array (
   'Website added' => 'Добавен е уебсайт',
   'Website edition' => 'Издание на уебсайт',
   'Website first page URL' => 'URL адрес на първата страница на уебсайта',
+  'Website owner (related contents for comments will be created with this user)' => 'Собственик на уебсайт (свързано съдържание за коментари ще бъде създадено с този потребител)',
   'Website updated' => 'Уебсайтът е актуализиран',
   'Websites management' => 'Управление на уебсайтове',
   'website deleted' => 'уебсайтът е изтрит',

@@ -39,6 +39,7 @@ return array (
   'Website added' => 'Webbplats tillagd',
   'Website edition' => 'Webbplatsutgåva',
   'Website first page URL' => 'Webbplatsens första sida URL',
+  'Website owner (related contents for comments will be created with this user)' => 'Webbplatsägare (relaterat innehåll för kommentarer skapas med den här användaren)',
   'Website updated' => 'Webbplats uppdaterad',
   'Websites management' => 'Hantering av webbplatser',
   'website deleted' => 'webbplats borttagen',

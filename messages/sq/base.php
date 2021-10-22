@@ -39,6 +39,7 @@ return array (
   'Website added' => 'Uebfaqja u shtua',
   'Website edition' => 'Edicioni i faqes në internet',
   'Website first page URL' => 'URL -ja e faqes së parë të faqes në internet',
+  'Website owner (related contents for comments will be created with this user)' => 'Pronari i faqes në internet (përmbajtjet e lidhura për komentet do të krijohen me këtë përdorues)',
   'Website updated' => 'Uebfaqja u përditësua',
   'Websites management' => 'Menaxhimi i faqeve të internetit',
   'website deleted' => 'uebfaqja u fshi',

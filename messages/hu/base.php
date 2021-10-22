@@ -39,6 +39,7 @@ return array (
   'Website added' => 'Webhely hozzáadva',
   'Website edition' => 'Weboldal kiadás',
   'Website first page URL' => 'A webhely első oldalának URL-je',
+  'Website owner (related contents for comments will be created with this user)' => 'Webhelytulajdonos (a megjegyzésekhez kapcsolódó tartalom ezzel a felhasználóval jön létre)',
   'Website updated' => 'Weboldal frissítve',
   'Websites management' => 'Webhelyek kezelése',
   'website deleted' => 'weboldal törölve',

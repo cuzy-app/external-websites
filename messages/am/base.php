@@ -39,6 +39,7 @@ return array (
   'Website added' => 'ድርጣቢያ ታክሏል',
   'Website edition' => 'የድር ጣቢያ እትም',
   'Website first page URL' => 'የድር ጣቢያ የመጀመሪያ ገጽ ዩ.አር.ኤል.',
+  'Website owner (related contents for comments will be created with this user)' => 'የድር ጣቢያ ባለቤት (ለአስተያየቶች ተዛማጅ ይዘቶች ከዚህ ተጠቃሚ ጋር ይፈጠራሉ)',
   'Website updated' => 'ድርጣቢያ ተዘምኗል',
   'Websites management' => 'የድርጣቢያዎች አስተዳደር',
   'website deleted' => 'ድር ጣቢያ ተሰር deletedል',

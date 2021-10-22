@@ -39,6 +39,7 @@ return array (
   'Website added' => 'Veb-sayt qo\'shildi',
   'Website edition' => 'Veb-sayt nashri',
   'Website first page URL' => 'Veb-saytning birinchi sahifasi URL',
+  'Website owner (related contents for comments will be created with this user)' => 'Veb -sayt egasi (sharhlar uchun tegishli tarkib shu foydalanuvchi bilan yaratiladi)',
   'Website updated' => 'Veb-sayt yangilandi',
   'Websites management' => 'Veb-saytlarni boshqarish',
   'website deleted' => 'veb-sayt o\'chirildi',

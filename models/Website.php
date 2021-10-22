@@ -63,7 +63,7 @@ class Website extends \humhub\components\ActiveRecord
             'default_content_visibility' => Yii::t('ExternalWebsitesModule.base', 'Content visibility default value'),
             'default_content_archived' => Yii::t('ExternalWebsitesModule.base', 'Archive contents when they are created'),
             'created_at' => 'Created at',
-            'created_by' => 'Created by',
+            'created_by' => Yii::t('ExternalWebsitesModule.base', 'Owner'),
             'updated_at' => 'Updated at',
             'updated_by' => 'Updated by',
         ];

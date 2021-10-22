@@ -39,6 +39,7 @@ return array (
   'Website added' => 'אתר נוסף',
   'Website edition' => 'מהדורת אתרים',
   'Website first page URL' => 'כתובת האתר של העמוד הראשון של האתר',
+  'Website owner (related contents for comments will be created with this user)' => 'בעל אתר (תוכן קשור להערות ייווצר עם משתמש זה)',
   'Website updated' => 'האתר עודכן',
   'Websites management' => 'ניהול אתרים',
   'website deleted' => 'האתר נמחק',

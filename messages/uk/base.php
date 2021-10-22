@@ -39,6 +39,7 @@ return array (
   'Website added' => 'Веб-сайт додано',
   'Website edition' => 'Видання веб-сайту',
   'Website first page URL' => 'URL-адреса першої сторінки веб-сайту',
+  'Website owner (related contents for comments will be created with this user)' => 'Власник веб -сайту (відповідний вміст для коментарів буде створено з цим користувачем)',
   'Website updated' => 'Веб-сайт оновлено',
   'Websites management' => 'Управління веб-сайтами',
   'website deleted' => 'веб-сайт видалено',

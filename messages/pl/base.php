@@ -39,6 +39,7 @@ return array (
   'Website added' => 'Witryna dodana',
   'Website edition' => 'Edycja strony internetowej',
   'Website first page URL' => 'URL pierwszej strony w witrynie',
+  'Website owner (related contents for comments will be created with this user)' => 'Właściciel witryny (powiązane treści do komentarzy zostaną utworzone z tym użytkownikiem)',
   'Website updated' => 'Strona zaktualizowana',
   'Websites management' => 'Zarządzanie stronami internetowymi',
   'website deleted' => 'strona internetowa została usunięta',

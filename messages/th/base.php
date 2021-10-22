@@ -39,6 +39,7 @@ return array (
   'Website added' => 'เพิ่มเว็บไซต์แล้ว',
   'Website edition' => 'ฉบับเว็บไซต์',
   'Website first page URL' => 'URL หน้าแรกของเว็บไซต์',
+  'Website owner (related contents for comments will be created with this user)' => 'เจ้าของเว็บไซต์ (เนื้อหาที่เกี่ยวข้องกับความคิดเห็นจะถูกสร้างขึ้นพร้อมกับผู้ใช้รายนี้)',
   'Website updated' => 'อัปเดตเว็บไซต์แล้ว',
   'Websites management' => 'การจัดการเว็บไซต์',
   'website deleted' => 'ลบเว็บไซต์แล้ว',
