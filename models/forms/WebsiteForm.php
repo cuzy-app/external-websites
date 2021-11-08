@@ -8,6 +8,7 @@
 
 namespace humhub\modules\externalWebsites\models\forms;
 
+use humhub\modules\user\models\User;
 use Yii;
 use humhub\modules\externalWebsites\models\Website;
 use humhub\modules\content\models\Content;
@@ -28,6 +29,7 @@ class WebsiteForm extends Model
     public $hide_sidebar = false;
     public $default_content_visibility = null;
     public $default_content_archived = false;
+    public $created_by;
 
 
     public function init()
@@ -47,6 +49,10 @@ class WebsiteForm extends Model
             $this->hide_sidebar = (bool)$website->hide_sidebar;
             $this->default_content_visibility = (int)$website->default_content_visibility;
             $this->default_content_archived = (bool)$website->default_content_archived;
+            $this->created_by = $website->created_by;
+        }
+        else {
+            $this->created_by = Yii::$app->user->id;
         }
 
         parent::init();
@@ -62,6 +68,7 @@ class WebsiteForm extends Model
            [['title', 'icon', 'first_page_url', 'remove_from_url_title'], 'string'],
            [['sort_order', 'default_content_visibility', 'default_content_archived'], 'integer'],
            [['humhub_is_embedded', 'show_in_menu', 'hide_sidebar'], 'boolean'],
+           [['created_by'], 'safe'],
        ];
     }
 
@@ -82,7 +89,7 @@ class WebsiteForm extends Model
             'humhub_is_embedded' => Yii::t('ExternalWebsitesModule.base', 'Humhub can be: <br>- Host: external website is embedded and embedded in an iframe<br>- Embedded: external website is host, Humhub addons (comments, like, files, etc.) are embedded in an iframe.<br>See README.md for more informations and usage.'),
             'remove_from_url_title' => Yii::t('ExternalWebsitesModule.base', 'The name of the Humhub content associated with each page of the external website corresponds to the page title (HTML title tag). It is possible to delete part of the text of this title.'),
             'hide_sidebar' => Yii::t('ExternalWebsitesModule.base', 'If your theme has a sidebar whose tag id is "wrapper" (e.g. Enterprise theme)'),
-
+            'created_by' => Yii::t('ExternalWebsitesModule.base', 'Website owner (related contents for comments will be created with this user)'),
         ];
     }
 
@@ -114,6 +121,8 @@ class WebsiteForm extends Model
         $website->hide_sidebar = $this->hide_sidebar;
         $website->default_content_visibility = $this->default_content_visibility;
         $website->default_content_archived = $this->default_content_archived;
+        $userGuid = reset($this->created_by);
+        $website->created_by = ($owner = User::findOne(['guid' => $userGuid])) ? $owner->id : Yii::$app->user->id;
         return $website->save();
     }
 

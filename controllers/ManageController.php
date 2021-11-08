@@ -46,28 +46,6 @@ class ManageController extends ContentContainerController
     }
 
 
-    /**
-     * @param int $id owner ID
-     */
-    public function actionChangeOwner($id)
-    {
-        $website = Website::findOne($id);
-        if (
-            $website !== null &&
-            ($form = Yii::$app->request->post('Website')) !== null &&
-            isset($form['created_by']) &&
-            is_array($form['created_by']) &&
-            count($form['created_by']) > 0
-        ) {
-            $userGuid = reset($form['created_by']);
-            $website->created_by = User::findOne(['guid' => $userGuid])->id;
-            $website->save();
-            $this->view->saved();
-        }
-        $this->redirect('websites');
-    }
-
-
     public function actionAddWebsite() {
         $model = new WebsiteForm(['space_id' => $this->contentContainer->id]);
 
@@ -83,6 +61,7 @@ class ManageController extends ContentContainerController
 
         return $this->renderAjax('add-website', [
             'model' => $model,
+            'contentContainer' => $this->contentContainer,
         ]);
     }
 
@@ -90,7 +69,7 @@ class ManageController extends ContentContainerController
     public function actionEditWebsite($websiteId) {
         $model = new WebsiteForm([
             'space_id' => $this->contentContainer->id,
-            'id' => $websiteId
+            'id' => $websiteId,
         ]);
 
         if ($model->load(Yii::$app->request->post())) {
@@ -105,6 +84,7 @@ class ManageController extends ContentContainerController
 
         return $this->renderAjax('edit-website', [
             'model' => $model,
+            'contentContainer' => $this->contentContainer,
         ]);
     }
 

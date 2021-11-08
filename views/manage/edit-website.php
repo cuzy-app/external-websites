@@ -8,6 +8,7 @@
 
 use humhub\libs\Html;
 use humhub\modules\ui\form\widgets\IconPicker;
+use humhub\modules\user\widgets\UserPickerField;
 use humhub\widgets\ModalDialog;
 use humhub\widgets\ModalButton;
 use yii\bootstrap\ActiveForm;
@@ -15,6 +16,7 @@ use yii\bootstrap\ActiveForm;
 /**
  * @var $this \humhub\modules\ui\view\components\View
  * @var $model \humhub\modules\externalWebsites\models\forms\WebsiteForm
+ * @var $contentContainer \humhub\modules\space\models\Space
  */
 ?>
 
@@ -33,6 +35,13 @@ use yii\bootstrap\ActiveForm;
             <?= $form->field($model, 'hide_sidebar')->checkbox() ?>
             <?= $form->field($model, 'default_content_visibility')->dropDownList($model->contentVisibilityList) ?>
             <?= $form->field($model, 'default_content_archived')->checkbox() ?>
+            <?= UserPickerField::widget([
+                'form' => $form,
+                'model' => $model,
+                'attribute' => 'created_by',
+                'maxSelection' => 1,
+                'itemKey' => 'id',
+            ]) ?>
             <?= Html::saveButton() ?>
         <?php ActiveForm::end(); ?>
 	</div>

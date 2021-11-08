@@ -7,9 +7,10 @@
  */
 
 use humhub\modules\ui\icon\widgets\Icon;
-use humhub\modules\user\widgets\UserPickerField;
+use humhub\modules\user\models\User;
+use humhub\modules\user\widgets\Image;
 use humhub\widgets\Button;
-use yii\helpers\Html;
+use humhub\libs\Html;
 use humhub\widgets\GridView;
 use humhub\modules\externalWebsites\models\forms\WebsiteForm;
 
@@ -104,23 +105,10 @@ $websiteForm = new WebsiteForm;
                 'attribute' => 'created_by',
                 'format' => 'raw',
                 'value' => function ($model) use ($contentContainer) {
+                    $user = User::findOne($model->created_by);
                     return
-                        Html::beginForm($contentContainer->createUrl('/external-websites/manage/change-owner', ['id' => $model->id])).
-                        UserPickerField::widget([
-                            'id' => 'website-owner-picker-'.$model->id,
-                            'model' => $model,
-                            'attribute' => 'created_by',
-                            'maxSelection' => 1,
-                            'itemKey' => 'id',
-                            'placeholder' => Yii::t('ExternalWebsitesModule.base', 'Website owner (related contents for comments will be created with this user)'),
-                        ]).
-                        Html::submitButton(
-                            Icon::get('check'),
-                            [
-                                'class' => 'btn btn-primary pull-right',
-                            ]
-                        ).
-                        Html::endForm();
+                        Image::widget(['user' => $user, 'width' => 35, 'showTooltip' => true]).'<br>'.
+                        Html::containerLink($user);
                 }
             ],
             [
