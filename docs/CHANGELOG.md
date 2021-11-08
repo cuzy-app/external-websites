@@ -1,6 +1,10 @@
 Changelog
 =========
 
+0.32 (November 8, 2021)
+--------------------
+- Chg: Websites owner selector moved to add and edit modal box
+
 0.31 (October 22, 2021)
 --------------------
 - Enh: Websites owner selector
