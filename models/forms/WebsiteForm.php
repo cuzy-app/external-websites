@@ -124,6 +124,18 @@ class WebsiteForm extends Model
         $website->default_content_archived = $this->default_content_archived;
         $userGuid = is_array($this->created_by) ? reset($this->created_by) : null;
         $website->created_by = ($owner = User::findOne(['guid' => $userGuid])) ? $owner->id : ($website->created_by ?? Yii::$app->user->id);
+        $result = $website->save();
+
+        // Update pages owner
+        if ($result) {
+            foreach ($website->pages as $page) {
+                if ($page->created_by !== $website->created_by) {
+                    $page->created_by = $website->created_by;
+                    $page->save();
+                }
+            }
+        }
+
         return $website->save();
     }
 
