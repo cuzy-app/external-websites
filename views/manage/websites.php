@@ -91,7 +91,7 @@ $websiteForm = new WebsiteForm;
                 'attribute' => 'default_content_visibility',
                 'format' => 'raw',
                 'value' => function ($model) use ($websiteForm) {
-                    return $websiteForm->contentVisibilityList[$model->default_content_visibility];
+                    return $websiteForm->getContentVisibilityList()[$model->default_content_visibility];
                 }
             ],
             [

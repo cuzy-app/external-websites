@@ -27,7 +27,8 @@ class WebsiteForm extends Model
     public $sort_order = 100;
     public $remove_from_url_title = '';
     public $hide_sidebar = false;
-    public $default_content_visibility = null;
+    /** @var null|int */
+    public $default_content_visibility;
     public $default_content_archived = false;
     public $created_by;
 
@@ -47,7 +48,7 @@ class WebsiteForm extends Model
             $this->sort_order = (int)$website->sort_order;
             $this->remove_from_url_title = $website->remove_from_url_title;
             $this->hide_sidebar = (bool)$website->hide_sidebar;
-            $this->default_content_visibility = (int)$website->default_content_visibility;
+            $this->default_content_visibility = $website->default_content_visibility; // Do not add (int) as value can be null
             $this->default_content_archived = (bool)$website->default_content_archived;
             $this->created_by = $website->created_by;
         }
@@ -121,8 +122,8 @@ class WebsiteForm extends Model
         $website->hide_sidebar = $this->hide_sidebar;
         $website->default_content_visibility = $this->default_content_visibility;
         $website->default_content_archived = $this->default_content_archived;
-        $userGuid = reset($this->created_by);
-        $website->created_by = ($owner = User::findOne(['guid' => $userGuid])) ? $owner->id : Yii::$app->user->id;
+        $userGuid = is_array($this->created_by) ? reset($this->created_by) : null;
+        $website->created_by = ($owner = User::findOne(['guid' => $userGuid])) ? $owner->id : ($website->created_by ?? Yii::$app->user->id);
         return $website->save();
     }
 

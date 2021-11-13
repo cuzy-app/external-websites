@@ -1,6 +1,10 @@
 Changelog
 =========
 
+0.33 (November 13, 2021)
+--------------------
+- Fix: small bugs in website editor (visibiliy: default and website owner)
+
 0.32 (November 8, 2021)
 --------------------
 - Chg: Websites owner selector moved to add and edit modal box

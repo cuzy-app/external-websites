@@ -23,7 +23,7 @@ use humhub\modules\space\models\Space;
  * @property integer $sort_order 
  * @property string $remove_from_url_title
  * @property boolean $hide_sidebar If Enterprise theme
- * @property integer $default_content_visibility Default value for the Content created ; can be humhub\modules\content\models\Content::VISIBILITY_PRIVATE or Content::VISIBILITY_PUBLIC or Content::VISIBILITY_OWNER
+ * @property null|integer $default_content_visibility Default value for the Content created ; can be humhub\modules\content\models\Content::VISIBILITY_PRIVATE or Content::VISIBILITY_PUBLIC or Content::VISIBILITY_OWNER
  * @property integer $default_content_archived Default value for the Content created ; can be 0 or 1 (if 1, new comments are disabled) : humhub\modules\content\models\Content->archive(), humhub\modules\content\models\Content->unarchive()
  * @property string $created_at
  * @property integer $created_by
