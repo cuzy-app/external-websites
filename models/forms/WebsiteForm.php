@@ -131,8 +131,12 @@ class WebsiteForm extends Model
             foreach ($website->pages as $page) {
                 if ($page->created_by !== $website->created_by) {
                     $page->created_by = $website->created_by;
-                    $page->content->created_by = $website->created_by;
                     $page->save();
+                }
+                $content = $page->content;
+                if ($content->created_by !== $website->created_by) {
+                    $content->created_by = $website->created_by;
+                    $content->save();
                 }
             }
         }
