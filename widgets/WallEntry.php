@@ -19,7 +19,7 @@ class WallEntry extends WallStreamModuleEntryWidget
     public function init()
     {
         parent::init();
-        $this->renderOptions->enableSubHeadlineAuthor = false;
+//        $this->renderOptions->enableSubHeadlineAuthor = false;
     }
 
     public function renderContent()

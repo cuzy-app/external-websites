@@ -101,12 +101,12 @@ class WebsiteForm extends Model
      */
     public function save()
     {
-        // Add
+        // If add
         if ($this->id === null) {
             $website = new Website;
             $website->space_id = $this->space_id;
         }
-        // Update
+        // If update
         else {
             $website = Website::findOne($this->id);
         }
