@@ -30,7 +30,7 @@ class WebsiteForm extends Model
     /** @var null|int */
     public $default_content_visibility;
     public $default_content_archived = false;
-    public $created_by;
+    public $created_by; // TODO: replace with $ownerGuid (see example in personal-data/models/ModuleSettings)
 
 
     public function init()

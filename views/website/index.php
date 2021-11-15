@@ -6,6 +6,7 @@
  * @author [Marc FARRE](https://marc.fun)
  */
 
+use humhub\libs\Html;
 use humhub\modules\externalWebsites\assets\HostAssets;
 
 /**
@@ -33,7 +34,7 @@ $this->registerJsConfig('externalWebsites.Host', [
 </div>
 
 <?php // Set iframe tag after HostAssets is completely loaded as it calls loadIFrameResizer function after loading ?>
-<script type="text/javascript">
+<script <?= Html::nonce() ?>>
     $(function(){
         var pageUrl = <?= json_encode($pageUrl, JSON_HEX_TAG) ?>;
         $('#ew-page-iframed').prepend('<iframe id="ew-page-container" src="'+pageUrl+'" onload="humhub.modules.externalWebsites.Host.loadIFrameResizer()" allowfullscreen></iframe>');

@@ -52,7 +52,7 @@ if (!empty($token)) {
 
 <!-- Just before </body> -->
 <script type="text/javascript" src="js/iframeResizer.min.js"></script>
-<script type="text/javascript">
+<script>
     var loadIFrameResize = function() {
         const iframes = iFrameResize({
             log: false,

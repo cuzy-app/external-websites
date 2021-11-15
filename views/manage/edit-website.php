@@ -40,7 +40,7 @@ use humhub\modules\ui\form\widgets\ActiveForm;
                 'model' => $model,
                 'attribute' => 'created_by',
                 'maxSelection' => 1,
-                'itemKey' => 'id',
+                'itemKey' => 'id', // TODO remove this line (see TODO in WebsiteForm)
             ]) ?>
             <?= Html::saveButton() ?>
         <?php ActiveForm::end(); ?>

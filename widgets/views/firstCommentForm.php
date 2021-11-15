@@ -3,7 +3,7 @@ use humhub\modules\content\Module;
 use humhub\modules\ui\form\widgets\ActiveForm;
 use humhub\modules\ui\view\components\View;
 use humhub\widgets\Button;
-use yii\helpers\Html;
+use humhub\libs\Html;
 use yii\helpers\Url;
 use humhub\modules\content\widgets\richtext\RichTextField;
 use humhub\modules\file\widgets\UploadButton;
@@ -101,7 +101,7 @@ $submitUrl = Url::to(['/external-websites/comment/post']);
     </div>
 </div>
 
-<script type="text/javascript">
+<script <?= Html::nonce() ?>>
     $('#comment_create_form_<?= $id; ?> form').on('submit', function(event) {
         $(this).parent().children('hr').show();
     });

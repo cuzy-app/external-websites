@@ -7,7 +7,7 @@
  */
 
 use humhub\modules\ui\icon\widgets\Icon;
-use yii\helpers\Html;
+use humhub\libs\Html;
 use humhub\modules\like\widgets\LikeLink;
 use humhub\modules\comment\widgets\Comments;
 use humhub\modules\comment\widgets\CommentLink;
@@ -80,7 +80,7 @@ else {
     <?php endif; ?>
 <?php endif; ?>
 
-<script type="text/javascript">
+<script <?= Html::nonce() ?>>
     <?php if (!$showComments): ?>
     $('#ew-page-iframed').removeClass('col-md-9').addClass('col-md-12');
     $('#ew-page-addons').removeClass('col-md-3').addClass('col-md-12');

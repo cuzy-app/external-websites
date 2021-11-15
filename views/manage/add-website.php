@@ -41,7 +41,7 @@ use humhub\widgets\ModalButton;
                 'model' => $model,
                 'attribute' => 'created_by',
                 'maxSelection' => 1,
-                'itemKey' => 'id',
+                'itemKey' => 'id', // TODO remove this line (see TODO in WebsiteForm)
             ]) ?>
             <?= Html::submitButton(
                 Icon::get('plus').' '.Yii::t('ExternalWebsitesModule.base', 'Add this website'),
