@@ -8,10 +8,10 @@
 
 namespace humhub\modules\externalWebsites\models\forms;
 
+use humhub\modules\content\models\Content;
+use humhub\modules\externalWebsites\models\Website;
 use humhub\modules\user\models\User;
 use Yii;
-use humhub\modules\externalWebsites\models\Website;
-use humhub\modules\content\models\Content;
 use yii\base\Model;
 
 
@@ -51,8 +51,7 @@ class WebsiteForm extends Model
             $this->default_content_visibility = $website->default_content_visibility; // Do not add (int) as value can be null
             $this->default_content_archived = (bool)$website->default_content_archived;
             $this->created_by = $website->created_by;
-        }
-        else {
+        } else {
             $this->created_by = Yii::$app->user->id;
         }
 
@@ -64,13 +63,13 @@ class WebsiteForm extends Model
      */
     public function rules()
     {
-       return [
-           [['title', 'icon', 'first_page_url', 'humhub_is_embedded'], 'required'],
-           [['title', 'icon', 'first_page_url', 'remove_from_url_title'], 'string'],
-           [['sort_order', 'default_content_visibility', 'default_content_archived'], 'integer'],
-           [['humhub_is_embedded', 'show_in_menu', 'hide_sidebar'], 'boolean'],
-           [['created_by'], 'safe'],
-       ];
+        return [
+            [['title', 'icon', 'first_page_url', 'humhub_is_embedded'], 'required'],
+            [['title', 'icon', 'first_page_url', 'remove_from_url_title'], 'string'],
+            [['sort_order', 'default_content_visibility', 'default_content_archived'], 'integer'],
+            [['humhub_is_embedded', 'show_in_menu', 'hide_sidebar'], 'boolean'],
+            [['created_by'], 'safe'],
+        ];
     }
 
     /**
@@ -105,8 +104,7 @@ class WebsiteForm extends Model
         if ($this->id === null) {
             $website = new Website;
             $website->space_id = $this->space_id;
-        }
-        // If update
+        } // If update
         else {
             $website = Website::findOne($this->id);
         }

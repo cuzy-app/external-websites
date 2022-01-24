@@ -1,14 +1,15 @@
 <?php
+
+use humhub\libs\Html;
+use humhub\modules\comment\models\Comment;
 use humhub\modules\content\Module;
+use humhub\modules\content\widgets\richtext\RichTextField;
+use humhub\modules\file\widgets\FilePreview;
+use humhub\modules\file\widgets\UploadButton;
 use humhub\modules\ui\form\widgets\ActiveForm;
 use humhub\modules\ui\view\components\View;
 use humhub\widgets\Button;
-use humhub\libs\Html;
 use yii\helpers\Url;
-use humhub\modules\content\widgets\richtext\RichTextField;
-use humhub\modules\file\widgets\UploadButton;
-use humhub\modules\file\widgets\FilePreview;
-use humhub\modules\comment\models\Comment;
 
 /* @var $this View */
 /* @var $objectModel string */
@@ -24,9 +25,9 @@ use humhub\modules\comment\models\Comment;
  * - hidden inputs
  * - .comment-container and .comment tags (to show new comment after submit)
  * - no hr tag
- * 
+ *
  * @var $this View
- * @var $this \humhub\modules\ui\view\components\View
+ * @var $this View
  * @var $id string for tags attributes
  * @var $model Comment
  * @var $websiteId int
@@ -35,13 +36,13 @@ use humhub\modules\comment\models\Comment;
  * @var $contentModule Module
  */
 
-/** @var \humhub\modules\content\Module $contentModule */
+/** @var Module $contentModule */
 $contentModule = Yii::$app->getModule('content');
 $submitUrl = Url::to(['/external-websites/comment/post']);
 ?>
 
 <div class="well well-small comment-container" id="comment_<?= $id; ?>">
-    
+
     <?php // This div.comment tag is the place where the new comment will be shown after submitting the form ?>
     <div class="comment <?php if (Yii::$app->user->isGuest): ?>guest-mode<?php endif; ?>"
          id="comments_area_<?= $id; ?>">
@@ -102,7 +103,7 @@ $submitUrl = Url::to(['/external-websites/comment/post']);
 </div>
 
 <script <?= Html::nonce() ?>>
-    $('#comment_create_form_<?= $id; ?> form').on('submit', function(event) {
+    $('#comment_create_form_<?= $id; ?> form').on('submit', function (event) {
         $(this).parent().children('hr').show();
     });
 </script>

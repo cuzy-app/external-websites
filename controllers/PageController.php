@@ -8,14 +8,14 @@
 
 namespace humhub\modules\externalWebsites\controllers;
 
-use Yii;
-use yii\web\HttpException;
-use yii\helpers\BaseStringHelper;
-use humhub\modules\content\components\ContentContainerController;
-use humhub\modules\stream\actions\ContentContainerStream;
-use humhub\modules\externalWebsites\models\Website;
-use humhub\modules\externalWebsites\models\Page;
 use humhub\modules\comment\models\Comment;
+use humhub\modules\content\components\ContentContainerController;
+use humhub\modules\externalWebsites\models\Page;
+use humhub\modules\externalWebsites\models\Website;
+use humhub\modules\stream\actions\ContentContainerStream;
+use Yii;
+use yii\helpers\BaseStringHelper;
+use yii\web\HttpException;
 
 
 /**
@@ -46,16 +46,15 @@ class PageController extends ContentContainerController
      * @param $token string HS512 JWT token (1)
      * (1) used by beforeAction function
      */
-    public function actionIndex ($id = null, $websiteId = null) {
+    public function actionIndex($id = null, $websiteId = null)
+    {
 
         // If page exists AND called from URL
         if ($id !== null && ($page = Page::findOne($id))) {
             $website = $page->website;
             $title = $page->title;
             $pageUrl = $page->page_url;
-        }
-
-        // If page doesn't exists (not comment) OR not called from URL
+        } // If page doesn't exists (not comment) OR not called from URL
         else {
             // Get website (could be retreive with $page->website, but as some pages may be shared with several websites, we need to specify the website desired)
             $website = Website::findOne($websiteId);
@@ -68,7 +67,7 @@ class PageController extends ContentContainerController
             if (empty($pageUrl)) {
                 throw new HttpException('403', 'Invalid param pageUrl!');
             }
-            $pageUrl = rtrim(strtok($pageUrl, "#"),"/"); // remove anchor (#hash) from URL and / at the end
+            $pageUrl = rtrim(strtok($pageUrl, "#"), "/"); // remove anchor (#hash) from URL and / at the end
 
             // Get title
             $pageTitle = Yii::$app->request->post('pageTitle', Yii::$app->request->get('pageTitle', ''));
@@ -92,7 +91,7 @@ class PageController extends ContentContainerController
                     $page->title = $title;
                     $page->save();
                 }
-                
+
                 // If related website is different (case where same URL is accessible form differents websites in the same space)
                 if ($website->id != $page->website_id) {
                     // Make this page related to smaller sort order website (the first one in the space menu list)
@@ -108,8 +107,7 @@ class PageController extends ContentContainerController
         if (!$website->humhub_is_embedded) {
             if ($page !== null) {
                 $permalink = $page->url;
-            }
-            else {
+            } else {
                 $permalink = $this->contentContainer->createUrl(
                     '/external-websites/website',
                     [
@@ -119,8 +117,7 @@ class PageController extends ContentContainerController
                     true
                 );
             }
-        }
-        else {
+        } else {
             $permalink = $pageUrl;
         }
 

@@ -8,13 +8,13 @@
 
 namespace humhub\modules\externalWebsites\controllers;
 
-use Yii;
-use yii\web\HttpException;
 use humhub\components\Controller;
 use humhub\modules\comment\controllers\CommentController as ParentCommentController;
-use humhub\modules\space\models\Space;
-use humhub\modules\externalWebsites\models\Website;
 use humhub\modules\externalWebsites\models\Page;
+use humhub\modules\externalWebsites\models\Website;
+use humhub\modules\space\models\Space;
+use Yii;
+use yii\web\HttpException;
 
 
 /**

@@ -20,9 +20,9 @@ class HostAssets extends AssetBundle
     public $css = [
         'css/humhub.externalWebsites.Host.css',
     ];
-    
+
     public $js = [
-    	'js/iframeResizer/iframeResizer.min.js?v=4.2.11', // https://github.com/davidjbradshaw/iframe-resizer/releases
+        'js/iframeResizer/iframeResizer.min.js?v=4.2.11', // https://github.com/davidjbradshaw/iframe-resizer/releases
         'js/humhub.externalWebsites.Host.js',
     ];
 }

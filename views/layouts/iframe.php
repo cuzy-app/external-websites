@@ -1,9 +1,10 @@
 <?php
 
 use humhub\assets\AppAsset;
+use humhub\modules\ui\view\components\View;
 use yii\helpers\Html;
 
-/* @var $this \humhub\modules\ui\view\components\View */
+/* @var $this View */
 /* @var $content string */
 
 AppAsset::register($this);
@@ -21,9 +22,9 @@ AppAsset::register($this);
 </head>
 
 <body class="ew-page-container" style="padding: 0 !important;">
-	<?php $this->beginBody() ?>
-	<?= $content; ?>
-	<?php $this->endBody() ?>
+<?php $this->beginBody() ?>
+<?= $content; ?>
+<?php $this->endBody() ?>
 </body>
 
 </html>

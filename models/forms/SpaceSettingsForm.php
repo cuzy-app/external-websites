@@ -8,6 +8,7 @@
 
 namespace humhub\modules\externalWebsites\models\forms;
 
+use humhub\modules\space\models\Space;
 use Yii;
 use yii\base\Model;
 
@@ -15,7 +16,7 @@ use yii\base\Model;
 class SpaceSettingsForm extends Model
 {
     /**
-     * @var \humhub\modules\space\models\Space
+     * @var Space
      */
     public $contentContainer;
 

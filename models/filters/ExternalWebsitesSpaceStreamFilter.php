@@ -8,16 +8,17 @@
 
 namespace humhub\modules\externalWebsites\models\filters;
 
-use Yii;
-use humhub\modules\externalWebsites\models\Website;
 use humhub\modules\externalWebsites\models\Page;
+use humhub\modules\externalWebsites\models\Website;
+use humhub\modules\stream\models\filters\StreamQueryFilter;
+use Yii;
 
 
 /**
  * Add filters in a stream show in a space
  * Model: humhub\modules\stream\models\filters\DefaultStreamFilter
  */
-class ExternalWebsitesSpaceStreamFilter extends \humhub\modules\stream\models\filters\StreamQueryFilter
+class ExternalWebsitesSpaceStreamFilter extends StreamQueryFilter
 {
     /**
      * Default filters
@@ -59,13 +60,12 @@ class ExternalWebsitesSpaceStreamFilter extends \humhub\modules\stream\models\fi
         $space = Yii::$app->controller->contentContainer;
         $websites = Website::findAll(['space_id' => $space->id]);
         foreach ($websites as $website) {
-            if ($this->isFilterActive(static::FILTER_SURVEY_STATE_PREFIX.$website->id)) {
+            if ($this->isFilterActive(static::FILTER_SURVEY_STATE_PREFIX . $website->id)) {
 
                 if (!$isFiltered) {
                     $isFiltered = true;
                     $this->query->andFilterWhere(['external_websites_website_page.website_id' => $website->id]);
-                }
-                else {
+                } else {
                     // if more than one filter, use 'or'
                     $this->query->orFilterWhere(['external_websites_website_page.website_id' => $website->id]);
                 }

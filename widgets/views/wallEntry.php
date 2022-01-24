@@ -7,7 +7,6 @@
  */
 
 use yii\helpers\Html;
-use yii\helpers\Url;
 
 /**
  * @var $page humhub\modules\externalWebsites\models\Page
@@ -16,17 +15,17 @@ use yii\helpers\Url;
 
 
 <div>
-	<p>
-		<strong><?= Html::encode($page->title) ?></strong>
-	</p>
-	<p>
-		<strong><?= Html::a(
-			Yii::t('ExternalWebsitesModule.base', 'Show the page'),
-			$page->url,
-			[
-				'class' => 'btn btn-primary',
-                'target' => ($page->website->humhub_is_embedded) ? '_blank' : '_self',
-			]
-		) ?></strong>
-	</p>
+    <p>
+        <strong><?= Html::encode($page->title) ?></strong>
+    </p>
+    <p>
+        <strong><?= Html::a(
+                Yii::t('ExternalWebsitesModule.base', 'Show the page'),
+                $page->url,
+                [
+                    'class' => 'btn btn-primary',
+                    'target' => ($page->website->humhub_is_embedded) ? '_blank' : '_self',
+                ]
+            ) ?></strong>
+    </p>
 </div>

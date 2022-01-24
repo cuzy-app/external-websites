@@ -8,34 +8,35 @@
 
 namespace humhub\modules\externalWebsites\models;
 
-use Yii;
+use humhub\components\ActiveRecord;
 use humhub\modules\space\models\Space;
+use Yii;
 
 /**
  * Websites to which we want to add addons to the pages (comments, like, files, etc.)
- * 
- * @property integer $space_id
+ *
+ * @property int $space_id
  * @property string $title
  * @property string $icon Fontawesome
  * @property boolean $humhub_is_embedded
  * @property string $first_page_url
  * @property boolean $show_in_menu
- * @property integer $sort_order 
+ * @property int $sort_order
  * @property string $remove_from_url_title
  * @property boolean $hide_sidebar If Enterprise theme
  * @property null|integer $default_content_visibility Default value for the Content created ; can be humhub\modules\content\models\Content::VISIBILITY_PRIVATE or Content::VISIBILITY_PUBLIC or Content::VISIBILITY_OWNER
- * @property integer $default_content_archived Default value for the Content created ; can be 0 or 1 (if 1, new comments are disabled) : humhub\modules\content\models\Content->archive(), humhub\modules\content\models\Content->unarchive()
+ * @property int $default_content_archived Default value for the Content created ; can be 0 or 1 (if 1, new comments are disabled) : humhub\modules\content\models\Content->archive(), humhub\modules\content\models\Content->unarchive()
  * @property string $created_at
- * @property integer $created_by
+ * @property int $created_by
  * @property string $updated_at
- * @property integer $updated_by
+ * @property int $updated_by
  *
  * @property Page[] $pages
  * @property Space $space
  */
-class Website extends \humhub\components\ActiveRecord
+class Website extends ActiveRecord
 {
-    
+
     /**
      * @inheritdoc
      */
@@ -74,12 +75,12 @@ class Website extends \humhub\components\ActiveRecord
      */
     public function rules()
     {
-       return [
-           [['space_id', 'first_page_url'], 'required'],
-           [['title', 'icon', 'first_page_url', 'remove_from_url_title'], 'string'],
-           [['space_id', 'sort_order', 'default_content_visibility', 'default_content_archived'], 'integer'],
-           [['humhub_is_embedded', 'show_in_menu', 'hide_sidebar'], 'boolean'],
-       ];
+        return [
+            [['space_id', 'first_page_url'], 'required'],
+            [['title', 'icon', 'first_page_url', 'remove_from_url_title'], 'string'],
+            [['space_id', 'sort_order', 'default_content_visibility', 'default_content_archived'], 'integer'],
+            [['humhub_is_embedded', 'show_in_menu', 'hide_sidebar'], 'boolean'],
+        ];
     }
 
 

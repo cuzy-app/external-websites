@@ -9,6 +9,7 @@
 namespace humhub\modules\externalWebsites\assets;
 
 use humhub\components\assets\AssetBundle;
+use yii\web\View;
 
 /**
  * Assests to redirect URLs to an external website
@@ -17,7 +18,7 @@ class SpaceSettingsAssets extends AssetBundle
 {
     public $sourcePath = '@external-websites/resources';
 
-    public $jsOptions = ['position' => \yii\web\View::POS_HEAD];
+    public $jsOptions = ['position' => View::POS_HEAD];
 
     public $css = [
     ];

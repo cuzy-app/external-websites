@@ -1,24 +1,23 @@
-
 humhub.module('externalWebsites.Host', function (module, require, $) {
     module.initOnPjaxLoad = true;
 
-    var updateBrowserUrlAndToggleSidebar = function() {
+    var updateBrowserUrlAndToggleSidebar = function () {
         // Update browser URL
-        window.history.replaceState({},'', module.config.permalink);
+        window.history.replaceState({}, '', module.config.permalink);
 
         // If theme body has a sidebar (Enterprise theme)
         if ($('#wrapper').length) {
 
             // If sidebar is toggled, resize iframe container
-            var observer = new MutationObserver(function(mutations) {
-                mutations.forEach(function(mutation) {
+            var observer = new MutationObserver(function (mutations) {
+                mutations.forEach(function (mutation) {
                     if (mutation.attributeName === "class") {
                         // var attributeValue = $(mutation.target).prop(mutation.attributeName);
 
                         // Resize after 1 seconds because of the 0.5 seconds transition CSS
-                        setTimeout(function(){
+                        setTimeout(function () {
                             document.getElementById('ew-page-container').iFrameResizer.resize();
-                        },1000);
+                        }, 1000);
                     }
                 });
             });
@@ -30,8 +29,7 @@ humhub.module('externalWebsites.Host', function (module, require, $) {
             if (typeof module.config.hideSidebar !== 'undefined' && module.config.hideSidebar) {
                 if ($(window).width() < 768) {
                     $('#wrapper').removeClass('toggled');
-                }
-                else {
+                } else {
                     $('#wrapper').addClass('toggled');
                 }
                 module.config.hideSidebar = false; // to avoid being reactivated by the view page/index
@@ -52,7 +50,7 @@ humhub.module('externalWebsites.Host', function (module, require, $) {
                 inPageLinks: true,
 
                 // Each time iframed page is loaded or URL changes
-                onMessage: function(messageData) {
+                onMessage: function (messageData) {
                     // sroll top
                     $('html, body').animate({
                         scrollTop: 0
@@ -69,7 +67,7 @@ humhub.module('externalWebsites.Host', function (module, require, $) {
 
                     // Load comments with ajax, after the iframe tag, each time URL changes in the iframed website
                     $.pjax.reload('#ew-page-addons', {
-                        type : 'POST',
+                        type: 'POST',
                         url: module.config.pageActionUrl,
                         push: false,
                         replace: false,

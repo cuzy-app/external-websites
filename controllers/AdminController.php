@@ -8,9 +8,9 @@
 
 namespace humhub\modules\externalWebsites\controllers;
 
-use Yii;
 use humhub\modules\admin\components\Controller;
 use humhub\modules\admin\permissions\ManageSettings;
+use Yii;
 
 
 /**

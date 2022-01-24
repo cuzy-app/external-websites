@@ -7,15 +7,16 @@
  */
 
 use humhub\libs\Html;
-use yii\helpers\Url;
-use humhub\widgets\ModalDialog;
+use humhub\modules\externalWebsites\models\forms\SpaceSettingsForm;
+use humhub\modules\ui\view\components\View;
 use humhub\widgets\ModalButton;
+use humhub\widgets\ModalDialog;
 use yii\bootstrap\ActiveForm;
 
 
 /**
- * @var $this \humhub\modules\ui\view\components\View
- * @var $model \humhub\modules\externalWebsites\models\forms\SpaceSettingsForm
+ * @var $this View
+ * @var $model SpaceSettingsForm
  */
 ?>
 
@@ -40,4 +41,4 @@ use yii\bootstrap\ActiveForm;
     <div class="modal-footer">
         <?= ModalButton::cancel(Yii::t('base', 'Close')) ?>
     </div>
-<?php ModalDialog::end()?>
+<?php ModalDialog::end() ?>

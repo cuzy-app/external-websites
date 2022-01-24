@@ -20,14 +20,14 @@ if (isset($_GET['humhubUrl'])) {
  * Add autologin param
  */
 if (isset($autoLogin) && $autoLogin) {
-    $humhubUrl .= ((strpos($humhubUrl, '?') === false) ? '?' : '&').'autoLogin=1';
+    $humhubUrl .= ((strpos($humhubUrl, '?') === false) ? '?' : '&') . 'autoLogin=1';
 }
 
 /**
  * Add token param
  */
 if (!empty($token)) {
-    $humhubUrl .= ((strpos($humhubUrl, '?') === false) ? '?' : '&').'token='.$token;
+    $humhubUrl .= ((strpos($humhubUrl, '?') === false) ? '?' : '&') . 'token=' . $token;
 }
 ?>
 
@@ -53,7 +53,7 @@ if (!empty($token)) {
 <!-- Just before </body> -->
 <script type="text/javascript" src="js/iframeResizer.min.js"></script>
 <script>
-    var loadIFrameResize = function() {
+    var loadIFrameResize = function () {
         const iframes = iFrameResize({
             log: false,
             scrolling: true,

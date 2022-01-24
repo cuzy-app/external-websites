@@ -6,13 +6,13 @@
  * @author [Marc FARRE](https://marc.fun)
  */
 
-use humhub\modules\ui\icon\widgets\Icon;
 use humhub\libs\Html;
-use humhub\modules\like\widgets\LikeLink;
-use humhub\modules\comment\widgets\Comments;
 use humhub\modules\comment\widgets\CommentLink;
-use humhub\modules\externalWebsites\widgets\FirstCommentForm;
+use humhub\modules\comment\widgets\Comments;
 use humhub\modules\externalWebsites\assets\EmbeddedAssets;
+use humhub\modules\externalWebsites\widgets\FirstCommentForm;
+use humhub\modules\like\widgets\LikeLink;
+use humhub\modules\ui\icon\widgets\Icon;
 
 /**
  * @var $contentContainer humhub\modules\space\models\Space
@@ -33,8 +33,7 @@ if (!$humhubIsEmbedded) {
         'hideSidebar' => $website->hide_sidebar,
         'permalink' => $permalink,
     ]);
-}
-// If Humhub is embedded
+} // If Humhub is embedded
 else {
     EmbeddedAssets::register($this);
 }
@@ -43,7 +42,7 @@ else {
 <div class="wall-entry-controls">
     <?php if ($showPermalink): ?>
         <?= Html::a(
-            ' '.Yii::t('ContentModule.base', 'Permalink'),
+            ' ' . Yii::t('ContentModule.base', 'Permalink'),
             '#',
             [
                 'class' => 'permalink',
@@ -67,7 +66,7 @@ else {
 
 <?php if ($showComments): ?>
     <?php if ($page !== null): ?>
-        <?php if($page->content->canView()): ?>
+        <?php if ($page->content->canView()): ?>
             <?= Comments::widget(['object' => $page]) ?>
         <?php endif; ?>
     <?php else: ?>
@@ -89,7 +88,7 @@ else {
     $('#ew-page-addons').removeClass('col-md-12').addClass('col-md-3');
     <?php endif; ?>
 
-    $(function(){
+    $(function () {
         humhub.modules.externalWebsites.Host.updateBrowserUrlAndToggleSidebar();
     });
 </script>

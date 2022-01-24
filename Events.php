@@ -9,19 +9,22 @@
 namespace humhub\modules\externalWebsites;
 
 use Firebase\JWT\JWT;
-use humhub\modules\stream\models\WallStreamQuery;
-use Yii;
-use yii\web\HttpException;
-use humhub\modules\ui\menu\MenuLink;
-use humhub\modules\stream\widgets\WallStreamFilterNavigation;
-use humhub\modules\externalWebsites\models\Website;
-use humhub\modules\externalWebsites\models\filters\ExternalWebsitesSpaceStreamFilter;
-use humhub\modules\externalWebsites\models\forms\SpaceSettingsForm;
 use humhub\modules\externalWebsites\assets\EmbeddedAssets;
 use humhub\modules\externalWebsites\assets\SpaceSettingsAssets;
+use humhub\modules\externalWebsites\models\filters\ExternalWebsitesSpaceStreamFilter;
+use humhub\modules\externalWebsites\models\forms\SpaceSettingsForm;
+use humhub\modules\externalWebsites\models\Website;
 use humhub\modules\externalWebsites\widgets\AddClassToHtmlTag;
 use humhub\modules\space\models\Space;
+use humhub\modules\space\widgets\HeaderControlsMenu;
+use humhub\modules\stream\models\WallStreamQuery;
+use humhub\modules\stream\widgets\WallStreamFilterNavigation;
+use humhub\modules\ui\menu\MenuLink;
 use humhub\modules\user\models\Group;
+use humhub\widgets\LayoutAddons;
+use Yii;
+use yii\helpers\Url;
+use yii\web\HttpException;
 
 
 class Events
@@ -65,7 +68,7 @@ class Events
     }
 
 
-    public static function onStreamFilterBeforeRun ($event)
+    public static function onStreamFilterBeforeRun($event)
     {
         if (
             !isset(Yii::$app->controller->contentContainer)
@@ -82,9 +85,9 @@ class Events
         // Add a new filter block to the last filter panel
         $wallFilterNavigation->addFilterBlock(
             static::FILTER_BLOCK_EXTERNAL_WEBSITE, [
-                'title' => Yii::t('ExternalWebsitesModule.base', 'Filter'),
-                'sortOrder' => 300
-            ],
+            'title' => Yii::t('ExternalWebsitesModule.base', 'Filter'),
+            'sortOrder' => 300
+        ],
             WallStreamFilterNavigation::PANEL_POSITION_CENTER
         );
 
@@ -101,7 +104,7 @@ class Events
             // Add a filters to the new filter block
             $wallFilterNavigation->addFilter(
                 [
-                    'id' => ExternalWebsitesSpaceStreamFilter::FILTER_SURVEY_STATE_PREFIX.$website->id,
+                    'id' => ExternalWebsitesSpaceStreamFilter::FILTER_SURVEY_STATE_PREFIX . $website->id,
                     'title' => Yii::t(
                         'ExternalWebsitesModule.base',
                         '{title}: show comments',
@@ -118,7 +121,7 @@ class Events
     /**
      * Adds filters
      */
-    public static function onStreamFilterBeforeFilter ($event)
+    public static function onStreamFilterBeforeFilter($event)
     {
         // if single content (contentId in URL)
         if (!empty($event->sender->contentId)) {
@@ -127,11 +130,11 @@ class Events
 
         /** @var $streamQuery WallStreamQuery */
         $streamQuery = $event->sender;
-    
+
         // If in a space
         if (isset(Yii::$app->controller->contentContainer)) {
             $space = Yii::$app->controller->contentContainer;
-            if ($space instanceof Space  && $space->isModuleEnabled('external-websites')) {
+            if ($space instanceof Space && $space->isModuleEnabled('external-websites')) {
                 // Add a new filterHandler to WallStreamQuery
                 $streamQuery->filterHandlers[] = ExternalWebsitesSpaceStreamFilter::class;
             }
@@ -141,10 +144,10 @@ class Events
 
     public static function onSpaceAdminMenuInit($event)
     {
-        /** @var \humhub\modules\space\widgets\HeaderControlsMenu $headerMenu */
+        /** @var HeaderControlsMenu $headerMenu */
         $headerMenu = $event->sender;
 
-        /* @var $space \humhub\modules\space\models\Space */
+        /* @var $space Space */
         $space = $headerMenu->space;
 
         if ($space->isModuleEnabled('external-websites')) {
@@ -160,12 +163,13 @@ class Events
 
     public static function onViewBeginBody($event)
     {
-        /** @var \humhub\widgets\LayoutAddons $layoutAddons */
+        /** @var LayoutAddons $layoutAddons */
         $view = $event->sender;
 
         $module = Yii::$app->getModule('external-websites');
 
         if ($module->registerAssetsIfHumhubIsEmbedded) {
+            // TODO: replace echo
             echo AddClassToHtmlTag::widget();
             EmbeddedAssets::register(Yii::$app->view);
         }
@@ -203,25 +207,6 @@ class Events
         }
     }
 
-
-    /**
-     * @return mixed
-     * If autoLogin param true in URL, try auto login
-     */
-    private static function tryAutoLogin()
-    {
-        // If an auth client has attribute autoLogin set to true, this module will auto log the user to the corresponding Identity provider (SSO)
-        foreach (Yii::$app->authClientCollection->clients as $authclient) {
-            if (isset($authclient->autoLogin) && $authclient->autoLogin) {
-                // Redirect to Identity Provider
-                if (method_exists($authclient, 'redirectToBroker')) {
-                    return $authclient->redirectToBroker(true);
-                }
-            }
-        }
-    }
-
-
     /**
      * @param $token HS512 JWT token
      * @throws HttpException
@@ -240,7 +225,7 @@ class Events
                 if (isset($validData->groupsId) && is_array($validData->groupsId)) {
 
                     // Add current user to groups
-                    foreach(Group::findAll($validData->groupsId) as $group) {
+                    foreach (Group::findAll($validData->groupsId) as $group) {
                         if (!$group->isMember(Yii::$app->user->identity)) {
                             $group->addUser(Yii::$app->user->identity);
                         }
@@ -248,6 +233,23 @@ class Events
                 }
             } catch (Exception $e) {
                 throw new HttpException(401, $e->getMessage());
+            }
+        }
+    }
+
+    /**
+     * @return mixed
+     * If autoLogin param true in URL, try auto login
+     */
+    private static function tryAutoLogin()
+    {
+        // If an auth client has attribute autoLogin set to true, this module will auto log the user to the corresponding Identity provider (SSO)
+        foreach (Yii::$app->authClientCollection->clients as $authclient) {
+            if (isset($authclient->autoLogin) && $authclient->autoLogin) {
+                // Redirect to Identity Provider
+                if (method_exists($authclient, 'redirectToBroker')) {
+                    return $authclient->redirectToBroker(true);
+                }
             }
         }
     }
@@ -262,7 +264,7 @@ class Events
 
         $urlToRedirect = $settings->get('urlToRedirect');
         if (!empty($urlToRedirect)) {
-            $urlToRedirect = str_replace('{humhubUrl}', urlencode(\yii\helpers\Url::current([], true)), $urlToRedirect);
+            $urlToRedirect = str_replace('{humhubUrl}', urlencode(Url::current([], true)), $urlToRedirect);
         }
 
         $preventLeavingSpace = $settings->get('preventLeavingSpace', (new SpaceSettingsForm)->preventLeavingSpace);

@@ -6,19 +6,23 @@
  * @author [Marc FARRE](https://marc.fun)
  */
 
+use humhub\libs\Html;
+use humhub\modules\externalWebsites\models\forms\WebsiteForm;
+use humhub\modules\externalWebsites\models\WebsiteSearch;
+use humhub\modules\space\models\Space;
 use humhub\modules\ui\icon\widgets\Icon;
+use humhub\modules\ui\view\components\View;
 use humhub\modules\user\models\User;
 use humhub\modules\user\widgets\Image;
 use humhub\widgets\Button;
-use humhub\libs\Html;
 use humhub\widgets\GridView;
-use humhub\modules\externalWebsites\models\forms\WebsiteForm;
+use yii\data\ActiveDataProvider;
 
 /**
- * @var $this \humhub\modules\ui\view\components\View
- * @var $contentContainer \humhub\modules\space\models\Space
- * @var $searchModel \humhub\modules\externalWebsites\models\WebsiteSearch
- * @var $dataProvider \yii\data\ActiveDataProvider
+ * @var $this View
+ * @var $contentContainer Space
+ * @var $searchModel WebsiteSearch
+ * @var $dataProvider ActiveDataProvider
  */
 
 $websiteForm = new WebsiteForm;
@@ -107,7 +111,7 @@ $websiteForm = new WebsiteForm;
                 'value' => function ($model) use ($contentContainer) {
                     $user = User::findOne($model->created_by);
                     return
-                        Image::widget(['user' => $user, 'width' => 35, 'showTooltip' => true]).'<br>'.
+                        Image::widget(['user' => $user, 'width' => 35, 'showTooltip' => true]) . '<br>' .
                         Html::containerLink($user);
                 }
             ],
@@ -120,8 +124,8 @@ $websiteForm = new WebsiteForm;
                             ->icon('pencil')
                             ->link($contentContainer->createUrl('/external-websites/manage/edit-website', ['websiteId' => $model->id]))
                             ->action('ui.modal.load')
-                            ->tooltip(Yii::t('ExternalWebsitesModule.base', 'Edit this website')).
-                        '<br><br>'.
+                            ->tooltip(Yii::t('ExternalWebsitesModule.base', 'Edit this website')) .
+                        '<br><br>' .
                         Button::danger()
                             ->icon('trash')
                             ->link($contentContainer->createUrl('/external-websites/manage/delete-website', ['websiteId' => $model->id]))

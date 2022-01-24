@@ -8,10 +8,11 @@
 
 namespace humhub\modules\externalWebsites\controllers;
 
-use yii\web\HttpException;
 use humhub\modules\content\components\ContentContainerController;
-use humhub\modules\externalWebsites\models\Website;
 use humhub\modules\externalWebsites\models\Page;
+use humhub\modules\externalWebsites\models\Website;
+use yii\web\HttpException;
+use yii\web\Response;
 
 
 /**
@@ -29,17 +30,16 @@ class WebsiteController extends ContentContainerController
      * @param null $title
      * @param null $pageId
      * @param null $pageUrl
-     * @return string|\yii\console\Response|\yii\web\Response
+     * @return string|\yii\console\Response|Response
      * @throws HttpException
      */
-    public function actionIndex ($id = null, $title = null, $pageId = null, $pageUrl = null)
+    public function actionIndex($id = null, $title = null, $pageId = null, $pageUrl = null)
     {
         // Get website
         $website = null;
         if ($id !== null) {
             $website = Website::findOne($id);
-        }
-        // Try to get website from site title
+        } // Try to get website from site title
         elseif ($title !== null) {
             $website = Website::findOne(['title' => $title]);
         }
@@ -53,9 +53,8 @@ class WebsiteController extends ContentContainerController
             if ($page !== null) {
                 $pageUrl = $page->page_url;
             }
-        }
-        // If pageUrl is null
-        elseif (! $pageUrl) {
+        } // If pageUrl is null
+        elseif (!$pageUrl) {
             // Set first page URL
             $pageUrl = $website->first_page_url;
         }

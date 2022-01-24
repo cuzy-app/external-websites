@@ -8,30 +8,30 @@
 
 namespace humhub\modules\externalWebsites\models;
 
-use Yii;
 use humhub\modules\content\components\ContentActiveRecord;
+use humhub\modules\externalWebsites\widgets\WallEntry;
+use humhub\modules\search\events\SearchAddEvent;
 use humhub\modules\search\interfaces\Searchable;
 use humhub\modules\user\models\User;
-use humhub\modules\externalWebsites\widgets\WallEntry;
+use Yii;
 
 
 /**
  * Contents corresponding to the pages of the website to which we want to add addons (comments, like, files, etc.)
  * For each page of the website, when a first comment is posted, a content is created
  * The relation is done with the URL of the page
- * 
- * @property integer $id
- * @property integer $title
+ *
+ * @property int $id
+ * @property int $title
  * @property string $page_url
- * @property integer $website_id
+ * @property int $website_id
  * @property string $created_at
- * @property integer $created_by
+ * @property int $created_by
  * @property string $updated_at
- * @property integer $updated_by
+ * @property int $updated_by
  *
  * @property Website $website
  */
-
 class Page extends ContentActiveRecord implements Searchable
 {
     public $moduleId = 'external-websites';
@@ -88,11 +88,11 @@ class Page extends ContentActiveRecord implements Searchable
      */
     public function rules()
     {
-       return [
-           [['website_id', 'page_url'], 'required'],
-           [['title', 'page_url'], 'string'],
-           [['website_id'], 'integer'],
-       ];
+        return [
+            [['website_id', 'page_url'], 'required'],
+            [['title', 'page_url'], 'string'],
+            [['website_id'], 'integer'],
+        ];
     }
 
 
@@ -144,23 +144,9 @@ class Page extends ContentActiveRecord implements Searchable
             'user' => $this->getPostAuthorName()
         ];
 
-        $this->trigger(self::EVENT_SEARCH_ADD, new \humhub\modules\search\events\SearchAddEvent($attributes));
+        $this->trigger(self::EVENT_SEARCH_ADD, new SearchAddEvent($attributes));
 
         return $attributes;
-    }
-
-    /**
-     * @return string
-     */
-    private function getPostAuthorName()
-    {
-        $user = User::findOne(['id' => $this->created_by]);
-
-        if ($user !== null && $user->isActive()) {
-            return $user->getDisplayName();
-        }
-
-        return '';
     }
 
     public function getIcon()
@@ -170,7 +156,6 @@ class Page extends ContentActiveRecord implements Searchable
         }
         return 'desktop';
     }
-
 
     /**
      * @inheritdoc
@@ -185,7 +170,6 @@ class Page extends ContentActiveRecord implements Searchable
 
         return parent::beforeSave($insert);
     }
-
 
     /**
      * @inheritdoc
@@ -208,6 +192,20 @@ class Page extends ContentActiveRecord implements Searchable
                 }
             }
         }
+    }
+
+    /**
+     * @return string
+     */
+    private function getPostAuthorName()
+    {
+        $user = User::findOne(['id' => $this->created_by]);
+
+        if ($user !== null && $user->isActive()) {
+            return $user->getDisplayName();
+        }
+
+        return '';
     }
 
 }

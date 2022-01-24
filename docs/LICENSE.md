@@ -1,17 +1,17 @@
 # License
 
-According to our dual licensing model, this program can be used either under the terms of the GNU Affero General Public License, version 3, or under a Cuzy commercial license.
+According to our dual licensing model, this program can be used either under the terms of the GNU Affero General Public License, version 3, or under a CUZY.APP commercial license.
 
-You can purchase a commercial license on the [Cuzzy.App online store](https://www.cuzy.app) wich allows you to install and update the program from the [Humhub Marketplace](https://www.humhub.com/en/marketplace).
+You can purchase a commercial license on the [CUZY.APP online store](https://www.cuzy.app) which allows you to install and update the program from the [Humhub Marketplace](https://www.humhub.com/en/marketplace).
 
-The GNU AGPL3 license requires that you install the program from sources directly on your server and that you do the updates manually (files and database). In this case, please support the developer making a donation on the [Cuzzy.App online store](https://www.cuzy.app), thanks in advance!
+The GNU AGPL3 license requires that you install the program from sources directly on your server and that you do the updates manually (files and database). In this case, please support the developer making a donation on the [CUZY.APP online store](https://www.cuzy.app), thanks in advance!
 
 
-## CUZY COMMERCIAL LICENSE
+## CUZY.APP COMMERCIAL LICENSE
 
 01. September 2020
 
-_Copyright © 2020 Cuzy https://www.cuzy.app. _
+_Copyright © 2020 CUZY.APP https://www.cuzy.app. _
 _You can buy a Commercial License [here](https://www.cuzy.app). _
 
 ### § 1 Subject matter of the License

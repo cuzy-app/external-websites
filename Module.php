@@ -8,17 +8,17 @@
 
 namespace humhub\modules\externalWebsites;
 
-use Yii;
-use humhub\modules\content\components\ContentContainerModule;
 use humhub\modules\content\components\ContentContainerActiveRecord;
-use humhub\modules\space\models\Space;
-use humhub\modules\externalWebsites\models\Website;
+use humhub\modules\content\components\ContentContainerModule;
 use humhub\modules\externalWebsites\models\Page;
+use humhub\modules\externalWebsites\models\Website;
+use humhub\modules\space\models\Space;
+use Yii;
 
 
 class Module extends ContentContainerModule
 {
-    
+
     /**
      * @var string defines the icon
      */
@@ -72,8 +72,7 @@ class Module extends ContentContainerModule
             $page->delete();
         }
 
-        foreach (Website::find()->all() as $website)
-        {
+        foreach (Website::find()->all() as $website) {
             $website->delete();
         }
 
@@ -97,8 +96,7 @@ class Module extends ContentContainerModule
     {
         parent::disableContentContainer($container);
 
-        foreach (Website::findAll(['space_id' => $container->id]) as $website)
-        {
+        foreach (Website::findAll(['space_id' => $container->id]) as $website) {
             $website->delete();
         }
     }

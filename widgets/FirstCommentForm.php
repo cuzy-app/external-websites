@@ -8,17 +8,18 @@
 
 namespace humhub\modules\externalWebsites\widgets;
 
-use Yii;
 use humhub\modules\comment\models\Comment as CommentModel;
 use humhub\modules\comment\permissions\CreateComment;
+use humhub\modules\comment\widgets\Form;
 use humhub\modules\externalWebsites\models\Page;
+use Yii;
 
 
 /**
  * This widget is used to create a new comment form when content is not created
- * 
+ *
  */
-class FirstCommentForm extends \humhub\modules\comment\widgets\Form
+class FirstCommentForm extends Form
 {
     /**
      * humhub\modules\space\models\Space

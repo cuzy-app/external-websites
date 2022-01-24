@@ -8,21 +8,19 @@
 
 namespace humhub\modules\externalWebsites\controllers;
 
-use humhub\modules\user\models\User;
-use Yii;
-use humhub\modules\space\models\Space;
 use humhub\modules\content\components\ContentContainerController;
 use humhub\modules\content\components\ContentContainerControllerAccess;
+use humhub\modules\externalWebsites\models\forms\SpaceSettingsForm;
+use humhub\modules\externalWebsites\models\forms\WebsiteForm;
 use humhub\modules\externalWebsites\models\Website;
 use humhub\modules\externalWebsites\models\WebsiteSearch;
-use humhub\modules\externalWebsites\models\forms\WebsiteForm;
-use humhub\modules\externalWebsites\models\forms\SpaceSettingsForm;
-
+use humhub\modules\space\models\Space;
+use Yii;
 
 
 class ManageController extends ContentContainerController
 {
-	/**
+    /**
      * @inheritdoc
      */
     public function getAccessRules()
@@ -46,14 +44,14 @@ class ManageController extends ContentContainerController
     }
 
 
-    public function actionAddWebsite() {
+    public function actionAddWebsite()
+    {
         $model = new WebsiteForm(['space_id' => $this->contentContainer->id]);
 
         if ($model->load(Yii::$app->request->post())) {
             if ($model->validate() && $model->save()) {
                 $this->view->success(Yii::t('ExternalWebsitesModule.base', 'Website added'));
-            }
-            else {
+            } else {
                 $this->view->error(Yii::t('ExternalWebsitesModule.base', 'Error: website not added'));
             }
             return $this->redirect('websites');
@@ -66,7 +64,8 @@ class ManageController extends ContentContainerController
     }
 
 
-    public function actionEditWebsite($websiteId) {
+    public function actionEditWebsite($websiteId)
+    {
         $model = new WebsiteForm([
             'space_id' => $this->contentContainer->id,
             'id' => $websiteId,
@@ -75,8 +74,7 @@ class ManageController extends ContentContainerController
         if ($model->load(Yii::$app->request->post())) {
             if ($model->validate() && $model->save()) {
                 $this->view->success(Yii::t('ExternalWebsitesModule.base', 'Website updated'));
-            }
-            else {
+            } else {
                 $this->view->error(Yii::t('ExternalWebsitesModule.base', 'Error: website not updated'));
             }
             return $this->redirect('websites');
@@ -89,7 +87,8 @@ class ManageController extends ContentContainerController
     }
 
 
-    public function actionDeleteWebsite($websiteId) {
+    public function actionDeleteWebsite($websiteId)
+    {
         $website = Website::findOne($websiteId);
         if ($website === null) {
             throw new HttpException(404);
@@ -102,14 +101,14 @@ class ManageController extends ContentContainerController
     }
 
 
-    public function actionSpaceSettings() {
+    public function actionSpaceSettings()
+    {
         $model = new SpaceSettingsForm(['contentContainer' => $this->contentContainer]);
 
         if ($model->load(Yii::$app->request->post())) {
             if ($model->validate() && $model->save()) {
                 $this->view->saved();
-            }
-            else {
+            } else {
                 $this->view->error('Error');
             }
             return $this->redirect('websites');
