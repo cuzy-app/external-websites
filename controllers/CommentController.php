@@ -19,7 +19,7 @@ use yii\web\HttpException;
 
 /**
  * CommentController enables to create the content if not exists
- * Called by form in `external-websites\widgets\views\firestCommentForm.php`
+ * Called by form in `external-websites\widgets\views\firstCommentForm.php`
  * For a page not created because not having any comment yet
  */
 class CommentController extends ParentCommentController

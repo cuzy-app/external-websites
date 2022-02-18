@@ -104,7 +104,7 @@ class Website extends ActiveRecord
 
     public function afterDelete()
     {
-        foreach (Page::find()->contentContainer($this->space)->all() as $page) {
+        foreach ($this->pages as $page) {
             $page->delete();
         }
 

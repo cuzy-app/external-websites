@@ -72,9 +72,7 @@ class Module extends ContentContainerModule
             $page->delete();
         }
 
-        foreach (Website::find()->all() as $website) {
-            $website->delete();
-        }
+        Website::deleteAll();
 
         parent::disable();
     }
