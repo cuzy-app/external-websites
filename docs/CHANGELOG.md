@@ -1,6 +1,10 @@
 Changelog
 =========
 
+0.35 (March 3, 2022)
+--------------------
+- Enh: Possibility to ignore some params in the external website URL to link multiple URLs to a same content if only theses params are different
+
 0.34 (March 3, 2022)
 --------------------
 - Enh: if the same URL is used by different websites and a website is deleted, the page is assigned to the other website

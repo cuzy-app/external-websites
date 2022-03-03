@@ -13,6 +13,7 @@ use humhub\modules\space\models\Space;
 use Throwable;
 use Yii;
 use yii\db\StaleObjectException;
+use yii\helpers\Json;
 
 /**
  * Websites to which we want to add addons to the pages (comments, like, files, etc.)
@@ -23,6 +24,7 @@ use yii\db\StaleObjectException;
  * @property string $icon Fontawesome
  * @property boolean $humhub_is_embedded
  * @property string $first_page_url
+ * @property string $page_url_params_to_remove json
  * @property boolean $show_in_menu
  * @property int $sort_order
  * @property string $remove_from_url_title
@@ -60,6 +62,7 @@ class Website extends ActiveRecord
             'icon' => Yii::t('ExternalWebsitesModule.base', 'Icon'),
             'humhub_is_embedded' => Yii::t('ExternalWebsitesModule.base', 'Humhub is embedded'),
             'first_page_url' => Yii::t('ExternalWebsitesModule.base', 'Website first page URL'),
+            'page_url_params_to_remove' => Yii::t('ExternalWebsitesModule.base', 'Page URL params to ignore'),
             'show_in_menu' => Yii::t('ExternalWebsitesModule.base', 'Show in space menu'),
             'sort_order' => Yii::t('ExternalWebsitesModule.base', 'Sort order'),
             'remove_from_url_title' => Yii::t('ExternalWebsitesModule.base', 'Text to remove from URL title'),
@@ -83,6 +86,7 @@ class Website extends ActiveRecord
             [['title', 'icon', 'first_page_url', 'remove_from_url_title'], 'string'],
             [['space_id', 'sort_order', 'default_content_visibility', 'default_content_archived'], 'integer'],
             [['humhub_is_embedded', 'show_in_menu', 'hide_sidebar'], 'boolean'],
+            [['page_url_params_to_remove'], 'safe'],
         ];
     }
 
@@ -138,5 +142,23 @@ class Website extends ActiveRecord
         }
 
         parent::afterDelete();
+    }
+
+    /**
+     * @return array
+     */
+    public function getPageUrlParamsToRemove()
+    {
+        $params = Json::decode($this->page_url_params_to_remove);
+        return is_array($params) ? $params : [];
+    }
+
+    /**
+     * @param array $params
+     * @return void
+     */
+    public function setPageUrlParamsToRemove(array $params)
+    {
+        $this->page_url_params_to_remove = Json::encode($params);
     }
 }

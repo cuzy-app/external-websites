@@ -57,14 +57,14 @@ $websiteForm = new WebsiteForm;
             [
                 'attribute' => 'icon',
                 'format' => 'raw',
-                'value' => function ($model) {
+                'value' => static function ($model) {
                     return Icon::get($model->icon);
                 }
             ],
             [
                 'attribute' => 'humhub_is_embedded',
                 'format' => 'raw',
-                'value' => function ($model) {
+                'value' => static function ($model) {
                     return $model->humhub_is_embedded ? Icon::get('check') : '';
                 }
             ],
@@ -72,9 +72,16 @@ $websiteForm = new WebsiteForm;
                 'attribute' => 'first_page_url',
             ],
             [
+                'attribute' => 'page_url_params_to_remove',
+                'format' => 'raw',
+                'value' => static function ($model) {
+                    return implode(',', $model->getPageUrlParamsToRemove());
+                }
+            ],
+            [
                 'attribute' => 'show_in_menu',
                 'format' => 'raw',
-                'value' => function ($model) {
+                'value' => static function ($model) {
                     return $model->show_in_menu ? Icon::get('check') : '';
                 }
             ],
@@ -87,28 +94,28 @@ $websiteForm = new WebsiteForm;
             [
                 'attribute' => 'hide_sidebar',
                 'format' => 'raw',
-                'value' => function ($model) {
+                'value' => static function ($model) {
                     return $model->hide_sidebar ? Icon::get('check') : '';
                 }
             ],
             [
                 'attribute' => 'default_content_visibility',
                 'format' => 'raw',
-                'value' => function ($model) use ($websiteForm) {
+                'value' => static function ($model) use ($websiteForm) {
                     return $websiteForm->getContentVisibilityList()[$model->default_content_visibility];
                 }
             ],
             [
                 'attribute' => 'default_content_archived',
                 'format' => 'raw',
-                'value' => function ($model) {
+                'value' => static function ($model) {
                     return $model->default_content_archived ? Icon::get('check') : '';
                 }
             ],
             [
                 'attribute' => 'created_by',
                 'format' => 'raw',
-                'value' => function ($model) use ($contentContainer) {
+                'value' => static function ($model) use ($contentContainer) {
                     $user = User::findOne($model->created_by);
                     return
                         Image::widget(['user' => $user, 'width' => 35, 'showTooltip' => true]) . '<br>' .
@@ -118,7 +125,7 @@ $websiteForm = new WebsiteForm;
             [
                 'header' => '',
                 'format' => 'raw',
-                'value' => function ($model) use ($contentContainer) {
+                'value' => static function ($model) use ($contentContainer) {
                     return
                         Button::primary()
                             ->icon('pencil')

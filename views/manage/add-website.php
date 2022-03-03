@@ -33,6 +33,7 @@ use yii\helpers\Html;
         <?= $form->field($model, 'icon')->widget(IconPicker::class) ?>
         <?= $form->field($model, 'humhub_is_embedded')->checkbox() ?>
         <?= $form->field($model, 'first_page_url')->textInput() ?>
+        <?= $form->field($model, 'page_url_params_to_remove')->textInput() ?>
         <?= $form->field($model, 'show_in_menu')->checkbox() ?>
         <?= $form->field($model, 'sort_order')->textInput() ?>
         <?= $form->field($model, 'remove_from_url_title')->textInput() ?>

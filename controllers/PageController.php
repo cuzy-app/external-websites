@@ -50,6 +50,10 @@ class PageController extends ContentContainerController
      */
     public function actionIndex($id = null, $websiteId = null)
     {
+        // Get elements to show
+        $showComments = (bool)Yii::$app->request->post('showComments', Yii::$app->request->get('showComments', true));
+        $showLikes = (bool)Yii::$app->request->post('showLikes', Yii::$app->request->get('showLikes', true));
+        $showPermalink = (bool)Yii::$app->request->post('showPermalink', Yii::$app->request->get('showPermalink', true));
 
         // If page exists AND called from URL
         if ($id !== null && ($page = Page::findOne($id))) {
@@ -69,17 +73,17 @@ class PageController extends ContentContainerController
             if (empty($pageUrl)) {
                 throw new HttpException('403', 'Invalid param pageUrl!');
             }
-            $pageUrl = rtrim(strtok($pageUrl, "#"), "/"); // remove anchor (#hash) from URL and / at the end
+            // Remove anchor (#hash) from URL and / at the end
+            $pageUrl = rtrim(strtok($pageUrl, "#"), "/");
+            // Remove params to ignore
+            foreach ($website->getPageUrlParamsToRemove() as $param) {
+                $pageUrl = $this->stripParamFromUrl($pageUrl, $param);
+            }
 
             // Get title
             $pageTitle = Yii::$app->request->post('pageTitle', Yii::$app->request->get('pageTitle', ''));
             $pageTitle = str_ireplace($website->remove_from_url_title, '', $pageTitle); // Remove unwanted text in title
             $title = BaseStringHelper::truncate($pageTitle, 95, '[...]');
-
-            // Get elements to show
-            $showComments = (bool)Yii::$app->request->post('showComments', Yii::$app->request->get('showComments', true));
-            $showLikes = (bool)Yii::$app->request->post('showLikes', Yii::$app->request->get('showLikes', true));
-            $showPermalink = (bool)Yii::$app->request->post('showPermalink', Yii::$app->request->get('showPermalink', true));
 
             // Get content (there can be only 1 unique URL per space, so we don't filter by website)
             $page = Page::find()
@@ -114,7 +118,7 @@ class PageController extends ContentContainerController
         // Create permalink
         if (!$website->humhub_is_embedded) {
             if ($page !== null) {
-                $permalink = $page->url;
+                $permalink = $page->getUrl();
             } else {
                 $permalink = $this->contentContainer->createUrl(
                     '/external-websites/website',
@@ -133,7 +137,7 @@ class PageController extends ContentContainerController
         if (
             $page !== null
             && $page->content->archived
-            && Comment::GetCommentCount(Page::class, $page->id) == 0
+            && Comment::GetCommentCount(Page::class, $page->id) === 0
         ) {
             $showComments = false;
             $showLikes = false;
@@ -162,5 +166,24 @@ class PageController extends ContentContainerController
         $this->layout = '@external-websites/views/layouts/iframe';
         $this->subLayout = '@external-websites/views/page/_layoutForIframe';
         return $this->render('index', $viewParams);
+    }
+
+    /**
+     * @param string $url
+     * @param string $param
+     * @return string
+     */
+    protected function stripParamFromUrl(string $url, string $param)
+    {
+        $base_url = strtok($url, '?');
+        $parsed_url = parse_url($url);
+        if (empty($parsed_url['query'])) {
+            return $url;
+        }
+        $query = $parsed_url['query']; // Get the query string
+        parse_str($query, $parameters); // Convert Parameters into array
+        unset($parameters[$param]);
+        $new_query = http_build_query($parameters);
+        return $base_url . ($new_query ? '?' . $new_query : '');
     }
 }

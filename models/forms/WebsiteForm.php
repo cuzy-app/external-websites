@@ -22,6 +22,7 @@ class WebsiteForm extends Model
     public $title;
     public $icon = 'desktop';
     public $humhub_is_embedded = false;
+    public $page_url_params_to_remove;
     public $first_page_url;
     public $show_in_menu = true;
     public $sort_order = 100;
@@ -44,6 +45,7 @@ class WebsiteForm extends Model
             $this->icon = $website->icon;
             $this->humhub_is_embedded = (bool)$website->humhub_is_embedded;
             $this->first_page_url = $website->first_page_url;
+            $this->page_url_params_to_remove = implode(',', $website->getPageUrlParamsToRemove());
             $this->show_in_menu = (bool)$website->show_in_menu;
             $this->sort_order = (int)$website->sort_order;
             $this->remove_from_url_title = $website->remove_from_url_title;
@@ -68,7 +70,7 @@ class WebsiteForm extends Model
             [['title', 'icon', 'first_page_url', 'remove_from_url_title'], 'string'],
             [['sort_order', 'default_content_visibility', 'default_content_archived'], 'integer'],
             [['humhub_is_embedded', 'show_in_menu', 'hide_sidebar'], 'boolean'],
-            [['created_by'], 'safe'],
+            [['created_by', 'page_url_params_to_remove'], 'safe'],
         ];
     }
 
@@ -77,7 +79,9 @@ class WebsiteForm extends Model
      */
     public function attributeLabels()
     {
-        return (new Website())->attributeLabels();
+        $attributesLabels = (new Website())->attributeLabels();
+        $attributesLabels['page_url_params_to_remove'] .= ' (' . Yii::t('ExternalWebsitesModule.base', 'separated by commas') . ')';
+        return $attributesLabels;
     }
 
     /**
@@ -87,6 +91,7 @@ class WebsiteForm extends Model
     {
         return [
             'humhub_is_embedded' => Yii::t('ExternalWebsitesModule.base', 'Humhub can be: <br>- Host: external website is embedded and embedded in an iframe<br>- Embedded: external website is host, Humhub addons (comments, like, files, etc.) are embedded in an iframe.<br>See README.md for more informations and usage.'),
+            'page_url_params_to_remove' => Yii::t('ExternalWebsitesModule.base', 'Enabled to ignore some params in the external website URL to link multiple URLs to a same content if only theses params are different.'),
             'remove_from_url_title' => Yii::t('ExternalWebsitesModule.base', 'The name of the Humhub content associated with each page of the external website corresponds to the page title (HTML title tag). It is possible to delete part of the text of this title.'),
             'hide_sidebar' => Yii::t('ExternalWebsitesModule.base', 'If your theme has a sidebar whose tag id is "wrapper" (e.g. Enterprise theme)'),
             'created_by' => Yii::t('ExternalWebsitesModule.base', 'Website owner (related contents for comments will be created with this user)'),
@@ -109,11 +114,18 @@ class WebsiteForm extends Model
             $website = Website::findOne($this->id);
         }
 
+        // Trim URL params to remove and explode to array
+        $pageUrlParamsToRemove = [];
+        foreach (explode(',', $this->page_url_params_to_remove) as $param) {
+            $pageUrlParamsToRemove[] = trim($param);
+        }
+
         // Save values
         $website->title = $this->title;
         $website->icon = $this->icon;
         $website->humhub_is_embedded = $this->humhub_is_embedded;
         $website->first_page_url = $this->first_page_url;
+        $website->setPageUrlParamsToRemove($pageUrlParamsToRemove);
         $website->show_in_menu = $this->show_in_menu;
         $website->sort_order = $this->sort_order;
         $website->remove_from_url_title = $this->remove_from_url_title;
