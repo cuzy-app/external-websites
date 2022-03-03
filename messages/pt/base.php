@@ -2,6 +2,7 @@
 return array (
   'Add a website' => 'Adicionar um site',
   'Add this website' => 'Adicionar este site',
+  'All related comments will be deleted.' => 'Todos os comentários relacionados serão excluídos.',
   'Archive contents when they are created' => 'Arquive o conteúdo quando ele for criado',
   'Are you sure you want to delete this website?' => 'Tem certeza de que deseja excluir este site?',
   'Content visibility default value' => 'Valor padrão de visibilidade de conteúdo',
@@ -19,6 +20,7 @@ return array (
   'If Humhub is embedded, prevent browsing outside of space' => 'Se o Humhub estiver incorporado, evite navegar fora do espaço',
   'If your theme has a sidebar whose tag id is "wrapper" (e.g. Enterprise theme)' => 'Se o seu tema tem uma barra lateral cujo id da tag é "wrapper" (por exemplo, tema Enterprise)',
   'Manage external websites & settings' => 'Gerenciar sites externos e configurações',
+  'Other website IDs' => 'Outros IDs de sites',
   'Owner' => 'Proprietário',
   'Page' => 'Página',
   'Page URL' => 'URL da página',

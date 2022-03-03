@@ -2,6 +2,7 @@
 return array (
   'Add a website' => 'Pievienojiet vietni',
   'Add this website' => 'Pievienojiet šo vietni',
+  'All related comments will be deleted.' => 'Visi saistītie komentāri tiks dzēsti.',
   'Archive contents when they are created' => 'Arhivējiet saturu, kad tas ir izveidots',
   'Are you sure you want to delete this website?' => 'Vai tiešām vēlaties dzēst šo vietni?',
   'Content visibility default value' => 'Satura redzamības noklusējuma vērtība',
@@ -19,6 +20,7 @@ return array (
   'If Humhub is embedded, prevent browsing outside of space' => 'Ja Humhub ir iegults, neļaujiet pārlūkot ārpus telpas',
   'If your theme has a sidebar whose tag id is "wrapper" (e.g. Enterprise theme)' => 'Ja jūsu motīvam ir sānjosla, kuras taga ID ir “iesaiņotājs” (piem., Uzņēmuma tēma)',
   'Manage external websites & settings' => 'Pārvaldiet ārējās vietnes un iestatījumus',
+  'Other website IDs' => 'Citi vietņu ID',
   'Owner' => 'Īpašnieks',
   'Page' => 'Lappuse',
   'Page URL' => 'Lapas URL',

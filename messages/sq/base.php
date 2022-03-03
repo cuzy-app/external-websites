@@ -2,6 +2,7 @@
 return array (
   'Add a website' => 'Shtoni një faqe në internet',
   'Add this website' => 'Shtoni këtë faqe në internet',
+  'All related comments will be deleted.' => 'Të gjitha komentet e lidhura do të fshihen.',
   'Archive contents when they are created' => 'Arkivoni përmbajtjen kur krijohen',
   'Are you sure you want to delete this website?' => 'Je i sigurt që dëshiron ta fshish këtë faqe në internet?',
   'Content visibility default value' => 'Vlera e paracaktuar e dukshmërisë së përmbajtjes',
@@ -19,6 +20,7 @@ return array (
   'If Humhub is embedded, prevent browsing outside of space' => 'Nëse Humhub është ngulitur, parandaloni shfletimin jashtë hapësirës',
   'If your theme has a sidebar whose tag id is "wrapper" (e.g. Enterprise theme)' => 'Nëse tema juaj ka një shirit anësor, etiketa e së cilës është "mbështjellëse" (p.sh. tema e ndërmarrjes)',
   'Manage external websites & settings' => 'Menaxhoni uebfaqet dhe cilësimet e jashtme',
+  'Other website IDs' => 'ID të tjera të faqes në internet',
   'Owner' => 'Pronar',
   'Page' => 'Faqe',
   'Page URL' => 'URL -ja e faqes',

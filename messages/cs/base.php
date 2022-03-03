@@ -2,6 +2,7 @@
 return array (
   'Add a website' => 'Přidejte web',
   'Add this website' => 'Přidejte tento web',
+  'All related comments will be deleted.' => 'Všechny související komentáře budou smazány.',
   'Archive contents when they are created' => 'Archivujte obsah, když je vytvořen',
   'Are you sure you want to delete this website?' => 'Opravdu chcete tento web smazat?',
   'Content visibility default value' => 'Výchozí hodnota viditelnosti obsahu',
@@ -19,6 +20,7 @@ return array (
   'If Humhub is embedded, prevent browsing outside of space' => 'Pokud je integrován Humhub, zabraňte procházení mimo prostor',
   'If your theme has a sidebar whose tag id is "wrapper" (e.g. Enterprise theme)' => 'Pokud má váš motiv postranní panel, jehož ID značky je „wrapper“ (např. Motiv Enterprise)',
   'Manage external websites & settings' => 'Spravujte externí weby a nastavení',
+  'Other website IDs' => 'Další ID webových stránek',
   'Owner' => 'Majitel',
   'Page' => 'Strana',
   'Page URL' => 'URL stránky',

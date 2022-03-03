@@ -2,6 +2,7 @@
 return array (
   'Add a website' => 'ድርጣቢያ ያክሉ',
   'Add this website' => 'ይህንን ድር ጣቢያ ያክሉ',
+  'All related comments will be deleted.' => 'ሁሉም ተዛማጅ አስተያየቶች ይሰረዛሉ.',
   'Archive contents when they are created' => 'ይዘቶች ሲፈጠሩ በማህደር ያስቀምጡ',
   'Are you sure you want to delete this website?' => 'እርግጠኛ ነዎት ይህንን ድር ጣቢያ መሰረዝ ይፈልጋሉ?',
   'Content visibility default value' => 'የይዘት ታይነት ነባሪ እሴት',
@@ -19,6 +20,7 @@ return array (
   'If Humhub is embedded, prevent browsing outside of space' => 'ሁምቡብ ከተካተተ ከቦታ ውጭ ማሰስን ይከላከሉ',
   'If your theme has a sidebar whose tag id is "wrapper" (e.g. Enterprise theme)' => 'የእርስዎ ገጽታ የመለያ መታወቂያው “መጠቅለያ” የጎን አሞሌ ካለው (ለምሳሌ የድርጅት ገጽታ)',
   'Manage external websites & settings' => 'ውጫዊ ድር ጣቢያዎችን እና ቅንብሮችን ያቀናብሩ',
+  'Other website IDs' => 'ሌሎች የድር ጣቢያ መታወቂያዎች',
   'Owner' => 'ባለቤት',
   'Page' => 'ገጽ',
   'Page URL' => 'የገጽ ዩ.አር.ኤል.',

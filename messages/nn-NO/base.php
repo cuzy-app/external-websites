@@ -2,6 +2,7 @@
 return array (
   'Add a website' => 'Legg til et nettsted',
   'Add this website' => 'Legg til dette nettstedet',
+  'All related comments will be deleted.' => 'Alle relaterte kommentarer vil bli slettet.',
   'Archive contents when they are created' => 'Arkiver innholdet når det opprettes',
   'Are you sure you want to delete this website?' => 'Er du sikker på at du vil slette dette nettstedet?',
   'Content visibility default value' => 'Standardverdi for innholdssynlighet',
@@ -19,6 +20,7 @@ return array (
   'If Humhub is embedded, prevent browsing outside of space' => 'Hvis Humhub er innebygd, må du unngå å surfe utenfor rommet',
   'If your theme has a sidebar whose tag id is "wrapper" (e.g. Enterprise theme)' => 'Hvis temaet ditt har en sidefelt som har tag-ID "wrapper" (f.eks. Enterprise-tema)',
   'Manage external websites & settings' => 'Administrer eksterne nettsteder og innstillinger',
+  'Other website IDs' => 'Andre nettsteds-IDer',
   'Owner' => 'Eieren',
   'Page' => 'Side',
   'Page URL' => 'Side URL',

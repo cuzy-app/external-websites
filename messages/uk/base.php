@@ -2,6 +2,7 @@
 return array (
   'Add a website' => 'Додайте веб-сайт',
   'Add this website' => 'Додайте цей веб-сайт',
+  'All related comments will be deleted.' => 'Усі пов’язані коментарі буде видалено.',
   'Archive contents when they are created' => 'Архівуйте вміст під час їх створення',
   'Are you sure you want to delete this website?' => 'Ви впевнені, що хочете видалити цей веб-сайт?',
   'Content visibility default value' => 'Значення за умовчанням для видимості вмісту',
@@ -19,6 +20,7 @@ return array (
   'If Humhub is embedded, prevent browsing outside of space' => 'Якщо вбудовано Humhub, забороніть перегляд за межами космосу',
   'If your theme has a sidebar whose tag id is "wrapper" (e.g. Enterprise theme)' => 'Якщо у вашої теми є бічна панель, ідентифікатор тегу якої - "обгортка" (наприклад, тема підприємства)',
   'Manage external websites & settings' => 'Керуйте зовнішніми веб-сайтами та налаштуваннями',
+  'Other website IDs' => 'Інші ідентифікатори веб-сайтів',
   'Owner' => 'Власник',
   'Page' => 'Сторінка',
   'Page URL' => 'URL-адреса сторінки',

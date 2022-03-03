@@ -2,6 +2,7 @@
 return array (
   'Add a website' => 'Προσθέστε έναν ιστότοπο',
   'Add this website' => 'Προσθέστε αυτόν τον ιστότοπο',
+  'All related comments will be deleted.' => 'Όλα τα σχετικά σχόλια θα διαγραφούν.',
   'Archive contents when they are created' => 'Αρχειοθετήστε τα περιεχόμενα όταν δημιουργούνται',
   'Are you sure you want to delete this website?' => 'Είστε βέβαιοι ότι θέλετε να διαγράψετε αυτόν τον ιστότοπο;',
   'Content visibility default value' => 'Προεπιλεγμένη τιμή ορατότητας περιεχομένου',
@@ -19,6 +20,7 @@ return array (
   'If Humhub is embedded, prevent browsing outside of space' => 'Εάν το Humhub είναι ενσωματωμένο, αποτρέψτε την περιήγηση εκτός χώρου',
   'If your theme has a sidebar whose tag id is "wrapper" (e.g. Enterprise theme)' => 'Εάν το θέμα σας έχει πλευρική γραμμή του οποίου το αναγνωριστικό ετικέτας είναι "wrapper" (π.χ. Θέμα επιχείρησης)',
   'Manage external websites & settings' => 'Διαχείριση εξωτερικών ιστότοπων και ρυθμίσεων',
+  'Other website IDs' => 'Άλλα αναγνωριστικά ιστότοπου',
   'Owner' => 'Ιδιοκτήτης',
   'Page' => 'Σελίδα',
   'Page URL' => 'Διεύθυνση Ιστοσελίδας',

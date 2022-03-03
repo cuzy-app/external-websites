@@ -131,7 +131,7 @@ $websiteForm = new WebsiteForm;
                             ->link($contentContainer->createUrl('/external-websites/manage/delete-website', ['websiteId' => $model->id]))
                             ->action('ui.modal.load')
                             ->tooltip(Yii::t('ExternalWebsitesModule.base', 'Delete this website'))
-                            ->confirm(Yii::t('ExternalWebsitesModule.base', 'Are you sure you want to delete this website?'));
+                            ->confirm(Yii::t('ExternalWebsitesModule.base', 'Are you sure you want to delete this website?'), Yii::t('ExternalWebsitesModule.base', 'All related comments will be deleted.'));
                 }
             ],
         ]; ?>

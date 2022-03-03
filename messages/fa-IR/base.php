@@ -2,6 +2,7 @@
 return array (
   'Add a website' => 'یک وب سایت اضافه کنید',
   'Add this website' => 'این وب سایت را اضافه کنید',
+  'All related comments will be deleted.' => 'تمام نظرات مرتبط حذف خواهند شد.',
   'Archive contents when they are created' => 'محتویات را هنگام ایجاد بایگانی کنید',
   'Are you sure you want to delete this website?' => 'آیا مطمئن هستید که می خواهید این وب سایت را حذف کنید؟',
   'Content visibility default value' => 'مقدار پیش فرض قابلیت مشاهده محتوا',
@@ -19,6 +20,7 @@ return array (
   'If Humhub is embedded, prevent browsing outside of space' => 'اگر Humhub جاسازی شده است ، از مرور خارج از فضا جلوگیری کنید',
   'If your theme has a sidebar whose tag id is "wrapper" (e.g. Enterprise theme)' => 'اگر طرح زمینه شما دارای یک نوار کناری است که شناسه برچسب آن "wrapper" است (به عنوان مثال طرح Enterprise)',
   'Manage external websites & settings' => 'وب سایت ها و تنظیمات خارجی را مدیریت کنید',
+  'Other website IDs' => 'سایر شناسه های وب سایت',
   'Owner' => 'مالک',
   'Page' => 'صفحه',
   'Page URL' => 'URL صفحه',

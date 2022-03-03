@@ -1,6 +1,10 @@
 Changelog
 =========
 
+0.34 (March 3, 2022)
+--------------------
+- Enh: if the same URL is used by different websites and a website is deleted, the page is assigned to the other website
+
 0.33 (November 13, 2021)
 --------------------
 - Fix: small bugs in website editor (visibiliy: default and website owner)

@@ -2,6 +2,7 @@
 return array (
   'Add a website' => '新增网站',
   'Add this website' => '添加此网站',
+  'All related comments will be deleted.' => '所有相关评论将被删除。',
   'Archive contents when they are created' => '创建时存档内容',
   'Are you sure you want to delete this website?' => '您确定要删除该网站吗？',
   'Content visibility default value' => '内容可见性默认值',
@@ -19,6 +20,7 @@ return array (
   'If Humhub is embedded, prevent browsing outside of space' => '如果嵌入了 Humhub，则防止在空间外浏览',
   'If your theme has a sidebar whose tag id is "wrapper" (e.g. Enterprise theme)' => '如果您的主题有一个标记为“包装”的侧边栏（例如，企业主题）',
   'Manage external websites & settings' => '管理外部网站和设置',
+  'Other website IDs' => '其他网站 ID',
   'Owner' => '所有者',
   'Page' => '页',
   'Page URL' => '页面网址',

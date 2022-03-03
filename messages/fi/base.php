@@ -2,6 +2,7 @@
 return array (
   'Add a website' => 'Lisää verkkosivusto',
   'Add this website' => 'Lisää tämä verkkosivusto',
+  'All related comments will be deleted.' => 'Kaikki asiaan liittyvät kommentit poistetaan.',
   'Archive contents when they are created' => 'Arkistoi sisältö, kun se luodaan',
   'Are you sure you want to delete this website?' => 'Haluatko varmasti poistaa tämän verkkosivuston?',
   'Content visibility default value' => 'Sisällön näkyvyyden oletusarvo',
@@ -19,6 +20,7 @@ return array (
   'If Humhub is embedded, prevent browsing outside of space' => 'Jos Humhub on upotettu, estä selaaminen avaruuden ulkopuolella',
   'If your theme has a sidebar whose tag id is "wrapper" (e.g. Enterprise theme)' => 'Jos teemalla on sivupalkki, jonka tunniste on "wrapper" (esim. Enterprise-teema)',
   'Manage external websites & settings' => 'Hallinnoi ulkoisia verkkosivustoja ja asetuksia',
+  'Other website IDs' => 'Muut verkkosivustojen tunnukset',
   'Owner' => 'Omistaja',
   'Page' => 'Sivu',
   'Page URL' => 'Sivun URL-osoite',

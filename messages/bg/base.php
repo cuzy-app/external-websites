@@ -2,6 +2,7 @@
 return array (
   'Add a website' => 'Добавете уебсайт',
   'Add this website' => 'Добавете този уебсайт',
+  'All related comments will be deleted.' => 'Всички свързани коментари ще бъдат изтрити.',
   'Archive contents when they are created' => 'Архивирайте съдържанието, когато е създадено',
   'Are you sure you want to delete this website?' => 'Наистина ли искате да изтриете този уебсайт?',
   'Content visibility default value' => 'Стойност по подразбиране за видимост на съдържанието',
@@ -19,6 +20,7 @@ return array (
   'If Humhub is embedded, prevent browsing outside of space' => 'Ако Humhub е вграден, предотвратете сърфирането извън пространството',
   'If your theme has a sidebar whose tag id is "wrapper" (e.g. Enterprise theme)' => 'Ако вашата тема има странична лента, чийто идентификатор на маркера е "обвивка" (напр. Корпоративна тема)',
   'Manage external websites & settings' => 'Управление на външни уебсайтове и настройки',
+  'Other website IDs' => 'Други идентификатори на уебсайтове',
   'Owner' => 'Собственик',
   'Page' => 'Страница',
   'Page URL' => 'URL адрес на страницата',

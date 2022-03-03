@@ -2,6 +2,7 @@
 return array (
   'Add a website' => 'Tilføj et websted',
   'Add this website' => 'Tilføj dette websted',
+  'All related comments will be deleted.' => 'Alle relaterede kommentarer vil blive slettet.',
   'Archive contents when they are created' => 'Arkivér indhold, når de oprettes',
   'Are you sure you want to delete this website?' => 'Er du sikker på, at du vil slette dette websted?',
   'Content visibility default value' => 'Standardværdi for indholdssynlighed',
@@ -19,6 +20,7 @@ return array (
   'If Humhub is embedded, prevent browsing outside of space' => 'Hvis Humhub er integreret, skal du forhindre browsing uden for rummet',
   'If your theme has a sidebar whose tag id is "wrapper" (e.g. Enterprise theme)' => 'Hvis dit tema har et sidebjælke, hvis tag-id er "wrapper" (f.eks. Enterprise-tema)',
   'Manage external websites & settings' => 'Administrer eksterne websteder og indstillinger',
+  'Other website IDs' => 'Andre websteds-id\'er',
   'Owner' => 'Ejer',
   'Page' => 'Side',
   'Page URL' => 'Side URL',

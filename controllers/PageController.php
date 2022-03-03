@@ -14,6 +14,7 @@ use humhub\modules\externalWebsites\models\Page;
 use humhub\modules\externalWebsites\models\Website;
 use humhub\modules\stream\actions\ContentContainerStream;
 use Yii;
+use yii\base\Exception;
 use yii\helpers\BaseStringHelper;
 use yii\web\HttpException;
 
@@ -45,6 +46,7 @@ class PageController extends ContentContainerController
      * @param $autoLogin boolean (1)
      * @param $token string HS512 JWT token (1)
      * (1) used by beforeAction function
+     * @throws Exception
      */
     public function actionIndex($id = null, $websiteId = null)
     {
@@ -54,9 +56,9 @@ class PageController extends ContentContainerController
             $website = $page->website;
             $title = $page->title;
             $pageUrl = $page->page_url;
-        } // If page doesn't exists (not comment) OR not called from URL
+        } // If page doesn't exist (not comment) OR not called from URL
         else {
-            // Get website (could be retreive with $page->website, but as some pages may be shared with several websites, we need to specify the website desired)
+            // Get website (could be retrieve with $page->website, but as some pages may be shared with several websites, we need to specify the website desired)
             $website = Website::findOne($websiteId);
             if ($website === null) {
                 throw new HttpException(404);
@@ -87,17 +89,23 @@ class PageController extends ContentContainerController
 
             if ($page !== null) {
                 // If title has changed, update it
-                if ($page->title != $title) {
+                if ($page->title !== $title) {
                     $page->title = $title;
                     $page->save();
                 }
 
-                // If related website is different (case where same URL is accessible form differents websites in the same space)
-                if ($website->id != $page->website_id) {
+                // If related website is different (case where same URL is accessible form different websites in the same space)
+                if ($website->id !== $page->website_id) {
                     // Make this page related to smaller sort order website (the first one in the space menu list)
                     if ($website->sort_order < $page->website->sort_order) {
                         $page->website_id = $website->id;
                         $page->save();
+                    } else {
+                        $otherWebsiteIds = $page->getOtherWebsiteIds();
+                        if (!in_array($website->id, $otherWebsiteIds, true)) {
+                            $page->setOtherWebsiteIds(array_merge($otherWebsiteIds, [$website->id]));
+                            $page->save();
+                        }
                     }
                 }
             }

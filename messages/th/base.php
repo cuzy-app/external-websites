@@ -2,6 +2,7 @@
 return array (
   'Add a website' => 'เพิ่มเว็บไซต์',
   'Add this website' => 'เพิ่มเว็บไซต์นี้',
+  'All related comments will be deleted.' => 'ความคิดเห็นที่เกี่ยวข้องทั้งหมดจะถูกลบ',
   'Archive contents when they are created' => 'เก็บถาวรเนื้อหาเมื่อสร้างขึ้น',
   'Are you sure you want to delete this website?' => 'แน่ใจไหมว่าต้องการลบเว็บไซต์นี้',
   'Content visibility default value' => 'ค่าเริ่มต้นการเปิดเผยเนื้อหา',
@@ -19,6 +20,7 @@ return array (
   'If Humhub is embedded, prevent browsing outside of space' => 'หากฝัง Humhub ให้ป้องกันการเรียกดูนอกพื้นที่',
   'If your theme has a sidebar whose tag id is "wrapper" (e.g. Enterprise theme)' => 'หากธีมของคุณมีแถบด้านข้างที่มีรหัสแท็กคือ "wrapper" (เช่นธีมองค์กร)',
   'Manage external websites & settings' => 'จัดการเว็บไซต์ภายนอกและการตั้งค่า',
+  'Other website IDs' => 'รหัสเว็บไซต์อื่น ๆ',
   'Owner' => 'เจ้าของ',
   'Page' => 'หน้า',
   'Page URL' => 'URL ของหน้า',

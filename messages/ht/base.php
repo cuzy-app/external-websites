@@ -2,6 +2,7 @@
 return array (
   'Add a website' => 'Ajoute yon sit entènèt',
   'Add this website' => 'Ajoute sit entènèt sa a',
+  'All related comments will be deleted.' => 'Tout kòmantè ki gen rapò yo pral efase.',
   'Archive contents when they are created' => 'Achiv sa lè yo kreye',
   'Are you sure you want to delete this website?' => 'Èske ou sèten ou vle efase sit entènèt sa a?',
   'Content visibility default value' => 'Valè kontni vizibilite default',
@@ -19,6 +20,7 @@ return array (
   'If Humhub is embedded, prevent browsing outside of space' => 'Si Humhub entegre, anpeche Navigasyon deyò espas',
   'If your theme has a sidebar whose tag id is "wrapper" (e.g. Enterprise theme)' => 'Si tèm ou a gen yon ankadre ki gen tag id se "pakè" (egzanp Enterprise tèm)',
   'Manage external websites & settings' => 'Jere sit entènèt ekstèn & anviwònman',
+  'Other website IDs' => 'Lòt idantite sit entènèt',
   'Owner' => 'Pwopriyetè',
   'Page' => 'Paj',
   'Page URL' => 'URL paj la',

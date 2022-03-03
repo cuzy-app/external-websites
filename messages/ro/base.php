@@ -2,6 +2,7 @@
 return array (
   'Add a website' => 'Adăugați un site web',
   'Add this website' => 'Adăugați acest site web',
+  'All related comments will be deleted.' => 'Toate comentariile aferente vor fi șterse.',
   'Archive contents when they are created' => 'Arhivați conținutul atunci când sunt create',
   'Are you sure you want to delete this website?' => 'Sigur doriți să ștergeți acest site web?',
   'Content visibility default value' => 'Valoarea implicită a vizibilității conținutului',
@@ -19,6 +20,7 @@ return array (
   'If Humhub is embedded, prevent browsing outside of space' => 'Dacă Humhub este încorporat, împiedicați navigarea în afara spațiului',
   'If your theme has a sidebar whose tag id is "wrapper" (e.g. Enterprise theme)' => 'Dacă tema dvs. are o bară laterală al cărei cod de etichetă este „wrapper” (de exemplu, tema Enterprise)',
   'Manage external websites & settings' => 'Gestionați site-uri web și setări externe',
+  'Other website IDs' => 'Alte ID-uri de site-uri web',
   'Owner' => 'Proprietar',
   'Page' => 'Pagină',
   'Page URL' => 'Adresa URL a paginii',

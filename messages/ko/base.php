@@ -2,6 +2,7 @@
 return array (
   'Add a website' => '웹 사이트 추가',
   'Add this website' => '이 웹 사이트 추가',
+  'All related comments will be deleted.' => '관련된 댓글은 모두 삭제됩니다.',
   'Archive contents when they are created' => '콘텐츠가 생성되면 아카이브',
   'Are you sure you want to delete this website?' => '이 웹 사이트를 삭제 하시겠습니까?',
   'Content visibility default value' => '콘텐츠 가시성 기본값',
@@ -19,6 +20,7 @@ return array (
   'If Humhub is embedded, prevent browsing outside of space' => 'Humhub가 내장된 경우 공간 밖에서 탐색하지 마십시오.',
   'If your theme has a sidebar whose tag id is "wrapper" (e.g. Enterprise theme)' => '테마에 태그 ID가 "래퍼"인 사이드 바가있는 경우 (예 : Enterprise 테마)',
   'Manage external websites & settings' => '외부 웹 사이트 및 설정 관리',
+  'Other website IDs' => '기타 웹사이트 ID',
   'Owner' => '소유자',
   'Page' => '페이지',
   'Page URL' => '페이지 URL',

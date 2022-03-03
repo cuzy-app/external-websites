@@ -8,12 +8,14 @@
 
 namespace humhub\modules\externalWebsites\models;
 
+use humhub\modules\content\components\ActiveQueryContent;
 use humhub\modules\content\components\ContentActiveRecord;
 use humhub\modules\externalWebsites\widgets\WallEntry;
 use humhub\modules\search\events\SearchAddEvent;
 use humhub\modules\search\interfaces\Searchable;
 use humhub\modules\user\models\User;
 use Yii;
+use yii\helpers\Json;
 
 
 /**
@@ -25,6 +27,7 @@ use Yii;
  * @property int $title
  * @property string $page_url
  * @property int $website_id
+ * @property string $other_website_ids json
  * @property string $created_at
  * @property int $created_by
  * @property string $updated_at
@@ -57,6 +60,22 @@ class Page extends ContentActiveRecord implements Searchable
      */
     public $silentContentCreation = true;
 
+    /**
+     * @param int $id
+     * @return ActiveQueryContent
+     */
+    public static function findWhereOtherWebsiteId(int $id)
+    {
+        $field = static::tableName() . '.' . 'other_website_ids';
+        return static::find()
+            ->andWhere([
+                'or',
+                [$field => '[' . $id . ']'],
+                ['like', $field, '[' . $id . ",%", false],
+                ['like', $field, "%," . $id . ",%", false],
+                ['like', $field, "%," . $id . ']', false],
+            ]);
+    }
 
     /**
      * @inheritdoc
@@ -76,6 +95,7 @@ class Page extends ContentActiveRecord implements Searchable
             'title' => Yii::t('ExternalWebsitesModule.base', 'Title'),
             'page_url' => Yii::t('ExternalWebsitesModule.base', 'Page URL'),
             'website_id' => Yii::t('ExternalWebsitesModule.base', 'Website ID'),
+            'other_website_ids' => Yii::t('ExternalWebsitesModule.base', 'Other website IDs'),
             'created_at' => 'Created at',
             'created_by' => 'Created by',
             'updated_at' => 'Updated at',
@@ -92,16 +112,15 @@ class Page extends ContentActiveRecord implements Searchable
             [['website_id', 'page_url'], 'required'],
             [['title', 'page_url'], 'string'],
             [['website_id'], 'integer'],
+            [['other_website_ids'], 'safe'],
         ];
     }
-
 
     public function getWebsite()
     {
         return $this
             ->hasOne(Website::class, ['id' => 'website_id']);
     }
-
 
     public function getContentName()
     {
@@ -149,12 +168,50 @@ class Page extends ContentActiveRecord implements Searchable
         return $attributes;
     }
 
+    /**
+     * @return string
+     */
+    private function getPostAuthorName()
+    {
+        $user = User::findOne(['id' => $this->created_by]);
+
+        if ($user !== null && $user->isActive()) {
+            return $user->getDisplayName();
+        }
+
+        return '';
+    }
+
     public function getIcon()
     {
         if ($this->website && $this->website->icon) {
             return $this->website->icon;
         }
         return 'desktop';
+    }
+
+    /**
+     * @return array
+     */
+    public function getOtherWebsiteIds()
+    {
+        $ids = Json::decode($this->other_website_ids);
+        // Cast IDs to integer
+        if (is_array($ids)) {
+            return array_map(static function ($id) {
+                return (int)$id;
+            }, $ids);
+        }
+        return [];
+    }
+
+    /**
+     * @param array $ids
+     * @return void
+     */
+    public function setOtherWebsiteIds(array $ids)
+    {
+        $this->other_website_ids = Json::encode($ids);
     }
 
     /**
@@ -193,19 +250,4 @@ class Page extends ContentActiveRecord implements Searchable
             }
         }
     }
-
-    /**
-     * @return string
-     */
-    private function getPostAuthorName()
-    {
-        $user = User::findOne(['id' => $this->created_by]);
-
-        if ($user !== null && $user->isActive()) {
-            return $user->getDisplayName();
-        }
-
-        return '';
-    }
-
 }

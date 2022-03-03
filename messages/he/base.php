@@ -2,6 +2,7 @@
 return array (
   'Add a website' => 'הוסף אתר',
   'Add this website' => 'הוסף אתר זה',
+  'All related comments will be deleted.' => 'כל התגובות הקשורות יימחקו.',
   'Archive contents when they are created' => 'העבר תוכן לארכיון כאשר הם נוצרים',
   'Are you sure you want to delete this website?' => 'האם אתה בטוח שברצונך למחוק אתר זה?',
   'Content visibility default value' => 'ערך ברירת המחדל של נראות תוכן',
@@ -19,6 +20,7 @@ return array (
   'If Humhub is embedded, prevent browsing outside of space' => 'אם Humhub מוטמע, מנע גלישה מחוץ לחלל',
   'If your theme has a sidebar whose tag id is "wrapper" (e.g. Enterprise theme)' => 'אם לעיצוב שלך יש סרגל צד שמזהה התג שלו הוא "עטיפה" (למשל נושא ארגוני)',
   'Manage external websites & settings' => 'נהל אתרים והגדרות חיצוניים',
+  'Other website IDs' => 'מזהי אתרים אחרים',
   'Owner' => 'בעלים',
   'Page' => 'עמוד',
   'Page URL' => 'כתובת אתר לדף',

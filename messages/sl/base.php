@@ -2,6 +2,7 @@
 return array (
   'Add a website' => 'Dodajte spletno mesto',
   'Add this website' => 'Dodajte to spletno mesto',
+  'All related comments will be deleted.' => 'Vsi povezani komentarji bodo izbrisani.',
   'Archive contents when they are created' => 'Arhivirajte vsebino, ko so ustvarjene',
   'Are you sure you want to delete this website?' => 'Ali ste prepričani, da želite izbrisati to spletno mesto?',
   'Content visibility default value' => 'Privzeta vrednost vidnosti vsebine',
@@ -19,6 +20,7 @@ return array (
   'If Humhub is embedded, prevent browsing outside of space' => 'Če je Humhub vgrajen, preprečite brskanje zunaj prostora',
   'If your theme has a sidebar whose tag id is "wrapper" (e.g. Enterprise theme)' => 'Če ima vaša tema stransko vrstico, katere ID oznake je "ovoj" (npr. Tema podjetja)',
   'Manage external websites & settings' => 'Upravljajte zunanja spletna mesta in nastavitve',
+  'Other website IDs' => 'ID-ji drugih spletnih mest',
   'Owner' => 'Lastnik',
   'Page' => 'Stran',
   'Page URL' => 'URL strani',

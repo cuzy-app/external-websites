@@ -2,6 +2,7 @@
 return array (
   'Add a website' => 'Web sitesi ekle',
   'Add this website' => 'Bu web sitesini ekle',
+  'All related comments will be deleted.' => 'İlgili tüm yorumlar silinecektir.',
   'Archive contents when they are created' => 'İçeriği oluşturulduklarında arşivleyin',
   'Are you sure you want to delete this website?' => 'Bu web sitesini silmek istediğinizden emin misiniz?',
   'Content visibility default value' => 'İçerik görünürlüğü varsayılan değeri',
@@ -19,6 +20,7 @@ return array (
   'If Humhub is embedded, prevent browsing outside of space' => 'Humhub gömülüyse, alan dışında gezinmeyi önleyin',
   'If your theme has a sidebar whose tag id is "wrapper" (e.g. Enterprise theme)' => 'Temanızın etiket kimliği "sarmalayıcı" olan bir kenar çubuğu varsa (ör. Kurumsal teması)',
   'Manage external websites & settings' => 'Harici web sitelerini ve ayarları yönetin',
+  'Other website IDs' => 'Diğer web sitesi kimlikleri',
   'Owner' => 'Sahip',
   'Page' => 'Sayfa',
   'Page URL' => 'Sayfa URL\'si',

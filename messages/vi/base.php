@@ -2,6 +2,7 @@
 return array (
   'Add a website' => 'Thêm trang web',
   'Add this website' => 'Thêm trang web này',
+  'All related comments will be deleted.' => 'Tất cả các bình luận liên quan sẽ bị xóa.',
   'Archive contents when they are created' => 'Lưu trữ nội dung khi chúng được tạo',
   'Are you sure you want to delete this website?' => 'Bạn có chắc chắn muốn xóa trang web này không?',
   'Content visibility default value' => 'Giá trị mặc định về khả năng hiển thị nội dung',
@@ -19,6 +20,7 @@ return array (
   'If Humhub is embedded, prevent browsing outside of space' => 'Nếu Humhub được nhúng, hãy ngăn chặn việc duyệt web bên ngoài không gian',
   'If your theme has a sidebar whose tag id is "wrapper" (e.g. Enterprise theme)' => 'Nếu chủ đề của bạn có thanh bên có id thẻ là "wrapper" (ví dụ: chủ đề Doanh nghiệp)',
   'Manage external websites & settings' => 'Quản lý các trang web và cài đặt bên ngoài',
+  'Other website IDs' => 'Các ID trang web khác',
   'Owner' => 'Chủ nhân',
   'Page' => 'Trang',
   'Page URL' => 'URL trang',

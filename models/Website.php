@@ -10,11 +10,14 @@ namespace humhub\modules\externalWebsites\models;
 
 use humhub\components\ActiveRecord;
 use humhub\modules\space\models\Space;
+use Throwable;
 use Yii;
+use yii\db\StaleObjectException;
 
 /**
  * Websites to which we want to add addons to the pages (comments, like, files, etc.)
  *
+ * @property int $id
  * @property int $space_id
  * @property string $title
  * @property string $icon Fontawesome
@@ -102,10 +105,36 @@ class Website extends ActiveRecord
     }
 
 
+    /**
+     * @throws StaleObjectException
+     * @throws Throwable
+     */
     public function afterDelete()
     {
         foreach ($this->pages as $page) {
+            // If this page is used by another website, move it to this one and do not remove it
+            $otherWebsiteIds = $page->getOtherWebsiteIds();
+            if (count($otherWebsiteIds) > 0) {
+                // Get website with the smaller sort order
+                $targetWebsite = self::find()
+                    ->where(['id' => $otherWebsiteIds])
+                    ->orderBy(['sort_order' => SORT_ASC])
+                    ->one();
+                if ($targetWebsite !== null) {
+                    $page->website_id = $targetWebsite->id;
+                    $page->setOtherWebsiteIds(array_diff($otherWebsiteIds, [$targetWebsite->id]));
+                    $page->save();
+                    continue;
+                }
+            }
+
             $page->delete();
+        }
+
+        // Remove this website ID from pages' other_website_ids
+        foreach (Page::findWhereOtherWebsiteId($this->id)->all() as $page) {
+            $page->setOtherWebsiteIds(array_diff($page->getOtherWebsiteIds(), [$this->id]));
+            $page->save();
         }
 
         parent::afterDelete();

@@ -28,19 +28,4 @@ class m210608_145036_remove_fa_from_icon_values extends Migration
 
         return false;
     }
-
-    /*
-    // Use up()/down() to run migration code without a transaction.
-    public function up()
-    {
-
-    }
-
-    public function down()
-    {
-        echo "m210608_145036_remove_fa_from_icon_values cannot be reverted.\n";
-
-        return false;
-    }
-    */
 }

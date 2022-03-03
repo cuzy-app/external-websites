@@ -2,6 +2,7 @@
 return array (
   'Add a website' => 'Afegiu un lloc web',
   'Add this website' => 'Afegiu aquest lloc web',
+  'All related comments will be deleted.' => 'Tots els comentaris relacionats se suprimiran.',
   'Archive contents when they are created' => 'Arxiveu els continguts quan es creen',
   'Are you sure you want to delete this website?' => 'Esteu segur que voleu suprimir aquest lloc web?',
   'Content visibility default value' => 'Valor predeterminat de visibilitat del contingut',
@@ -19,6 +20,7 @@ return array (
   'If Humhub is embedded, prevent browsing outside of space' => 'Si Humhub està incrustat, eviteu navegar fora de l\'espai',
   'If your theme has a sidebar whose tag id is "wrapper" (e.g. Enterprise theme)' => 'Si el vostre tema té una barra lateral l\'identificador de l\'etiqueta és "wrapper" (per exemple, el tema Enterprise)',
   'Manage external websites & settings' => 'Gestioneu la configuració i llocs web externs',
+  'Other website IDs' => 'Altres identificadors de llocs web',
   'Owner' => 'Propietari',
   'Page' => 'Pàgina',
   'Page URL' => 'URL de la pàgina',

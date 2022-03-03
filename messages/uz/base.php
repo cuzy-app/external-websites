@@ -2,6 +2,7 @@
 return array (
   'Add a website' => 'Veb-sayt qo\'shing',
   'Add this website' => 'Ushbu veb-saytni qo\'shing',
+  'All related comments will be deleted.' => 'Barcha tegishli izohlar o\'chiriladi.',
   'Archive contents when they are created' => 'Yaratilganda tarkibni arxivlash',
   'Are you sure you want to delete this website?' => 'Ushbu veb-saytni o\'chirishni xohlaysizmi?',
   'Content visibility default value' => 'Tarkibni ko\'rishning standart qiymati',
@@ -19,6 +20,7 @@ return array (
   'If Humhub is embedded, prevent browsing outside of space' => 'Agar Humhub o\'rnatilgan bo\'lsa, bo\'sh joydan tashqarida ko\'rishni oldini oling',
   'If your theme has a sidebar whose tag id is "wrapper" (e.g. Enterprise theme)' => 'Agar sizning mavzuingiz yon panelga ega bo\'lsa, uning identifikatori "o\'rash" (masalan, Enterprise theme)',
   'Manage external websites & settings' => 'Tashqi veb-saytlar va sozlamalarni boshqarish',
+  'Other website IDs' => 'Boshqa veb-sayt identifikatorlari',
   'Owner' => 'Egasi',
   'Page' => 'Sahifa',
   'Page URL' => 'Sahifaning URL manzili',

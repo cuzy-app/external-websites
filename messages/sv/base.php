@@ -2,6 +2,7 @@
 return array (
   'Add a website' => 'Lägg till en webbplats',
   'Add this website' => 'Lägg till den här webbplatsen',
+  'All related comments will be deleted.' => 'Alla relaterade kommentarer kommer att raderas.',
   'Archive contents when they are created' => 'Arkivera innehåll när de skapas',
   'Are you sure you want to delete this website?' => 'Är du säker på att du vill ta bort den här webbplatsen?',
   'Content visibility default value' => 'Standardvärde för innehållssynlighet',
@@ -19,6 +20,7 @@ return array (
   'If Humhub is embedded, prevent browsing outside of space' => 'Om Humhub är inbäddat, förhindra att surfa utanför utrymmet',
   'If your theme has a sidebar whose tag id is "wrapper" (e.g. Enterprise theme)' => 'Om ditt tema har ett sidofält vars tagg-ID är "wrapper" (t.ex. Enterprise-tema)',
   'Manage external websites & settings' => 'Hantera externa webbplatser och inställningar',
+  'Other website IDs' => 'Andra webbplats-ID:n',
   'Owner' => 'Ägare',
   'Page' => 'Sida',
   'Page URL' => 'Sidans URL',

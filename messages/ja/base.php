@@ -2,6 +2,7 @@
 return array (
   'Add a website' => 'ウェブサイトを追加する',
   'Add this website' => 'このウェブサイトを追加する',
+  'All related comments will be deleted.' => '関連するコメントはすべて削除されます。',
   'Archive contents when they are created' => '作成時にコンテンツをアーカイブする',
   'Are you sure you want to delete this website?' => 'このウェブサイトを削除してもよろしいですか？',
   'Content visibility default value' => 'コンテンツの可視性のデフォルト値',
@@ -19,6 +20,7 @@ return array (
   'If Humhub is embedded, prevent browsing outside of space' => 'Humhubが埋め込まれている場合は、スペース外でのブラウジングを防止してください',
   'If your theme has a sidebar whose tag id is "wrapper" (e.g. Enterprise theme)' => 'タグIDが「ラッパー」であるサイドバーがテーマにある場合（例：エンタープライズテーマ）',
   'Manage external websites & settings' => '外部のウェブサイトと設定を管理する',
+  'Other website IDs' => 'その他のウェブサイトID',
   'Owner' => 'オーナー',
   'Page' => 'ページ',
   'Page URL' => 'ページのURL',

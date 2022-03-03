@@ -2,6 +2,7 @@
 return array (
   'Add a website' => 'Webhely hozzáadása',
   'Add this website' => 'Adja hozzá ezt a weboldalt',
+  'All related comments will be deleted.' => 'Minden kapcsolódó megjegyzés törlésre kerül.',
   'Archive contents when they are created' => 'Archiválja a tartalmakat azok létrehozásakor',
   'Are you sure you want to delete this website?' => 'Biztosan törli ezt a weboldalt?',
   'Content visibility default value' => 'A tartalom láthatóságának alapértelmezett értéke',
@@ -19,6 +20,7 @@ return array (
   'If Humhub is embedded, prevent browsing outside of space' => 'Ha a Humhub be van ágyazva, akadályozza meg a böngészést a téren kívül',
   'If your theme has a sidebar whose tag id is "wrapper" (e.g. Enterprise theme)' => 'Ha a témának van olyan oldalsávja, amelynek címkeazonosítója „burkoló” (pl. Vállalati téma)',
   'Manage external websites & settings' => 'Külső webhelyek és beállítások kezelése',
+  'Other website IDs' => 'Egyéb webhelyazonosítók',
   'Owner' => 'Tulajdonos',
   'Page' => 'Oldal',
   'Page URL' => 'Az oldal URL-je',

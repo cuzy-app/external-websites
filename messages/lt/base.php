@@ -2,6 +2,7 @@
 return array (
   'Add a website' => 'Pridėti svetainę',
   'Add this website' => 'Pridėti šią svetainę',
+  'All related comments will be deleted.' => 'Visi susiję komentarai bus ištrinti.',
   'Archive contents when they are created' => 'Archyvuokite turinį, kai jis bus sukurtas',
   'Are you sure you want to delete this website?' => 'Ar tikrai norite ištrinti šią svetainę?',
   'Content visibility default value' => 'Numatytoji turinio matomumo vertė',
@@ -19,6 +20,7 @@ return array (
   'If Humhub is embedded, prevent browsing outside of space' => 'Jei „Humhub“ yra įterptas, neleiskite naršyti ne erdvėje',
   'If your theme has a sidebar whose tag id is "wrapper" (e.g. Enterprise theme)' => 'Jei jūsų temoje yra šoninė juosta, kurios žymos ID yra „wrapper“ (pvz., „Enterprise“ tema)',
   'Manage external websites & settings' => 'Tvarkykite išorines svetaines ir nustatymus',
+  'Other website IDs' => 'Kiti svetainių ID',
   'Owner' => 'Savininkas',
   'Page' => 'Puslapis',
   'Page URL' => 'Puslapio URL',

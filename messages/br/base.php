@@ -3,6 +3,7 @@
 return [
     'Add a website' => '',
     'Add this website' => '',
+    'All related comments will be deleted.' => '',
     'Archive contents when they are created' => '',
     'Are you sure you want to delete this website?' => '',
     'Content visibility default value' => '',
@@ -20,6 +21,7 @@ return [
     'If Humhub is embedded, prevent browsing outside of space' => '',
     'If your theme has a sidebar whose tag id is "wrapper" (e.g. Enterprise theme)' => '',
     'Manage external websites & settings' => '',
+    'Other website IDs' => '',
     'Owner' => '',
     'Page' => '',
     'Page URL' => '',

@@ -2,6 +2,7 @@
 return array (
   'Add a website' => 'Voeg een website toe',
   'Add this website' => 'Voeg deze website toe',
+  'All related comments will be deleted.' => 'Alle gerelateerde opmerkingen worden verwijderd.',
   'Archive contents when they are created' => 'Inhoud archiveren wanneer ze worden gemaakt',
   'Are you sure you want to delete this website?' => 'Weet u zeker dat u deze website wilt verwijderen?',
   'Content visibility default value' => 'Standaardwaarde voor zichtbaarheid van inhoud',
@@ -19,6 +20,7 @@ return array (
   'If Humhub is embedded, prevent browsing outside of space' => 'Als Humhub is ingesloten, voorkom browsen buiten de ruimte',
   'If your theme has a sidebar whose tag id is "wrapper" (e.g. Enterprise theme)' => 'Als uw thema een zijbalk heeft waarvan de tag-ID "wrapper" is (bijv. Enterprise-thema)',
   'Manage external websites & settings' => 'Beheer externe websites en instellingen',
+  'Other website IDs' => 'Andere website-ID\'s',
   'Owner' => 'Eigenaar',
   'Page' => 'Bladzijde',
   'Page URL' => 'pagina URL',

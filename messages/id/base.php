@@ -2,6 +2,7 @@
 return array (
   'Add a website' => 'Tambahkan situs web',
   'Add this website' => 'Tambahkan situs web ini',
+  'All related comments will be deleted.' => 'Semua komentar terkait akan dihapus.',
   'Archive contents when they are created' => 'Arsipkan konten saat dibuat',
   'Are you sure you want to delete this website?' => 'Anda yakin ingin menghapus situs ini?',
   'Content visibility default value' => 'Nilai default visibilitas konten',
@@ -19,6 +20,7 @@ return array (
   'If Humhub is embedded, prevent browsing outside of space' => 'Jika Humhub disematkan, cegah penjelajahan di luar angkasa',
   'If your theme has a sidebar whose tag id is "wrapper" (e.g. Enterprise theme)' => 'Jika tema Anda memiliki sidebar dengan id tag "wrapper" (mis. Tema Perusahaan)',
   'Manage external websites & settings' => 'Kelola situs web & pengaturan eksternal',
+  'Other website IDs' => 'ID situs web lainnya',
   'Owner' => 'Pemilik',
   'Page' => 'Halaman',
   'Page URL' => 'Halaman URL',
