@@ -77,7 +77,7 @@ class PageController extends ContentContainerController
             $pageUrl = rtrim(strtok($pageUrl, "#"), "/");
             // Remove params to ignore
             foreach ($website->getPageUrlParamsToRemove() as $param) {
-                $pageUrl = $this->stripParamFromUrl($pageUrl, $param);
+                $pageUrl = Page::stripParamFromUrl($pageUrl, $param);
             }
 
             // Get title
@@ -166,24 +166,5 @@ class PageController extends ContentContainerController
         $this->layout = '@external-websites/views/layouts/iframe';
         $this->subLayout = '@external-websites/views/page/_layoutForIframe';
         return $this->render('index', $viewParams);
-    }
-
-    /**
-     * @param string $url
-     * @param string $param
-     * @return string
-     */
-    protected function stripParamFromUrl(string $url, string $param)
-    {
-        $base_url = strtok($url, '?');
-        $parsed_url = parse_url($url);
-        if (empty($parsed_url['query'])) {
-            return $url;
-        }
-        $query = $parsed_url['query']; // Get the query string
-        parse_str($query, $parameters); // Convert Parameters into array
-        unset($parameters[$param]);
-        $new_query = http_build_query($parameters);
-        return $base_url . ($new_query ? '?' . $new_query : '');
     }
 }

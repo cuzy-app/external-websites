@@ -9,6 +9,8 @@
 namespace humhub\modules\externalWebsites\models;
 
 use humhub\components\ActiveRecord;
+use humhub\modules\comment\models\Comment;
+use humhub\modules\like\models\Like;
 use humhub\modules\space\models\Space;
 use Throwable;
 use Yii;
@@ -145,20 +147,80 @@ class Website extends ActiveRecord
     }
 
     /**
-     * @return array
-     */
-    public function getPageUrlParamsToRemove()
-    {
-        $params = Json::decode($this->page_url_params_to_remove);
-        return is_array($params) ? $params : [];
-    }
-
-    /**
      * @param array $params
      * @return void
      */
     public function setPageUrlParamsToRemove(array $params)
     {
         $this->page_url_params_to_remove = Json::encode($params);
+    }
+
+    /**
+     * @throws Throwable
+     * @throws StaleObjectException
+     */
+    public function afterSave($insert, $changedAttributes)
+    {
+        if (array_key_exists('page_url_params_to_remove', $changedAttributes)) {
+            // Remove params to ignore
+            foreach ($this->pages as $page) {
+                foreach ($this->getPageUrlParamsToRemove() as $param) {
+                    $page->page_url = Page::stripParamFromUrl($page->page_url, $param);
+                }
+                $page->save();
+            }
+            // Merge pages that have the same page_url (because of params removed)
+            $duplicatedPages = Page::find()
+                ->groupBy('page_url')
+                ->having('COUNT(*) > 1')
+                ->indexBy('page_url')
+                ->all();
+            foreach (array_keys($duplicatedPages) as $duplicatedUrl) {
+                $pages = Page::find()
+                    ->joinWith('website')
+                    ->where(['external_websites_website_page.page_url' => $duplicatedUrl])
+                    ->orderBy(['external_websites_website.sort_order' => SORT_ASC])
+                    ->all();
+                $firstPage = null;
+                foreach ($pages as $page) {
+                    // Keep only first page (that have the lowest website sort_order)
+                    if ($firstPage === null) {
+                        $firstPage = $page;
+                        continue;
+                    }
+                    // Move comments to first page
+                    $comments = Comment::findAll([
+                        'object_model' => Page::class,
+                        'object_id' => $page->id,
+                    ]);
+                    foreach ($comments as $comment) {
+                        $comment->object_id = $firstPage->id;
+                        $comment->save();
+                    }
+                    // Move likes to first page
+                    $likes = Like::findAll([
+                        'object_model' => Page::class,
+                        'object_id' => $page->id,
+                    ]);
+                    foreach ($likes as $like) {
+                        $like->object_id = $firstPage->id;
+                        $like->save();
+                    }
+                    // Delete duplicated page
+                    $page->delete();
+                }
+            }
+        }
+
+        parent::afterSave($insert, $changedAttributes);
+    }
+
+    /**
+     * @return array
+     */
+    public function getPageUrlParamsToRemove()
+    {
+        $params = Json::decode($this->page_url_params_to_remove);
+        return is_array($params) ? $params : [];
     }
 }
