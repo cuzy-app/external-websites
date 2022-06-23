@@ -35,18 +35,24 @@ class PageController extends ContentContainerController
         ];
     }
 
+    
     /**
      * Called by ajax (if Humhub is host) or iframe (if Humhub is embedded)
      * If Humhub is embedded, see README.md for complete URL to provide in the iframe scr
      * All params are optional, but we need a least either $id or ($websiteId and $pageUrl)
-     * @param $id Page ID (1)
-     * @param $websiteId Website ID (1)
-     * @param $pageUrl Page page_url
-     * @param $pageTitle Page title
-     * @param $autoLogin boolean (1)
-     * @param $token string HS512 JWT token (1)
-     * (1) used by beforeAction function
+     * @param $id int Page ID (1)
+     * @param $websiteId int Website ID (1)
+     * @return string
      * @throws Exception
+     * @throws HttpException
+     *
+     * Others params:
+     * $pageUrl string Page->page_url
+     * $pageTitle string Page->title
+     * $autoLogin boolean (1)
+     * $token string HS512 JWT token (1)
+     *
+     * (1) used by beforeAction function
      */
     public function actionIndex($id = null, $websiteId = null)
     {

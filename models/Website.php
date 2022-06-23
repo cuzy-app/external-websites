@@ -220,7 +220,6 @@ class Website extends ActiveRecord
      */
     public function getPageUrlParamsToRemove()
     {
-        $params = Json::decode($this->page_url_params_to_remove);
-        return is_array($params) ? $params : [];
+        return (array)Json::decode($this->page_url_params_to_remove);
     }
 }

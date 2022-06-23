@@ -204,9 +204,9 @@ class Page extends ContentActiveRecord implements Searchable
     public function getIcon()
     {
         if ($this->website && $this->website->icon) {
-            return $this->website->icon;
+            return 'fa-' . $this->website->icon; // the `fa-` is required for the stream filter form
         }
-        return 'desktop';
+        return 'fa-desktop'; // the `fa-` is required for the stream filter form
     }
 
     /**

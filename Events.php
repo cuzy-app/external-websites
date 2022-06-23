@@ -40,6 +40,7 @@ class Events
         // Get current page URL if exists
         $currentId = Yii::$app->request->get('id');
 
+        /** @var Space $space */
         $space = $event->sender->space;
 
         if ($space !== null && $space->isModuleEnabled('external-websites')) {
@@ -54,7 +55,7 @@ class Events
             foreach ($websites as $website) {
                 $menu->addEntry(new MenuLink([
                     'label' => $website->title,
-                    'url' => $website->url,
+                    'url' => $website->getUrl(),
                     'icon' => $website->icon,
                     'isActive' => (
                         MenuLink::isActiveState('external-websites', 'website', 'index')
@@ -62,6 +63,7 @@ class Events
                         && $currentId == $website->id
                     ),
                     'htmlOptions' => $website->humhub_is_embedded ? ['target' => '_blank'] : [],
+                    'isVisible' => true,
                 ]));
             }
         }
@@ -150,13 +152,13 @@ class Events
         /* @var $space Space */
         $space = $headerMenu->space;
 
-        if ($space->isModuleEnabled('external-websites')) {
+        if ($space->isModuleEnabled('external-websites') && $space->isAdmin()) { // Don't move in 'isVisible' as it doesn't work in all cases and because the "if" costs less
             $headerMenu->addEntry(new MenuLink([
                 'label' => Yii::t('ExternalWebsitesModule.base', 'Manage external websites & settings'),
                 'url' => $space->createUrl('/external-websites/manage/websites'),
                 'icon' => 'desktop',
                 'isActive' => MenuLink::isActiveState('external-websites', 'manage', 'websites'),
-                'isVisible' => $space->isAdmin(),
+                'isVisible' => true,
             ]));
         }
     }
@@ -184,26 +186,6 @@ class Events
         $token = Yii::$app->request->get('token');
         if ($token = Yii::$app->request->get('token')) {
             self::tryAddingGroupsToUser($token);
-        }
-    }
-
-    public static function onControllerBeforeAction($event)
-    {
-        if (!Yii::$app->user->isGuest || !method_exists(Yii::$app->request, 'get')) {
-            return;
-        }
-        // If autologin in URL param, try auto login
-        if (Yii::$app->request->get('autoLogin')) {
-            self::tryAutoLogin();
-        }
-    }
-
-    public static function onContentContainerControllerBeforeAction($event)
-    {
-        // If the current container is a space, try redirecting space content
-        $contentContainer = $event->sender->contentContainer;
-        if ($contentContainer !== null && get_class($contentContainer) === Space::class) {
-            self::tryRedirectingSpaceContent($contentContainer);
         }
     }
 
@@ -237,6 +219,17 @@ class Events
         }
     }
 
+    public static function onControllerBeforeAction($event)
+    {
+        if (!Yii::$app->user->isGuest || !method_exists(Yii::$app->request, 'get')) {
+            return;
+        }
+        // If autologin in URL param, try auto login
+        if (Yii::$app->request->get('autoLogin')) {
+            self::tryAutoLogin();
+        }
+    }
+
     /**
      * @return mixed
      * If autoLogin param true in URL, try auto login
@@ -251,6 +244,15 @@ class Events
                     return $authclient->redirectToBroker(true);
                 }
             }
+        }
+    }
+
+    public static function onContentContainerControllerBeforeAction($event)
+    {
+        // If the current container is a space, try redirecting space content
+        $contentContainer = $event->sender->contentContainer;
+        if ($contentContainer !== null && $contentContainer instanceof Space) {
+            self::tryRedirectingSpaceContent($contentContainer);
         }
     }
 

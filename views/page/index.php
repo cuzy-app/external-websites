@@ -56,7 +56,7 @@ else {
 
     <?php if ($page !== null && $page->content->canView()): ?>
         <?php if ($showLikes): ?>
-            &middot; <?= LikeLink::widget(['object' => $page]); ?>
+            &middot; <?= LikeLink::widget(['object' => $page]) ?>
         <?php endif; ?>
         <?php if ($showComments): ?>
             &middot; <?= Icon::get('comment') ?> <?= CommentLink::widget(['object' => $page]); ?>
