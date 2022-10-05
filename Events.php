@@ -90,7 +90,7 @@ class Events
             'title' => Yii::t('ExternalWebsitesModule.base', 'Filter'),
             'sortOrder' => 300
         ],
-            WallStreamFilterNavigation::PANEL_POSITION_CENTER
+            (defined('\humhub\modules\stream\widgets\WallStreamFilterNavigation::PANEL_COLUMN_2') ? WallStreamFilterNavigation::PANEL_COLUMN_2 : WallStreamFilterNavigation::PANEL_POSITION_CENTER) // TODO: when module compatibility minimal Humhub version is 1.12, keep only static::PANEL_COLUMN_2
         );
 
         // Get pages
