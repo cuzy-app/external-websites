@@ -43,7 +43,7 @@ class Events
         /** @var Space $space */
         $space = $event->sender->space;
 
-        if ($space !== null && $space->isModuleEnabled('external-websites')) {
+        if ($space !== null && $space->moduleManager->isEnabled('external-websites')) {
 
             // Get pages
             $websites = Website::find()
@@ -76,7 +76,7 @@ class Events
             !isset(Yii::$app->controller->contentContainer)
             || Yii::$app->controller->module->id !== 'space'
             || ($space = Yii::$app->controller->contentContainer) === null
-            || !$space->isModuleEnabled('external-websites')
+            || !$space->moduleManager->isEnabled('external-websites')
         ) {
             return;
         }
@@ -136,7 +136,7 @@ class Events
         // If in a space
         if (isset(Yii::$app->controller->contentContainer)) {
             $space = Yii::$app->controller->contentContainer;
-            if ($space instanceof Space && $space->isModuleEnabled('external-websites')) {
+            if ($space instanceof Space && $space->moduleManager->isEnabled('external-websites')) {
                 // Add a new filterHandler to WallStreamQuery
                 $streamQuery->filterHandlers[] = ExternalWebsitesSpaceStreamFilter::class;
             }
@@ -152,7 +152,7 @@ class Events
         /* @var $space Space */
         $space = $headerMenu->space;
 
-        if ($space->isModuleEnabled('external-websites') && $space->isAdmin()) { // Don't move in 'isVisible' as it doesn't work in all cases and because the "if" costs less
+        if ($space->moduleManager->isEnabled('external-websites') && $space->isAdmin()) { // Don't move in 'isVisible' as it doesn't work in all cases and because the "if" costs less
             $headerMenu->addEntry(new MenuLink([
                 'label' => Yii::t('ExternalWebsitesModule.base', 'Manage external websites & settings'),
                 'url' => $space->createUrl('/external-websites/manage/websites'),

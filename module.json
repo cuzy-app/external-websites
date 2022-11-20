@@ -3,7 +3,7 @@
     "name": "External Websites",
     "description": "Creates a content for each external website page, enabling to have Humhub addons (comments, like, files, etc.) in theses pages.",
     "keywords": ["external websites iframe"],
-    "version": "0.35",
+    "version": "0.36",
     "humhub": {
         "minVersion": "1.9"
     },

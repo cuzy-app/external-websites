@@ -1,6 +1,10 @@
 Changelog
 =========
 
+0.36 (November 20, 2022)
+--------------------
+- Enh: Compatibility with Humhub 1.13
+
 0.35 (March 3, 2022)
 --------------------
 - Enh: Possibility to ignore some params in the external website URL to link multiple URLs to a same content if only theses params are different
