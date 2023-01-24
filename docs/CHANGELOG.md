@@ -1,6 +1,10 @@
 Changelog
 =========
 
+0.37 (January 24, 2023)
+--------------------
+- Enh: Hide left navigation menu on Clean Theme
+
 0.36 (November 20, 2022)
 --------------------
 - Enh: Compatibility with Humhub 1.13

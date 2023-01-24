@@ -1,41 +1,61 @@
 humhub.module('externalWebsites.Host', function (module, require, $) {
     module.initOnPjaxLoad = true;
 
+    const init = function () {
+        $(function () {
+            // If theme has a left navigation menu (Clean theme)
+            if (
+                $('#ew-website').length
+                && $('#left-navigation-expand-btn').length
+                && typeof module.config.hideSidebar !== 'undefined'
+                && module.config.hideSidebar
+                && $(window).width() < 1400
+            ) {
+                setTimeout(function () {
+                    humhub.modules.cleanTheme.leftNavigation.collapseMenu();
+                }, 1000);
+            }
+
+            // If theme body has a sidebar (Enterprise theme)
+            if ($('#wrapper').length) {
+
+                // If sidebar is toggled, resize iframe container
+                var observer = new MutationObserver(function (mutations) {
+                    mutations.forEach(function (mutation) {
+                        if (mutation.attributeName === "class") {
+                            // var attributeValue = $(mutation.target).prop(mutation.attributeName);
+
+                            // Resize after 1 seconds because of the 0.5 seconds transition CSS
+                            setTimeout(function () {
+                                document.getElementById('ew-page-container').iFrameResizer.resize();
+                            }, 1000);
+                        }
+                    });
+                });
+                observer.observe($("#wrapper")[0], {
+                    attributes: true
+                });
+
+                // Hide sidebar if needed
+                if (typeof module.config.hideSidebar !== 'undefined' && module.config.hideSidebar) {
+                    if ($(window).width() < 768) {
+                        $('#wrapper').removeClass('toggled');
+                    } else {
+                        $('#wrapper').addClass('toggled');
+                    }
+                }
+            }
+        });
+    };
+
     var updateBrowserUrlAndToggleSidebar = function () {
         // Update browser URL
-        window.history.replaceState({}, '', module.config.permalink);
-
-        // If theme body has a sidebar (Enterprise theme)
-        if ($('#wrapper').length) {
-
-            // If sidebar is toggled, resize iframe container
-            var observer = new MutationObserver(function (mutations) {
-                mutations.forEach(function (mutation) {
-                    if (mutation.attributeName === "class") {
-                        // var attributeValue = $(mutation.target).prop(mutation.attributeName);
-
-                        // Resize after 1 seconds because of the 0.5 seconds transition CSS
-                        setTimeout(function () {
-                            document.getElementById('ew-page-container').iFrameResizer.resize();
-                        }, 1000);
-                    }
-                });
-            });
-            observer.observe($("#wrapper")[0], {
-                attributes: true
-            });
-
-            // Hide sidebar if needed
-            if (typeof module.config.hideSidebar !== 'undefined' && module.config.hideSidebar) {
-                if ($(window).width() < 768) {
-                    $('#wrapper').removeClass('toggled');
-                } else {
-                    $('#wrapper').addClass('toggled');
-                }
-                module.config.hideSidebar = false; // to avoid being reactivated by the view page/index
-            }
+        if (history.pushState) {
+            window.history.pushState(null, '', module.config.permalink);
+        } else {
+            window.history.replaceState(null, '', module.config.permalink);
         }
-    }
+    };
 
     // Executed by views/page/index.php in the iframe tag. See https://github.com/davidjbradshaw/iframe-resizer/issues/443#issuecomment-331721886
     var loadIFrameResizer = function () {
@@ -86,6 +106,7 @@ humhub.module('externalWebsites.Host', function (module, require, $) {
     };
 
     module.export({
+        init: init,
         updateBrowserUrlAndToggleSidebar: updateBrowserUrlAndToggleSidebar,
         loadIFrameResizer: loadIFrameResizer
     });

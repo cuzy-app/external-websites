@@ -17,7 +17,8 @@ use humhub\modules\externalWebsites\assets\HostAssets;
 
 HostAssets::register($this);
 $this->registerJsConfig('externalWebsites.Host', [
-    'pageActionUrl' => $contentContainer->createUrl('page/index', ['websiteId' => $website->id])
+    'pageActionUrl' => $contentContainer->createUrl('page/index', ['websiteId' => $website->id]),
+    'hideSidebar' => $website->hide_sidebar,
 ]);
 ?>
 

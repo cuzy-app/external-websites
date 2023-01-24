@@ -54,7 +54,7 @@ class ManageController extends ContentContainerController
             } else {
                 $this->view->error(Yii::t('ExternalWebsitesModule.base', 'Error: website not added'));
             }
-            return $this->redirect(['websites']);
+            return $this->redirect($this->contentContainer->createUrl('/external-websites/manage/websites'));
         }
 
         return $this->renderAjax('add-website', [
@@ -77,7 +77,7 @@ class ManageController extends ContentContainerController
             } else {
                 $this->view->error(Yii::t('ExternalWebsitesModule.base', 'Error: website not updated'));
             }
-            return $this->redirect(['websites']);
+            return $this->redirect($this->contentContainer->createUrl('/external-websites/manage/websites'));
         }
 
         return $this->renderAjax('edit-website', [
@@ -97,7 +97,7 @@ class ManageController extends ContentContainerController
         $website->delete();
         $this->view->success(Yii::t('ExternalWebsitesModule.base', 'website deleted'));
 
-        return $this->redirect(['websites']);
+        return $this->redirect($this->contentContainer->createUrl('/external-websites/manage/websites'));
     }
 
 
@@ -111,7 +111,7 @@ class ManageController extends ContentContainerController
             } else {
                 $this->view->error('Error');
             }
-            return $this->redirect(['websites']);
+            return $this->redirect($this->contentContainer->createUrl('/external-websites/manage/websites'));
         }
 
         return $this->renderAjax('spaceSettings', [

@@ -68,7 +68,7 @@ class Website extends ActiveRecord
             'show_in_menu' => Yii::t('ExternalWebsitesModule.base', 'Show in space menu'),
             'sort_order' => Yii::t('ExternalWebsitesModule.base', 'Sort order'),
             'remove_from_url_title' => Yii::t('ExternalWebsitesModule.base', 'Text to remove from URL title'),
-            'hide_sidebar' => Yii::t('ExternalWebsitesModule.base', 'Hide sidebar'),
+            'hide_sidebar' => Yii::t('ExternalWebsitesModule.base', 'Hide sidebar or left menu'),
             'default_content_visibility' => Yii::t('ExternalWebsitesModule.base', 'Content visibility default value'),
             'default_content_archived' => Yii::t('ExternalWebsitesModule.base', 'Archive contents when they are created'),
             'created_at' => 'Created at',

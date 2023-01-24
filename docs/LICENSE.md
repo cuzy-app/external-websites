@@ -2,7 +2,7 @@
 
 According to our dual licensing model, this program can be used either under the terms of the GNU Affero General Public License, version 3, or under a CUZY.APP commercial license.
 
-You can purchase a commercial license on the [CUZY.APP online store](https://www.cuzy.app) which allows you to install and update the program from the [Humhub Marketplace](https://www.humhub.com/en/marketplace).
+You can purchase a commercial license on the [CUZY.APP online store](https://www.cuzy.app) which allows you to install and update the program from the [Humhub Marketplace](https://marketplace.humhub.com).
 
 The GNU AGPL3 license requires that you install the program from sources directly on your server and that you do the updates manually (files and database). In this case, please support the developer making a donation on the [CUZY.APP online store](https://www.cuzy.app), thanks in advance!
 
