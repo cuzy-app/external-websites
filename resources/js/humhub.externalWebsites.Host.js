@@ -13,7 +13,7 @@ humhub.module('externalWebsites.Host', function (module, require, $) {
             ) {
                 setTimeout(function () {
                     humhub.modules.cleanTheme.leftNavigation.collapseMenu();
-                }, 1000);
+                }, 2500);
             }
 
             // If theme body has a sidebar (Enterprise theme)
