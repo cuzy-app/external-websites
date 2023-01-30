@@ -9,7 +9,6 @@ humhub.module('externalWebsites.Host', function (module, require, $) {
                 && $('#left-navigation-expand-btn').length
                 && typeof module.config.hideSidebar !== 'undefined'
                 && module.config.hideSidebar
-                && $(window).width() < 1400
             ) {
                 setTimeout(function () {
                     humhub.modules.cleanTheme.leftNavigation.collapseMenu();
