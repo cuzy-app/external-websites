@@ -308,7 +308,7 @@ permet d'intégrer les commmentaires humhub dans yeswiki et inversement (possibi
 
   ```
   cd ~/communaute.hameaux-legers.org/protected/modules
-  git clone https://gitlab.com/cuzy/humhub-modules-external-websites.git external-websites
+  git clone https://github.com/cuzy-app/humhub-modules-external-websites.git external-websites
   ```
     * pour pouvoir inclure les commentaires humhub dans yeswiki, éditer le ficher web.php avec la commande : `vi ~/communaute.hameaux-legers.org/protected/config/web.php` et remplacer le tableau vide par :
 
@@ -401,7 +401,7 @@ return [
 ];
 ```
 
-Pour info, voici le payload associé à cette jwtKey afin que qu'un nouvel utilisateur soit automatiquement ajouté aux groupes d'ID 1 et 2 (cf [doc de l'extension external-website](https://gitlab.com/cuzy/humhub-modules-external-websites/-/tree/master/docs)) :
+Pour info, voici le payload associé à cette jwtKey afin que qu'un nouvel utilisateur soit automatiquement ajouté aux groupes d'ID 1 et 2 (cf [doc de l'extension external-website](https://github.com/cuzy-app/humhub-modules-external-websites/tree/master/docs)) :
 
 ```
 {
@@ -415,7 +415,7 @@ Pour info, voici le payload associé à cette jwtKey afin que qu'un nouvel utili
 
 ```
 cd ~/mooc.hameaux-legers.org/custom/javascripts/
-wget https://gitlab.com/funkycram/humhub-modules-external-websites/-/raw/master/resources/js/iframeResizer/iframeResizer.js
+wget https://github.com/cuzy-app/humhub-modules-external-websites/-/raw/master/resources/js/iframeResizer/iframeResizer.js
 ```
 
 * modifier le fichier fiche-1201.tpl.html en exécutant `vi ~/mooc.hameaux-legers.org/tools/lms/templates/bazar/fiche-1201.tpl.html` :
@@ -424,7 +424,7 @@ wget https://gitlab.com/funkycram/humhub-modules-external-websites/-/raw/master/
     * modifier la valeur de la variable $humhubWebsiteId (ligne 86) et mettre : 1
     * modifier la valeur de la variable $autoLogin (ligne 90) et mettre : 1
     * modifier la valeur de la variable $token (ligne 92) et mettre :
-    * modifier la valeur de la variable $humhubUrl et mettre : le TOKEN calculé à partir du payload et de API_SECRET_KEY en suivant la procédure décrite dans la [doc de l'extension external-website](https://gitlab.com/cuzy/humhub-modules-external-websites/-/tree/master/docs)
+    * modifier la valeur de la variable $humhubUrl et mettre : le TOKEN calculé à partir du payload et de API_SECRET_KEY en suivant la procédure décrite dans la [doc de l'extension external-website](https://github.com/cuzy-app/humhub-modules-external-websites/tree/master/docs)
 
 # Resssouces
 
@@ -432,4 +432,4 @@ wget https://gitlab.com/funkycram/humhub-modules-external-websites/-/raw/master/
 * [préparation du serveur pour HumHub](https://docs.humhub.org/docs/admin/server-setup/)
 * [installation de HumHub](https://docs.humhub.org/docs/admin/installation/)
 * [doc de l'extension auth-keycloak (HumHub)](https://github.com/cuzy-app/humhub-modules-auth-keycloak)
-* [doc de l'extension external-website (HumHub)](https://gitlab.com/cuzy/humhub-modules-external-websites/-/tree/master/docs)
+* [doc de l'extension external-website (HumHub)](https://github.com/cuzy-app/humhub-modules-external-websites/tree/master/docs)

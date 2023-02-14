@@ -1,8 +1,8 @@
 <?php
 /**
  * External Websites
- * @link https://gitlab.com/funkycram/humhub-modules-external-websites
- * @license https://gitlab.com/funkycram/humhub-modules-external-websites/-/raw/master/docs/LICENCE.md
+ * @link https://github.com/cuzy-app/humhub-modules-external-websites
+ * @license https://github.com/cuzy-app/humhub-modules-external-websites/blob/master/docs/LICENSE.md
  * @author [Marc FARRE](https://marc.fun)
  */
 

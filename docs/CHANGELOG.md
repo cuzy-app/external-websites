@@ -155,7 +155,7 @@ First release !
 
 ### Version 0.7
 
-- Changed licence to https://gitlab.com/funkycram/humhub-modules-external-websites/-/raw/master/docs/LICENCE.md
+- Changed licence to https://github.com/cuzy-app/humhub-modules-external-websites/blob/master/docs/LICENSE.md
 - Added filters in wall
 - Added space configuration to hide content by default with the filters
 - Updated usage explainations in this README.md file

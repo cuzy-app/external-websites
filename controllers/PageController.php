@@ -1,8 +1,8 @@
 <?php
 /**
  * External Websites
- * @link https://gitlab.com/funkycram/humhub-modules-external-websites
- * @license https://gitlab.com/funkycram/humhub-modules-external-websites/-/raw/master/docs/LICENCE.md
+ * @link https://github.com/cuzy-app/humhub-modules-external-websites
+ * @license https://github.com/cuzy-app/humhub-modules-external-websites/blob/master/docs/LICENSE.md
  * @author [Marc FARRE](https://marc.fun)
  */
 
@@ -35,7 +35,7 @@ class PageController extends ContentContainerController
         ];
     }
 
-    
+
     /**
      * Called by ajax (if Humhub is host) or iframe (if Humhub is embedded)
      * If Humhub is embedded, see README.md for complete URL to provide in the iframe scr
