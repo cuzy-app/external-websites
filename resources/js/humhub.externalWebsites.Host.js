@@ -10,7 +10,9 @@ humhub.module('externalWebsites.Host', function (module, require, $) {
                 && typeof module.config.hideSidebar !== 'undefined'
                 && module.config.hideSidebar
             ) {
+                $('#left-navigation-collapse-btn').css('visibility', 'hidden');
                 setTimeout(function () {
+                    $('#left-navigation-collapse-btn').css('visibility', 'visible');
                     humhub.modules.cleanTheme.leftNavigation.collapseMenu();
                 }, 2500);
             }
