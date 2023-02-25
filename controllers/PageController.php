@@ -80,7 +80,7 @@ class PageController extends ContentContainerController
                 throw new HttpException('403', 'Invalid param pageUrl!');
             }
             // Remove anchor (#hash) from URL and / at the end
-            $pageUrl = rtrim(strtok($pageUrl, "#"), "/");
+            $pageUrl = rtrim((string)strtok((string)$pageUrl, "#"), "/");
             // Remove params to ignore
             foreach ($website->getPageUrlParamsToRemove() as $param) {
                 $pageUrl = Page::stripParamFromUrl($pageUrl, $param);
