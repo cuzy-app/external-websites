@@ -13,7 +13,7 @@ $token = '';
  * If you want to make redirections work (see docs/README.md "Space's contents redirected to external website")
  */
 if (isset($_GET['humhubUrl'])) {
-    $humhubUrl = urldecode($_GET['humhubUrl']);
+    $humhubUrl = urldecode((string)$_GET['humhubUrl']);
 }
 
 /**

@@ -87,8 +87,8 @@ class PageController extends ContentContainerController
             }
 
             // Get title
-            $pageTitle = Yii::$app->request->post('pageTitle', Yii::$app->request->get('pageTitle', ''));
-            $pageTitle = str_ireplace($website->remove_from_url_title, '', $pageTitle); // Remove unwanted text in title
+            $pageTitle = (string)Yii::$app->request->post('pageTitle', Yii::$app->request->get('pageTitle', ''));
+            $pageTitle = (string)str_ireplace($website->remove_from_url_title, '', $pageTitle); // Remove unwanted text in title
             $title = BaseStringHelper::truncate($pageTitle, 95, '[...]');
 
             // Get content (there can be only 1 unique URL per space, so we don't filter by website)

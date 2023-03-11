@@ -116,7 +116,7 @@ class WebsiteForm extends Model
 
         // Trim URL params to remove and explode to array
         $pageUrlParamsToRemove = [];
-        foreach (explode(',', $this->page_url_params_to_remove) as $param) {
+        foreach ((array)explode(',', (string)$this->page_url_params_to_remove) as $param) {
             $pageUrlParamsToRemove[] = trim((string)$param);
         }
 

@@ -9,7 +9,6 @@
 namespace humhub\modules\externalWebsites\controllers;
 
 use humhub\modules\admin\components\Controller;
-use humhub\modules\admin\permissions\ManageSettings;
 use Yii;
 
 
@@ -19,16 +18,6 @@ use Yii;
  */
 class AdminController extends Controller
 {
-    /**
-     * @inheritdoc
-     */
-    public function getAccessRules()
-    {
-        return [
-            ['permissions' => ManageSettings::class]
-        ];
-    }
-
     /**
      * Hidden page. Access with this URL:
      * /external-websites/admin/delete-all-contents-without-comments
