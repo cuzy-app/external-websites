@@ -39,7 +39,7 @@ $website = $context->website;
                     </li>
                     <li class="breadcrumb-item active" aria-current="page">
                         <?= Icon::get($website->icon) ?>
-                        <?= Html::encode($website->title) ?>
+                        <span><?= Html::encode($website->title) ?></span>
                     </li>
                 </ol>
             </nav>
