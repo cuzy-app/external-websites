@@ -8,6 +8,7 @@
 
 use humhub\libs\Html;
 use humhub\modules\externalWebsites\assets\HostAssets;
+use humhub\modules\externalWebsites\models\Website;
 
 /**
  * @var $contentContainer humhub\modules\space\models\Space
@@ -18,7 +19,7 @@ use humhub\modules\externalWebsites\assets\HostAssets;
 HostAssets::register($this);
 $this->registerJsConfig('externalWebsites.Host', [
     'pageActionUrl' => $contentContainer->createUrl('page/index', ['websiteId' => $website->id]),
-    'hideSidebar' => $website->hide_sidebar,
+    'hideSidebar' => $website->layout === Website::LAYOUT_MENU_COLLAPSED,
 ]);
 ?>
 

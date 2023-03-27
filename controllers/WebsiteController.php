@@ -26,6 +26,11 @@ use yii\web\Response;
 class WebsiteController extends ContentContainerController
 {
     /**
+     * @var Website used by the layout
+     */
+    public $website;
+
+    /**
      * @param null $id
      * @param null $title
      * @param null $pageId
@@ -45,6 +50,11 @@ class WebsiteController extends ContentContainerController
         }
         if ($website === null) {
             throw new HttpException(404, 'Website not found');
+        }
+
+        if ($website->layout === Website::LAYOUT_FULL_SCREEN) {
+            $this->website = $website;
+            $this->subLayout = '@external-websites/views/layouts/spaceFullScreenLayout';
         }
 
         // If $pageId not null and Page exists, set pageUrl from page

@@ -27,7 +27,7 @@ class WebsiteForm extends Model
     public $show_in_menu = true;
     public $sort_order = 100;
     public $remove_from_url_title = '';
-    public $hide_sidebar = false;
+    public $layout = Website::LAYOUT_DEFAULT;
     /** @var null|int */
     public $default_content_visibility;
     public $default_content_archived = false;
@@ -49,7 +49,7 @@ class WebsiteForm extends Model
             $this->show_in_menu = (bool)$website->show_in_menu;
             $this->sort_order = (int)$website->sort_order;
             $this->remove_from_url_title = $website->remove_from_url_title;
-            $this->hide_sidebar = (bool)$website->hide_sidebar;
+            $this->layout = $website->layout;
             $this->default_content_visibility = $website->default_content_visibility; // Do not add (int) as value can be null
             $this->default_content_archived = (bool)$website->default_content_archived;
             $this->created_by = $website->created_by;
@@ -67,9 +67,9 @@ class WebsiteForm extends Model
     {
         return [
             [['title', 'icon', 'first_page_url', 'humhub_is_embedded'], 'required'],
-            [['title', 'icon', 'first_page_url', 'remove_from_url_title'], 'string'],
+            [['title', 'icon', 'first_page_url', 'remove_from_url_title', 'layout'], 'string'],
             [['sort_order', 'default_content_visibility', 'default_content_archived'], 'integer'],
-            [['humhub_is_embedded', 'show_in_menu', 'hide_sidebar'], 'boolean'],
+            [['humhub_is_embedded', 'show_in_menu'], 'boolean'],
             [['created_by', 'page_url_params_to_remove'], 'safe'],
         ];
     }
@@ -93,7 +93,6 @@ class WebsiteForm extends Model
             'humhub_is_embedded' => Yii::t('ExternalWebsitesModule.base', 'Humhub can be: <br>- Host: external website is embedded and embedded in an iframe<br>- Embedded: external website is host, Humhub addons (comments, like, files, etc.) are embedded in an iframe.<br>See README.md for more informations and usage.'),
             'page_url_params_to_remove' => Yii::t('ExternalWebsitesModule.base', 'Allows to ignore some params in the external website URL to link multiple URLs to a same content if only theses params are different.'),
             'remove_from_url_title' => Yii::t('ExternalWebsitesModule.base', 'The name of the Humhub content associated with each page of the external website corresponds to the page title (HTML title tag). It is possible to delete part of the text of this title.'),
-            'hide_sidebar' => Yii::t('ExternalWebsitesModule.base', 'Works with Enterprise heme and Clean Theme'),
             'created_by' => Yii::t('ExternalWebsitesModule.base', 'Website owner (related contents for comments will be created with this user)'),
         ];
     }
@@ -129,7 +128,7 @@ class WebsiteForm extends Model
         $website->show_in_menu = $this->show_in_menu;
         $website->sort_order = $this->sort_order;
         $website->remove_from_url_title = $this->remove_from_url_title;
-        $website->hide_sidebar = $this->hide_sidebar;
+        $website->layout = $this->layout;
         $website->default_content_visibility = $this->default_content_visibility;
         $website->default_content_archived = $this->default_content_archived;
         $userGuid = is_array($this->created_by) ? reset($this->created_by) : null;
@@ -152,6 +151,20 @@ class WebsiteForm extends Model
         }
 
         return $result;
+    }
+
+
+    /**
+     * @return array
+     */
+    public function getLayoutList()
+    {
+        return [
+            null => Yii::t('ExternalWebsitesModule.base', 'Space\'s default content visibility'),
+            Website::LAYOUT_DEFAULT => Yii::t('ExternalWebsitesModule.base', 'The space\'s default one'),
+            Website::LAYOUT_MENU_COLLAPSED => Yii::t('ExternalWebsitesModule.base', 'Menu collapsed'),
+            Website::LAYOUT_FULL_SCREEN => Yii::t('ExternalWebsitesModule.base', 'Full screen'),
+        ];
     }
 
 

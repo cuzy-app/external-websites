@@ -92,17 +92,17 @@ $websiteForm = new WebsiteForm;
                 'attribute' => 'remove_from_url_title',
             ],
             [
-                'attribute' => 'hide_sidebar',
+                'attribute' => 'layout',
                 'format' => 'raw',
-                'value' => static function ($model) {
-                    return $model->hide_sidebar ? Icon::get('check') : '';
+                'value' => static function ($model) use ($websiteForm) {
+                    return $websiteForm->getLayoutList()[$model->layout] ?? '';
                 }
             ],
             [
                 'attribute' => 'default_content_visibility',
                 'format' => 'raw',
                 'value' => static function ($model) use ($websiteForm) {
-                    return $websiteForm->getContentVisibilityList()[$model->default_content_visibility];
+                    return $websiteForm->getContentVisibilityList()[$model->default_content_visibility] ?? '';
                 }
             ],
             [

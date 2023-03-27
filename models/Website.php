@@ -30,7 +30,7 @@ use yii\helpers\Json;
  * @property boolean $show_in_menu
  * @property int $sort_order
  * @property string $remove_from_url_title
- * @property boolean $hide_sidebar If Enterprise theme
+ * @property string $layout
  * @property null|integer $default_content_visibility Default value for the Content created ; can be humhub\modules\content\models\Content::VISIBILITY_PRIVATE or Content::VISIBILITY_PUBLIC or Content::VISIBILITY_OWNER
  * @property int $default_content_archived Default value for the Content created ; can be 0 or 1 (if 1, new comments are disabled) : humhub\modules\content\models\Content->archive(), humhub\modules\content\models\Content->unarchive()
  * @property string $created_at
@@ -43,6 +43,9 @@ use yii\helpers\Json;
  */
 class Website extends ActiveRecord
 {
+    const LAYOUT_DEFAULT = 'default';
+    const LAYOUT_MENU_COLLAPSED = 'menu_collapsed';
+    const LAYOUT_FULL_SCREEN = 'full_screen';
 
     /**
      * @inheritdoc
@@ -68,7 +71,7 @@ class Website extends ActiveRecord
             'show_in_menu' => Yii::t('ExternalWebsitesModule.base', 'Show in space menu'),
             'sort_order' => Yii::t('ExternalWebsitesModule.base', 'Sort order'),
             'remove_from_url_title' => Yii::t('ExternalWebsitesModule.base', 'Text to remove from URL title'),
-            'hide_sidebar' => Yii::t('ExternalWebsitesModule.base', 'Hide sidebar or left menu'),
+            'layout' => Yii::t('ExternalWebsitesModule.base', 'Layout'),
             'default_content_visibility' => Yii::t('ExternalWebsitesModule.base', 'Content visibility default value'),
             'default_content_archived' => Yii::t('ExternalWebsitesModule.base', 'Archive contents when they are created'),
             'created_at' => 'Created at',
@@ -85,9 +88,9 @@ class Website extends ActiveRecord
     {
         return [
             [['space_id', 'first_page_url'], 'required'],
-            [['title', 'icon', 'first_page_url', 'remove_from_url_title'], 'string'],
+            [['title', 'icon', 'first_page_url', 'remove_from_url_title', 'layout'], 'string'],
             [['space_id', 'sort_order', 'default_content_visibility', 'default_content_archived'], 'integer'],
-            [['humhub_is_embedded', 'show_in_menu', 'hide_sidebar'], 'boolean'],
+            [['humhub_is_embedded', 'show_in_menu'], 'boolean'],
             [['page_url_params_to_remove'], 'safe'],
         ];
     }

@@ -10,6 +10,7 @@ use humhub\libs\Html;
 use humhub\modules\comment\widgets\CommentLink;
 use humhub\modules\comment\widgets\Comments;
 use humhub\modules\externalWebsites\assets\EmbeddedAssets;
+use humhub\modules\externalWebsites\models\Website;
 use humhub\modules\externalWebsites\widgets\FirstCommentForm;
 use humhub\modules\like\widgets\LikeLink;
 use humhub\modules\ui\icon\widgets\Icon;
@@ -30,7 +31,7 @@ use humhub\modules\ui\icon\widgets\Icon;
 // If Humhub is host
 if (!$humhubIsEmbedded) {
     $this->registerJsConfig('externalWebsites.Host', [
-        'hideSidebar' => $website->hide_sidebar,
+        'hideSidebar' => $website->layout === Website::LAYOUT_MENU_COLLAPSED,
         'permalink' => $permalink,
     ]);
 } // If Humhub is embedded

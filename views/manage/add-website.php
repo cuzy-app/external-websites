@@ -37,7 +37,7 @@ use yii\helpers\Html;
         <?= $form->field($model, 'show_in_menu')->checkbox() ?>
         <?= $form->field($model, 'sort_order')->textInput() ?>
         <?= $form->field($model, 'remove_from_url_title')->textInput() ?>
-        <?= $form->field($model, 'hide_sidebar')->checkbox() ?>
+        <?= $form->field($model, 'layout')->dropDownList($model->getLayoutList()) ?>
         <?= $form->field($model, 'default_content_visibility')->dropDownList($model->getContentVisibilityList()) ?>
         <?= $form->field($model, 'default_content_archived')->checkbox() ?>
         <?= UserPickerField::widget([
