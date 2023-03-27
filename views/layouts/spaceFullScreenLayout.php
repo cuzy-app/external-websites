@@ -21,6 +21,8 @@ $website = $context->website;
 <style>
     #ew-space-full-screen-layout .breadcrumb {
         background-color: transparent;
+        padding-top: 0;
+        padding-bottom: 0;
     }
 
     #ew-space-full-screen-layout .breadcrumb > li + li:before {
