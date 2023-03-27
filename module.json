@@ -3,9 +3,9 @@
     "name": "External Websites",
     "description": "Creates a content for each external website page, enabling to have Humhub addons (comments, like, files, etc.) in theses pages.",
     "keywords": ["external websites iframe"],
-    "version": "0.37",
+    "version": "0.38",
     "humhub": {
-        "minVersion": "1.9"
+        "minVersion": "1.13"
     },
     "homepage": "https://github.com/cuzy-app/humhub-modules-external-websites",
     "authors": [

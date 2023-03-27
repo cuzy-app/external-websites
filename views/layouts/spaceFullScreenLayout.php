@@ -19,17 +19,16 @@ $website = $context->website;
 
 ?>
 <style>
-    .breadcrumb {
+    #ew-space-full-screen-layout .breadcrumb {
         background-color: transparent;
     }
 
-    .breadcrumb > li + li:before {
-        /*content: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjgiPjxwYXRoIGQ9Ik0yLjUgMEwxIDEuNSAzLjUgNCAxIDYuNSAyLjUgOGw0LTQtNC00eiIgZmlsbD0iY3VycmVudENvbG9yIi8+PC9zdmc+);*/
+    #ew-space-full-screen-layout .breadcrumb > li + li:before {
         content: '>';
     }
 </style>
 
-<div class="container space-layout-container">
+<div id="ew-space-full-screen-layout" class="container space-layout-container">
     <div class="row">
         <div class="col-md-12">
             <nav aria-label="breadcrumb">

@@ -1,6 +1,10 @@
 Changelog
 =========
 
+0.38 (January 24, 2023)
+--------------------
+- Enh: Added possibility to show the embedded website in fullscreen.
+
 0.37 (January 24, 2023)
 --------------------
 - Enh: Hide left navigation menu on Clean Theme
