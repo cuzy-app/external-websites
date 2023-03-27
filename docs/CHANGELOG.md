@@ -1,7 +1,7 @@
 Changelog
 =========
 
-0.38 (January 24, 2023)
+0.38 (March 27, 2023)
 --------------------
 - Enh: Added possibility to show the embedded website in fullscreen.
 
