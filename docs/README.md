@@ -1,5 +1,6 @@
 # External Websites
 
+> :warning: **This module is experimental module!**
 
 ## Overview
 
@@ -35,10 +36,10 @@ For each website added, there are 2 possibilities:
 
 Upload these files on the external website server:
 ```
-wget https://github.com/cuzy-app/humhub-modules-external-websites/-/raw/master/resources/js/iframeResizer/iframeResizer.contentWindow.min.js
-wget https://github.com/cuzy-app/humhub-modules-external-websites/-/raw/master/resources/js/iframeResizer/iframeResizer.contentWindow.js
-wget https://github.com/cuzy-app/humhub-modules-external-websites/-/raw/master/resources/js/iframeResizer/iframeResizer.contentWindow.map
-wget https://github.com/cuzy-app/humhub-modules-external-websites/-/raw/master/docs/examples/for-external-website-embedded-in-humhub.js
+wget https://github.com/cuzy-app/humhub-modules-external-websites/tree/master/resources/js/iframeResizer/iframeResizer.contentWindow.min.js
+wget https://github.com/cuzy-app/humhub-modules-external-websites/tree/master/resources/js/iframeResizer/iframeResizer.contentWindow.js
+wget https://github.com/cuzy-app/humhub-modules-external-websites/tree/master/resources/js/iframeResizer/iframeResizer.contentWindow.map
+wget https://github.com/cuzy-app/humhub-modules-external-websites/tree/master/docs/examples/for-external-website-embedded-in-humhub.js
 ```
 
 Add this code just before `</body>` in all pages :
@@ -71,12 +72,12 @@ And replace `https://my-external-website.tdl` with your website URL
 
 Upload these files on the external website server:
 ```
-wget https://github.com/cuzy-app/humhub-modules-external-websites/-/raw/master/resources/js/iframeResizer/iframeResizer.min.js
-wget https://github.com/cuzy-app/humhub-modules-external-websites/-/raw/master/resources/js/iframeResizer/iframeResizer.js
-wget https://github.com/cuzy-app/humhub-modules-external-websites/-/raw/master/resources/js/iframeResizer/iframeResizer.map
+wget https://github.com/cuzy-app/humhub-modules-external-websites/tree/master/resources/js/iframeResizer/iframeResizer.min.js
+wget https://github.com/cuzy-app/humhub-modules-external-websites/tree/master/resources/js/iframeResizer/iframeResizer.js
+wget https://github.com/cuzy-app/humhub-modules-external-websites/tree/master/resources/js/iframeResizer/iframeResizer.map
 ```
 
-[See this code example for the external website to embed Humhub addons](https://github.com/cuzy-app/humhub-modules-external-websites/-/raw/master/docs/examples/external-website-page-embedding-humhub-addons.php)
+[See this code example for the external website to embed Humhub addons](https://github.com/cuzy-app/humhub-modules-external-websites/tree/master/docs/examples/external-website-page-embedding-humhub-addons.php)
 
 
 ### Humhub embedded in an external website
@@ -99,12 +100,12 @@ On the external website:
 
 Upload these files on the external website server:
 ```
-wget https://github.com/cuzy-app/humhub-modules-external-websites/-/raw/master/resources/js/iframeResizer/iframeResizer.min.js
-wget https://github.com/cuzy-app/humhub-modules-external-websites/-/raw/master/resources/js/iframeResizer/iframeResizer.js
-wget https://github.com/cuzy-app/humhub-modules-external-websites/-/raw/master/resources/js/iframeResizer/iframeResizer.map
+wget https://github.com/cuzy-app/humhub-modules-external-websites/tree/master/resources/js/iframeResizer/iframeResizer.min.js
+wget https://github.com/cuzy-app/humhub-modules-external-websites/tree/master/resources/js/iframeResizer/iframeResizer.js
+wget https://github.com/cuzy-app/humhub-modules-external-websites/tree/master/resources/js/iframeResizer/iframeResizer.map
 ```
 
-[See this code example for the external website to embed full Humhub](https://github.com/cuzy-app/humhub-modules-external-websites/-/raw/master/docs/examples/external-website-page-embedding-full-humhub.php)
+[See this code example for the external website to embed full Humhub](https://github.com/cuzy-app/humhub-modules-external-websites/tree/master/docs/examples/external-website-page-embedding-full-humhub.php)
 
 
 ### Space's contents URL redirected to external website
@@ -120,17 +121,6 @@ E.g https://www.my-external-website.tdl?humhubUrl={humhubUrl} value will redirec
 
 
 ## Advanced features
-
-### Auto login
-
-If Humhub is embedded and the module [Keycloak Sign-In](https://github.com/cuzy-app/humhub-modules-auth-keycloak) is installed, this module can try to auto login with SSO (if user doesn't exists, the account is created automatically)
-
-In the iframe `src` attribute, you must add this param to the URL:
-```
-autoLogin=1
-```
-
-[See this code example](https://github.com/cuzy-app/humhub-modules-external-websites/-/raw/master/docs/examples/external-website-page-embedding-full-humhub.php)
 
 
 ### Auto add groups to user
@@ -163,7 +153,7 @@ In the iframe `src` attribute, you must add this param to the URL:
 token=your-encoded-token
 ```
 
-[See this code example](https://github.com/cuzy-app/humhub-modules-external-websites/-/raw/master/docs/examples/external-website-page-embedding-full-humhub.php)
+[See this code example](https://github.com/cuzy-app/humhub-modules-external-websites/tree/master/docs/examples/external-website-page-embedding-full-humhub.php)
 
 
 ### Hide some elements
@@ -172,7 +162,7 @@ It is possible to hide some elements.
 
 #### If Humhub is embedded in an external website
 
-By adding params in the URL (`showComments`, `showLikes` and `showPermalink`). [See this code example](https://github.com/cuzy-app/humhub-modules-external-websites/-/raw/master/docs/examples/external-website-page-embedding-humhub-addons.php)
+By adding params in the URL (`showComments`, `showLikes` and `showPermalink`). [See this code example](https://github.com/cuzy-app/humhub-modules-external-websites/tree/master/docs/examples/external-website-page-embedding-humhub-addons.php)
 
 #### If the external website is embedded
 

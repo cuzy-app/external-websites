@@ -18,7 +18,7 @@ class m230325_104344_replace_hide_sidebar_with_layout extends Migration
 
         /** @var Website $website */
         foreach (Website::find()->each() as $website) {
-            $website->layout = Website::LAYOUT_FULL_SCREEN;
+            $website->layout = Website::LAYOUT_DEFAULT;
             $website->save();
         }
     }

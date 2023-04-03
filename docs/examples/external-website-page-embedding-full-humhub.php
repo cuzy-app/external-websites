@@ -4,8 +4,6 @@
  */
 // Humhub URL
 $humhubUrl = 'http://www.my-humhub.tdl/dashboard';
-// Boolean (1 or 0) - Auto login (available if the module `auth-keycloak` is installed and SSO is configured)
-$autoLogin = 1;
 // JWT token (optional, see docs/README.md "Auto add groups to user")
 $token = '';
 
@@ -14,13 +12,6 @@ $token = '';
  */
 if (isset($_GET['humhubUrl'])) {
     $humhubUrl = urldecode((string)$_GET['humhubUrl']);
-}
-
-/**
- * Add autologin param
- */
-if (isset($autoLogin) && $autoLogin) {
-    $humhubUrl .= ((strpos($humhubUrl, '?') === false) ? '?' : '&') . 'autoLogin=1';
 }
 
 /**

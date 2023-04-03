@@ -219,34 +219,6 @@ class Events
         }
     }
 
-    public static function onControllerBeforeAction($event)
-    {
-        if (!Yii::$app->user->isGuest || !method_exists(Yii::$app->request, 'get')) {
-            return;
-        }
-        // If autologin in URL param, try auto login
-        if (Yii::$app->request->get('autoLogin')) {
-            self::tryAutoLogin();
-        }
-    }
-
-    /**
-     * @return mixed
-     * If autoLogin param true in URL, try auto login
-     */
-    private static function tryAutoLogin()
-    {
-        // If an auth client has attribute autoLogin set to true, this module will auto log the user to the corresponding Identity provider (SSO)
-        foreach (Yii::$app->authClientCollection->clients as $authclient) {
-            if (isset($authclient->autoLogin) && $authclient->autoLogin) {
-                // Redirect to Identity Provider
-                if (method_exists($authclient, 'redirectToBroker')) {
-                    return $authclient->redirectToBroker(true);
-                }
-            }
-        }
-    }
-
     public static function onContentContainerControllerBeforeAction($event)
     {
         // If the current container is a space, try redirecting space content

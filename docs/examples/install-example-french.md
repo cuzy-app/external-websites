@@ -415,7 +415,7 @@ Pour info, voici le payload associé à cette jwtKey afin que qu'un nouvel utili
 
 ```
 cd ~/mooc.hameaux-legers.org/custom/javascripts/
-wget https://github.com/cuzy-app/humhub-modules-external-websites/-/raw/master/resources/js/iframeResizer/iframeResizer.js
+wget https://github.com/cuzy-app/humhub-modules-external-websites/tree/master/resources/js/iframeResizer/iframeResizer.js
 ```
 
 * modifier le fichier fiche-1201.tpl.html en exécutant `vi ~/mooc.hameaux-legers.org/tools/lms/templates/bazar/fiche-1201.tpl.html` :

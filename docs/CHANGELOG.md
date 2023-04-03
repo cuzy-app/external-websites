@@ -1,6 +1,11 @@
 Changelog
 =========
 
+Unreleased
+--------------------
+- Enh: Removed Humhub auto-login with Keycloak (as removed in Keycloak module v1.3.0)
+- Fix #1: Links to module documentation not work.
+
 0.38 (March 27, 2023)
 --------------------
 - Enh: Added possibility to show the embedded website in fullscreen.

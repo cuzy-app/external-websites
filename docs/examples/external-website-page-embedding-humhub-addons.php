@@ -14,7 +14,6 @@ $params = [
     'websiteId' => 1, // integer - Humhub Website ID (get this value from the "Websites management" page)
     'pageTitle' => 'Page title', // string - This page title (usually the value in the <title> tag)
     'pageUrl' => (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]", // string - Auto discover the current page URL
-    'autoLogin' => 1, // 1 or 0 - Auto login (available if the module `auth-keycloak` is installed and SSO is configured)
     'token' => '', // string - JWT token (optional, see docs/README.md "Auto add groups to user")
     'showComments' => 1, // 1 or 0 - Show comments
     'showLikes' => 1, // 1 or 0 - Show "Likes"

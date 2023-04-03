@@ -52,11 +52,6 @@ return [
             'callback' => [Events::class, 'onControllerInit']
         ],
         [
-            'class' => Controller::class,
-            'event' => Controller::EVENT_BEFORE_ACTION,
-            'callback' => [Events::class, 'onControllerBeforeAction']
-        ],
-        [
             'class' => ContentContainerController::class,
             'event' => ContentContainerController::EVENT_BEFORE_ACTION,
             'callback' => [Events::class, 'onContentContainerControllerBeforeAction']
