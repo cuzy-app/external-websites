@@ -1,6 +1,6 @@
 # External Websites
 
-> :warning: **This module is experimental module!**
+> :warning: **This module is experimental!**
 
 ## Overview
 
