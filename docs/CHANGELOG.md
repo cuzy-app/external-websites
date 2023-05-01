@@ -1,10 +1,12 @@
 Changelog
 =========
 
-Unreleased
+0.39 (May 1, 2023)
 --------------------
 - Enh: Removed Humhub auto-login with Keycloak (as removed in Keycloak module v1.3.0)
 - Fix #1: Links to module documentation not work.
+- Fix: Hard delete records on disable module (for Humhub 1.14)
+- Chg: Minimum Humhub version is now 1.14
 
 0.38 (March 27, 2023)
 --------------------

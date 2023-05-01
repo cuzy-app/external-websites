@@ -137,7 +137,7 @@ class Website extends ActiveRecord
                 }
             }
 
-            $page->delete();
+            $page->hardDelete();
         }
 
         // Remove this website ID from pages' other_website_ids
@@ -210,7 +210,7 @@ class Website extends ActiveRecord
                         $like->save();
                     }
                     // Delete duplicated page
-                    $page->delete();
+                    $page->hardDelete();
                 }
             }
         }

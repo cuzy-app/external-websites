@@ -69,7 +69,7 @@ class Module extends ContentContainerModule
     public function disable()
     {
         foreach (Page::find()->all() as $page) {
-            $page->delete();
+            $page->hardDelete();
         }
 
         Website::deleteAll();

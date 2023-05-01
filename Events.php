@@ -86,7 +86,7 @@ class Events
 
         // Add a new filter block to the last filter panel
         $wallFilterNavigation->addFilterBlock(
-            static::FILTER_BLOCK_EXTERNAL_WEBSITE, [
+            self::FILTER_BLOCK_EXTERNAL_WEBSITE, [
             'title' => Yii::t('ExternalWebsitesModule.base', 'Filter'),
             'sortOrder' => 300
         ],
@@ -114,7 +114,7 @@ class Events
                     ),
                     'sortOrder' => $sortOrder,
                 ],
-                static::FILTER_BLOCK_EXTERNAL_WEBSITE
+                self::FILTER_BLOCK_EXTERNAL_WEBSITE
             );
         }
     }
