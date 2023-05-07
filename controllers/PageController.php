@@ -94,7 +94,8 @@ class PageController extends ContentContainerController
             // Get content (there can be only 1 unique URL per space, so we don't filter by website)
             $page = Page::find()
                 ->contentContainer($this->contentContainer) // restrict to current space
-                ->where(['page_url' => $pageUrl])
+                ->readable()
+                ->andWhere(['external_websites_website_page.page_url' => $pageUrl])
                 ->one();
 
             if ($page !== null) {

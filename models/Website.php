@@ -181,7 +181,7 @@ class Website extends ActiveRecord
             foreach (array_keys($duplicatedPages) as $duplicatedUrl) {
                 $pages = Page::find()
                     ->joinWith('website')
-                    ->where(['external_websites_website_page.page_url' => $duplicatedUrl])
+                    ->andWhere(['external_websites_website_page.page_url' => $duplicatedUrl])
                     ->orderBy(['external_websites_website.sort_order' => SORT_ASC])
                     ->all();
                 $firstPage = null;

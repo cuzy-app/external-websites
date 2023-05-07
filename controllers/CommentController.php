@@ -52,7 +52,8 @@ class CommentController extends ParentCommentController
         // Check if not exists (if someone else has commented after form has been loaded)
         $page = Page::find()
             ->contentContainer($space) // restrict to current space
-            ->where(['page_url' => $pageUrl])
+            ->readable()
+            ->andWhere(['external_websites_website_page.page_url' => $pageUrl])
             ->one();
 
         if ($page === null) {

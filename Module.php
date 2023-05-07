@@ -48,9 +48,7 @@ class Module extends ContentContainerModule
      */
     public function getContentContainerTypes()
     {
-        return [
-            Space::class,
-        ];
+        return [Space::class];
     }
 
     /**

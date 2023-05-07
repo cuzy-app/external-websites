@@ -68,6 +68,7 @@ class Page extends ContentActiveRecord implements Searchable
     {
         $field = static::tableName() . '.' . 'other_website_ids';
         return static::find()
+            ->readable()
             ->andWhere([
                 'or',
                 [$field => '[' . $id . ']'],
