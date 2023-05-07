@@ -3,7 +3,7 @@ Changelog
 
 0.40 (May 7, 2023)
 ---------------------
-- Fix: Don't show surveys pending deletion (for the new soft deletion of Humhub 1.14)
+- Fix: Don't show external website pages pending deletion (for the new soft deletion of Humhub 1.14)
 
 0.39 (May 1, 2023)
 --------------------
