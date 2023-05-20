@@ -31,3 +31,12 @@
     font-size: 0.8em;
     min-height: 20px;
 }
+
+/* Comment buttons (attach files and send) bellow the input field */
+#ew-website #ew-page-addons .comment-create-input-group {
+    flex-direction: column;
+}
+#ew-website #ew-page-addons .comment-create-input-group .form-group {
+    margin-bottom: 3px;
+    width: 100%;
+}
