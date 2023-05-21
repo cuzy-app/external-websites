@@ -12,6 +12,7 @@ use humhub\modules\comment\models\Comment as CommentModel;
 use humhub\modules\comment\permissions\CreateComment;
 use humhub\modules\comment\widgets\Form;
 use humhub\modules\externalWebsites\models\Page;
+use humhub\modules\file\handler\FileHandlerCollection;
 use Yii;
 
 
@@ -66,6 +67,7 @@ class FirstCommentForm extends Form
             'websiteId' => $this->websiteId,
             'pageUrl' => $this->pageUrl,
             'title' => $this->title,
+            'fileHandlers' => FileHandlerCollection::getByType([FileHandlerCollection::TYPE_IMPORT, FileHandlerCollection::TYPE_CREATE]),
         ]);
     }
 

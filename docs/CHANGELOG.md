@@ -1,6 +1,10 @@
 Changelog
 =========
 
+0.41 (May 21, 2023)
+---------------------
+- Fix: First comment buttons for Humhub 1.14
+
 0.40 (May 7, 2023)
 ---------------------
 - Fix: Don't show external website pages pending deletion (for the new soft deletion of Humhub 1.14)
