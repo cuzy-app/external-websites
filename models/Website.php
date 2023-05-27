@@ -10,10 +10,12 @@ namespace humhub\modules\externalWebsites\models;
 
 use humhub\components\ActiveRecord;
 use humhub\modules\comment\models\Comment;
+use humhub\modules\content\models\Content;
 use humhub\modules\like\models\Like;
 use humhub\modules\space\models\Space;
 use Throwable;
 use Yii;
+use yii\db\ActiveQuery;
 use yii\db\StaleObjectException;
 use yii\helpers\Json;
 
@@ -95,11 +97,15 @@ class Website extends ActiveRecord
         ];
     }
 
-
+    /**
+     * @return ActiveQuery
+     */
     public function getPages()
     {
         return $this
-            ->hasMany(Page::class, ['website_id' => 'id']);
+            ->hasMany(Page::class, ['website_id' => 'id'])
+            ->joinWith('content')
+            ->andWhere(['OR', ['content.state' => Content::STATE_PUBLISHED]]);
     }
 
     public function getSpace()
