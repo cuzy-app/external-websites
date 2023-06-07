@@ -4,7 +4,7 @@
 }
 
 /* Force comments to go to bottom if screen width is < 1250px */
-@media (max-width:1250px) {
+@media (max-width: 1250px) {
     #ew-website .layout-sidebar-container, #ew-website .layout-content-container {
         float: none;
         width: 100%;
@@ -17,10 +17,12 @@
     height: calc(100vh - 150px);
     border: none;
 }
+
 #ew-website a.like:before {
     font-family: FontAwesome;
     content: "\f164";
 }
+
 #ew-website a.permalink:before {
     font-family: FontAwesome;
     content: "\f0c1";
@@ -36,7 +38,13 @@
 #ew-website #ew-page-addons .comment-create-input-group {
     flex-direction: column;
 }
+
 #ew-website #ew-page-addons .comment-create-input-group .form-group {
     margin-bottom: 3px;
     width: 100%;
+}
+
+#ew-breadcrumb .breadcrumb {
+    padding: 0;
+    margin-bottom: 0;
 }

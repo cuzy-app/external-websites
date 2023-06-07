@@ -33,18 +33,22 @@ $website = $context->website;
 <div id="ew-space-full-screen-layout" class="container space-layout-container">
     <div class="row">
         <div class="col-md-12">
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item">
-                        <?= Icon::get('home') ?>
-                        <a href="<?= $space->createUrl() ?>"><?= Html::encode($space->name) ?></a>
-                    </li>
-                    <li class="breadcrumb-item active" aria-current="page">
-                        <?= Icon::get($website->icon) ?>
-                        <span><?= Html::encode($website->title) ?></span>
-                    </li>
-                </ol>
-            </nav>
+            <div id="ew-breadcrumb" class="panel panel-default">
+                <div class="panel-body">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <?= Icon::get('home') ?>
+                                <a href="<?= $space->createUrl() ?>"><?= Html::encode($space->name) ?></a>
+                            </li>
+                            <li class="breadcrumb-item active" aria-current="page">
+                                <?= Icon::get($website->icon) ?>
+                                <span><?= Html::encode($website->title) ?></span>
+                            </li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
         </div>
     </div>
     <div class="row space-content">
