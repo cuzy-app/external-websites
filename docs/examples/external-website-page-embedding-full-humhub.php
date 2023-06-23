@@ -2,7 +2,10 @@
 /**
  * Enter your params here
  */
+
 // Humhub URL
+use humhub\libs\Html;
+
 $humhubUrl = 'http://www.my-humhub.tdl/dashboard';
 // JWT token (optional, see docs/README.md "Auto add groups to user")
 $token = '';
@@ -43,7 +46,7 @@ if (!empty($token)) {
 
 <!-- Just before </body> -->
 <script type="text/javascript" src="js/iframeResizer.min.js"></script>
-<script>
+<script <?= Html::nonce() ?>>
     var loadIFrameResize = function () {
         const iframes = iFrameResize({
             log: false,

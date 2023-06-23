@@ -3,6 +3,8 @@
  * Updates the following values to your needs:
  */
 
+use humhub\libs\Html;
+
 /** @var string $humhubUrl Humhub URL */
 $humhubUrl = 'https://www.my-humhub.tdl';
 
@@ -44,7 +46,7 @@ $params = [
 
 <!-- Just before </body> -->
 <script type="text/javascript" src="js/iframeResizer.min.js"></script>
-<script>
+<script <?= Html::nonce() ?>>
     var loadIFrameResize = function () {
         const iframes = iFrameResize({
             log: false,

@@ -1,6 +1,10 @@
 Changelog
 =========
 
+0.42 (June 23, 2023)
+---------------------
+- Fix: Added Html::nonce() to script tags for Humhub 1.15 (https://github.com/humhub/documentation/pull/84/files)
+
 0.41 (May 21, 2023)
 ---------------------
 - Fix: First comment buttons for Humhub 1.14
@@ -76,27 +80,22 @@ Changelog
 --------------------
 - Fix: Various fix for websites embeded
 
-
 0.23 (March, 11, 2021)
 --------------------
 - Fix: When a website is embeded in Humhub, in some cases (page refresh mainly) comments could not be loaded (`loadIFrameResizer()` could called before JS assets file was loaded)
-
 
 0.22 (March, 2, 2021)
 --------------------
 - Enh: Added possibility to hide some elements (if the external website is embedded) by adding data attributes in the `<head>` tag. Elements that can be hidden are comments, likes or permalink
 
-
 0.21.1 (January, 21, 2021)
 --------------------
 - Enh: Changed height calculation method with iframeResizer when Humhub addons are embedded in an external website
-
 
 0.21 (December, 17, 2020)
 --------------------
 - Enh: When Humhub space is embedded, added settings to prevent clicking on links making leave the curent space
 - Enh: When Humhub addons are embedded, prevent clicking on links making leave the curent space
-
 
 0.20 (December, 15, 2020)
 --------------------
@@ -114,12 +113,9 @@ Changelog
 - Chg: Changed name of the tables, files, models, controller and view
 - Chg: Changed `FirstCommentForm` widget to new Hummhub 1.7 specifications
 
-
 0.15 (November, 23, 2020)
 --------------------
 - Enh: Moving files to recommanded Humhub module structure: https://docs.humhub.org/docs/develop/modules/
-
-
 
 Previous changelogs:
 --------------------
@@ -133,7 +129,6 @@ First release !
 - Added WallEntry widget
 - Added Title in `Page` and `Url` models
 - **Changed the code for the iframed website**
-
 
 ### Version 0.3
 
