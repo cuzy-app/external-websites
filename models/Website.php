@@ -105,7 +105,7 @@ class Website extends ActiveRecord
         return $this
             ->hasMany(Page::class, ['website_id' => 'id'])
             ->joinWith('content')
-            ->andWhere(['OR', ['content.state' => Content::STATE_PUBLISHED]]);
+            ->andWhere(['content.state' => Content::STATE_PUBLISHED]);
     }
 
     public function getSpace()
@@ -147,7 +147,8 @@ class Website extends ActiveRecord
         }
 
         // Remove this website ID from pages' other_website_ids
-        foreach (Page::findWhereOtherWebsiteId($this->id)->all() as $page) {
+        /** @var Page $page */
+        foreach (Page::findWhereOtherWebsiteId($this->id)->each() as $page) {
             $page->setOtherWebsiteIds(array_diff($page->getOtherWebsiteIds(), [$this->id]));
             $page->save();
         }

@@ -13,7 +13,7 @@ class m210608_145036_remove_fa_from_icon_values extends Migration
      */
     public function safeUp()
     {
-        foreach (Website::find()->all() as $website) {
+        foreach (Website::find()->each() as $website) {
             $website->icon = str_replace('fa-', '', $website->icon);
             $website->save();
         }

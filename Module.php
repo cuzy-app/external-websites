@@ -51,6 +51,15 @@ class Module extends ContentContainerModule
         return [Space::class];
     }
 
+
+    /**
+     * @inheritdoc
+     */
+    public function getContentClasses(): array
+    {
+        return [Page::class];
+    }
+
     /**
      * @inheritdoc
      */
@@ -66,7 +75,7 @@ class Module extends ContentContainerModule
      */
     public function disable()
     {
-        foreach (Page::find()->all() as $page) {
+        foreach (Page::find()->each() as $page) {
             $page->hardDelete();
         }
 
