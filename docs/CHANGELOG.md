@@ -1,6 +1,10 @@
 Changelog
 =========
 
+Unreleased
+---------------------
+- Fix: Sometimes Humhub addons doesn't loads
+
 0.42 (June 23, 2023)
 ---------------------
 - Fix: Added Html::nonce() to script tags for Humhub 1.15 (https://github.com/humhub/documentation/pull/84/files)
