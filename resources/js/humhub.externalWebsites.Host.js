@@ -83,7 +83,7 @@ humhub.module('externalWebsites.Host', function (module, require, $) {
         });
     };
 
-    var updateBrowserUrlAndToggleSidebar = function () {
+    var updateBrowserUrl = function () {
         // Update browser URL
         if (history.pushState) {
             window.history.pushState(null, '', module.config.permalink);
@@ -94,6 +94,6 @@ humhub.module('externalWebsites.Host', function (module, require, $) {
 
     module.export({
         init: init,
-        updateBrowserUrlAndToggleSidebar: updateBrowserUrlAndToggleSidebar
+        updateBrowserUrl: updateBrowserUrl
     });
 });

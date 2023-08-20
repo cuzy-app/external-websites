@@ -90,6 +90,6 @@ else {
     <?php endif; ?>
 
     $(function () {
-        humhub.modules.externalWebsites.Host.updateBrowserUrlAndToggleSidebar();
+        humhub.modules.externalWebsites.Host.updateBrowserUrl();
     });
 </script>
