@@ -75,7 +75,7 @@ class Website extends ActiveRecord
             'remove_from_url_title' => Yii::t('ExternalWebsitesModule.base', 'Text to remove from URL title'),
             'layout' => Yii::t('ExternalWebsitesModule.base', 'Layout'),
             'default_content_visibility' => Yii::t('ExternalWebsitesModule.base', 'Content visibility default value'),
-            'default_content_archived' => Yii::t('ExternalWebsitesModule.base', 'Archive contents when they are created'),
+            'default_content_archived' => Yii::t('ExternalWebsitesModule.base', 'Archive content when they are created'),
             'created_at' => 'Created at',
             'created_by' => Yii::t('ExternalWebsitesModule.base', 'Owner'),
             'updated_at' => 'Updated at',

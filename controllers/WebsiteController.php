@@ -17,7 +17,7 @@ use yii\web\Response;
 
 /**
  * When Humhub is host (if embedded, redirects to external website)
- * Show external website pages in an iframe and pages contents addons beside
+ * Show external website pages in an iframe and pages content addons besides
  * @param $id Website ID
  * @param $title Website title
  * @param $pageId Page ID

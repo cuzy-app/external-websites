@@ -93,7 +93,7 @@ class WebsiteForm extends Model
             'humhub_is_embedded' => Yii::t('ExternalWebsitesModule.base', 'Humhub can be: <br>- Host: external website is embedded and embedded in an iframe<br>- Embedded: external website is host, Humhub addons (comments, like, files, etc.) are embedded in an iframe.<br>See README.md for more informations and usage.'),
             'page_url_params_to_remove' => Yii::t('ExternalWebsitesModule.base', 'Allows to ignore some params in the external website URL to link multiple URLs to a same content if only theses params are different.'),
             'remove_from_url_title' => Yii::t('ExternalWebsitesModule.base', 'The name of the Humhub content associated with each page of the external website corresponds to the page title (HTML title tag). It is possible to delete part of the text of this title.'),
-            'created_by' => Yii::t('ExternalWebsitesModule.base', 'Website owner (related contents for comments will be created with this user)'),
+            'created_by' => Yii::t('ExternalWebsitesModule.base', 'Website owner (related content for comments will be created with this user)'),
         ];
     }
 

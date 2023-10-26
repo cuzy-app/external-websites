@@ -34,7 +34,7 @@
     min-height: 20px;
 }
 
-/* Comment buttons (attach files and send) bellow the input field */
+/* Comment buttons (attach files and send) below the input field */
 #ew-website #ew-page-addons .comment-create-input-group {
     flex-direction: column;
 }

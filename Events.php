@@ -230,7 +230,7 @@ class Events
 
     /**
      * @param $contentContainer
-     * If this space has a setting to redirect contents URLs to an external website, do the redirection
+     * If this space has a setting to redirect content URLs to an external website, do the redirection
      */
     private static function tryRedirectingSpaceContent($contentContainer)
     {

@@ -13,7 +13,7 @@ Uses [iFrame Resizer](https://github.com/davidjbradshaw/iframe-resizer).
 - Add Humhub addons to external website pages; 2 possibilities:
     - external website is embedded in Humhub
     - Humhub addons are embedded in external website
-- Space's contents URL redirected to external website
+- Space's content URL redirected to external website
 - Humhub embedded in an external website
 
 ## Usage
@@ -101,9 +101,9 @@ wget https://github.com/cuzy-app/humhub-modules-external-websites/tree/master/re
 
 [See this code example for the external website to embed full Humhub](https://github.com/cuzy-app/humhub-modules-external-websites/tree/master/docs/examples/external-website-page-embedding-full-humhub.php)
 
-### Space's contents URL redirected to external website
+### Space's content URL redirected to external website
 
-In the space's module settings, it is possible to activate contents redirections to external website (see "Humhub embedded in an external website").
+In the space's module settings, it is possible to activate content redirection to external website (see "Humhub embedded in an external website").
 
 Redirects only if the user arrives directly on the space URL.
 So it is still possible to navigate in the space if already in Humhub (PJax load).
@@ -169,14 +169,14 @@ E.g.: `<head data-external-likes="0">`
 
 It is possible to have several websites of the same external website in the same space. In this case, Humhub addons are shared with the websites and the Humhub addons will be related to the website having the smaller `sort_order`.
 
-#### Archiving contents
+#### Archiving content
 
 If the content related to a page is archived and all comments have been removed, only the permalink will be shown
 
 #### Notifications (following)
 
 For Humhub addons, each content created (if new comment about a website's page) has for creator the website creator. This creator will not follow the content by default.
-But all users that have chosen to receive a notification for all new content will follow these contents.
+But all users that have chosen to receive a notification for all new content will follow this content.
 
 ## Troubleshooting
 
