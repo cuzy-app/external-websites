@@ -1,8 +1,8 @@
 <?php
 /**
  * External Websites
- * @link https://github.com/cuzy-app/humhub-modules-external-websites
- * @license https://github.com/cuzy-app/humhub-modules-external-websites/blob/master/docs/LICENSE.md
+ * @link https://github.com/cuzy-app/external-websites
+ * @license https://github.com/cuzy-app/external-websites/blob/master/docs/LICENSE.md
  * @author [Marc FARRE](https://marc.fun)
  */
 

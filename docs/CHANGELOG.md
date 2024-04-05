@@ -4,6 +4,7 @@ Changelog
 Unreleased
 ---------------------
 - Fix: Sometimes Humhub addons doesn't loads
+- Chg: Repository URL from https://github.com/cuzy-app/humhub-modules-external-websites to https://github.com/cuzy-app/external-websites
 
 0.42 (June 23, 2023)
 ---------------------
