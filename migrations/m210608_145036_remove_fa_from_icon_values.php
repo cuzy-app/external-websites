@@ -1,7 +1,7 @@
 <?php
 
 use humhub\modules\externalWebsites\models\Website;
-use yii\db\Migration;
+use humhub\components\Migration;
 
 /**
  * Class m210608_145036_remove_fa_from_icon_values

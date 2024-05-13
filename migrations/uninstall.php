@@ -1,14 +1,14 @@
 <?php
 
-use yii\db\Migration;
+use humhub\components\Migration;
 
 class uninstall extends Migration
 {
 
     public function up()
     {
-        $this->dropTable('external_websites_website');
-        $this->dropTable('external_websites_website_page');
+        $this->safeDropTable('external_websites_website');
+        $this->safeDropTable('external_websites_website_page');
     }
 
     public function down()

@@ -1,6 +1,6 @@
 <?php
 
-use yii\db\Migration;
+use humhub\components\Migration;
 
 /**
  * Class m200212_175551_initial
@@ -12,7 +12,7 @@ class m200212_175551_initial extends Migration
      */
     public function safeUp()
     {
-        $this->createTable('external_websites_website', [
+        $this->safeCreateTable('external_websites_website', [
             'id' => $this->primaryKey(),
             'space_id' => $this->integer(11)->notNull(),
             'title' => $this->string(255),
@@ -30,7 +30,7 @@ class m200212_175551_initial extends Migration
             'updated_at' => $this->dateTime(),
             'updated_by' => $this->integer(11),
         ], '');
-        $this->createTable('external_websites_website_page', [
+        $this->safeCreateTable('external_websites_website_page', [
             'id' => $this->primaryKey(),
             'title' => $this->string(255),
             'page_url' => $this->text(),
@@ -51,20 +51,4 @@ class m200212_175551_initial extends Migration
 
         return false;
     }
-
-
-    /*
-    // Use up()/down() to run migration code without a transaction.
-    public function up()
-    {
-
-    }
-
-    public function down()
-    {
-        echo "m200212_175551_initial cannot be reverted.\n";
-
-        return false;
-    }
-    */
 }
