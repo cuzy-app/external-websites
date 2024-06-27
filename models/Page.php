@@ -11,8 +11,6 @@ namespace humhub\modules\externalWebsites\models;
 use humhub\modules\content\components\ActiveQueryContent;
 use humhub\modules\content\components\ContentActiveRecord;
 use humhub\modules\externalWebsites\widgets\WallEntry;
-use humhub\modules\search\events\SearchAddEvent;
-use humhub\modules\search\interfaces\Searchable;
 use humhub\modules\user\models\User;
 use Yii;
 use yii\helpers\Json;
@@ -35,7 +33,7 @@ use yii\helpers\Json;
  *
  * @property Website $website
  */
-class Page extends ContentActiveRecord implements Searchable
+class Page extends ContentActiveRecord
 {
     public $moduleId = 'external-websites';
 
@@ -174,32 +172,12 @@ class Page extends ContentActiveRecord implements Searchable
      */
     public function getSearchAttributes()
     {
-        $space = $this->content->container;
-
-        $attributes = [
+        return [
             'message' => $this->website->title,
             // url comment because make solr crash
             // 'page_url' => $space->createUrl('/external-websites/page?title='.urlencode($this->website->title).'&pageId='.$this->id),
             'user' => $this->getPostAuthorName()
         ];
-
-        $this->trigger(self::EVENT_SEARCH_ADD, new SearchAddEvent($attributes));
-
-        return $attributes;
-    }
-
-    /**
-     * @return string
-     */
-    private function getPostAuthorName()
-    {
-        $user = User::findOne(['id' => $this->created_by]);
-
-        if ($user !== null && $user->isActive()) {
-            return $user->getDisplayName();
-        }
-
-        return '';
     }
 
     public function getIcon()
@@ -269,5 +247,19 @@ class Page extends ContentActiveRecord implements Searchable
                 }
             }
         }
+    }
+
+    /**
+     * @return string
+     */
+    private function getPostAuthorName()
+    {
+        $user = User::findOne(['id' => $this->created_by]);
+
+        if ($user !== null && $user->isActive()) {
+            return $user->getDisplayName();
+        }
+
+        return '';
     }
 }

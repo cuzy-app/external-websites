@@ -5,9 +5,9 @@
   "keywords": [
     "external websites iframe"
   ],
-  "version": "0.42",
+  "version": "0.43",
   "humhub": {
-    "minVersion": "1.14"
+    "minVersion": "1.16"
   },
   "homepage": "https://github.com/cuzy-app/external-websites",
   "authors": [
