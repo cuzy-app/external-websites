@@ -5,7 +5,7 @@
 
 use humhub\libs\Html;
 
-/** @var string $humhubUrl Humhub URL */
+/** @var string $humhubUrl HumHub URL */
 $humhubUrl = 'https://www.my-humhub.tdl';
 
 /** @var string $spaceUrl Space URL (In space management, "advanced" tab) */
@@ -13,7 +13,7 @@ $spaceUrl = 'my-space';
 
 /** @var array $params */
 $params = [
-    'websiteId' => 1, // integer - Humhub Website ID (get this value from the "Websites management" page)
+    'websiteId' => 1, // integer - HumHub Website ID (get this value from the "Websites management" page)
     'pageTitle' => 'Page title', // string - This page title (usually the value in the <title> tag)
     'pageUrl' => (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]", // string - Auto discover the current page URL
     'token' => '', // string - JWT token (optional, see docs/README.md "Auto add groups to user")

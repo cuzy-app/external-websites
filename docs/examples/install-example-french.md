@@ -165,7 +165,7 @@ Attention à bien remplacer SMTP_PASSWORD et SSO_SECRET avec les bonnes valeurs.
         * sélectionner pour Webspace : hameaux-legers.org
         * mettre pour Command : `/opt/plesk/php/7.4/bin/php /var/www/vhosts/hameaux-legers.org/communaute.hameaux-legers.org/protected/yii queue/run >/dev/null 2>&1`
         * sélectionner Cron style pour Run puis mettre : \* \* \* \* \*
-        * mettre pour Description : pour les traitements longs d'Humhub (script lancé toutes les minutes)
+        * mettre pour Description : pour les traitements longs d'HumHub (script lancé toutes les minutes)
         * sélectionner pour Notify : Do not notify et Valider
     * puis créer une 2ème Task avec les mêmes champs excepté :
         * mettre pour Command : `/opt/plesk/php/7.4/bin/php /var/www/vhosts/hameaux-legers.org/communaute.hameaux-legers.org/protected/yii cron/run >/dev/null 2>&1`
@@ -178,7 +178,7 @@ Attention à bien remplacer SMTP_PASSWORD et SSO_SECRET avec les bonnes valeurs.
             * mettre pour Mot de passe : le mot de passe rentré lors de la création de l'utilisateur (cf plus haut)
             * mettre pour Nom de la base de données : humhub et cliquer sur Suivant
         * mettre pour Nom de votre réseau : Hameaux Légers et cliquer sur Suivant
-        * sélectionner pour Je veux utiliser Humhub pour : Ma communauté
+        * sélectionner pour Je veux utiliser HumHub pour : Ma communauté
         * pour les paramètres de sécurité :
             * cocher : Les utilisateurs externes peuvent s'inscrire
             * décocher : Les nouveaux utilisateurs inscrits doivent être préalablement activés par un administrateur
@@ -294,7 +294,7 @@ return [
 
 Penser à modifier SSO_SECRET avec les bonnes valeurs.
 
-* retourner sur Humhub avec le compte admin temporaire puis cliquer sur l'image de profil en haut à droite / Administration / Modules
+* retourner sur HumHub avec le compte admin temporaire puis cliquer sur l'image de profil en haut à droite / Administration / Modules
 * cliquer sur le lien Activer au niveau du module Keycload Sign-In
 
 *Tips* : en cas de mauvaise manip, désactiver le module avec la commande `/opt/plesk/php/7.4/bin/php /var/www/vhosts/hameaux-legers.org/communaute.hameaux-legers.org/protected/yii module/disable auth-keycloak` (remplacer auth-keycload par le module voulu)
@@ -336,7 +336,7 @@ permet d'intégrer les commmentaires humhub dans yeswiki et inversement (possibi
     * dans l'espace du MOOC, cliquer sur roue crantée / Sécurité puis l'onglet Permissions. Au niveau de la ligne Inviter des utilisateurs, sélectionner Interdire
     * aller dans roue crantée / Gérer les sites web externes et les paramètres et cliquer sur Ajouter un site web
         * mettre dans Titre : MOOC
-        * sélectionner pour Humhub est intégré : Oui
+        * sélectionner pour HumHub est intégré : Oui
         * mettre dans URL de la première page du site Web : https://mooc.hameaux-legers.org
         * mettre dans Afficher dans le menu de l'espace : Oui
         * et cliquer sur Ajouter ce site web

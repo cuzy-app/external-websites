@@ -27,7 +27,7 @@ use yii\bootstrap\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'urlToRedirect')->textInput(['placeholder' => 'https://www.my-external-website.tdl']) ?>
+    <?= $form->field($model, 'urlToRedirect')->textInput(['placeholder' => 'https://www.my-external-website.tdl', 'autofocus' => '']) ?>
     <?= $form->field($model, 'preventLeavingSpace')->checkbox() ?>
 
     <br>

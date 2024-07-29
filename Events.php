@@ -90,7 +90,7 @@ class Events
             'title' => Yii::t('ExternalWebsitesModule.base', 'Filter'),
             'sortOrder' => 300
         ],
-            (defined('\humhub\modules\stream\widgets\WallStreamFilterNavigation::PANEL_COLUMN_2') ? WallStreamFilterNavigation::PANEL_COLUMN_2 : WallStreamFilterNavigation::PANEL_POSITION_CENTER) // TODO: when module compatibility minimal Humhub version is 1.12, keep only static::PANEL_COLUMN_2
+            (defined('\humhub\modules\stream\widgets\WallStreamFilterNavigation::PANEL_COLUMN_2') ? WallStreamFilterNavigation::PANEL_COLUMN_2 : WallStreamFilterNavigation::PANEL_POSITION_CENTER) // TODO: when module compatibility minimal HumHub version is 1.12, keep only static::PANEL_COLUMN_2
         );
 
         // Get pages
@@ -189,6 +189,15 @@ class Events
         }
     }
 
+    public static function onContentContainerControllerBeforeAction($event)
+    {
+        // If the current container is a space, try redirecting space content
+        $contentContainer = $event->sender->contentContainer;
+        if ($contentContainer !== null && $contentContainer instanceof Space) {
+            self::tryRedirectingSpaceContent($contentContainer);
+        }
+    }
+
     /**
      * @param $token HS512 JWT token
      * @throws HttpException
@@ -216,15 +225,6 @@ class Events
             } catch (Exception $e) {
                 throw new HttpException(401, $e->getMessage());
             }
-        }
-    }
-
-    public static function onContentContainerControllerBeforeAction($event)
-    {
-        // If the current container is a space, try redirecting space content
-        $contentContainer = $event->sender->contentContainer;
-        if ($contentContainer !== null && $contentContainer instanceof Space) {
-            self::tryRedirectingSpaceContent($contentContainer);
         }
     }
 

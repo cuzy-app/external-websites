@@ -11,7 +11,7 @@ namespace humhub\modules\externalWebsites\widgets;
 use humhub\components\Widget;
 
 /**
- * Adds a class to the html tag to know if Humhub is in an iframe or not
+ * Adds a class to the html tag to know if HumHub is in an iframe or not
  * This widget is called at the beginning of the body
  * Do not replace this widget with an JS asset as assets load after all HTML has rendered
  */

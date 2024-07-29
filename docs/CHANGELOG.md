@@ -3,28 +3,28 @@ Changelog
 
 0.43 (June 27, 2024)
 ---------------------
-- Fix: Sometimes Humhub addons doesn't loads
+- Fix: Sometimes HumHub addons doesn't loads
 - Chg: Repository URL from https://github.com/cuzy-app/humhub-modules-external-websites to https://github.com/cuzy-app/external-websites
 - Chg: The minimum HumHub version is now 1.16
 
 0.42 (June 23, 2023)
 ---------------------
-- Fix: Added Html::nonce() to script tags for Humhub 1.15 (https://github.com/humhub/documentation/pull/84/files)
+- Fix: Added Html::nonce() to script tags for HumHub 1.15 (https://github.com/humhub/documentation/pull/84/files)
 
 0.41 (May 21, 2023)
 ---------------------
-- Fix: First comment buttons for Humhub 1.14
+- Fix: First comment buttons for HumHub 1.14
 
 0.40 (May 7, 2023)
 ---------------------
-- Fix: Don't show external website pages pending deletion (for the new soft deletion of Humhub 1.14)
+- Fix: Don't show external website pages pending deletion (for the new soft deletion of HumHub 1.14)
 
 0.39 (May 1, 2023)
 --------------------
-- Enh: Removed Humhub auto-login with Keycloak (as removed in Keycloak module v1.3.0)
+- Enh: Removed HumHub auto-login with Keycloak (as removed in Keycloak module v1.3.0)
 - Fix #1: Links to module documentation not work.
-- Fix: Hard delete records on disable module (for Humhub 1.14)
-- Chg: Minimum Humhub version is now 1.14
+- Fix: Hard delete records on disable module (for HumHub 1.14)
+- Chg: Minimum HumHub version is now 1.14
 
 0.38 (March 27, 2023)
 --------------------
@@ -36,7 +36,7 @@ Changelog
 
 0.36 (November 20, 2022)
 --------------------
-- Enh: Compatibility with Humhub 1.13
+- Enh: Compatibility with HumHub 1.13
 
 0.35 (March 3, 2022)
 --------------------
@@ -64,15 +64,15 @@ Changelog
 
 0.29 (August 17, 2021)
 --------------------
-- Enh: If Humhub is embedded, possibility to hide some elements
+- Enh: If HumHub is embedded, possibility to hide some elements
 
 0.28 (June 8, 2021)
 --------------------
-- Enh: The icon selector widget has been replaced with the Humhub's native one (requires a database migration)
+- Enh: The icon selector widget has been replaced with the HumHub's native one (requires a database migration)
 
 0.27 (May, 31, 2021)
 --------------------
-- Enh: To show a website embedded in Humhub, it is now possible to specify in the URL the title of the website instead of the ID (e.g. `/s/space-name/external-websites/website?title=title%20of%20the%20webiste&pageId=1`)
+- Enh: To show a website embedded in HumHub, it is now possible to specify in the URL the title of the website instead of the ID (e.g. `/s/space-name/external-websites/website?title=title%20of%20the%20webiste&pageId=1`)
 
 0.26 (April, 26, 2021)
 --------------------
@@ -88,7 +88,7 @@ Changelog
 
 0.23 (March, 11, 2021)
 --------------------
-- Fix: When a website is embeded in Humhub, in some cases (page refresh mainly) comments could not be loaded (`loadIFrameResizer()` could called before JS assets file was loaded)
+- Fix: When a website is embeded in HumHub, in some cases (page refresh mainly) comments could not be loaded (`loadIFrameResizer()` could called before JS assets file was loaded)
 
 0.22 (March, 2, 2021)
 --------------------
@@ -96,32 +96,32 @@ Changelog
 
 0.21.1 (January, 21, 2021)
 --------------------
-- Enh: Changed height calculation method with iframeResizer when Humhub addons are embedded in an external website
+- Enh: Changed height calculation method with iframeResizer when HumHub addons are embedded in an external website
 
 0.21 (December, 17, 2020)
 --------------------
-- Enh: When Humhub space is embedded, added settings to prevent clicking on links making leave the curent space
-- Enh: When Humhub addons are embedded, prevent clicking on links making leave the curent space
+- Enh: When HumHub space is embedded, added settings to prevent clicking on links making leave the curent space
+- Enh: When HumHub addons are embedded, prevent clicking on links making leave the curent space
 
 0.20 (December, 15, 2020)
 --------------------
 - Chg: Module renamed (iframe -> external-websites)
 - Enh: Added websites management interface (add, edit, delete)
   Enh: Added space settings to redirect contents to an external website
-- Enh: It is now possible to embed Humhub addons in the external website (Humhub is embedded)
-  Enh: If full Humhub is embeded, possibility to add iframeResizer plugin so that the external website can auto resize iframe window
+- Enh: It is now possible to embed HumHub addons in the external website (HumHub is embedded)
+  Enh: If full HumHub is embeded, possibility to add iframeResizer plugin so that the external website can auto resize iframe window
 - Enh: Guest mode: Added auto login with SSO
 - Enh: If the content related to a page is archived and all comments have been removed, only the permalink will be shown
-- Enh: Wall entry updated for Humhub 1.7
+- Enh: Wall entry updated for HumHub 1.7
 - Enh: Documentation on module usage in `docs/README.md`
 - Enh: Possibility to auto add groups to the current user via an JWT token
-- Chg: Script in the external website if embedded Humhub: `url` is now `pageUrl` and `title` is now `pageTitle`
+- Chg: Script in the external website if embedded HumHub: `url` is now `pageUrl` and `title` is now `pageTitle`
 - Chg: Changed name of the tables, files, models, controller and view
 - Chg: Changed `FirstCommentForm` widget to new Hummhub 1.7 specifications
 
 0.15 (November, 23, 2020)
 --------------------
-- Enh: Moving files to recommanded Humhub module structure: https://docs.humhub.org/docs/develop/modules/
+- Enh: Moving files to recommanded HumHub module structure: https://docs.humhub.org/docs/develop/modules/
 
 Previous changelogs:
 --------------------
@@ -156,7 +156,7 @@ First release !
 
 ### Version 0.5.2
 
-- Added compatibility to Humhub 1.4
+- Added compatibility to HumHub 1.4
 
 ### Version 0.6
 
@@ -183,7 +183,7 @@ First release !
 ### Version 0.8
 
 - Small bug correction in CSS (for large screen)
-- Removed `comments_global_state` and `comments_state` as with the new Humhub 1.4.4 an archived content cannot be commented
+- Removed `comments_global_state` and `comments_state` as with the new HumHub 1.4.4 an archived content cannot be commented
 - Added `archived` param in `iframe_container_page`
 - Deleted `iframe_page` and `iframe_url` tables and models as unused
 
@@ -205,7 +205,7 @@ First release !
 
 ### Version 0.8.5
 
-- Update for Humhub 1.5 - changed minimum compatibility to Humhub 1.5
+- Update for HumHub 1.5 - changed minimum compatibility to HumHub 1.5
 
 ### Version 0.8.6
 

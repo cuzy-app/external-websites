@@ -29,7 +29,7 @@ use humhub\widgets\ModalDialog;
 ]) ?>
 <div class="modal-body">
     <?php $form = ActiveForm::begin(['acknowledge' => true]); ?>
-    <?= $form->field($model, 'title')->textInput() ?>
+    <?= $form->field($model, 'title')->textInput(['autofocus' => '']) ?>
     <?= $form->field($model, 'icon')->widget(IconPicker::class) ?>
     <?= $form->field($model, 'humhub_is_embedded')->checkbox() ?>
     <?= $form->field($model, 'first_page_url')->textInput() ?>

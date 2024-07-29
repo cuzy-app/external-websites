@@ -12,7 +12,7 @@ use humhub\components\assets\AssetBundle;
 use yii\web\View;
 
 /**
- * Assests when Humhub is embedded in the external website
+ * Assests when HumHub is embedded in the external website
  */
 class EmbeddedAssets extends AssetBundle
 {

@@ -16,7 +16,7 @@ use yii\web\Response;
 
 
 /**
- * When Humhub is host (if embedded, redirects to external website)
+ * When HumHub is host (if embedded, redirects to external website)
  * Show external website pages in an iframe and pages content addons besides
  * @param $id Website ID
  * @param $title Website title
@@ -69,7 +69,7 @@ class WebsiteController extends ContentContainerController
             $pageUrl = $website->first_page_url;
         }
 
-        // If Humhub is embedded, redirect to external website
+        // If HumHub is embedded, redirect to external website
         if ($website->humhub_is_embedded) {
             return $this->redirect($pageUrl);
         }

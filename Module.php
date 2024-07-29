@@ -37,7 +37,7 @@ class Module extends ContentContainerModule
 
     /**
      * @var bool
-     * Adds `humhub-is-embedded` class on <html> tag if Humhub is embedded in an iframe
+     * Adds `humhub-is-embedded` class on <html> tag if HumHub is embedded in an iframe
      * Loads iframeResizer plugin for content window
      */
     public $registerAssetsIfHumhubIsEmbedded = false;

@@ -3,7 +3,7 @@
  * Enter your params here
  */
 
-// Humhub URL
+// HumHub URL
 use humhub\libs\Html;
 
 $humhubUrl = 'http://www.my-humhub.tdl/dashboard';
@@ -39,9 +39,9 @@ if (!empty($token)) {
 </head>
 <body>
 
-<h2>My page with Humhub embedded</h2>
+<h2>My page with HumHub embedded</h2>
 
-<!-- Where you want to show Humhub -->
+<!-- Where you want to show HumHub -->
 <iframe id="humhub" src="<?= $humhubUrl ?>" style="min-height: 700px;" onload="loadIFrameResize();"></iframe>
 
 <!-- Just before </body> -->

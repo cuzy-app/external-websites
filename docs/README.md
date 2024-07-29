@@ -4,32 +4,31 @@
 
 ## Overview
 
-Creates a content for each external website page, enabling to have Humhub addons (comments, like, files, permalink) in these pages.
+Creates a content for each external website page, enabling to have HumHub addons (comments, like, files, permalink) in these pages.
 
 Uses [iFrame Resizer](https://github.com/davidjbradshaw/iframe-resizer).
 
 ## Features
 
-- Add Humhub addons to external website pages; 2 possibilities:
-    - external website is embedded in Humhub
-    - Humhub addons are embedded in external website
+- Add HumHub addons to external website pages; 2 possibilities:
+    - external website is embedded in HumHub
+    - HumHub addons are embedded in external website
 - Space's content URL redirected to external website
-- Humhub embedded in an external website
+- HumHub embedded in an external website
 
 ## Usage
 
-### Add Humhub addons to external website pages
+### Add HumHub addons to external website pages
 
-Addons are: comments, like, files and permalink that are attached to a content.
-Here, for each external website page, a content is created when a first comment is posted.
+Addons are: comments, like, files and permalink that are attached to a content. Here, for each external website page, a content is created when a first comment is posted.
 
 The module must be activated in a space. Then, in the space header control menu, you can add some websites.
 
 For each website added, there are 2 possibilities:
 
-#### Embed external website in Humhub
+#### Embed external website in HumHub
 
-**Humhub is host (parent), external website is embedded in Humhub within an iframe.**
+**HumHub is host (parent), external website is embedded in HumHub within an iframe.**
 
 Upload these files on the external website server:
 ```
@@ -47,13 +46,13 @@ Add this code just before `</body>` in all pages :
 
 Edit `for-external-website-embedded-in-humhub.js` to customize the code to your needs.
 
-#### Embed Humhub addons in an external website
+#### Embed HumHub addons in an external website
 
-**Humhub is embedded, external website is host (parent). Humhub addons are in an iframe.**
+**HumHub is embedded, external website is host (parent). HumHub addons are in an iframe.**
 
 You must have something to auto log (and auto register if no account) the user (see below).
 
-Allow Humhub to be embedded in an iframe by adding `frame-ancestors` in the headers: edit `proteced/config/web.php` and in the `modules` section, add:
+Allow HumHub to be embedded in an iframe by adding `frame-ancestors` in the headers: edit `proteced/config/web.php` and in the `modules` section, add:
 ```
         'web' => [
             'security' =>  [
@@ -72,12 +71,11 @@ wget https://github.com/cuzy-app/external-websites/tree/master/resources/js/ifra
 wget https://github.com/cuzy-app/external-websites/tree/master/resources/js/iframeResizer/iframeResizer.map
 ```
 
-[See this code example for the external website to embed Humhub addons](https://github.com/cuzy-app/external-websites/tree/master/docs/examples/external-website-page-embedding-humhub-addons.php)
+[See this code example for the external website to embed HumHub addons](https://github.com/cuzy-app/external-websites/tree/master/docs/examples/external-website-page-embedding-humhub-addons.php)
 
-### Humhub embedded in an external website
+### HumHub embedded in an external website
 
-It is possible to add some specific scripts (javascript) to Humhub if embedded in an iframe.
-In that case, in `proteced/config/common.php` add this parameter:
+It is possible to add some specific scripts (javascript) to HumHub if embedded in an iframe. In that case, in `proteced/config/common.php` add this parameter:
 ```
     'modules' => [
         'external-websites' => [
@@ -87,8 +85,8 @@ In that case, in `proteced/config/common.php` add this parameter:
 ```
 
 This will add 2 scripts:
-- To add a class to the html tag to know if Humhub is in an iframe or not
-- iframeResizer.contentWindow.js file enabling to the external website to resize the iframe containing Humhub (see https://github.com/davidjbradshaw/iframe-resizer)
+- To add a class to the html tag to know if HumHub is in an iframe or not
+- iframeResizer.contentWindow.js file enabling to the external website to resize the iframe containing HumHub (see https://github.com/davidjbradshaw/iframe-resizer)
 
 On the external website:
 
@@ -99,16 +97,15 @@ wget https://github.com/cuzy-app/external-websites/tree/master/resources/js/ifra
 wget https://github.com/cuzy-app/external-websites/tree/master/resources/js/iframeResizer/iframeResizer.map
 ```
 
-[See this code example for the external website to embed full Humhub](https://github.com/cuzy-app/external-websites/tree/master/docs/examples/external-website-page-embedding-full-humhub.php)
+[See this code example for the external website to embed full HumHub](https://github.com/cuzy-app/external-websites/tree/master/docs/examples/external-website-page-embedding-full-humhub.php)
 
 ### Space's content URL redirected to external website
 
-In the space's module settings, it is possible to activate content redirection to external website (see "Humhub embedded in an external website").
+In the space's module settings, it is possible to activate content redirection to external website (see "HumHub embedded in an external website").
 
-Redirects only if the user arrives directly on the space URL.
-So it is still possible to navigate in the space if already in Humhub (PJax load).
+Redirects only if the user arrives directly on the space URL. So it is still possible to navigate in the space if already in HumHub (PJax load).
 
-Redirection URL for the settings: {humhubUrl} will be replaced with the Humhub's source URL.
+Redirection URL for the settings: {humhubUrl} will be replaced with the HumHub's source URL.
 
 E.g https://www.my-external-website.tdl?humhubUrl={humhubUrl} value will redirect https://wwww.my-humhub.tdl/s/space-name/xxx to https://www.my-external-website.tdl?humhubUrl=https://wwww.my-humhub.tdl/s/space-name/xxx
 
@@ -116,7 +113,7 @@ E.g https://www.my-external-website.tdl?humhubUrl={humhubUrl} value will redirec
 
 ### Auto add groups to user
 
-If Humhub is embedded, it is possible to ask Humhub to add groups to the current user.
+If HumHub is embedded, it is possible to ask HumHub to add groups to the current user.
 
 In that case, you must add a HS512 secret key in `proteced/config/common.php` (any 84 characters string):
 ```
@@ -150,7 +147,7 @@ token=your-encoded-token
 
 It is possible to hide some elements.
 
-#### If Humhub is embedded in an external website
+#### If HumHub is embedded in an external website
 
 By adding params in the URL (`showComments`, `showLikes` and `showPermalink`). [See this code example](https://github.com/cuzy-app/external-websites/tree/master/docs/examples/external-website-page-embedding-humhub-addons.php)
 
@@ -167,7 +164,7 @@ E.g.: `<head data-external-likes="0">`
 
 #### If multiple websites in the same space
 
-It is possible to have several websites of the same external website in the same space. In this case, Humhub addons are shared with the websites and the Humhub addons will be related to the website having the smaller `sort_order`.
+It is possible to have several websites of the same external website in the same space. In this case, HumHub addons are shared with the websites and the HumHub addons will be related to the website having the smaller `sort_order`.
 
 #### Archiving content
 
@@ -175,8 +172,7 @@ If the content related to a page is archived and all comments have been removed,
 
 #### Notifications (following)
 
-For Humhub addons, each content created (if new comment about a website's page) has for creator the website creator. This creator will not follow the content by default.
-But all users that have chosen to receive a notification for all new content will follow this content.
+For HumHub addons, each content created (if new comment about a website's page) has for creator the website creator. This creator will not follow the content by default. But all users that have chosen to receive a notification for all new content will follow this content.
 
 ## Troubleshooting
 

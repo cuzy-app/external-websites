@@ -28,13 +28,13 @@ use humhub\modules\ui\icon\widgets\Icon;
  * @var $humhubIsEmbedded integer (0 or 1)
  */
 
-// If Humhub is host
+// If HumHub is host
 if (!$humhubIsEmbedded) {
     $this->registerJsConfig('externalWebsites.Host', [
         'hideSidebar' => $website->layout === Website::LAYOUT_MENU_COLLAPSED,
         'permalink' => $permalink,
     ]);
-} // If Humhub is embedded
+} // If HumHub is embedded
 else {
     EmbeddedAssets::register($this);
 }

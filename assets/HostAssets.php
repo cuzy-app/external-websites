@@ -11,7 +11,7 @@ namespace humhub\modules\externalWebsites\assets;
 use humhub\components\assets\AssetBundle;
 
 /**
- * Assests when external website is embedded in Humhub
+ * Assests when external website is embedded in HumHub
  */
 class HostAssets extends AssetBundle
 {

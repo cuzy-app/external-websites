@@ -20,7 +20,7 @@ use yii\web\HttpException;
 
 
 /**
- * Called by ajax (if Humhub is host) or iframe (if Humhub is embedded)
+ * Called by ajax (if HumHub is host) or iframe (if HumHub is embedded)
  */
 class PageController extends ContentContainerController
 {
@@ -37,8 +37,8 @@ class PageController extends ContentContainerController
 
 
     /**
-     * Called by ajax (if Humhub is host) or iframe (if Humhub is embedded)
-     * If Humhub is embedded, see README.md for complete URL to provide in the iframe scr
+     * Called by ajax (if HumHub is host) or iframe (if HumHub is embedded)
+     * If HumHub is embedded, see README.md for complete URL to provide in the iframe scr
      * All params are optional, but we need a least either $id or ($websiteId and $pageUrl)
      * @param $id int Page ID (1)
      * @param $websiteId int Website ID (1)
@@ -164,12 +164,12 @@ class PageController extends ContentContainerController
             'humhubIsEmbedded' => $website->humhub_is_embedded,
         ];
 
-        // Render for ajax (Humhub is host)
+        // Render for ajax (HumHub is host)
         if (!$website->humhub_is_embedded) {
             return $this->renderAjax('index', $viewParams);
         }
 
-        // Render for iframe (Humhub is embedded)
+        // Render for iframe (HumHub is embedded)
         $this->layout = '@external-websites/views/layouts/iframe';
         $this->subLayout = '@external-websites/views/page/_layoutForIframe';
         return $this->render('index', $viewParams);

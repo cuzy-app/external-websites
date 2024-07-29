@@ -155,7 +155,7 @@ class Page extends ContentActiveRecord
 
     public function getUrl()
     {
-        // If Humhub is host
+        // If HumHub is host
         if (!$this->website->humhub_is_embedded) {
             return $this->website->space->createUrl('/external-websites/website', [
                 'id' => $this->website->id,
@@ -163,7 +163,7 @@ class Page extends ContentActiveRecord
             ]);
         }
 
-        // If Humhub is embedded
+        // If HumHub is embedded
         return $this->page_url;
     }
 
