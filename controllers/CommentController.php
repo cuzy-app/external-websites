@@ -16,7 +16,6 @@ use humhub\modules\space\models\Space;
 use Yii;
 use yii\web\HttpException;
 
-
 /**
  * CommentController enables to create the content if not exists
  * Called by form in `external-websites\widgets\views\firstCommentForm.php`
@@ -24,7 +23,6 @@ use yii\web\HttpException;
  */
 class CommentController extends ParentCommentController
 {
-
     /**
      * @inheritDoc
      * Overwrites beforeAction() of the parent class

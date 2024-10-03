@@ -15,7 +15,6 @@ use humhub\modules\user\models\User;
 use Yii;
 use yii\helpers\Json;
 
-
 /**
  * Contents corresponding to the pages of the website to which we want to add addons (comments, like, files, etc.)
  * For each page of the website, when a first comment is posted, a content is created
@@ -47,7 +46,7 @@ class Page extends ContentActiveRecord
     public $canMove = false;
 
     /**
-     * @var boolean should the originator automatically follows this content when saved.
+     * @var bool should the originator automatically follows this content when saved.
      */
     public $autoFollow = true;
 
@@ -176,7 +175,7 @@ class Page extends ContentActiveRecord
             'message' => $this->website->title,
             // url comment because make solr crash
             // 'page_url' => $space->createUrl('/external-websites/page?title='.urlencode($this->website->title).'&pageId='.$this->id),
-            'user' => $this->getPostAuthorName()
+            'user' => $this->getPostAuthorName(),
         ];
     }
 

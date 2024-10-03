@@ -14,7 +14,6 @@ use humhub\modules\user\models\User;
 use Yii;
 use yii\base\Model;
 
-
 class WebsiteForm extends Model
 {
     public $id;
@@ -100,13 +99,13 @@ class WebsiteForm extends Model
     /**
      * Saves the current model values
      *
-     * @return boolean success
+     * @return bool success
      */
     public function save()
     {
         // If add
         if ($this->id === null) {
-            $website = new Website;
+            $website = new Website();
             $website->space_id = $this->space_id;
         } // If update
         else {

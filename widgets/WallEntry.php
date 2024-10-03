@@ -10,7 +10,6 @@ namespace humhub\modules\externalWebsites\widgets;
 
 use humhub\modules\content\widgets\stream\WallStreamModuleEntryWidget;
 
-
 /**
  * WallStreamEntryWidget is used to display page content addons inside the stream.
  */
@@ -19,7 +18,7 @@ class WallEntry extends WallStreamModuleEntryWidget
     public function init()
     {
         parent::init();
-//        $this->renderOptions->enableSubHeadlineAuthor = false;
+        //        $this->renderOptions->enableSubHeadlineAuthor = false;
     }
 
     public function renderContent()

@@ -18,7 +18,6 @@ use yii\base\Exception;
 use yii\helpers\BaseStringHelper;
 use yii\web\HttpException;
 
-
 /**
  * Called by ajax (if HumHub is host) or iframe (if HumHub is embedded)
  */
@@ -30,7 +29,7 @@ class PageController extends ContentContainerController
             'stream' => [
                 'class' => ContentContainerStream::class,
                 'includes' => Page::class,
-                'contentContainer' => $this->contentContainer
+                'contentContainer' => $this->contentContainer,
             ],
         ];
     }
@@ -133,7 +132,7 @@ class PageController extends ContentContainerController
                         'id' => $website->id,
                         'pageUrl' => $pageUrl,
                     ],
-                    true
+                    true,
                 );
             }
         } else {

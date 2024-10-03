@@ -26,11 +26,10 @@ use Yii;
 use yii\helpers\Url;
 use yii\web\HttpException;
 
-
 class Events
 {
-    const FILTER_BLOCK_EXTERNAL_WEBSITE = 'external-websites';
-    const FILTER_EXTERNAL_WEBSITE = 'external-websites';
+    public const FILTER_BLOCK_EXTERNAL_WEBSITE = 'external-websites';
+    public const FILTER_EXTERNAL_WEBSITE = 'external-websites';
 
 
     public static function onSpaceMenuInit($event)
@@ -86,11 +85,12 @@ class Events
 
         // Add a new filter block to the last filter panel
         $wallFilterNavigation->addFilterBlock(
-            self::FILTER_BLOCK_EXTERNAL_WEBSITE, [
-            'title' => Yii::t('ExternalWebsitesModule.base', 'Filter'),
-            'sortOrder' => 300
-        ],
-            (defined('\humhub\modules\stream\widgets\WallStreamFilterNavigation::PANEL_COLUMN_2') ? WallStreamFilterNavigation::PANEL_COLUMN_2 : WallStreamFilterNavigation::PANEL_POSITION_CENTER) // TODO: when module compatibility minimal HumHub version is 1.12, keep only static::PANEL_COLUMN_2
+            self::FILTER_BLOCK_EXTERNAL_WEBSITE,
+            [
+                'title' => Yii::t('ExternalWebsitesModule.base', 'Filter'),
+                'sortOrder' => 300,
+            ],
+            (defined('\humhub\modules\stream\widgets\WallStreamFilterNavigation::PANEL_COLUMN_2') ? WallStreamFilterNavigation::PANEL_COLUMN_2 : WallStreamFilterNavigation::PANEL_POSITION_CENTER), // TODO: when module compatibility minimal HumHub version is 1.12, keep only static::PANEL_COLUMN_2
         );
 
         // Get pages
@@ -110,11 +110,11 @@ class Events
                     'title' => Yii::t(
                         'ExternalWebsitesModule.base',
                         '{title}: show comments',
-                        ['{title}' => $website->title]
+                        ['{title}' => $website->title],
                     ),
                     'sortOrder' => $sortOrder,
                 ],
-                self::FILTER_BLOCK_EXTERNAL_WEBSITE
+                self::FILTER_BLOCK_EXTERNAL_WEBSITE,
             );
         }
     }
@@ -241,7 +241,7 @@ class Events
             $urlToRedirect = str_replace('{humhubUrl}', urlencode(Url::current([], true)), $urlToRedirect);
         }
 
-        $preventLeavingSpace = $settings->get('preventLeavingSpace', (new SpaceSettingsForm)->preventLeavingSpace);
+        $preventLeavingSpace = $settings->get('preventLeavingSpace', (new SpaceSettingsForm())->preventLeavingSpace);
 
         if (!empty($urlToRedirect) || $preventLeavingSpace) {
             SpaceSettingsAssets::register(Yii::$app->view);

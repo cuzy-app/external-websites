@@ -15,10 +15,8 @@ use humhub\modules\externalWebsites\models\Website;
 use humhub\modules\space\models\Space;
 use Yii;
 
-
 class Module extends ContentContainerModule
 {
-
     /**
      * @var string defines the icon
      */

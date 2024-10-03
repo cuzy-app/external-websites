@@ -29,7 +29,7 @@ return [
         [
             'class' => WallStreamFilterNavigation::class,
             'event' => WallStreamFilterNavigation::EVENT_BEFORE_RUN,
-            'callback' => [Events::class, 'onStreamFilterBeforeRun']
+            'callback' => [Events::class, 'onStreamFilterBeforeRun'],
         ],
         [
             'class' => WallStreamQuery::class,
@@ -39,23 +39,22 @@ return [
         [
             'class' => HeaderControlsMenu::class,
             'event' => HeaderControlsMenu::EVENT_INIT,
-            'callback' => [Events::class, 'onSpaceAdminMenuInit']
+            'callback' => [Events::class, 'onSpaceAdminMenuInit'],
         ],
         [
             'class' => View::class,
             'event' => View::EVENT_BEGIN_BODY,
-            'callback' => [Events::class, 'onViewBeginBody']
+            'callback' => [Events::class, 'onViewBeginBody'],
         ],
         [
             'class' => Controller::class,
             'event' => Controller::EVENT_INIT,
-            'callback' => [Events::class, 'onControllerInit']
+            'callback' => [Events::class, 'onControllerInit'],
         ],
         [
             'class' => ContentContainerController::class,
             'event' => ContentContainerController::EVENT_BEFORE_ACTION,
-            'callback' => [Events::class, 'onContentContainerControllerBeforeAction']
+            'callback' => [Events::class, 'onContentContainerControllerBeforeAction'],
         ],
-    ]
+    ],
 ];
-?>

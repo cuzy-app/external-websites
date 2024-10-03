@@ -11,7 +11,6 @@ namespace humhub\modules\externalWebsites\controllers;
 use humhub\modules\admin\components\Controller;
 use Yii;
 
-
 /**
  * AdminController
  * For administrators only

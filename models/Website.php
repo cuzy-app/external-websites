@@ -26,14 +26,14 @@ use yii\helpers\Json;
  * @property int $space_id
  * @property string $title
  * @property string $icon Fontawesome
- * @property boolean $humhub_is_embedded
+ * @property bool $humhub_is_embedded
  * @property string $first_page_url
  * @property string $page_url_params_to_remove json
- * @property boolean $show_in_menu
+ * @property bool $show_in_menu
  * @property int $sort_order
  * @property string $remove_from_url_title
  * @property string $layout
- * @property null|integer $default_content_visibility Default value for the Content created ; can be humhub\modules\content\models\Content::VISIBILITY_PRIVATE or Content::VISIBILITY_PUBLIC or Content::VISIBILITY_OWNER
+ * @property null|int $default_content_visibility Default value for the Content created ; can be humhub\modules\content\models\Content::VISIBILITY_PRIVATE or Content::VISIBILITY_PUBLIC or Content::VISIBILITY_OWNER
  * @property int $default_content_archived Default value for the Content created ; can be 0 or 1 (if 1, new comments are disabled) : humhub\modules\content\models\Content->archive(), humhub\modules\content\models\Content->unarchive()
  * @property string $created_at
  * @property int $created_by
@@ -45,9 +45,9 @@ use yii\helpers\Json;
  */
 class Website extends ActiveRecord
 {
-    const LAYOUT_DEFAULT = 'default';
-    const LAYOUT_MENU_COLLAPSED = 'menu_collapsed';
-    const LAYOUT_FULL_SCREEN = 'full_screen';
+    public const LAYOUT_DEFAULT = 'default';
+    public const LAYOUT_MENU_COLLAPSED = 'menu_collapsed';
+    public const LAYOUT_FULL_SCREEN = 'full_screen';
 
     /**
      * @inheritdoc

@@ -14,7 +14,6 @@ use humhub\modules\externalWebsites\models\Website;
 use yii\web\HttpException;
 use yii\web\Response;
 
-
 /**
  * When HumHub is host (if embedded, redirects to external website)
  * Show external website pages in an iframe and pages content addons besides

@@ -13,7 +13,6 @@ use humhub\modules\externalWebsites\models\Website;
 use humhub\modules\stream\models\filters\StreamQueryFilter;
 use Yii;
 
-
 /**
  * Add filters in a stream show in a space
  * Model: humhub\modules\stream\models\filters\DefaultStreamFilter
@@ -24,7 +23,7 @@ class ExternalWebsitesSpaceStreamFilter extends StreamQueryFilter
      * Default filters
      * $website->id will be added to the prefix
      */
-    const FILTER_SURVEY_STATE_PREFIX = 'filter_external_website_id_';
+    public const FILTER_SURVEY_STATE_PREFIX = 'filter_external_website_id_';
 
     /**
      * Array of stream filters to apply to the query.
@@ -37,7 +36,7 @@ class ExternalWebsitesSpaceStreamFilter extends StreamQueryFilter
     public function rules()
     {
         return [
-            [['filters'], 'safe']
+            [['filters'], 'safe'],
         ];
     }
 
@@ -53,7 +52,7 @@ class ExternalWebsitesSpaceStreamFilter extends StreamQueryFilter
         $this->query->leftJoin(
             'external_websites_website_page',
             'content.object_id = external_websites_website_page.id AND content.object_model = :pageClass',
-            [':pageClass' => Page::class]
+            [':pageClass' => Page::class],
         );
 
         $isFiltered = false;

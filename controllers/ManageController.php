@@ -17,7 +17,6 @@ use humhub\modules\externalWebsites\models\WebsiteSearch;
 use humhub\modules\space\models\Space;
 use Yii;
 
-
 class ManageController extends ContentContainerController
 {
     /**

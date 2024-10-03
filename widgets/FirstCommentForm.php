@@ -15,7 +15,6 @@ use humhub\modules\externalWebsites\models\Page;
 use humhub\modules\file\handler\FileHandlerCollection;
 use Yii;
 
-
 /**
  * This widget is used to create a new comment form when content is not created
  *
