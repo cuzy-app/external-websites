@@ -1,6 +1,10 @@
 Changelog
 =========
 
+Unreleased
+--------------------
+- Enh: Add GitHub HumHub PHP workflows (tests & CS fixer)
+
 0.43 (June 27, 2024)
 ---------------------
 - Fix: Sometimes HumHub addons doesn't loads
