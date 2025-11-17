@@ -1,6 +1,7 @@
 <?php
 
-use humhub\libs\Html;
+use humhub\components\View;
+use humhub\helpers\Html;
 use humhub\modules\comment\models\Comment;
 use humhub\modules\content\Module;
 use humhub\modules\content\widgets\richtext\RichTextField;
@@ -8,9 +9,8 @@ use humhub\modules\file\handler\BaseFileHandler;
 use humhub\modules\file\widgets\FileHandlerButtonDropdown;
 use humhub\modules\file\widgets\FilePreview;
 use humhub\modules\file\widgets\UploadButton;
-use humhub\modules\ui\form\widgets\ActiveForm;
-use humhub\modules\ui\view\components\View;
-use humhub\widgets\Button;
+use humhub\widgets\bootstrap\Button;
+use humhub\widgets\form\ActiveForm;
 use yii\helpers\Url;
 
 /* @var $this View */
@@ -44,7 +44,7 @@ $contentModule = Yii::$app->getModule('content');
 $submitUrl = Url::to(['/external-websites/comment/post']);
 ?>
 
-<div class="well well-small comment-container" id="comment_<?= $id; ?>">
+<div class="bg-light p-3 comment-container" id="comment_<?= $id; ?>">
 
     <?php // This div.comment tag is the place where the new comment will be shown after submitting the form ?>
     <div class="comment <?php if (Yii::$app->user->isGuest): ?>guest-mode<?php endif; ?>"
@@ -52,8 +52,6 @@ $submitUrl = Url::to(['/external-websites/comment/post']);
     </div>
 
     <div id="comment_create_form_<?= $id ?>" class="comment_create" data-ui-widget="comment.Form">
-
-        <hr style="display: none;">
 
         <?php $form = ActiveForm::begin(['action' => $submitUrl]) ?>
 
@@ -91,7 +89,6 @@ $submitUrl = Url::to(['/external-websites/comment/post']);
                     'primaryButton' => $uploadButton,
                     'handlers' => $fileHandlers,
                     'cssButtonClass' => 'btn-info btn-sm',
-                    'pullRight' => true,
                 ]);
                 echo Button::info()
                     ->icon('send')

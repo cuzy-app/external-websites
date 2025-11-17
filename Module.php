@@ -23,11 +23,6 @@ class Module extends ContentContainerModule
     public $icon = 'desktop';
 
     /**
-     * @var string defines path for resources, including the screenshots path for the marketplace
-     */
-    public $resourcesPath = 'resources';
-
-    /**
      * @var string HS512 JWT secret key
      * Optional, to enable possiblity to auto add groups to the users
      */
@@ -73,8 +68,10 @@ class Module extends ContentContainerModule
      */
     public function disable()
     {
-        foreach (Page::find()->each() as $page) {
-            $page->hardDelete();
+        if (Yii::$app->db->schema->getTableSchema(Page::tableName()) !== null) {
+            foreach (Page::find()->each() as $page) {
+                $page->hardDelete();
+            }
         }
 
         Website::deleteAll();

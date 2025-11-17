@@ -39,7 +39,7 @@
     flex-direction: column;
 }
 
-#ew-website #ew-page-addons .comment-create-input-group .form-group {
+#ew-website #ew-page-addons .comment-create-input-group .mb-3 {
     margin-bottom: 3px;
     width: 100%;
 }

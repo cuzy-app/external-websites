@@ -6,16 +6,14 @@
  * @author [Marc FARRE](https://marc.fun)
  */
 
-use humhub\libs\Html;
+use humhub\components\View;
 use humhub\modules\externalWebsites\models\forms\WebsiteForm;
 use humhub\modules\space\models\Space;
-use humhub\modules\ui\form\widgets\ActiveForm;
 use humhub\modules\ui\form\widgets\IconPicker;
-use humhub\modules\ui\form\widgets\SortOrderField;
-use humhub\modules\ui\view\components\View;
 use humhub\modules\user\widgets\UserPickerField;
-use humhub\widgets\ModalButton;
-use humhub\widgets\ModalDialog;
+use humhub\widgets\form\SortOrderField;
+use humhub\widgets\modal\Modal;
+use humhub\widgets\modal\ModalButton;
 
 /**
  * @var $this View
@@ -24,11 +22,12 @@ use humhub\widgets\ModalDialog;
  */
 ?>
 
-<?php ModalDialog::begin([
-    'header' => Yii::t('ExternalWebsitesModule.base', 'Website edition'),
+<?php $form = Modal::beginFormDialog([
+    'title' => Yii::t('ExternalWebsitesModule.base', 'Website edition'),
+    'footer' => ModalButton::cancel() . ' ' . ModalButton::save()->submit(),
+    'form' => ['acknowledge' => true],
 ]) ?>
-<div class="modal-body">
-    <?php $form = ActiveForm::begin(['acknowledge' => true]); ?>
+
     <?= $form->field($model, 'title')->textInput(['autofocus' => '']) ?>
     <?= $form->field($model, 'icon')->widget(IconPicker::class) ?>
     <?= $form->field($model, 'humhub_is_embedded')->checkbox() ?>
@@ -47,10 +46,5 @@ use humhub\widgets\ModalDialog;
         'maxSelection' => 1,
         'itemKey' => 'id', // TODO remove this line (see TODO in WebsiteForm)
     ]) ?>
-    <?= Html::saveButton() ?>
-    <?php ActiveForm::end(); ?>
-</div>
-<div class="modal-footer">
-    <?= ModalButton::cancel(Yii::t('base', 'Close')) ?>
-</div>
-<?php ModalDialog::end() ?>
+
+<?php Modal::endFormDialog() ?>

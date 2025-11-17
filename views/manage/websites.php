@@ -6,16 +6,17 @@
  * @author [Marc FARRE](https://marc.fun)
  */
 
-use humhub\libs\Html;
+use humhub\components\View;
+use humhub\helpers\Html;
 use humhub\modules\externalWebsites\models\forms\WebsiteForm;
 use humhub\modules\externalWebsites\models\WebsiteSearch;
 use humhub\modules\space\models\Space;
 use humhub\modules\ui\icon\widgets\Icon;
-use humhub\modules\ui\view\components\View;
 use humhub\modules\user\models\User;
 use humhub\modules\user\widgets\Image;
-use humhub\widgets\Button;
+use humhub\widgets\bootstrap\Button;
 use humhub\widgets\GridView;
+use humhub\widgets\modal\ModalButton;
 use yii\data\ActiveDataProvider;
 
 /**
@@ -25,7 +26,7 @@ use yii\data\ActiveDataProvider;
  * @var $dataProvider ActiveDataProvider
  */
 
-$websiteForm = new WebsiteForm;
+$websiteForm = new WebsiteForm();
 ?>
 
 <div id="ew-manage-websites" class="panel panel-default">
@@ -34,16 +35,14 @@ $websiteForm = new WebsiteForm;
     </div>
 
     <div class="panel-body">
-        <?= Button::success(Yii::t('ExternalWebsitesModule.base', 'Add a website'))
-            ->icon('plus')
-            ->link($contentContainer->createUrl('/external-websites/manage/add-website'))
-            ->action('ui.modal.load') ?>
-
-        <?= Button::defaultType(Yii::t('ExternalWebsitesModule.base', 'Settings'))
+        <?= ModalButton::light(Yii::t('ExternalWebsitesModule.base', 'Settings'))
             ->icon('cogs')
-            ->link($contentContainer->createUrl('/external-websites/manage/space-settings'))
-            ->action('ui.modal.load')
+            ->load($contentContainer->createUrl('/external-websites/manage/space-settings'))
             ->right() ?>
+
+        <?= ModalButton::success(Yii::t('ExternalWebsitesModule.base', 'Add a website'))
+            ->icon('plus')
+            ->load($contentContainer->createUrl('/external-websites/manage/add-website')) ?>
 
         <?php $columns = [
             [
@@ -59,14 +58,14 @@ $websiteForm = new WebsiteForm;
                 'format' => 'raw',
                 'value' => static function ($model) {
                     return Icon::get($model->icon);
-                }
+                },
             ],
             [
                 'attribute' => 'humhub_is_embedded',
                 'format' => 'raw',
                 'value' => static function ($model) {
                     return $model->humhub_is_embedded ? Icon::get('check') : '';
-                }
+                },
             ],
             [
                 'attribute' => 'first_page_url',
@@ -76,14 +75,14 @@ $websiteForm = new WebsiteForm;
                 'format' => 'raw',
                 'value' => static function ($model) {
                     return implode(',', $model->getPageUrlParamsToRemove());
-                }
+                },
             ],
             [
                 'attribute' => 'show_in_menu',
                 'format' => 'raw',
                 'value' => static function ($model) {
                     return $model->show_in_menu ? Icon::get('check') : '';
-                }
+                },
             ],
             [
                 'attribute' => 'sort_order',
@@ -96,21 +95,21 @@ $websiteForm = new WebsiteForm;
                 'format' => 'raw',
                 'value' => static function ($model) use ($websiteForm) {
                     return $websiteForm->getLayoutList()[$model->layout] ?? '';
-                }
+                },
             ],
             [
                 'attribute' => 'default_content_visibility',
                 'format' => 'raw',
                 'value' => static function ($model) use ($websiteForm) {
                     return $websiteForm->getContentVisibilityList()[$model->default_content_visibility] ?? '';
-                }
+                },
             ],
             [
                 'attribute' => 'default_content_archived',
                 'format' => 'raw',
                 'value' => static function ($model) {
                     return $model->default_content_archived ? Icon::get('check') : '';
-                }
+                },
             ],
             [
                 'attribute' => 'created_by',
@@ -118,28 +117,26 @@ $websiteForm = new WebsiteForm;
                 'value' => static function ($model) use ($contentContainer) {
                     $user = User::findOne($model->created_by);
                     return
-                        Image::widget(['user' => $user, 'width' => 35, 'showTooltip' => true]) . '<br>' .
-                        Html::containerLink($user);
-                }
+                        Image::widget(['user' => $user, 'width' => 35, 'showTooltip' => true]) . '<br>'
+                        . Html::containerLink($user);
+                },
             ],
             [
                 'header' => '',
                 'format' => 'raw',
                 'value' => static function ($model) use ($contentContainer) {
                     return
-                        Button::primary()
+                        ModalButton::primary()
                             ->icon('pencil')
-                            ->link($contentContainer->createUrl('/external-websites/manage/edit-website', ['websiteId' => $model->id]))
-                            ->action('ui.modal.load')
-                            ->tooltip(Yii::t('ExternalWebsitesModule.base', 'Edit this website')) .
-                        '<br><br>' .
-                        Button::danger()
+                            ->load($contentContainer->createUrl('/external-websites/manage/edit-website', ['websiteId' => $model->id]))
+                            ->tooltip(Yii::t('ExternalWebsitesModule.base', 'Edit this website'))
+                        . '<br><br>'
+                        . ModalButton::danger()
                             ->icon('trash')
-                            ->link($contentContainer->createUrl('/external-websites/manage/delete-website', ['websiteId' => $model->id]))
-                            ->action('ui.modal.load')
+                            ->load($contentContainer->createUrl('/external-websites/manage/delete-website', ['websiteId' => $model->id]))
                             ->tooltip(Yii::t('ExternalWebsitesModule.base', 'Delete this website'))
                             ->confirm(Yii::t('ExternalWebsitesModule.base', 'Are you sure you want to delete this website?'), Yii::t('ExternalWebsitesModule.base', 'All related comments will be deleted.'));
-                }
+                },
             ],
         ]; ?>
 

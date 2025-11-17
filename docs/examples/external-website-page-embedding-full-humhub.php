@@ -4,7 +4,7 @@
  */
 
 // HumHub URL
-use humhub\libs\Html;
+use humhub\helpers\Html;
 
 $humhubUrl = 'http://www.my-humhub.tdl/dashboard';
 // JWT token (optional, see docs/README.md "Auto add groups to user")

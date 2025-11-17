@@ -6,17 +6,14 @@
  * @author [Marc FARRE](https://marc.fun)
  */
 
+use humhub\components\View;
 use humhub\modules\externalWebsites\models\forms\WebsiteForm;
 use humhub\modules\space\models\Space;
 use humhub\modules\ui\form\widgets\IconPicker;
-use humhub\modules\ui\form\widgets\SortOrderField;
-use humhub\modules\ui\icon\widgets\Icon;
-use humhub\modules\ui\view\components\View;
 use humhub\modules\user\widgets\UserPickerField;
-use humhub\widgets\ModalButton;
-use humhub\widgets\ModalDialog;
-use yii\bootstrap\ActiveForm;
-use yii\helpers\Html;
+use humhub\widgets\form\SortOrderField;
+use humhub\widgets\modal\Modal;
+use humhub\widgets\modal\ModalButton;
 
 /**
  * @var $this View
@@ -25,11 +22,11 @@ use yii\helpers\Html;
  */
 ?>
 
-<?php ModalDialog::begin([
-    'header' => Yii::t('ExternalWebsitesModule.base', 'Add a website'),
+<?php $form = Modal::beginFormDialog([
+    'title' => Yii::t('ExternalWebsitesModule.base', 'Add a website'),
+    'footer' => ModalButton::cancel() . ' ' . ModalButton::save(Yii::t('ExternalWebsitesModule.base', 'Add this website'))->icon('plus')->submit(),
 ]) ?>
-<div class="modal-body">
-    <?php $form = ActiveForm::begin(); ?>
+
     <?= $form->field($model, 'title')->textInput(['autofocus' => '']) ?>
     <?= $form->field($model, 'icon')->widget(IconPicker::class) ?>
     <?= $form->field($model, 'humhub_is_embedded')->checkbox() ?>
@@ -48,15 +45,5 @@ use yii\helpers\Html;
         'maxSelection' => 1,
         'itemKey' => 'id', // TODO remove this line (see TODO in WebsiteForm)
     ]) ?>
-    <?= Html::submitButton(
-        Icon::get('plus') . ' ' . Yii::t('ExternalWebsitesModule.base', 'Add this website'),
-        [
-            'class' => 'btn btn-primary',
-        ]
-    ) ?>
-    <?php ActiveForm::end(); ?>
-</div>
-<div class="modal-footer">
-    <?= ModalButton::cancel(Yii::t('base', 'Close')) ?>
-</div>
-<?php ModalDialog::end() ?>
+
+<?php Modal::endFormDialog() ?>

@@ -13,7 +13,7 @@ use humhub\modules\space\widgets\HeaderControlsMenu;
 use humhub\modules\space\widgets\Menu as SpaceMenu;
 use humhub\modules\stream\models\WallStreamQuery;
 use humhub\modules\stream\widgets\WallStreamFilterNavigation;
-use humhub\modules\ui\view\components\View;
+use humhub\components\View;
 
 /** @noinspection MissedFieldInspection */
 return [

@@ -7,7 +7,7 @@ use humhub\widgets\FooterMenu;
 use yii\helpers\Html;
 
 /**
- * @var \humhub\modules\ui\view\components\View $this
+ * @var \humhub\components\View $this
  * @var \humhub\modules\space\models\Space $space
  * @var string $content
  */
@@ -32,7 +32,7 @@ $website = $context->website;
 
 <div id="ew-space-full-screen-layout" class="container space-layout-container">
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-lg-12">
             <div id="ew-breadcrumb" class="panel panel-default">
                 <div class="panel-body">
                     <nav aria-label="breadcrumb">
@@ -52,7 +52,7 @@ $website = $context->website;
         </div>
     </div>
     <div class="row space-content">
-        <div class="col-md-12 layout-content-container">
+        <div class="col-lg-12 layout-content-container">
             <?= SpaceContent::widget(['contentContainer' => $space, 'content' => $content]) ?>
         </div>
     </div>

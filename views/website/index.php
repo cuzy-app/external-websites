@@ -25,11 +25,11 @@ $this->registerJsConfig('externalWebsites.Host', [
 <div id="ew-website" class="panel panel-default">
     <div class="panel-body">
         <div class="row">
-            <div id="ew-page-iframed" class="col-md-12">
+            <div id="ew-page-iframed" class="col-lg-12">
                 <iframe id="ew-page-container" src="<?= $pageUrl ?>" allowfullscreen></iframe>
                 <br><br>
             </div>
-            <div id="ew-page-addons" class="col-md-12">
+            <div id="ew-page-addons" class="col-lg-12">
             </div>
         </div>
     </div>

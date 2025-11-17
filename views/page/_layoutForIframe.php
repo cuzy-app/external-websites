@@ -5,9 +5,9 @@
  * @var string $content
  */
 
-use humhub\libs\Html;
+use humhub\components\View;
+use humhub\helpers\Html;
 use humhub\modules\content\components\ContentContainerController;
-use humhub\modules\ui\view\components\View;
 
 $context = $this->context;
 $space = $context->contentContainer;

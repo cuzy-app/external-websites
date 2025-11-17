@@ -6,7 +6,7 @@
  * @author [Marc FARRE](https://marc.fun)
  */
 
-use humhub\libs\Html;
+use humhub\helpers\Html;
 use humhub\modules\comment\widgets\CommentLink;
 use humhub\modules\comment\widgets\Comments;
 use humhub\modules\externalWebsites\assets\EmbeddedAssets;
@@ -82,11 +82,11 @@ else {
 
 <script <?= Html::nonce() ?>>
     <?php if (!$showComments): ?>
-    $('#ew-page-iframed').removeClass('col-md-9').addClass('col-md-12');
-    $('#ew-page-addons').removeClass('col-md-3').addClass('col-md-12');
+    $('#ew-page-iframed').removeClass('col-lg-9').addClass('col-lg-12');
+    $('#ew-page-addons').removeClass('col-lg-3').addClass('col-lg-12');
     <?php else: ?>
-    $('#ew-page-iframed').removeClass('col-md-12').addClass('col-md-9');
-    $('#ew-page-addons').removeClass('col-md-12').addClass('col-md-3');
+    $('#ew-page-iframed').removeClass('col-lg-12').addClass('col-lg-9');
+    $('#ew-page-addons').removeClass('col-lg-12').addClass('col-lg-3');
     <?php endif; ?>
 
     $(function () {

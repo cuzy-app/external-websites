@@ -4,6 +4,7 @@ Changelog
 Unreleased
 --------------------
 - Enh: Add GitHub HumHub PHP workflows (tests & CS fixer)
+- Enh: Migration to BS5 and HumHub 1.18
 
 0.43 (June 27, 2024)
 ---------------------

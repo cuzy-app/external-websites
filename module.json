@@ -7,7 +7,7 @@
   ],
   "version": "0.43",
   "humhub": {
-    "minVersion": "1.16"
+    "minVersion": "1.18"
   },
   "homepage": "https://github.com/cuzy-app/external-websites",
   "authors": [

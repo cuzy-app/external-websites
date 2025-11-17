@@ -9,6 +9,7 @@
 namespace humhub\modules\externalWebsites;
 
 use Firebase\JWT\JWT;
+use humhub\helpers\ControllerHelper;
 use humhub\modules\externalWebsites\assets\EmbeddedAssets;
 use humhub\modules\externalWebsites\assets\SpaceSettingsAssets;
 use humhub\modules\externalWebsites\models\filters\ExternalWebsitesSpaceStreamFilter;
@@ -57,7 +58,7 @@ class Events
                     'url' => $website->getUrl(),
                     'icon' => $website->icon,
                     'isActive' => (
-                        MenuLink::isActiveState('external-websites', 'website', 'index')
+                        ControllerHelper::isActivePath('external-websites', 'website', 'index')
                         && $currentId
                         && $currentId == $website->id
                     ),
@@ -90,7 +91,7 @@ class Events
                 'title' => Yii::t('ExternalWebsitesModule.base', 'Filter'),
                 'sortOrder' => 300,
             ],
-            (defined('\humhub\modules\stream\widgets\WallStreamFilterNavigation::PANEL_COLUMN_2') ? WallStreamFilterNavigation::PANEL_COLUMN_2 : WallStreamFilterNavigation::PANEL_POSITION_CENTER), // TODO: when module compatibility minimal HumHub version is 1.12, keep only static::PANEL_COLUMN_2
+            WallStreamFilterNavigation::PANEL_COLUMN_2,
         );
 
         // Get pages
@@ -157,7 +158,7 @@ class Events
                 'label' => Yii::t('ExternalWebsitesModule.base', 'Manage external websites & settings'),
                 'url' => $space->createUrl('/external-websites/manage/websites'),
                 'icon' => 'desktop',
-                'isActive' => MenuLink::isActiveState('external-websites', 'manage', 'websites'),
+                'isActive' => ControllerHelper::isActivePath('external-websites', 'manage', 'websites'),
                 'isVisible' => true,
             ]));
         }

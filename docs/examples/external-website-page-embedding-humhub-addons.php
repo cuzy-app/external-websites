@@ -3,7 +3,7 @@
  * Updates the following values to your needs:
  */
 
-use humhub\libs\Html;
+use humhub\helpers\Html;
 
 /** @var string $humhubUrl HumHub URL */
 $humhubUrl = 'https://www.my-humhub.tdl';
