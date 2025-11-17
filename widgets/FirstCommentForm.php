@@ -1,4 +1,5 @@
 <?php
+
 /**
  * External Websites
  * @link https://github.com/cuzy-app/external-websites
