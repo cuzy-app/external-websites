@@ -56,16 +56,12 @@ $websiteForm = new WebsiteForm();
             [
                 'attribute' => 'icon',
                 'format' => 'raw',
-                'value' => static function ($model) {
-                    return Icon::get($model->icon);
-                },
+                'value' => static fn($model) => Icon::get($model->icon),
             ],
             [
                 'attribute' => 'humhub_is_embedded',
                 'format' => 'raw',
-                'value' => static function ($model) {
-                    return $model->humhub_is_embedded ? Icon::get('check') : '';
-                },
+                'value' => static fn($model) => $model->humhub_is_embedded ? Icon::get('check') : '',
             ],
             [
                 'attribute' => 'first_page_url',
@@ -73,16 +69,12 @@ $websiteForm = new WebsiteForm();
             [
                 'attribute' => 'page_url_params_to_remove',
                 'format' => 'raw',
-                'value' => static function ($model) {
-                    return implode(',', $model->getPageUrlParamsToRemove());
-                },
+                'value' => static fn($model) => implode(',', $model->getPageUrlParamsToRemove()),
             ],
             [
                 'attribute' => 'show_in_menu',
                 'format' => 'raw',
-                'value' => static function ($model) {
-                    return $model->show_in_menu ? Icon::get('check') : '';
-                },
+                'value' => static fn($model) => $model->show_in_menu ? Icon::get('check') : '',
             ],
             [
                 'attribute' => 'sort_order',
@@ -93,23 +85,17 @@ $websiteForm = new WebsiteForm();
             [
                 'attribute' => 'layout',
                 'format' => 'raw',
-                'value' => static function ($model) use ($websiteForm) {
-                    return $websiteForm->getLayoutList()[$model->layout] ?? '';
-                },
+                'value' => static fn($model) => $websiteForm->getLayoutList()[$model->layout] ?? '',
             ],
             [
                 'attribute' => 'default_content_visibility',
                 'format' => 'raw',
-                'value' => static function ($model) use ($websiteForm) {
-                    return $websiteForm->getContentVisibilityList()[$model->default_content_visibility] ?? '';
-                },
+                'value' => static fn($model) => $websiteForm->getContentVisibilityList()[$model->default_content_visibility] ?? '',
             ],
             [
                 'attribute' => 'default_content_archived',
                 'format' => 'raw',
-                'value' => static function ($model) {
-                    return $model->default_content_archived ? Icon::get('check') : '';
-                },
+                'value' => static fn($model) => $model->default_content_archived ? Icon::get('check') : '',
             ],
             [
                 'attribute' => 'created_by',
@@ -124,19 +110,16 @@ $websiteForm = new WebsiteForm();
             [
                 'header' => '',
                 'format' => 'raw',
-                'value' => static function ($model) use ($contentContainer) {
-                    return
-                        ModalButton::primary()
-                            ->icon('pencil')
-                            ->load($contentContainer->createUrl('/external-websites/manage/edit-website', ['websiteId' => $model->id]))
-                            ->tooltip(Yii::t('ExternalWebsitesModule.base', 'Edit this website'))
-                        . '<br><br>'
-                        . ModalButton::danger()
-                            ->icon('trash')
-                            ->load($contentContainer->createUrl('/external-websites/manage/delete-website', ['websiteId' => $model->id]))
-                            ->tooltip(Yii::t('ExternalWebsitesModule.base', 'Delete this website'))
-                            ->confirm(Yii::t('ExternalWebsitesModule.base', 'Are you sure you want to delete this website?'), Yii::t('ExternalWebsitesModule.base', 'All related comments will be deleted.'));
-                },
+                'value' => static fn($model) => ModalButton::primary()
+                    ->icon('pencil')
+                    ->load($contentContainer->createUrl('/external-websites/manage/edit-website', ['websiteId' => $model->id]))
+                    ->tooltip(Yii::t('ExternalWebsitesModule.base', 'Edit this website'))
+                . '<br><br>'
+                . ModalButton::danger()
+                    ->icon('trash')
+                    ->load($contentContainer->createUrl('/external-websites/manage/delete-website', ['websiteId' => $model->id]))
+                    ->tooltip(Yii::t('ExternalWebsitesModule.base', 'Delete this website'))
+                    ->confirm(Yii::t('ExternalWebsitesModule.base', 'Are you sure you want to delete this website?'), Yii::t('ExternalWebsitesModule.base', 'All related comments will be deleted.')),
             ],
         ]; ?>
 

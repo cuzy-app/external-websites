@@ -21,7 +21,7 @@ if (isset($_GET['humhubUrl'])) {
  * Add token param
  */
 if (!empty($token)) {
-    $humhubUrl .= ((strpos($humhubUrl, '?') === false) ? '?' : '&') . 'token=' . $token;
+    $humhubUrl .= ((!str_contains($humhubUrl, '?')) ? '?' : '&') . 'token=' . $token;
 }
 ?>
 

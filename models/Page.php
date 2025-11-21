@@ -196,9 +196,7 @@ class Page extends ContentActiveRecord
         $ids = Json::decode($this->other_website_ids);
         // Cast IDs to integer
         if (is_array($ids)) {
-            return array_map(static function ($id) {
-                return (int)$id;
-            }, $ids);
+            return array_map(static fn($id) => (int)$id, $ids);
         }
         return [];
     }
