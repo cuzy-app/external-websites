@@ -92,7 +92,7 @@ class Page extends ContentActiveRecord
     public static function stripParamFromUrl(string $url, string $param)
     {
         $base_url = strtok($url, '?');
-        $parsed_url = parse_url($url);
+        $parsed_url = (array)parse_url($url);
         if (empty($parsed_url['query'])) {
             return $url;
         }
