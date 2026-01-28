@@ -9,6 +9,7 @@
 
 namespace humhub\modules\externalWebsites\controllers;
 
+use HttpException;
 use humhub\modules\content\components\ContentContainerController;
 use humhub\modules\content\components\ContentContainerControllerAccess;
 use humhub\modules\externalWebsites\models\forms\SpaceSettingsForm;
@@ -23,7 +24,7 @@ class ManageController extends ContentContainerController
     /**
      * @inheritdoc
      */
-    public function getAccessRules()
+    protected function getAccessRules()
     {
         return [
             [ContentContainerControllerAccess::RULE_USER_GROUP_ONLY => [Space::USERGROUP_ADMIN]],
