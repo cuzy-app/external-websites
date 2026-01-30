@@ -1,22 +1,21 @@
 {
-  "id": "external-websites",
-  "name": "External Websites",
-  "description": "Creates a content for each external website page, enabling to have Humhub addons (comments, like, files, etc.) in theses pages.",
-  "keywords": [
-    "external websites iframe"
-  ],
-  "version": "0.43",
-  "humhub": {
-    "minVersion": "1.18"
-  },
-  "homepage": "https://github.com/cuzy-app/external-websites",
-  "authors": [
-    {
-      "name": "Marc FARRE",
-      "homepage": "https://marc.fun",
-      "role": "Developer"
-    }
-  ],
-  "screenshots": [
-  ]
+    "id": "external-websites",
+    "name": "External Websites",
+    "description": "Creates a content for each external website page, enabling to have Humhub addons (comments, like, files, etc.) in theses pages.",
+    "keywords": [
+        "external websites iframe"
+    ],
+    "version": "0.43",
+    "humhub": {
+        "minVersion": "1.18"
+    },
+    "homepage": "https://github.com/cuzy-app/external-websites",
+    "authors": [
+        {
+            "name": "Marc FARRE",
+            "homepage": "https://marc.fun",
+            "role": "Developer"
+        }
+    ],
+    "screenshots": []
 }
