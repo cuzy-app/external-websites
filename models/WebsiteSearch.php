@@ -10,7 +10,6 @@
 namespace humhub\modules\externalWebsites\models;
 
 use humhub\modules\user\components\ActiveQueryUser;
-use yii\base\Model;
 use yii\data\ActiveDataProvider;
 
 /**
@@ -31,15 +30,6 @@ class WebsiteSearch extends Website
             [['space_id', 'sort_order', 'default_content_visibility', 'default_content_archived'], 'integer'],
             [['humhub_is_embedded', 'show_in_menu'], 'boolean'],
         ];
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function scenarios()
-    {
-        // bypass scenarios() implementation in the parent class
-        return Model::scenarios();
     }
 
     /**
