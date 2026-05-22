@@ -29,12 +29,6 @@
     content: "\f0c1";
 }
 
-/* Comment input place holder text is truncated, so make it smaller */
-#ew-website #ew-page-addons .ProsemirrorEditor .ProseMirror .placeholder {
-    font-size: 0.8em;
-    min-height: 20px;
-}
-
 /* Comment buttons (attach files and send) below the input field */
 #ew-website #ew-page-addons .comment-create-input-group {
     flex-direction: column;
