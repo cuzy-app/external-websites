@@ -9,7 +9,9 @@
 
 namespace humhub\modules\externalWebsites;
 
+use Exception;
 use Firebase\JWT\JWT;
+use Firebase\JWT\Key;
 use humhub\helpers\ControllerHelper;
 use humhub\modules\externalWebsites\assets\EmbeddedAssets;
 use humhub\modules\externalWebsites\assets\SpaceSettingsAssets;
@@ -201,7 +203,7 @@ class Events
     }
 
     /**
-     * @param $token HS512 JWT token
+     * @param string $token HS512 JWT token
      * @throws HttpException
      * If logged in AND JWT token param in URL, check permission and add current user to groups
      */
@@ -212,7 +214,7 @@ class Events
         // If jwtKey property is defined in configuration
         if (!empty($module->jwtKey)) {
             try {
-                $validData = JWT::decode($token, $module->jwtKey, ['HS512']);
+                $validData = JWT::decode($token, new Key($module->jwtKey, 'HS512'));
 
                 // If authentification successful
                 if (isset($validData->groupsId) && is_array($validData->groupsId)) {

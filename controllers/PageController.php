@@ -9,7 +9,7 @@
 
 namespace humhub\modules\externalWebsites\controllers;
 
-use humhub\modules\comment\models\Comment;
+use humhub\modules\comment\services\CommentListService;
 use humhub\modules\content\components\ContentContainerController;
 use humhub\modules\externalWebsites\models\Page;
 use humhub\modules\externalWebsites\models\Website;
@@ -144,7 +144,7 @@ class PageController extends ContentContainerController
         if (
             $page !== null
             && $page->content->archived
-            && Comment::GetCommentCount(Page::class, $page->id) === 0
+            && CommentListService::create($page)->getCount() === 0
         ) {
             $showComments = false;
             $showLikes = false;
