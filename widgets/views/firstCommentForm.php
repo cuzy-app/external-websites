@@ -92,6 +92,7 @@ $submitUrl = Url::to(['/external-websites/comment/post']);
                 ]);
                 echo Button::info()
                     ->icon('send')
+                    ->options(['aria-label' => Yii::t('CommentModule.base', 'Send comment')])
                     ->cssClass('btn-comment-submit')->sm()
                     ->action('submit', $submitUrl)->submit();
                 ?></div>
