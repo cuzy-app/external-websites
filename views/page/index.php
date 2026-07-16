@@ -68,7 +68,7 @@ else {
 <?php if ($showComments): ?>
     <?php if ($page !== null): ?>
         <?php if ($page->content->canView()): ?>
-            <?= Comments::widget(['object' => $page]) ?>
+            <?= Comments::widget(['content' => $page->content]) ?>
         <?php endif; ?>
     <?php else: ?>
         <?= FirstCommentForm::widget([
