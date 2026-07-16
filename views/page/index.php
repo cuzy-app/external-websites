@@ -60,7 +60,7 @@ else {
             &middot; <?= LikeLink::widget(['object' => $page]) ?>
         <?php endif; ?>
         <?php if ($showComments): ?>
-            &middot; <?= Icon::get('comment') ?> <?= CommentLink::widget(['object' => $page]); ?>
+            &middot; <?= Icon::get('comment') ?> <?= CommentLink::widget(['content' => $page->content]) ?>
         <?php endif; ?>
     <?php endif; ?>
 </div>
