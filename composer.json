@@ -1,6 +1,11 @@
 {
   "name": "cuzy-app/external-websites",
   "type": "humhub-module",
+  "autoload": {
+    "psr-4": {
+      "humhub\\modules\\externalWebsites\\": ""
+    }
+  },
   "config": {
     "platform": {
       "php": "8.2"
