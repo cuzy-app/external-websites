@@ -1,8 +1,9 @@
 Changelog
 =========
 
-Unreleased
---------------------
+0.44 (Unreleased)
+-----------------
+- Fix: Minor cleanup of model validation rules.
 - Enh: Add GitHub HumHub PHP workflows (tests & CS fixer)
 - Enh: Migration to BS5 and HumHub 1.18
 

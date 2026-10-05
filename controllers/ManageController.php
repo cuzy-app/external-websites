@@ -9,7 +9,6 @@
 
 namespace humhub\modules\externalWebsites\controllers;
 
-use HttpException;
 use humhub\modules\content\components\ContentContainerController;
 use humhub\modules\content\components\ContentContainerControllerAccess;
 use humhub\modules\externalWebsites\models\forms\SpaceSettingsForm;
@@ -18,6 +17,7 @@ use humhub\modules\externalWebsites\models\Website;
 use humhub\modules\externalWebsites\models\WebsiteSearch;
 use humhub\modules\space\models\Space;
 use Yii;
+use yii\web\HttpException;
 
 class ManageController extends ContentContainerController
 {
@@ -67,6 +67,8 @@ class ManageController extends ContentContainerController
 
     public function actionEditWebsite($websiteId)
     {
+        $this->findWebsite($websiteId);
+
         $model = new WebsiteForm([
             'space_id' => $this->contentContainer->id,
             'id' => $websiteId,
@@ -90,11 +92,7 @@ class ManageController extends ContentContainerController
 
     public function actionDeleteWebsite($websiteId)
     {
-        $website = Website::findOne($websiteId);
-        if ($website === null) {
-            throw new HttpException(404);
-        }
-
+        $website = $this->findWebsite($websiteId);
         $website->delete();
         $this->view->success(Yii::t('ExternalWebsitesModule.base', 'website deleted'));
 
@@ -118,5 +116,20 @@ class ManageController extends ContentContainerController
         return $this->renderAjax('spaceSettings', [
             'model' => $model,
         ]);
+    }
+
+    /**
+     * @param $websiteId
+     * @return Website
+     * @throws HttpException
+     */
+    protected function findWebsite($websiteId): Website
+    {
+        $website = Website::findOne(['id' => $websiteId, 'space_id' => $this->contentContainer->id]);
+        if ($website === null) {
+            throw new HttpException(404);
+        }
+
+        return $website;
     }
 }
