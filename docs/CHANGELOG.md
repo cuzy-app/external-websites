@@ -1,8 +1,8 @@
 Changelog
 =========
 
-0.44.1 (Unreleased)
--------------------
+0.44.1 (October 5, 2026)
+------------------------
 - Fix: Minor cleanup of model validation rules.
 
 0.44 (October 5, 2026)
