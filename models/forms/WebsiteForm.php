@@ -3,7 +3,7 @@
 /**
  * External Websites
  * @link https://github.com/cuzy-app/external-websites
- * @license https://github.com/cuzy-app/external-websites/blob/master/docs/LICENSE.md
+ * @license https://github.com/cuzy-app/external-websites/blob/main/docs/LICENSE.md
  * @author [Marc FARRE](https://marc.fun)
  */
 
@@ -11,6 +11,7 @@ namespace humhub\modules\externalWebsites\models\forms;
 
 use humhub\modules\content\models\Content;
 use humhub\modules\externalWebsites\models\Website;
+use humhub\modules\space\models\Space;
 use humhub\modules\user\models\User;
 use Yii;
 use yii\base\Model;
@@ -39,7 +40,7 @@ class WebsiteForm extends Model
         // If editing existing Event
         if (
             $this->id !== null
-            && ($website = Website::findOne($this->id)) !== null
+            && ($website = Website::findOne(['id' => $this->id, 'space_id' => $this->space_id])) !== null
         ) {
             $this->title = $website->title;
             $this->icon = $website->icon;
@@ -71,7 +72,31 @@ class WebsiteForm extends Model
             [['sort_order', 'default_content_visibility', 'default_content_archived'], 'integer'],
             [['humhub_is_embedded', 'show_in_menu'], 'boolean'],
             [['created_by', 'page_url_params_to_remove'], 'safe'],
+            [['created_by'], 'validateOwner'],
         ];
+    }
+
+    /**
+     * The owner must be a member of the space
+     *
+     * @param string $attribute
+     */
+    public function validateOwner($attribute)
+    {
+        $owner = $this->getOwner();
+        $space = Space::findOne($this->space_id);
+        if ($owner !== null && ($space === null || !$space->isMember($owner->id))) {
+            $this->addError($attribute, Yii::t('ExternalWebsitesModule.base', 'The owner must be a member of the space.'));
+        }
+    }
+
+    /**
+     * @return User|null
+     */
+    protected function getOwner(): ?User
+    {
+        $userGuid = is_array($this->created_by) ? reset($this->created_by) : null;
+        return $userGuid ? User::findOne(['guid' => $userGuid]) : null;
     }
 
     /**
@@ -110,7 +135,10 @@ class WebsiteForm extends Model
             $website->space_id = $this->space_id;
         } // If update
         else {
-            $website = Website::findOne($this->id);
+            $website = Website::findOne(['id' => $this->id, 'space_id' => $this->space_id]);
+            if ($website === null) {
+                return false;
+            }
         }
 
         // Trim URL params to remove and explode to array
@@ -131,8 +159,7 @@ class WebsiteForm extends Model
         $website->layout = $this->layout;
         $website->default_content_visibility = $this->default_content_visibility;
         $website->default_content_archived = $this->default_content_archived;
-        $userGuid = is_array($this->created_by) ? reset($this->created_by) : null;
-        $website->created_by = ($owner = User::findOne(['guid' => $userGuid])) ? $owner->id : ($website->created_by ?? Yii::$app->user->id);
+        $website->created_by = ($owner = $this->getOwner()) ? $owner->id : ($website->created_by ?? Yii::$app->user->id);
         $result = $website->save();
 
         // Update pages owner
