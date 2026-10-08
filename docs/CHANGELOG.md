@@ -1,6 +1,10 @@
 Changelog
 =========
 
+0.44.2 (October 8, 2026)
+------------------------
+- Chg: New CUZY Commercial License 2.0 under Irish law. It clarifies the AGPL option, the license key with annual or lifetime maintenance and what happens when it expires, one installation per domain with unlimited users and devices, and commits to fixing module bugs within 14 days for customers with a valid license key. Existing licenses stay under version 1.0 until their next renewal or opt-in
+
 0.44.1 (October 5, 2026)
 ------------------------
 - Fix: Minor cleanup of model validation rules.
